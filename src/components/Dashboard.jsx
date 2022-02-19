@@ -48,9 +48,9 @@ export default function Dashboard() {
         </Modal>
         <Header />
         <section className='welcome'>
-            <img src="/fox-image.png" alt="" />
+            <img src="https://i.ibb.co/XpFJZS0/fox-image.png" alt="" />
             <div>
-                <h2>Good {greeting}, <br />  <b style={{ fontSize: "2.4rem" }}>Bedant Hota</b></h2>
+                <h2>Good {greeting}, <br />  <b style={{ fontSize: "2vw" }}>Bedant Hota</b></h2>
                 <button>Go to Schedules </button>
             </div>
         </section>

@@ -50,6 +50,7 @@
   align-items: center;
   cursor: pointer;
   padding: 17px;
+  font-size: 1vw;
 }
 .navigation .navigation-list .navigation-item:not(:last-child) {
   margin-bottom: 13px;

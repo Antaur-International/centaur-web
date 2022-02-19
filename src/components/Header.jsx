@@ -22,7 +22,7 @@ export default function Header() {
             <Notification />
         </Modal>
 
-        <form>
+        <form className="header__search">
             <input type="text" placeholder="Search here..." />
             <SearchIcon />
         </form>
