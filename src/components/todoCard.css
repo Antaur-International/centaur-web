@@ -1,0 +1,65 @@
+.todoCard {
+  justify-self: flex-start;
+  margin-top: 12px;
+  list-style: none;
+}
+
+.todoCard .todoItem {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.todoCard .todoItem:not(:first-child) {
+  margin-top: 30px;
+}
+.todoCard .todoItem:not(:last-child) {
+  position: relative;
+}
+.todoCard .todoItem:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.29);
+}
+
+.todoCard .todoItem div:nth-child(1) {
+  border: 1px solid #b5b5b5;
+  padding: 0px 11px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.todoCard .todoItem div:nth-child(1) > p:nth-child(1) {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.51);
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+
+.todoCard .todoItem div:nth-child(1) > p:nth-child(2) {
+  margin: 0;
+  font-size: 1.2rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+
+.todoCard .todoItem div:nth-child(2) {
+  margin-left: 10px;
+}
+
+.todoCard .todoItem div:nth-child(2) > p:nth-child(1) {
+  font-size: 1.2rem;
+}
+
+.todoCard .todoItem div:nth-child(2) > p:nth-child(2) {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #0000008f;
+}

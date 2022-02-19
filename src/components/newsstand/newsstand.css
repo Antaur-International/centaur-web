@@ -1,0 +1,17 @@
+.newsStandContainer > .standTitle {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.newsStandContainer > .standTitle > h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #209f15;
+  margin-left: 40px;
+}
+
+.newsStandContainer > hr {
+  margin-top: 25px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+}

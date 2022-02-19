@@ -1,0 +1,106 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Montserrat:wght@200;300;400;500;600&display=swap");
+.cp_newsstand_wrapper .wrapper_title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  gap: 29px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.cp_newsstand_wrapper .wrapper_title h1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2vw;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #40A137;
+}
+
+.cp_newsstand_wrapper .wrapper_newsCard_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.cp_newsstand_wrapper .wrapper_newsCard_list .wrapper_newsCard_item {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.cp_newsstand_wrapper .wrapper_newsCard_list .wrapper_newsCard_item .newsCard_item_head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.cp_newsstand_wrapper .wrapper_newsCard_list .wrapper_newsCard_item .newsCard_item_head .item_head_date {
+  background: #FFFFFF;
+  border: 1px solid #209F15;
+  border-radius: 10px;
+  padding: 5px 10px;
+}
+
+.cp_newsstand_wrapper .wrapper_newsCard_list .wrapper_newsCard_item .newsCard_item_head .item_head_date p {
+  font-family: "Barlow", sans-serif;
+  font-style: italic;
+  font-size: 1vw;
+  font-weight: 400;
+}
+
+.cp_newsstand_wrapper .wrapper_newsCard_list .wrapper_newsCard_item .newsCard_item_head .item_head_category {
+  font-family: "Barlow", sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.67);
+  font-size: 1vw;
+}
+
+.cp_newsstand_wrapper .wrapper_newsCard_list .wrapper_newsCard_item .newsCard_item_content {
+  font-family: "Barlow", sans-serif;
+  font-weight: 400;
+  font-size: 1.2vw;
+}
+
+html {
+  font-size: 10px;
+}
+
+li {
+  list-style: none;
+  text-decoration: none;
+}
+/*# sourceMappingURL=global.css.map */

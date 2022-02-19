@@ -1,0 +1,159 @@
+:root {
+  --lightGreen: #fafffa;
+  --navigationPadding: 30px;
+}
+
+.navigation {
+  width: 20vw;
+  height: 100vh;
+  background: var(--lightGreen);
+  box-shadow: -7px -2px 54px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+}
+
+.navigation .app-title {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: var(--navigationPadding);
+}
+
+.navigation .app-title::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0px;
+  width: 100%;
+  height: 0.6px;
+  background: #cbcbcb;
+}
+
+.navigation .app-title p {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #000;
+  font-family: "Pacifico", cursive;
+}
+
+.navigation .navigation-list {
+  padding: var(--navigationPadding);
+  list-style: none;
+  margin-top: 20px;
+  padding: 0;
+}
+
+.navigation .navigation-list .navigation-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+  padding: 17px;
+}
+.navigation .navigation-list .navigation-item:not(:last-child) {
+  margin-bottom: 13px;
+}
+
+.navigation .navigation-list .navigation-item:not(:nth-child(4)) p {
+  margin-left: 30px;
+}
+
+.navigation .navigation-list .navigation-item p {
+  margin-left: 10px;
+}
+
+.selected-item {
+  background: linear-gradient(
+    90deg,
+    #d1ffd6 0%,
+    rgba(255, 255, 255, 0.0729167) 92.71%,
+    rgba(180, 255, 187, 0) 100%
+  );
+  position: relative;
+}
+
+.selected-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  border-radius: 0px 2px 2px 0px;
+  height: 100%;
+  background: #3abe2f;
+}
+
+.navigation .settings-btn {
+  width: 100%;
+  margin-top: auto;
+  margin-bottom: 20px;
+  height: max-content;
+  display: grid;
+  place-items: center;
+}
+.navigation .settings-btn button {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #3abe2f;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+}
+.navigation .settings-btn button p {
+  margin-left: 20px;
+}
+
+.navigation-list {
+  list-style: none;
+}
+
+.smallNav {
+  width: 5vw;
+  padding: 20px;
+  box-shadow: -4px 4px 24px rgba(0, 0, 0, 0.17);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.smallNav .app-title p {
+  display: none;
+}
+
+.smallNav .navigation-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.smallNav .navigation-list .navigation-item {
+  padding: 20px;
+  cursor: pointer;
+}
+
+.smallNav .navigation-list .navigation-item p {
+  display: none;
+}
+
+.smallNav .settings-btn button {
+  background: #3abe2f;
+  border: none;
+  border-radius: 100%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.smallNav .settings-btn button p {
+  display: none;
+}

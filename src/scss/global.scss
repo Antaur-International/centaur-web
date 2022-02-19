@@ -1,0 +1,12 @@
+@import "./config/_variables";
+@import "./config/_mixins";
+@import "./layout/lyt-modelWrapper";
+
+html {
+    font-size: 10px;
+}
+
+li {
+    list-style: none;
+    text-decoration: none;
+}

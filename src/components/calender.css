@@ -1,0 +1,55 @@
+.calender-sec {
+  align-self: center;
+}
+table {
+  text-align: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+table thead {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #3abe2f;
+}
+
+th {
+  padding-bottom: 20px;
+}
+
+td {
+  width: 30px;
+  height: 30px;
+}
+
+th:not(:first-child) {
+  padding-left: 20px;
+}
+.today {
+  border-radius: 5px;
+  height: 30px;
+  width: 30px;
+  background: #3abe2f;
+  color: white;
+}
+
+.calender-nav {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calender-nav span {
+  cursor: pointer;
+}
+
+.calender-nav p {
+  width: 150px;
+  background: #d1ffd6;
+  border-radius: 20px;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-align: center;
+  color: black;
+}

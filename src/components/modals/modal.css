@@ -1,0 +1,44 @@
+.modalContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 600vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.modalMain {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 40vw;
+  height: 100%;
+  background-color: white;
+  z-index: 2;
+  overflow-y: scroll;
+}
+
+.displayBlock {
+  display: block;
+}
+
+.displayNone {
+  display: none;
+}
+
+.modalContainer .closeButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  transform: rotate(45deg);
+}
+
+.mainContent {
+  margin-top: 30px;
+  padding: 20px;
+}

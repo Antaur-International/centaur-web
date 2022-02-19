@@ -1,0 +1,135 @@
+.dashboard {
+  height: 100vh;
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "welcome calender"
+    "news calender"
+    "news meetings";
+  grid-template-columns: calc(60% + 40px) auto;
+  grid-template-rows: 10vh 40vh 5vh 30vh;
+  grid-gap: 20px;
+  padding: 1.8rem;
+}
+
+.welcome {
+  grid-area: welcome;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("../../public/welcomeBackground.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 20px;
+  border-radius: 20px;
+  padding-bottom: 0;
+}
+
+.welcome img {
+  width: 18vw;
+}
+
+.welcome h2 {
+  color: white;
+  font-weight: normal;
+}
+
+.welcome button {
+  color: #3abe2f;
+  background: white;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.calender {
+  grid-area: calender;
+  background: #ffffff;
+  border: 1px solid #d9d9d9;
+  box-sizing: border-box;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sdp {
+  --theme-color: #3abe2f !important;
+}
+
+.news {
+  grid-area: news;
+  background: #fefefe;
+  border: 1px solid #d8d8d8;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.meetings {
+  grid-area: meetings;
+  background: #ffffff;
+  border: 1px solid #d9d9d9;
+  box-sizing: border-box;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  padding: 20px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.meetings ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.meetings ul li {
+  background: #f9f9f9;
+  border: 1px solid #c8c8c8;
+  box-sizing: border-box;
+  border-radius: 20px;
+  padding: 20px;
+}
+.meetings ul li:not(:first-child) {
+  margin-top: 20px;
+}
+
+.meetings ul li > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.meetings ul li p {
+  color: #909090;
+}
+
+.meetings ul li .meeting-time {
+  margin-top: 20px;
+}
+
+.dashboardCardLabel {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.dashboardCardLabel > p {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #209f15;
+}

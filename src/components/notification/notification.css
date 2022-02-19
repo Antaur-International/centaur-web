@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap");
+
+.notifyContainer > .notifyTitle > h1 {
+  font-family: "Barlow", sans-serif !important;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #209f15;
+}
+
+.notifyContainer > .notifyTitle > hr {
+  margin-top: 25px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.notifyCards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 30px;
+  list-style: none;
+  padding: 0;
+}
+
+.notifyCards > li {
+  border: 1px solid rgba(0, 0, 0, 0.17);
+  box-sizing: border-box;
+  border-radius: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.notifyCards > li:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.notifyCards > li p {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.notifyCards > li > .notifyCardTop,
+.notifyCards > li > .notifyCardBottom {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.notifyCards > li > .notifyCardBottom {
+  margin-top: 10px;
+}
+
+.notifyCards > li > .notifyCardBottom > p:not(:last-child) {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #999999;
+}
+
+.notifyCards > li > .notifyCardBottom > p:last-child {
+  font-size: 0.9rem;
+}
