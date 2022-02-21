@@ -10,7 +10,7 @@ export default function RightDrawer(props) {
 
     return <nav className='navigation'>
         <section className='app-title'>
-            <img src='/images/icons/icon.png' alt="" />
+            <img src={'/images/icons/icon.png'} alt="" />
             <p>Centaur</p>
         </section>
         <ul className='navigation-list'>

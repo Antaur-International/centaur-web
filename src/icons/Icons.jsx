@@ -131,3 +131,29 @@ export const Link = (props) => {
     </svg>
 
 }
+
+export const NewspaperIcon = (props) => {
+    return <svg width="45" height="46" viewBox={" 0 0 " + props.width + " " + props.height} fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g id="24 / basic / newspaper">
+            <path id="icon" fill-rule="evenodd" clip-rule="evenodd" d="M7.5 34.25V9.875H30V34.25C30 34.9074 30.1128 35.5385 30.3201 36.125H9.375C8.33947 36.125 7.5 35.2855 7.5 34.25ZM35.625 39.875H9.375C6.2684 39.875 3.75 37.3566 3.75 34.25V6.125H30H31.875H33.75V15.5H41.25V17.375V19.25V34.25C41.25 37.3566 38.7316 39.875 35.625 39.875ZM33.75 19.25H37.5V34.25C37.5 35.2855 36.6605 36.125 35.625 36.125C34.5895 36.125 33.75 35.2855 33.75 34.25V19.25ZM18.75 13.625V21.125H11.25V13.625H18.75ZM26.25 19.25V15.5H20.625V19.25H26.25ZM26.25 23V26.75H11.25V23H26.25ZM26.25 32.375V28.625H11.25V32.375H26.25Z" fill="#209F15" />
+        </g>
+    </svg>
+}
+
+
+export const SingleTick = (props) => {
+    return <svg width="11" height="8" viewBox="0 0 11 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="0.354364" y1="4.09572" x2="3.55385" y2="7.30993" stroke="white" />
+        <line x1="3.19059" y1="7.64645" x2="10.1906" y2="0.646447" stroke="white" />
+    </svg>
+
+}
+
+export const HamBurger = (props) => {
+    return <svg width="18" height="11" viewBox="0 0 18 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line y1="0.5" x2="18" y2="0.5" stroke="#B8B8B8" />
+        <line y1="5.5" x2="18" y2="5.5" stroke="#B8B8B8" />
+        <line y1="10.5" x2="18" y2="10.5" stroke="#B8B8B8" />
+    </svg>
+
+}

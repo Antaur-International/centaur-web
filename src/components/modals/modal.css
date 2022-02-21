@@ -2,7 +2,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 600vw;
+  width: 60vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);
   z-index: 1;
@@ -30,7 +30,7 @@
 .modalContainer .closeButton {
   position: absolute;
   top: 0;
-  right: 0;
+  right: 20px;
   padding: 10px;
   cursor: pointer;
   background: none;

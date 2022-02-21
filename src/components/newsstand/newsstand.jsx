@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { NewspaperIcon } from '../../icons/Icons'
 
 const NewsCardItem = (props) => {
     return <li className='wrapper_newsCard_item'>
@@ -20,7 +20,7 @@ export default function Newsstand() {
     return (
         <section className='cp_newsstand_wrapper'>
             <div className='wrapper_title'>
-                <img src='/images/icons/newspaper.svg' alt="" width={50} className="wrapper_title_icon" />
+                <NewspaperIcon width="45" height="45" />
                 <h1>News Stand</h1>
             </div>
 

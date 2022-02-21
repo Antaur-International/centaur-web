@@ -1,0 +1,21 @@
+.lyt_todo_wrapper {
+    @include displayFlex(column, flex-start, flex-start);
+    gap: 20px;
+    width: 100%;
+    margin-top: 20px;
+
+    .wrapper_todo_item {
+        background: #FFFFFF;
+        border: 1px solid #DFDFDF;
+        border-radius: 10px;
+        padding: 10px;
+
+        @include displayFlex(column, space-between, center);
+        gap: 8px;
+
+        .todo_item_main {
+            @include displayFlex(row, space-between, center)
+        }
+    }
+
+}

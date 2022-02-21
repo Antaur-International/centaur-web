@@ -5,6 +5,7 @@ import Calender from './Calender';
 import { CalenderIcon, MoreIcon, VideoIcon } from '../icons/Icons';
 import DatePicker from 'sassy-datepicker';
 import TodoCard from './TodoCard';
+import TodoLayout from '../layout/lyt-todo';
 import Modal from './modals/modal';
 import Newsstand from './newsstand/newsstand';
 
@@ -59,7 +60,7 @@ export default function Dashboard() {
                 <p>Todo</p>
                 <MoreIcon />
             </div>
-            <TodoCard />
+            <TodoLayout />
         </section>
         <section className='news' onClick={handleOpen}>
             <div className='dashboardCardLabel'>
