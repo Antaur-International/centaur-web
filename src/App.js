@@ -1,22 +1,34 @@
-import { useState } from 'react';
-import './App.css';
+import React from 'react';
+
+// Importing the components
 import RightDrawer from './components/RightDrawer';
 import Dashboard from './components/Dashboard';
 import Department from './components/departments/Department';
-import "./css/global.css"
+
+// CSS files
+import "./css/global.css";
+import './App.css';
+
+/*
+Importing the packages
+*/
 
 
 window.process = { env: { NODE_ENV: "production" } };
+
 function App() {
-  const [contentShow, setContentShow] = useState("dashboard");
+
+  const [activeTab, setActiveTab] = React.useState("dashboard");
+
   return (
     <div className="App">
-      <RightDrawer contentShow={contentShow} setContentShow={setContentShow} />
+      <RightDrawer activeTab={activeTab} setActiveTab={(e) => { setActiveTab() }} />
       <main className='main'>
-        {/* <Department /> */}
-        <Dashboard />
+        {activeTab === "dashboard" && <Dashboard />}
+        {activeTab === "department" && <Department />}
       </main>
     </div>
+
   );
 }
 

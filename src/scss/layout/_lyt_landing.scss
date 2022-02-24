@@ -1,0 +1,33 @@
+@import "../components/cp_landing-navBar";
+
+.wrapper_landing_page {
+    width: 100vw;
+    height: 100vh;
+    background: #F5F5F5;
+
+    .landing_page_body {
+        @include displayFlex(row, space-between, center);
+        padding: 20px;
+        width: calc(100vw - 40px);
+        height: calc(100vh - 40px);
+
+        .page_body_leftSec {
+            font-size: 4vh;
+            p {
+                font-size: 2vh;
+            }
+        }
+
+        .page_body_rightSec {
+            position: relative;
+            width: auto;
+           img {
+               height: 50vh;
+               position: absolute;
+               right: -20px;
+               top: -200px;
+           }
+        }
+    }
+
+}

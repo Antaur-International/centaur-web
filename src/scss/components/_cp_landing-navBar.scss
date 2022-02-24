@@ -1,0 +1,38 @@
+.landing_page_header {
+    @include displayFlex(row, space-between, center);
+    padding: 15px 20px;
+    position: fixed;
+    top: 0;
+    
+    width: calc(100% - 40px);
+
+
+    .page_header_nav {
+        width: 50%;
+        .header_nav_list {
+            @include displayFlex(row, space-around, center);
+
+            .nav_list_item{
+                font-size: 2vh;
+            }
+        }
+    }
+
+    .page_header_btn{
+        outline: none;
+        border: none;
+        background-color: #4FFF40;
+        color: black;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 1.5vh;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+
+
+        &:hover{
+            box-shadow: 0px 3px 18px rgba(20, 255, 0, 0.74);
+        }
+    }
+}
