@@ -6,6 +6,7 @@ import './index.css';
 // Importing the components
 import Landing from './layout/lyt-landing';
 import Login from './layout/lyt-login';
+import Register from './layout/lyt-register';
 import App from './App';
 
 // Importing packages
@@ -17,6 +18,7 @@ ReactDOM.render(
       <Route path="/" element={<Landing />} />
       <Route path="/login" element={<Login />} />
       <Route path="/dashboard" element={<App />} />
+      <Route path="/register" element={<Register />} />
     </Routes>
   </Router>,
   document.getElementById('root')

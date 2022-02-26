@@ -1,0 +1,100 @@
+.wrapper_register_page {
+    
+    display: grid;
+    place-items: center;
+
+    margin-top: 10vh;
+    margin-bottom: 5vh;
+
+    .register_page_form{
+        width: 23%;
+        @include displayFlex(column, center, stretch);
+        
+        .page_form_thirdParty{
+            @include displayFlex(column, center, stretch);
+            margin-bottom: 20px;
+            
+            .form_thirdParty_section {
+                @include googleAuthBtn();
+                
+            }
+        }
+    }
+
+    .page_form_links {
+        @include displayFlex(row, space-between, center);
+        margin: 10px 0;
+
+            a{
+                font-size: 1vw;
+                font-family: $barlow_font;
+                color: #40A137;
+                text-decoration: none;
+                transition: all 0.3s ease-in;
+            }
+            
+    }
+    .page_form_div {
+        @include displayFlex(column, center, stretch);  
+        
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: $font_size_1;
+            font-family: $barlow_font;
+            margin-bottom: 10px;
+        }
+
+        .validInput {
+            border-color: #40A137;
+        }
+        
+        input {
+            background: #FFFFFF;
+            border: 1px solid rgba(0, 0, 0, 0.4);
+            box-sizing: border-box;
+            border-radius: 6px;
+            padding: 10px 10px;
+            font-family: $barlow_font;
+            font-size: $font_size_1;
+            outline: none;
+            transition: all 0.3s ease-in;
+
+            &[type="number"] {
+                appearance: textField;
+            }
+        }
+
+        select {
+            background: #FFFFFF;
+            border: 1px solid rgba(0, 0, 0, 0.4);
+            box-sizing: border-box;
+            border-radius: 6px;
+            padding: 5px 10px;
+            font-family: $barlow_font;
+            font-size: $font_size_1;
+            outline: none;
+            transition: all 0.3s ease-in;
+
+            datalist {
+
+                option {
+                    font-family: $barlow_font;
+                    font-size: .5vw;
+
+                    &:hover {
+                        background: blue;
+                    }
+                }
+            }
+
+        }
+    }
+
+    .page_form_btn {
+        @include formButton()
+    }
+
+}

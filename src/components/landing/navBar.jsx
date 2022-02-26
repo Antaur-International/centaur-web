@@ -24,7 +24,7 @@ export default function NavBar() {
                 </ul>
             </nav>
 
-            <Link to="login" className='page_header_btn'>
+            <Link to="/login" className='page_header_btn'>
                 Get Started
             </Link>
         </header>

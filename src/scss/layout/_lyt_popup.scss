@@ -1,0 +1,23 @@
+.wrapper_popup_modal{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    background: none;
+
+    @include displayFlex(column, center, center);
+
+    .popup_modal_container {
+        position: fixed;
+        top: 5vh;
+        background-color: white;
+        padding: 20px;
+        border: 1px solid red;
+        border-radius: 5px;
+        animation: popup 3s ease-in-out;
+        font-family: $montserrat_font;
+        font-size: $font_size_1;    
+
+    }
+}

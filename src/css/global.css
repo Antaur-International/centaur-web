@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Montserrat:wght@200;300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Montserrat:wght@200;300;400;500;600&family=Poppins:wght@100;200;300;400;700&display=swap");
 .cp_newsstand_wrapper .wrapper_title {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -253,14 +253,15 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 15px 20px;
+  padding: 15px 10px;
   position: fixed;
   top: 0;
-  width: calc(100% - 40px);
+  left: 0;
+  width: calc(100vw - 40px);
 }
 
 .landing_page_header .page_header_nav {
-  width: 50%;
+  width: 30%;
 }
 
 .landing_page_header .page_header_nav .header_nav_list {
@@ -280,6 +281,7 @@
 
 .landing_page_header .page_header_nav .header_nav_list .nav_list_item {
   font-size: 2vh;
+  font-family: "Poppins", sans-serif;
 }
 
 .landing_page_header .page_header_btn {
@@ -292,6 +294,7 @@
   font-size: 1.5vh;
   text-decoration: none;
   cursor: pointer;
+  font-family: "Poppins", sans-serif;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
@@ -355,7 +358,7 @@
 }
 
 .wrapper_login_page .login_page_form {
-  width: 35%;
+  width: 23%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -466,7 +469,7 @@
 }
 
 .wrapper_login_page .login_page_form .page_form_div label {
-  font-size: 1.3vw;
+  font-size: 1.2vw;
   font-family: "Barlow", sans-serif;
   margin-bottom: 10px;
 }
@@ -477,16 +480,12 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border-radius: 6px;
-  padding: 5px 10px;
+  padding: 10px;
   font-family: "Barlow", sans-serif;
-  font-size: 2rem;
+  font-size: 1.2vw;
   outline: none;
   -webkit-transition: all 0.3s ease-in;
   transition: all 0.3s ease-in;
-}
-
-.wrapper_login_page .login_page_form .page_form_div input:focus {
-  border: 2px solid rgba(58, 190, 47, 0.31);
 }
 
 .wrapper_login_page .login_page_form .page_form_btn {
@@ -501,6 +500,232 @@
   font-family: "Barlow", sans-serif;
   cursor: pointer;
   text-align: center;
+}
+
+.wrapper_register_page {
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  margin-top: 10vh;
+  margin-bottom: 5vh;
+}
+
+.wrapper_register_page .register_page_form {
+  width: 23%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+.wrapper_register_page .register_page_form .page_form_thirdParty {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  margin-bottom: 20px;
+}
+
+.wrapper_register_page .register_page_form .page_form_thirdParty .form_thirdParty_section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid #DFDFDF;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.wrapper_register_page .register_page_form .page_form_thirdParty .form_thirdParty_section:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.wrapper_register_page .register_page_form .page_form_thirdParty .form_thirdParty_section p {
+  font-size: 1.2vw;
+  font-family: "Barlow", sans-serif;
+  margin-left: 25px;
+}
+
+.wrapper_register_page .page_form_links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px 0;
+}
+
+.wrapper_register_page .page_form_links a {
+  font-size: 1vw;
+  font-family: "Barlow", sans-serif;
+  color: #40A137;
+  text-decoration: none;
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+}
+
+.wrapper_register_page .page_form_div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+.wrapper_register_page .page_form_div:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.wrapper_register_page .page_form_div label {
+  font-size: 1.2vw;
+  font-family: "Barlow", sans-serif;
+  margin-bottom: 10px;
+}
+
+.wrapper_register_page .page_form_div .validInput {
+  border-color: #40A137;
+}
+
+.wrapper_register_page .page_form_div input {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 6px;
+  padding: 10px 10px;
+  font-family: "Barlow", sans-serif;
+  font-size: 1.2vw;
+  outline: none;
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+}
+
+.wrapper_register_page .page_form_div input[type="number"] {
+  -webkit-appearance: textField;
+     -moz-appearance: textField;
+          appearance: textField;
+}
+
+.wrapper_register_page .page_form_div select {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-family: "Barlow", sans-serif;
+  font-size: 1.2vw;
+  outline: none;
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+}
+
+.wrapper_register_page .page_form_div select datalist option {
+  font-family: "Barlow", sans-serif;
+  font-size: .5vw;
+}
+
+.wrapper_register_page .page_form_div select datalist option:hover {
+  background: blue;
+}
+
+.wrapper_register_page .page_form_btn {
+  outline: none;
+  border: none;
+  background-color: #4FFF40;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1.3vw;
+  text-decoration: none;
+  font-family: "Barlow", sans-serif;
+  cursor: pointer;
+  text-align: center;
+}
+
+.wrapper_popup_modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  background: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.wrapper_popup_modal .popup_modal_container {
+  position: fixed;
+  top: 5vh;
+  background-color: white;
+  padding: 20px;
+  border: 1px solid red;
+  border-radius: 5px;
+  -webkit-animation: popup 3s ease-in-out;
+          animation: popup 3s ease-in-out;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2vw;
+}
+
+* {
+  margin: 0;
+  padding: 0;
 }
 
 html {

@@ -8,31 +8,15 @@
     place-items: center;
 
     .login_page_form {
-        width: 35%;
+        width: 23%;
         @include displayFlex(column, center, stretch);
-        
         
         .page_form_thirdParty{
             @include displayFlex(column, center, stretch);
             margin-bottom: 20px;
             
             .form_thirdParty_section {
-                @include displayFlex(row, center, center);
-                cursor: pointer;
-                background-color: white;
-                border: 1px solid #DFDFDF;
-                border-radius: 10px;
-                padding: 10px;
-
-                &:not(:last-child){
-                    margin-bottom: 10px;
-                }
-
-                p{
-                    font-size: 1.2vw;
-                    font-family: $barlow_font;
-                    margin-left: 25px;
-                }
+                @include googleAuthBtn();
                 
             }
         }
@@ -60,7 +44,7 @@
             }
 
             label {
-                font-size: 1.3vw;
+                font-size: $font_size_1;
                 font-family: $barlow_font;
                 margin-bottom: 10px;
             }
@@ -70,30 +54,16 @@
                 border: 1px solid rgba(0, 0, 0, 0.4);
                 box-sizing: border-box;
                 border-radius: 6px;
-                padding: 5px 10px;
+                padding: 10px;
                 font-family: $barlow_font;
-                font-size: 2rem;
+                font-size: $font_size_1;
                 outline: none;
                 transition: all 0.3s ease-in;
-
-                &:focus {
-                    border:2px solid rgba(58, 190, 47, 0.31);;
-                }
             }
         }
 
         .page_form_btn {
-            outline: none;
-            border: none;
-            background-color: #4FFF40;
-            color: black;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 1.3vw;
-            text-decoration: none;
-            font-family: $barlow_font;
-            cursor: pointer;
-            text-align: center;
+            @include formButton()
         }
 
     }

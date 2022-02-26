@@ -4,6 +4,13 @@
 @import "./layout/lyt-todo";
 @import "./layout/lyt_landing";
 @import "./layout/lyt_login";
+@import "./layout/lyt_register";
+@import "./layout/lyt_popup";
+
+* {
+    margin: 0;
+    padding: 0;
+}
 
 html {
     font-size: 10px;

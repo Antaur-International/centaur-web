@@ -1,7 +1,7 @@
 .App {
   display: flex;
   justify-content: flex-start;
-  height: 100vh;
+  height: auto;
 }
 .main {
   width: 100%;

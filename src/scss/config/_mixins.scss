@@ -4,3 +4,37 @@
     justify-content: $justify;
     align-items: $align;
 }
+
+@mixin formButton() {
+    outline: none;
+    border: none;
+    background-color: #4FFF40;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.3vw;
+    text-decoration: none;
+    font-family: $barlow_font;
+    cursor: pointer;
+    text-align: center;
+}
+
+@mixin googleAuthBtn {
+    @include displayFlex(row, center, center);
+    cursor: pointer;
+    background-color: white;
+    border: 1px solid #DFDFDF;
+    border-radius: 10px;
+    padding: 10px;
+
+    &:not(:last-child){
+        margin-bottom: 10px;
+    }
+
+    p{
+        font-size: 1.2vw;
+        font-family: $barlow_font;
+        margin-left: 25px;
+    }
+    
+}
