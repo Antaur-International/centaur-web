@@ -13,7 +13,7 @@
         
         .page_form_thirdParty{
             @include displayFlex(column, center, stretch);
-            margin-bottom: 20px;
+            margin-top: 20px;
             
             .form_thirdParty_section {
                 @include googleAuthBtn();
@@ -52,13 +52,30 @@
             input {
                 background: #FFFFFF;
                 border: 1px solid rgba(0, 0, 0, 0.4);
-                box-sizing: border-box;
                 border-radius: 6px;
                 padding: 10px;
                 font-family: $barlow_font;
                 font-size: $font_size_1;
                 outline: none;
                 transition: all 0.3s ease-in;
+            }
+            .form_div_password_input {
+                border: 1px solid rgba(0, 0, 0, 0.4);
+                border-radius: 6px;
+                @include displayFlex(row, flex-start, center);
+                input {
+                    border: none;
+                    width: 100%;
+                    // justify-self: auto;
+                }
+                button {
+                    margin-left: auto;
+                    margin-right: 20px;
+                    border: none;
+                    background: none;
+                    cursor: pointer;
+                    transition: all 0.3s ease-in;
+                }
             }
         }
 
