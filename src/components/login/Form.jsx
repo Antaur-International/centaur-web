@@ -1,16 +1,47 @@
-import React, { useRef } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useRef } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
+import axios from 'axios';
 
 export default function Form() {
 
+    const email = useRef(null);
     const password = useRef(null);
     const hideShowImage = useRef(null);
 
+    const Navigate = useNavigate();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const user = {
+            email: email.current.value,
+            password: password.current.value
+        }
+
+        if (email) {
+            axios.post('http://localhost:5000/user/login', user)
+                .then(res => {
+                    console.log(res);
+                    console.log(res.data);
+
+                    if (res.data.success) {
+                        alert('User logged in successfully');
+                        Navigate('/dashboard');
+                    }
+
+                    else {
+                        alert('User login failed');
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        }
+
+    };
 
     const changePasswordType = (e) => {
-
-
         if (password.current.type === 'password') {
             password.current.type = 'text';
             hideShowImage.current.src = '/centaur-web/images/icons/eye_open.svg';
@@ -22,12 +53,9 @@ export default function Form() {
 
     return (
         <form className='login_page_form'>
-
-
-
             <div className='page_form_div'>
                 <label>Email</label>
-                <input type="email" placeholder='name@example.com' />
+                <input ref={email} type="email" placeholder='name@example.com' />
             </div>
             <div className='page_form_div'>
                 <label>Password</label>
@@ -50,7 +78,7 @@ export default function Form() {
                 <Link to="/forgotPassword">Forgot Password?</Link>
             </div>
 
-            <Link to="/dashboard" className='page_form_btn'>Login</Link>
+            <button type='button' onClick={handleSubmit} className='page_form_btn'>Login</button>
 
             <div className='page_form_thirdParty'>
                 <button
