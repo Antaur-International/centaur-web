@@ -67,8 +67,15 @@
         }
 
         .validInput {
-            border-color: #40A137;
+            border-color: #40A137 !important;
         }
+
+        .invalidInput{
+        border: 1px solid red !important;
+
+        }
+
+
         
         input {
             background: #FFFFFF;
@@ -83,6 +90,29 @@
 
             &[type="number"] {
                 appearance: textField;
+            }
+        }
+
+        .errorTxt {
+            color: red;
+            font-size: 1vw;
+            font-family: $barlow_font;
+            margin-top: 5px;
+        }
+
+        .form_div_input_prefix {
+            border: 1px solid rgba(0, 0, 0, 0.4);
+            border-radius: 6px;
+            padding: 0 10px;
+
+            span{
+                font-size: $font_size_1;
+                font-family: $barlow_font;
+                color: rgba(0, 0, 0, 0.363);
+                user-select: none;
+            }
+            input {
+                border: none !important;
             }
         }
 
@@ -102,6 +132,8 @@
                 background: none;
                 cursor: pointer;
                 transition: all 0.3s ease-in;
+                display: grid;
+                place-items: center;
             }
         }
 

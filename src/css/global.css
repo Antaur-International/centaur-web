@@ -688,7 +688,11 @@
 }
 
 .wrapper_register_page .register_page_form .page_form_div .validInput {
-  border-color: #40A137;
+  border-color: #40A137 !important;
+}
+
+.wrapper_register_page .register_page_form .page_form_div .invalidInput {
+  border: 1px solid red !important;
 }
 
 .wrapper_register_page .register_page_form .page_form_div input {
@@ -709,6 +713,33 @@
   -webkit-appearance: textField;
      -moz-appearance: textField;
           appearance: textField;
+}
+
+.wrapper_register_page .register_page_form .page_form_div .errorTxt {
+  color: red;
+  font-size: 1vw;
+  font-family: "Barlow", sans-serif;
+  margin-top: 5px;
+}
+
+.wrapper_register_page .register_page_form .page_form_div .form_div_input_prefix {
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 6px;
+  padding: 0 10px;
+}
+
+.wrapper_register_page .register_page_form .page_form_div .form_div_input_prefix span {
+  font-size: 1.2vw;
+  font-family: "Barlow", sans-serif;
+  color: rgba(0, 0, 0, 0.363);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.wrapper_register_page .register_page_form .page_form_div .form_div_input_prefix input {
+  border: none !important;
 }
 
 .wrapper_register_page .register_page_form .page_form_div .form_div_password_input {
@@ -742,6 +773,9 @@
   cursor: pointer;
   -webkit-transition: all 0.3s ease-in;
   transition: all 0.3s ease-in;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
 }
 
 .wrapper_register_page .register_page_form .page_form_div select {
