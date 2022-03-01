@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
@@ -8,6 +8,8 @@ export default function Form() {
     const email = useRef(null);
     const password = useRef(null);
     const hideShowImage = useRef(null);
+
+    const sessionStorage = window.sessionStorage;
 
     const Navigate = useNavigate();
 
@@ -22,11 +24,11 @@ export default function Form() {
         if (email) {
             axios.post('http://localhost:5000/user/login', user)
                 .then(res => {
-                    console.log(res);
-                    console.log(res.data);
+                    console.log(res.data.session);
 
                     if (res.data.success) {
-                        alert('User logged in successfully');
+                        console.log('User logged in successfully');
+                        sessionStorage.setItem('user', JSON.stringify(res.data.session));
                         Navigate('/dashboard');
                     }
 
@@ -50,6 +52,12 @@ export default function Form() {
             hideShowImage.current.src = '/centaur-web/images/icons/eye_close.svg';
         }
     }
+
+    useEffect(() => {
+        if (sessionStorage.getItem('user')) {
+            Navigate('/dashboard');
+        }
+    }, []);
 
     return (
         <form className='login_page_form'>
