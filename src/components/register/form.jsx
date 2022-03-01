@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import Popup from '../../layout/lyt-popup';
+// import Popup from '../../layout/lyt-popup';
+import axios from 'axios';
 
 
 export default function RegForm() {
@@ -12,7 +13,7 @@ export default function RegForm() {
 
     var mediumRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
 
-    const [userType, setUserType] = React.useState('');
+    const [userType, setUserType] = React.useState('student');
     const [isValidKey, setIsValidKey] = React.useState(false);
     const [isValidEmail, setIsValidEmail] = React.useState(true);
     const [isValidPassword, setIsValidPassword] = React.useState(true);
@@ -80,9 +81,34 @@ export default function RegForm() {
         if (name.current.value === '' || email.current.value === '' || password.current.value === '' || confirmPassword.current.value === '' || enrollmentNumber.current.value === '' || phoneNumber.current.value === '') {
             setIsOpen(true);
             alert('Please fill all the fields');
-        }
-        else if (isValidEmail && isValidPassword && isValidEnrollment && isValidPhoneNumber) {
-            Navigate('/login');
+        } else {
+
+            console.log(userType);
+
+            const user = {
+                type: userType,
+                privilege: userType ? 'student' : 'admin',
+                name: name.current.value,
+                email: email.current.value,
+                password: password.current.value,
+                en_number: enrollmentNumber.current.value,
+                phoneNum: phoneNumber.current.value,
+            }
+
+            axios.post('http://localhost:5000/user/register', user)
+                .then(res => {
+                    console.log(res);
+                    console.log(res.data);
+                    if (res.data.success) {
+                        alert('User registered successfully');
+                        Navigate('/login');
+                    } else {
+                        alert('User registration failed');
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                })
         }
 
     }
