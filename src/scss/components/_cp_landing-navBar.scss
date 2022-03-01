@@ -15,6 +15,11 @@
             .nav_list_item{
                 font-size: 2vh;
                 font-family: $poppins_font;
+                a {
+                    color: black;
+                    text-decoration: none;
+                    transition: all 0.3s ease-in;
+                }
             }
         }
     }

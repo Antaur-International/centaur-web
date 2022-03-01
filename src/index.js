@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 // Importing the components
+import NotFound from './layout/_lyt-not_found';
 import Landing from './layout/lyt-landing';
 import Login from './layout/lyt-login';
 import Register from './layout/lyt-register';
@@ -19,6 +20,7 @@ ReactDOM.render(
       <Route path="/login" element={<Login />} />
       <Route path="/dashboard" element={<App />} />
       <Route path="/register" element={<Register />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   </Router>,
   document.getElementById('root')

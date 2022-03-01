@@ -284,6 +284,13 @@
   font-family: "Poppins", sans-serif;
 }
 
+.landing_page_header .page_header_nav .header_nav_list .nav_list_item a {
+  color: black;
+  text-decoration: none;
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+}
+
 .landing_page_header .page_header_btn {
   outline: none;
   border: none;
@@ -848,6 +855,41 @@
           animation: popup 3s ease-in-out;
   font-family: "Montserrat", sans-serif;
   font-size: 1.2vw;
+}
+
+.wrapper_not_found {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+}
+
+.wrapper_not_found .not_found_img {
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+.wrapper_not_found .not_found_img img {
+  width: 30vw;
+  height: auto;
+}
+
+.wrapper_not_found h3 {
+  margin-top: 20px;
+  font-size: 2.5vw;
+  font-family: "Barlow", sans-serif;
+  color: #40A137;
 }
 
 * {

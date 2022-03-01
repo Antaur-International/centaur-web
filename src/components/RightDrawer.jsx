@@ -3,6 +3,18 @@ import "./rightDrawer.css"
 import { DashboardIcon, DepartmentIcon, ScheduleIcon, FacultyIcon, ChatIcon, LiveIcon, SettingsIcon } from '../icons/Icons';
 import { Link } from 'react-router-dom';
 
+const NavListItem = (props) => {
+    return (
+        <li
+            className={`navigation-item ${props.activeTab === props.tab ? 'selected-item' : ''}`}
+            onClick={() => { props.setActiveTab("dashboard") }}
+        >
+            <DashboardIcon />
+            <p>{props.title}</p>
+        </li>
+    )
+}
+
 export default function RightDrawer(props) {
 
     return <nav className='navigation'>
@@ -11,36 +23,43 @@ export default function RightDrawer(props) {
             <p>Centaur</p>
         </section>
         <ul className='navigation-list'>
-            <li className='navigation-item selected-item'>
-                <DashboardIcon color='#3abe2f' />
-                <Link to={'/dashboard/home'} >Dashboard</Link>
+
+
+            <li
+                className={`navigation-item ${props.activeTab === 'dashboard' ? 'selected-item' : ''}`}
+                onClick={() => { props.setActiveTab("dashboard") }}
+            >
+                <DashboardIcon color={props.activeTab === "dashboard" ? "#37BC2B" : "#A4A4A4"} />
+                <p>Dashboard</p>
             </li>
             <li
-                className='navigation-item'>
-                <DepartmentIcon color='#A4A4A4' />
-                <Link to='/dashboard/department'>Departments</Link>
+                className={`navigation-item ${props.activeTab === 'department' ? 'selected-item' : ''}`}
+                onClick={() => { props.setActiveTab("department") }}
+            >
+                <DepartmentIcon color={props.activeTab === "department" ? "#37BC2B" : "#A4A4A4"} />
+                <p>Departments</p>
             </li>
             <li className='navigation-item'>
                 <ScheduleIcon color='#A4A4A4' />
-                <Link to={'/dashboard/schedule'} >Schedules</Link>
+                <p>Schedules</p>
             </li>
             <li className='navigation-item'>
                 <FacultyIcon color='#A4A4A4' />
-                <Link to={'/dashboard/faculty'}>Faculty</Link>
+                <p>Faculty</p>
             </li>
             <li className='navigation-item'>
                 <ChatIcon color='#A4A4A4' />
-                <Link to={'/dashboard/chats'}>Chats</Link>
+                <p>Chats</p>
             </li>
             <li className='navigation-item'>
                 <LiveIcon color='#A4A4A4' />
-                <Link to={'dashboard/liveClasses'}>Live Classes </Link>
+                <p>Live Classes </p>
             </li>
         </ul>
         <section className='settings-btn'>
             <button>
                 <SettingsIcon />
-                <Link to={'dashboard/settings'}>Settings</Link>
+                <p>Settings</p>
             </button>
         </section>
 

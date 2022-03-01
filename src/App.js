@@ -22,7 +22,7 @@ function App() {
 
   return (
     <div className="App">
-      <RightDrawer activeTab={activeTab} setActiveTab={(e) => { setActiveTab() }} />
+      <RightDrawer activeTab={activeTab} setActiveTab={setActiveTab} />
       <main className='main'>
         {activeTab === "dashboard" && <Dashboard />}
         {activeTab === "department" && <Department />}
