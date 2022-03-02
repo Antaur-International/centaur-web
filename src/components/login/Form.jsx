@@ -22,10 +22,11 @@ export default function Form() {
         }
 
         if (email) {
-            axios.post('http://localhost:5000/user/login', user)
+            axios.post('https://centaur-be.herokuapp.com/user/login', user)
                 .then(res => {
                     console.log(res.data.session);
-
+                    console.log(res);
+                    console.log(res.data);
                     if (res.data.success) {
                         console.log('User logged in successfully');
                         sessionStorage.setItem('user', JSON.stringify(res.data.session));
