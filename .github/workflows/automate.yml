@@ -32,4 +32,4 @@ jobs:
           git config --global user.name 'Pratham Yadav'
           git config --global user.email 'ypratham0014@gmail.com'
           git remote set-url origin https://x-access-token:${{secrets.ACCESS_TOKEN}}@github.com/${{secrets.USER_NAME}}/centaur-web
-          npm run deploy
+          CI=false npm run deploy
