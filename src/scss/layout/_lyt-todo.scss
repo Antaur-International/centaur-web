@@ -19,9 +19,10 @@
 
         .todo_item_main {
             width: 75%;
-            @include displayFlex(row, space-between, center);
+            @include displayFlex(row, flex-start, center);
 
             .item_main_todoText{
+              margin-left: 20px;
                 p:first-child {
                     font-size: 1rem;
                     font-weight: bold;
@@ -32,6 +33,9 @@
                 p:last-child{
                     font-size: 1.5rem;
                 }
+            }
+            .item_main_drag {
+              cursor: move;
             }
         }
 
@@ -90,8 +94,7 @@
     content: "";
     position: absolute;
     display: none;
-    
-    border-radius: 10px;
+  
   }
   
   /* Show the checkmark when checked */

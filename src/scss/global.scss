@@ -7,11 +7,15 @@
 @import "./layout/lyt_register";
 @import "./layout/lyt_popup";
 @import "./layout/lyt_not_found";
+@import "./layout/lyt_myWork";
+@import "./layout/lyt_notification";
+
 
 * {
     margin: 0;
     padding: 0;
     font-family: "Poppins", sans-serif;
+    transition: all 0.3s ease-in-out;
 }
 
 html {
@@ -21,4 +25,14 @@ html {
 li {
     list-style: none;
     text-decoration: none;
+}
+
+.btn {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background: none;
+
+    display: grid;
+    place-items: center;
 }

@@ -1,0 +1,32 @@
+@import "../components/cp_myWork_main";
+
+.lyt_wrapper_myWork {
+    display: grid;
+    grid-template-columns: 55vw auto;
+    grid-template-areas: "header header"
+                        "main todo"
+                        "main meetings";
+    grid-gap: 20px;
+
+    padding: 25px 20px 0px 20px;
+    .wrapper_myWork_main {
+        grid-area: main;
+    }
+
+    .wrapper_myWork_header {
+        grid-area: header;
+    }
+
+    .wrapper_myWork_meetings {
+        grid-area: meetings;
+    }
+
+    .wrapper_myWork_todo{
+        grid-area: todo;
+        background: #ffffff;
+        border: 1px solid #d9d9d9;
+        box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 20px;
+        padding: 20px;
+    }
+}

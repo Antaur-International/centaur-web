@@ -1,5 +1,5 @@
 .dashboard {
-  height: 100vh;
+  height: calc(100vh - 25px);
   display: grid;
   grid-template-areas:
     "header header"
@@ -9,7 +9,7 @@
   grid-template-columns: calc(60% + 40px) auto;
   grid-template-rows: 10vh 40vh 5vh 30vh;
   grid-gap: 20px;
-  padding: 1.8rem;
+  padding: 20px 25px 0px 25px;
 }
 
 .welcome {
@@ -69,6 +69,13 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.calender::-webkit-scrollbar {
+  display: none;
 }
 
 .sdp {

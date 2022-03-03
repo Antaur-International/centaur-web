@@ -1,6 +1,6 @@
 import React from 'react';
 import "./rightDrawer.css"
-import { DashboardIcon, DepartmentIcon, ScheduleIcon, FacultyIcon, ChatIcon, LiveIcon, SettingsIcon } from '../icons/Icons';
+import { DashboardIcon, DepartmentIcon, ScheduleIcon, FacultyIcon, ChatIcon, LiveIcon, SettingsIcon, MyWork } from '../icons/Icons';
 import { Link } from 'react-router-dom';
 
 const NavListItem = (props) => {
@@ -50,6 +50,15 @@ export default function RightDrawer(props) {
             <li className='navigation-item'>
                 <ChatIcon color='#A4A4A4' />
                 <p>Chats</p>
+            </li>
+            <li className={`navigation-item ${props.activeTab === 'myWork' ? 'selected-item' : ''}`}
+                onClick={() => { props.setActiveTab("myWork") }}
+
+            >
+                <MyWork color={
+                    props.activeTab === "myWork" ? "#37BC2B" : "#A4A4A4"
+                } />
+                <p>My Work </p>
             </li>
             <li className='navigation-item'>
                 <LiveIcon color='#A4A4A4' />

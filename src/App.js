@@ -4,6 +4,7 @@ import React from 'react';
 import RightDrawer from './components/RightDrawer';
 import Dashboard from './components/Dashboard';
 import Department from './components/departments/Department';
+import MyWork from './layout/lyt-myWork';
 
 // CSS files
 import "./css/global.css";
@@ -26,6 +27,7 @@ function App() {
       <main className='main'>
         {activeTab === "dashboard" && <Dashboard />}
         {activeTab === "department" && <Department />}
+        {activeTab === "myWork" && <MyWork />}
       </main>
     </div>
 
