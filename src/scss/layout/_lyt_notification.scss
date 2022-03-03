@@ -1,0 +1,62 @@
+.lyt_notification_wrapper {
+
+    .notification_wrapper_title{
+        margin-bottom: 20px;
+        
+        h1 {
+            color: #3ABE2F;
+            font-size: 2vw;
+            margin-bottom: 10px;
+        }
+
+    }
+
+    .notification_wrapper_quickAction {
+        @include displayFlex(row, space-between, center);
+        
+        button:last-child {
+            @include displayFlex(row, center, center);
+            gap: 10px;
+        }
+        margin-bottom: 20px;
+    }
+
+    .notification_wrapper_list {
+        .wrapper_list_item {
+            @include displayFlex(row, flex-start, center);
+            gap: 20px;
+
+            border: 1px solid rgba(0, 0, 0, 0.17);
+            box-sizing: border-box;
+            border-radius: 10px;
+
+            padding: 10px 20px;
+
+            &:not(:last-child) {
+                margin-bottom: 20px;
+            }
+
+            .list_item_text{
+                @include displayFlex(column, center, flex-start);
+
+                .item_text_label{
+                    color: #999999;
+                    font-size: 1vw;
+                }
+
+                .item_text_content{
+                    font-size: 1.2vw;
+                }
+            }
+
+            .list_item_actionButtons {
+                margin-left: auto;
+                @include displayFlex(row, flex-start, center);
+
+                button:not(:last-child) {
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,112 @@
+.wrapper_myWork_main {
+    @include displayFlex(column, start, normal);
+
+
+    .myWork_main_title {
+        @include displayFlex(row, space-between, start);
+        
+
+        h1 {
+            color: #3ABE2F;
+            font-size: 2vw;
+        }
+
+        button {
+            @include displayFlex(row, center, center);
+            gap: 10px;
+            padding: 10px 10px;
+            border: none;
+            background: #3ABE2F;
+            border-radius: 17px;
+            color: white;
+        }
+    }
+
+    .myWork_main_todoCategory {
+        @include displayFlex(column, start, normal);
+        
+        margin-top: 20px;
+
+        .main_todoCategory_item {
+
+            &:not(:last-child) {
+                margin-bottom: 20px;
+            }
+            .todoCategory_item_label {
+                @include displayFlex(row, flex-start, center);
+                gap: 10px;
+                color: #3ABE2F;
+
+                p{
+                    font-size: 1vw;
+
+                }
+                margin-bottom: 20px;
+                cursor: pointer;
+            }
+
+            .todoCategory_item_list {
+                @include displayFlex(column, start, normal);
+                overflow: hidden;
+
+                .item_list_item {
+                    border: 2px solid #27C619;
+                    border-radius: 8px;
+                    padding: 10px;
+
+                    margin-bottom: 10px;
+
+
+                    .list_item_top {
+                        @include displayFlex(row, space-between, start);
+                        
+                        &:not(:last-child) {
+                            margin-bottom: 10px;
+                        }
+
+                        p {
+                            background-color: #A9FFA1;
+                            color: black;   
+                            padding: 5px 8px;
+                            font-size: .9vw;
+                            border-radius: 100px;
+                            font-family: $barlow_font;
+                        }
+
+                        button {
+                            background: #FFFFFF;
+                            border: 1px solid rgba(0, 0, 0, 0.18);
+                            padding: 5px 8px;
+                            border-radius: 7px;
+                            cursor: pointer;
+                        }
+                    }
+                }
+
+                .list_item_bottom {
+                    @include displayFlex(row, flex-start, flex-start);
+                    gap: 10px;
+
+                    margin-top: 10px;
+
+                    
+                    input {
+                        margin-top: 6px;
+                    }
+                    
+                    .bottom_content_title {
+                        font-size: 1.2vw;
+                        font-weight: bold;
+                        font-family: $montserrat_font;
+                    }
+                    
+                    .bottom_content_task {
+                        font-size: .8vw;
+                        font-weight: normal;
+                        font-family: $montserrat_font;
+                    }
+                }
+            }
+        }
+    }
+}
