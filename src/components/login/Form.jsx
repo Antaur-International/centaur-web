@@ -32,7 +32,7 @@ export default function Form() {
                     }
 
                     else {
-                        console.log("TEST");
+                        console.log("TEST   FFFF");
                         alert(res.data.message);
                     }
                 })
