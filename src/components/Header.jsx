@@ -1,7 +1,7 @@
 import React from 'react';
 import "./header.css";
 import { SearchIcon, BellIcon } from '../icons/Icons';
-import Modal from './modals/modal';
+import Modal from './rightDrawer/RightDrawer';
 import Notification from './notification/notification';
 
 

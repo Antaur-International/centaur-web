@@ -1,12 +1,10 @@
 import React from 'react';
 import Header from "./Header"
 import "./dashboard.css";
-import Calender from './Calender';
 import { CalenderIcon, MoreIcon, VideoIcon } from '../icons/Icons';
-import DatePicker from 'sassy-datepicker';
-import TodoCard from './TodoCard';
+
 import TodoLayout from '../layout/lyt-todo';
-import Modal from './modals/modal';
+import Modal from './rightDrawer/RightDrawer';
 import Newsstand from './newsstand/newsstand';
 
 const MeetingsListItem = (props) => {

@@ -17,6 +17,10 @@
         button:last-child {
             @include displayFlex(row, center, center);
             gap: 10px;
+
+            p{
+                font-size: 1vw;
+            }
         }
         margin-bottom: 20px;
     }

@@ -1184,6 +1184,10 @@
   gap: 10px;
 }
 
+.lyt_notification_wrapper .notification_wrapper_quickAction button:last-child p {
+  font-size: 1vw;
+}
+
 .lyt_notification_wrapper .notification_wrapper_list .wrapper_list_item {
   display: -webkit-box;
   display: -ms-flexbox;
