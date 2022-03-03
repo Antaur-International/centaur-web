@@ -24,8 +24,6 @@ export default function Form() {
         if (email) {
             axios.post('https://centaur-be.herokuapp.com/user/login', user)
                 .then(res => {
-                    console.log(res.data.session);
-                    console.log(res);
                     console.log(res.data);
                     if (res.data.success) {
                         console.log('User logged in successfully');
@@ -34,7 +32,7 @@ export default function Form() {
                     }
 
                     else {
-                        alert('User login failed');
+                        alert(res.data.message);
                     }
                 })
                 .catch(err => {
