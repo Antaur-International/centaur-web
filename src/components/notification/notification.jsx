@@ -1,6 +1,6 @@
 import React from 'react'
-import { Link } from '../../icons/Icons'
 
+// Notification Card Function
 const NotificationCard = (props) => {
 
     return <li className='wrapper_list_item'>
