@@ -32,6 +32,7 @@ export default function Form() {
                     }
 
                     else {
+                        console.log("TEST");
                         alert(res.data.message);
                     }
                 })
