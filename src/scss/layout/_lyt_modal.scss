@@ -1,0 +1,93 @@
+.bg_modal_wrapper {
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    z-index: 2;
+
+    .modal_wrapper_center {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+
+        .wrapper_center_modal {
+            width: 30vw;
+            height: 25vw;
+            background: white;
+            color: white;
+            padding: 10px 20px;
+            z-index: 10;
+            border-radius: 5px;
+            box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
+
+            .center_modal_closeBtn {
+                position: absolute;
+                top: 0;
+                right: 0;
+                padding: 5px;
+                cursor: pointer;
+                z-index: 10;
+            }
+
+            .center_modal_header{
+                color: black;
+                font-size: 2vh;
+            }
+
+            .center_modal_content {
+             
+                margin-top: 20px;
+
+                .modal_content_form {
+                    @include displayFlex(column, flex-start, flex-start);
+                    gap: 10px;
+                    
+                    input {
+                        background: #FFFFFF;
+                        border: 1px solid rgba(0, 0, 0, 0.14);
+                        border-radius: 10px;
+                        padding: 10px;
+                        outline: none;
+                        width: 90%;
+                        font-size: 1.3vw;
+                    }
+                    
+                    textarea {
+                        width: 90%;
+                        background: #FFFFFF;
+                        border: 1px solid rgba(0, 0, 0, 0.14);
+                        outline: none;
+                        padding: 10px ;
+                        border-radius: 10px;
+                    }
+
+                    .content_form_noteInput {
+                        height: 18vh;
+                    }
+
+                    .content_form_actionBtn {
+                        @include displayFlex(row, center, center);
+                        gap: 10px;
+                        margin-top: 20px;
+                        button {
+                            background: #3ABE2F;
+                            border-radius: 5px;
+                            padding: 5px 10px;
+                            color: white;
+                            cursor: pointer;
+                            transition: 0.3s;
+                        }
+
+                    }
+                    
+                }
+            }
+        }
+    }
+}
