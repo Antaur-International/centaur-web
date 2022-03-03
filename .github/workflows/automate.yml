@@ -29,7 +29,7 @@ jobs:
 
       - name: Deploy
         run: |
-          git config --global user.name 'Pratham Yadav'
-          git config --global user.email 'ypratham0014@gmail.com'
-          git remote set-url origin https://x-access-token:${{secrets.ACCESS_TOKEN}}@github.com/${{secrets.USER_NAME}}/centaur-web
+          git config --global user.name "Bedant Hota"
+          git config --global user.email "mohanesh.h2003@gmail.com"
+          git remote set-url origin https://${{secrets.ACCESS_TOKEN}}@github.com/${{secrets.USER_NAME}}/centaur-web
           CI=false npm run deploy
