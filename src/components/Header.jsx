@@ -7,7 +7,7 @@ import Popup from '../layout/lyt-popup';
 
 export default function Header() {
     const [isOpen, setIsOpen] = React.useState(false);
-    const [isPopupOpen, setIsPopupOpen] = React.useState(true);
+    const [isPopupOpen, setIsPopupOpen] = React.useState(false);
 
     const handleOpen = () => {
         setIsOpen(true);
