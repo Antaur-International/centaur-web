@@ -31,5 +31,5 @@ jobs:
         run: |
           git config --global user.name "Bedant Hota"
           git config --global user.email "mohanesh.h2003@gmail.com"
-          git remote set-url origin https://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@github.com/${{secrets.USER_NAME}}/centaur-web
+          git remote set-url origin https://bedantH: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@github.com/bedantH/centaur-web.git
           npm run deploy
