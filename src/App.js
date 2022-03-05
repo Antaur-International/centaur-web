@@ -5,6 +5,7 @@ import RightDrawer from './components/LeftDrawer';
 import Dashboard from './components/Dashboard';
 import Department from './components/departments/Department';
 import MyWork from './layout/lyt-myWork';
+import SubjectLayout from './layout/_lyt_deartment_subject';
 
 // CSS files
 import "./css/global.css";
@@ -26,8 +27,9 @@ function App() {
       <RightDrawer activeTab={activeTab} setActiveTab={setActiveTab} />
       <main className='main'>
         {activeTab === "dashboard" && <Dashboard />}
-        {activeTab === "department" && <Department />}
+        {activeTab === "department" && <Department setActiveTab={setActiveTab} />}
         {activeTab === "myWork" && <MyWork />}
+        {activeTab === "department-subject" && <SubjectLayout />}
       </main>
     </div>
 
