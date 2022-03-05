@@ -11,7 +11,7 @@ const YearButton = (props) => {
 }
 
 const DepartmentCardItem = (props) => {
-    return <div className='departmentCardItem'>
+    return <div className='departmentCardItem' onClick={() => props.setTab("department-subject")}>
         <p className='cardTitle'>{props.title}</p>
         <p className='cardTitleFull'>{props.subTitle}</p>
         <p className='cardOwner'>{props.owner}</p>
@@ -74,6 +74,7 @@ export default function Department(props) {
                             title={value.title}
                             subTitle={value.subTitle}
                             owner={value.owner}
+                            setTab={props.setActiveTab}
                         />
                     })}
 

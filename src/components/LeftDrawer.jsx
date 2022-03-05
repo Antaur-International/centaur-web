@@ -21,10 +21,10 @@ export default function RightDrawer(props) {
                 <p>Dashboard</p>
             </li>
             <li
-                className={`navigation-item ${props.activeTab === 'department' ? 'selected-item' : ''}`}
+                className={`navigation-item ${props.activeTab === 'department' || props.activeTab === "department-subject" ? 'selected-item' : ''}`}
                 onClick={() => { props.setActiveTab("department") }}
             >
-                <DepartmentIcon color={props.activeTab === "department" ? "#37BC2B" : "#A4A4A4"} />
+                <DepartmentIcon color={props.activeTab === "department" || props.activeTab === "department-subject" ? "#37BC2B" : "#A4A4A4"} />
                 <p>Departments</p>
             </li>
             <li className='navigation-item'>
