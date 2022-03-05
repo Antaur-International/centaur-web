@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Importing the components
-import RightDrawer from './components/RightDrawer';
+import RightDrawer from './components/LeftDrawer';
 import Dashboard from './components/Dashboard';
 import Department from './components/departments/Department';
 import MyWork from './layout/lyt-myWork';

@@ -17,6 +17,11 @@
   background-color: white;
   z-index: 2;
   overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.modalMain::-webkit-scrollbar {
+  display: none;
 }
 
 .displayBlock {

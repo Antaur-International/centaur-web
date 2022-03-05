@@ -1,12 +1,13 @@
 import React from 'react';
 import "./header.css";
 import { SearchIcon, BellIcon } from '../icons/Icons';
-import Modal from './modals/modal';
+import Modal from './rightDrawer/RightDrawer';
 import Notification from './notification/notification';
-
+import Popup from '../layout/lyt-popup';
 
 export default function Header() {
     const [isOpen, setIsOpen] = React.useState(false);
+    const [isPopupOpen, setIsPopupOpen] = React.useState(false);
 
     const handleOpen = () => {
         setIsOpen(true);
@@ -22,6 +23,8 @@ export default function Header() {
             <Notification />
         </Modal>
 
+        {isPopupOpen && <Popup setIsOpen={setIsPopupOpen} text="Are you sure you want to log out?" textColor={"red"} />}
+
         <form className="header__search">
             <input type="text" placeholder="Search here..." />
             <SearchIcon />
@@ -32,7 +35,7 @@ export default function Header() {
         >
             <BellIcon />
         </button>
-        <section className='userProfile'>
+        <section className='userProfile' onClick={() => setIsPopupOpen(true)}>
             <img src="https://avatars.githubusercontent.com/u/64542454?v=4" alt="User Profile" />
             <div>
                 <h3>Bedant Hota</h3>

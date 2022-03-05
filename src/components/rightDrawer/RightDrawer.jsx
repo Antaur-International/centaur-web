@@ -1,5 +1,5 @@
 import React from 'react'
-import "./modal.css"
+import "./rightDrawer.css"
 import { AddIcon } from '../../icons/Icons'
 
 export default function Modal({ show, handleClose, title, children }) {

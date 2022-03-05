@@ -1,25 +1,13 @@
 import React from 'react';
-import "./rightDrawer.css"
+import "./leftDrawer.css"
 import { DashboardIcon, DepartmentIcon, ScheduleIcon, FacultyIcon, ChatIcon, LiveIcon, SettingsIcon, MyWork } from '../icons/Icons';
-import { Link } from 'react-router-dom';
 
-const NavListItem = (props) => {
-    return (
-        <li
-            className={`navigation-item ${props.activeTab === props.tab ? 'selected-item' : ''}`}
-            onClick={() => { props.setActiveTab("dashboard") }}
-        >
-            <DashboardIcon />
-            <p>{props.title}</p>
-        </li>
-    )
-}
 
 export default function RightDrawer(props) {
 
     return <nav className='navigation'>
         <section className='app-title'>
-            <img src={'/images/icons/icon.png'} alt="" />
+            <img src={'/centaur-web/images/icons/icon.png'} alt="" />
             <p>Centaur</p>
         </section>
         <ul className='navigation-list'>

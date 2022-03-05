@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { AddIcon } from '../../icons/Icons'
-
+import ModalLayout from '../../layout/_lyt_modal'
+import Modal from '../rightDrawer/RightDrawer'
 
 const MyWorkListItem = (props) => {
     return <li className='item_list_item'>
@@ -24,6 +25,8 @@ const MyWorkListItem = (props) => {
 export default function MyWorkMain() {
     const [isOpen, setIsOpen] = useState(false);
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     const listItem = [1, 2].map((item, key) => {
         return <MyWorkListItem key={key} />
     })
@@ -32,11 +35,13 @@ export default function MyWorkMain() {
         <section className='wrapper_myWork_main'>
             <div className='myWork_main_title'>
                 <h1>My Work</h1>
-                <button>
+                <button onClick={() => setIsModalOpen(true)}>
                     <AddIcon color="white" />
                     <p>Add New Task</p>
                 </button>
             </div>
+
+            {isModalOpen && <ModalLayout setIsOpen={setIsModalOpen} />}
 
             <ul className='myWork_main_todoCategory'>
                 <li className='main_todoCategory_item'>
@@ -52,11 +57,8 @@ export default function MyWorkMain() {
                     </div>
 
                     <ul className="todoCategory_item_list"
-                        style={{ height: isOpen ? '40vh' : '0' }}
-                    >
-
+                        style={{ height: isOpen ? '40vh' : '0' }}>
                         {listItem}
-
                     </ul>
                 </li>
             </ul>

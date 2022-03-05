@@ -829,13 +829,58 @@
   text-align: center;
 }
 
-.wrapper_popup_modal {
+.bg_modal_wrapper {
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  position: absolute;
+  z-index: 2;
+}
+
+.bg_modal_wrapper .modal_wrapper_center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.bg_modal_wrapper .modal_wrapper_center .wrapper_center_modal {
+  width: 30vw;
+  height: 25vw;
+  background: white;
+  color: white;
+  padding: 10px 20px;
+  z-index: 10;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
+          box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
+}
+
+.bg_modal_wrapper .modal_wrapper_center .wrapper_center_modal .center_modal_closeBtn {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100%;
-  background: none;
+  right: 0;
+  padding: 5px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.bg_modal_wrapper .modal_wrapper_center .wrapper_center_modal .center_modal_header {
+  color: black;
+  font-size: 2vh;
+}
+
+.bg_modal_wrapper .modal_wrapper_center .wrapper_center_modal .center_modal_content {
+  margin-top: 20px;
+}
+
+.bg_modal_wrapper .modal_wrapper_center .wrapper_center_modal .center_modal_content .modal_content_form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -843,25 +888,64 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 10px;
+}
+
+.bg_modal_wrapper .modal_wrapper_center .wrapper_center_modal .center_modal_content .modal_content_form input {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  border-radius: 10px;
+  padding: 10px;
+  outline: none;
+  width: 90%;
+  font-size: 1.3vw;
+}
+
+.bg_modal_wrapper .modal_wrapper_center .wrapper_center_modal .center_modal_content .modal_content_form textarea {
+  width: 90%;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  outline: none;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.bg_modal_wrapper .modal_wrapper_center .wrapper_center_modal .center_modal_content .modal_content_form .content_form_noteInput {
+  height: 18vh;
+}
+
+.bg_modal_wrapper .modal_wrapper_center .wrapper_center_modal .center_modal_content .modal_content_form .content_form_actionBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  gap: 10px;
+  margin-top: 20px;
 }
 
-.wrapper_popup_modal .popup_modal_container {
-  position: fixed;
-  top: 5vh;
-  background-color: white;
-  padding: 20px;
-  border: 1px solid red;
+.bg_modal_wrapper .modal_wrapper_center .wrapper_center_modal .center_modal_content .modal_content_form .content_form_actionBtn button {
+  background: #3ABE2F;
   border-radius: 5px;
-  -webkit-animation: popup 3s ease-in-out;
-          animation: popup 3s ease-in-out;
-  font-family: "Montserrat", sans-serif;
-  font-size: 1.2vw;
+  padding: 5px 10px;
+  color: white;
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .wrapper_not_found {
@@ -956,6 +1040,7 @@
   background: #3ABE2F;
   border-radius: 17px;
   color: white;
+  cursor: pointer;
 }
 
 .wrapper_myWork_main .myWork_main_todoCategory {
@@ -1184,6 +1269,10 @@
   gap: 10px;
 }
 
+.lyt_notification_wrapper .notification_wrapper_quickAction button:last-child p {
+  font-size: 1vw;
+}
+
 .lyt_notification_wrapper .notification_wrapper_list .wrapper_list_item {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1254,6 +1343,78 @@
 
 .lyt_notification_wrapper .notification_wrapper_list .wrapper_list_item .list_item_actionButtons button:not(:last-child) {
   margin-right: 10px;
+}
+
+.wrapper_popup_bg {
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  position: absolute;
+  z-index: 2;
+}
+
+.wrapper_popup_bg .wrapper_popup_center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.wrapper_popup_bg .wrapper_popup_center .popup_center_content {
+  width: 25vw;
+  background: white;
+  color: black;
+  padding: 10px 20px;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  border-radius: 5px;
+  z-index: 10;
+}
+
+.wrapper_popup_bg .wrapper_popup_center .popup_center_content .center_content_header {
+  color: black;
+  font-size: 2vh;
+  margin-top: 10px;
+}
+
+.wrapper_popup_bg .wrapper_popup_center .popup_center_content .center_content_header h1 {
+  font-size: 2.2vh;
+  font-weight: 400;
+}
+
+.wrapper_popup_bg .wrapper_popup_center .popup_center_content .center_content_actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.wrapper_popup_bg .wrapper_popup_center .popup_center_content .center_content_actions button {
+  background: #3ABE2F;
+  color: white;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  border-radius: 10px;
+  padding: 5px 10px;
+  outline: none;
+  font-size: 1.3vw;
+  margin-left: auto;
 }
 
 * {
