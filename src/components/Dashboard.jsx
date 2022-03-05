@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from "./Header"
+import axios from 'axios';
 import "./dashboard.css";
 import Calender from './Calender';
 import { CalenderIcon, MoreIcon, VideoIcon } from '../icons/Icons';
@@ -8,6 +9,8 @@ import TodoCard from './TodoCard';
 import TodoLayout from '../layout/lyt-todo';
 import Modal from './modals/modal';
 import Newsstand from './newsstand/newsstand';
+
+var sessionStorage = window.sessionStorage;
 
 const MeetingsListItem = (props) => {
     return <li>
@@ -24,12 +27,21 @@ export default function Dashboard() {
     const [greeting, setGreeting] = React.useState("Evening");
     const [isOpen, setIsOpen] = React.useState(false);
 
+    const [instanceUser, setInstanceUser] = React.useState();
+
     const handleOpen = () => {
         setIsOpen(true);
     }
 
     const handleClose = () => {
         setIsOpen(false);
+    }
+
+    const headers = {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Content-Type": "application/json"
     }
 
     React.useEffect(() => {
@@ -40,7 +52,27 @@ export default function Dashboard() {
 
         setGreeting(greetingTemp)
 
-    }, [greeting]);
+        // api call to fetch user
+
+        if (sessionStorage.getItem('user')) {
+            const userFetch = {
+                userid: JSON.parse(sessionStorage.getItem('user')).userid,
+                userEmail: JSON.parse(sessionStorage.getItem('user')).userEmail
+            };
+
+            console.log(userFetch);
+
+            axios.post('http://localhost:5000/user/getUser', userFetch)
+                .then(res => {
+                    setInstanceUser(res.data);
+                    console.log(res.data);
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        }
+
+    }, []);
 
 
     return <section className='dashboard'>

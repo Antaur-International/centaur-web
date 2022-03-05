@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import GoogleLogin from 'react-google-login';
 
 import axios from 'axios';
 
@@ -8,7 +9,6 @@ export default function Form() {
     const email = useRef(null);
     const password = useRef(null);
     const hideShowImage = useRef(null);
-
     const sessionStorage = window.sessionStorage;
 
     const Navigate = useNavigate();
@@ -25,14 +25,13 @@ export default function Form() {
             axios.post('https://centaur-be.herokuapp.com/user/login', user)
                 .then(res => {
                     console.log(res.data);
-                    if (res.data.success) {
+                    if (res.data.success === true) {
                         console.log('User logged in successfully');
                         sessionStorage.setItem('user', JSON.stringify(res.data.session));
                         Navigate('/dashboard');
                     }
 
                     else {
-                        console.log("TEST   FFFF");
                         alert(res.data.message);
                     }
                 })
@@ -51,6 +50,21 @@ export default function Form() {
             password.current.type = 'password';
             hideShowImage.current.src = '/centaur-web/images/icons/eye_close.svg';
         }
+    }
+
+    const handleLogin = async googleData => {
+        const res = await fetch("http://localhost:5000/auth/google", {
+            method: "POST",
+            body: JSON.stringify({
+                token: googleData.tokenId
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+
+        const data = await res.json()
+        // store returned user somehow
     }
 
     useEffect(() => {
@@ -88,15 +102,6 @@ export default function Form() {
 
             <button type='button' onClick={handleSubmit} className='page_form_btn'>Login</button>
 
-            <div className='page_form_thirdParty'>
-                <button
-                    type='button'
-                    className='form_thirdParty_section'>
-                    <img src='/centaur-web/images/icons/google.svg' alt="" width={30} />
-                    <p>Login With Google</p>
-                </button>
-
-            </div>
         </form>
     )
 }

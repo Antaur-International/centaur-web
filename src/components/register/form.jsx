@@ -329,16 +329,6 @@ export default function RegForm() {
             >
                 Register
             </button>
-
-            <div className='page_form_thirdParty'>
-                <button
-                    type='button'
-                    className='form_thirdParty_section'>
-                    <img src='/centaur-web/images/icons/google.svg' alt="" width={30} />
-                    <p>Login With Google</p>
-                </button>
-
-            </div>
         </form>
     )
 }
