@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+
+import React, { useState } from 'react';
 import { AddIcon } from '../../icons/Icons'
 import ModalLayout from '../../layout/_lyt_modal'
 import Modal from '../rightDrawer/RightDrawer'
@@ -23,7 +24,7 @@ const MyWorkListItem = (props) => {
 }
 
 export default function MyWorkMain() {
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(true);
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 

@@ -18,7 +18,7 @@ const DepartmentCardItem = (props) => {
     </div>
 }
 
-export default function Department() {
+export default function Department(props) {
     const departmentList = [
         {
             title: "AJP",
@@ -53,7 +53,7 @@ export default function Department() {
     ]
     return (
         <div className='department'>
-            <Header />
+            <Header user={props.user} />
             <section className='yearSection'>
                 <h2>Select your academic year</h2>
                 <div className='chip-container'>

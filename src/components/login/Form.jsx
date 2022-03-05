@@ -22,7 +22,7 @@ export default function Form() {
         }
 
         if (email) {
-            axios.post('https://centaur-be.herokuapp.com/user/login', user)
+            axios.post('http://localhost:5000/user/login', user)
                 .then(res => {
                     console.log(res.data);
                     if (res.data.success === true) {
@@ -50,21 +50,6 @@ export default function Form() {
             password.current.type = 'password';
             hideShowImage.current.src = '/centaur-web/images/icons/eye_close.svg';
         }
-    }
-
-    const handleLogin = async googleData => {
-        const res = await fetch("http://localhost:5000/auth/google", {
-            method: "POST",
-            body: JSON.stringify({
-                token: googleData.tokenId
-            }),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-
-        const data = await res.json()
-        // store returned user somehow
     }
 
     useEffect(() => {
