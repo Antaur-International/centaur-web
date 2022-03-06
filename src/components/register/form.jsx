@@ -95,7 +95,7 @@ export default function RegForm() {
                 phoneNum: phoneNumber.current.value,
             }
 
-            axios.post('http://localhost:5000/user/register', user)
+            axios.post('https://centaur-be.herokuapp.com/user/register', user)
                 .then(res => {
                     console.log(res);
                     console.log(res.data);

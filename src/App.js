@@ -34,7 +34,7 @@ function App() {
 
       console.log(userFetch);
 
-      axios.post('http://localhost:5000/user/getUser', userFetch)
+      axios.post('https://centaur-be.herokuapp.com/user/getUser', userFetch)
         .then(res => {
           setInstanceUser(res.data.user);
           console.log('Running', res.data);
