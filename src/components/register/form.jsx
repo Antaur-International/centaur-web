@@ -295,9 +295,10 @@ export default function RegForm() {
                     <div className='form_div_input_prefix'>
                         <span>+91</span>
                         <input
-                            type="number"
+                            type="text"
                             placeholder='XXXXXXXX'
                             ref={phoneNumber}
+                            maxLength="10"
                             disabled={!isValidKey && userType === 'staff'}
                             onBlur={() => {
                                 if (phoneNumber.current.value !== '') {

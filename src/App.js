@@ -6,6 +6,7 @@ import Dashboard from './components/Dashboard';
 import Department from './components/departments/Department';
 import MyWork from './layout/lyt-myWork';
 import SubjectLayout from './layout/_lyt_deartment_subject';
+import SettingsLayout from './layout/_lyt_settings';
 
 // CSS files
 import "./css/global.css";
@@ -30,6 +31,7 @@ function App() {
         {activeTab === "department" && <Department setActiveTab={setActiveTab} />}
         {activeTab === "myWork" && <MyWork />}
         {activeTab === "department-subject" && <SubjectLayout />}
+        {activeTab === "settings" && <SettingsLayout />}
       </main>
     </div>
 

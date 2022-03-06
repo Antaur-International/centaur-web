@@ -1,0 +1,56 @@
+.layout_wrapper_settings{
+    padding: 25px 20px 0 20px;
+    display: grid;
+    grid-template-areas: "header header"
+                         "sidebar content ";
+    grid-template-columns: 20vw 1fr;
+    grid-template-rows: 10vh auto;
+    grid-gap: 20px;
+
+    .wrapper_settings_navbar{
+        grid-area: sidebar;
+        border-right: 1px solid #e6e6e6;
+        h1 {
+            color: #3ABE2F;
+            font-size: 2vw;
+        }
+
+        .settings_navbar_list{
+            @include displayFlex(column, auto, flex-start);
+            gap: 20px;
+            
+            margin-top: 20px;
+
+            .navbar_list_item {
+                @include displayFlex(row, flex-start, center);
+                gap: 10px;
+                cursor: pointer;
+                width: 100%;
+
+                &:last-child{
+                    .list_item_title{
+
+                        margin-left: 5px;
+                    }
+                }
+                .list_item_title{
+                    margin-left: 10px;
+
+                    .item_title_title{
+                        font-size: 1.2vw;
+                    }
+                    .item_title_shortList {
+                        font-size: .8vw;
+                    }
+                }
+                .list_item_iconChevron {
+                    margin-left: auto;
+                }
+            }
+        }
+
+    }
+    .wrapper_setting_content{
+        grid-area: content;
+    }
+}
