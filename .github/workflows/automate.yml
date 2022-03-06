@@ -26,7 +26,10 @@ jobs:
 
       - name: Install and Build 🔧
         run: |
-          git config --global user.name "Bedant Hota"
-          git config --global user.email "mohanesh.h2003@gmail.com"
-          git remote set-url origin https://bedantH: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@github.com/bedantH/centaur-web.git
-          npm run deploy
+          npm ci
+          npm run build
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4.2.5
+        with:
+          branch: gh-pages
+          folder: build
