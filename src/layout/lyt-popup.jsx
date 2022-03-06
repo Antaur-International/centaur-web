@@ -1,6 +1,16 @@
 import React, { useEffect } from 'react'
 
-export default function Popup({ textColor, text, setIsOpen, children }) {
+export default function Popup({ textColor, text, setIsOpen, children, called }) {
+
+    const handleClick = () => {
+
+        if (called === "header") {
+            sessionStorage.removeItem('user');
+            window.location.href = '/login';
+        }
+
+        setIsOpen(false);
+    }
 
     return (
         <section className='wrapper_popup_bg'>
@@ -10,7 +20,7 @@ export default function Popup({ textColor, text, setIsOpen, children }) {
                         <h1>{text}</h1>
                     </div>
                     <div className='center_content_actions'>
-                        <button onClick={() => setIsOpen(false)} className='btn'>Ok</button>
+                        <button onClick={handleClick} className='btn'>Ok</button>
                     </div>
                 </div>
             </div>

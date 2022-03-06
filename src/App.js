@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 // Importing the components
@@ -5,6 +6,7 @@ import RightDrawer from './components/LeftDrawer';
 import Dashboard from './components/Dashboard';
 import Department from './components/departments/Department';
 import MyWork from './layout/lyt-myWork';
+import axios from 'axios';
 import SubjectLayout from './layout/_lyt_deartment_subject';
 import SettingsLayout from './layout/_lyt_settings';
 
@@ -22,6 +24,29 @@ window.process = { env: { NODE_ENV: "production" } };
 function App() {
 
   const [activeTab, setActiveTab] = React.useState("dashboard");
+  const [instanceUser, setInstanceUser] = React.useState({});
+
+  React.useEffect(() => {
+    if (sessionStorage.getItem('user')) {
+      const userFetch = {
+        userid: JSON.parse(sessionStorage.getItem('user')).userid,
+        userEmail: JSON.parse(sessionStorage.getItem('user')).userEmail
+      };
+
+      console.log(userFetch);
+
+      axios.post('http://localhost:5000/user/getUser', userFetch)
+        .then(res => {
+          setInstanceUser(res.data.user);
+          console.log('Running', res.data);
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    } else {
+      window.location.href = "/login";
+    }
+  }, []);
 
   return (
     <div className="App">
@@ -38,4 +63,4 @@ function App() {
   );
 }
 
-export default App; 
+export default App;

@@ -53,7 +53,7 @@ export default function Department(props) {
     ]
     return (
         <div className='department'>
-            <Header />
+            <Header user={props.user} />
             <section className='yearSection'>
                 <h2>Select your academic year</h2>
                 <div className='chip-container'>
