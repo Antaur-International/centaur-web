@@ -5,7 +5,7 @@ import { ChevronLeft, Heart, UserIcon } from '../icons/Icons'
 export default function SettingsLayout(props) {
     return (
         <section className='layout_wrapper_settings'>
-            <Header />
+            <Header user={props.user} />
             <section className='wrapper_settings_navbar'>
                 <h1>Settings</h1>
                 <ul className='settings_navbar_list'>
