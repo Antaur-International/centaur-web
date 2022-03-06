@@ -8,6 +8,7 @@ import Department from './components/departments/Department';
 import MyWork from './layout/lyt-myWork';
 import axios from 'axios';
 import SubjectLayout from './layout/_lyt_deartment_subject';
+import SettingsLayout from './layout/_lyt_settings';
 
 // CSS files
 import "./css/global.css";
@@ -51,10 +52,11 @@ function App() {
     <div className="App">
       <RightDrawer activeTab={activeTab} setActiveTab={setActiveTab} />
       <main className='main'>
-        {activeTab === "dashboard" && <Dashboard user={instanceUser} />}
-        {activeTab === "department" && <Department user={instanceUser} setActiveTab={setActiveTab} />}
-        {activeTab === "myWork" && <MyWork user={instanceUser} />}
-        {activeTab === "department-subject" && <SubjectLayout user={instanceUser} />}
+        {activeTab === "dashboard" && <Dashboard />}
+        {activeTab === "department" && <Department setActiveTab={setActiveTab} />}
+        {activeTab === "myWork" && <MyWork />}
+        {activeTab === "department-subject" && <SubjectLayout />}
+        {activeTab === "settings" && <SettingsLayout />}
       </main>
     </div>
 

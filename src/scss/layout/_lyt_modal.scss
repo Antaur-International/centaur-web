@@ -56,9 +56,12 @@
                         outline: none;
                         width: 90%;
                         font-size: 1.3vw;
+                        font-weight: 700;
+                        font-family: $montserrat_font;
                     }
                     
                     textarea {
+                        font-family: $montserrat_font;
                         width: 90%;
                         background: #FFFFFF;
                         border: 1px solid rgba(0, 0, 0, 0.14);

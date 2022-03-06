@@ -54,7 +54,7 @@ export default function RightDrawer(props) {
             </li>
         </ul>
         <section className='settings-btn'>
-            <button>
+            <button onClick={() => props.setActiveTab("settings")}>
                 <SettingsIcon />
                 <p>Settings</p>
             </button>

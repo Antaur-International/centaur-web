@@ -1,11 +1,12 @@
-
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react'
 import { AddIcon } from '../../icons/Icons'
 import ModalLayout from '../../layout/_lyt_modal'
 import Modal from '../rightDrawer/RightDrawer'
+import AddTaskModal from './AddTaskModal'
+import EditTaskModal from './EditTaskModal'
 
 const MyWorkListItem = (props) => {
-    return <li className='item_list_item'>
+    return <li className='item_list_item' onClick={props.onClick}>
         <div className='list_item_top'>
             <p>College</p>
             <button>Reminder</button>
@@ -24,13 +25,59 @@ const MyWorkListItem = (props) => {
 }
 
 export default function MyWorkMain() {
-    const [isOpen, setIsOpen] = useState(true);
+
+    const personalTask = useRef(null);
+
+    const [personalTaskHeight, setPersonalTaskHeight] = useState(0);
+    const [personalTaskIsOpen, setPersonalTaskIsOpen] = useState(false);
+
+    const [isOpen, setIsOpen] = useState(false);
 
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [editTaskModal, setEditTaskModalOpen] = useState({
+        isOpen: false,
+        task: null
+    });
 
-    const listItem = [1, 2].map((item, key) => {
-        return <MyWorkListItem key={key} />
+    const task = [
+        {
+            title: "Complete AJP Practical 12",
+            description: "Lorem ispsum dolar sit amet",
+            category: "College",
+
+        },
+        {
+            title: "Complete AJP Practical 12",
+            description: "Lorem ispsum dolar sit amet",
+            category: "College",
+
+        },
+        {
+            title: "Complete AJP Practical 12",
+            description: "Lorem ispsum dolar sit amet",
+            category: "College",
+
+        },
+    ]
+
+    const listItem = task.map((item, key) => {
+        return <MyWorkListItem
+            key={key}
+            task={item}
+            onClick={() => setEditTaskModalOpen((prevState) => ({
+                ...prevState,
+                isOpen: true,
+                task: item
+            }))}
+        />
     })
+
+    const toggleAccordion = () => {
+        setPersonalTaskIsOpen(!personalTaskIsOpen)
+        setPersonalTaskHeight(!personalTaskIsOpen ? 0 : `${personalTask.current.scrollHeight}px`);
+    }
+
+
 
     return (
         <section className='wrapper_myWork_main'>
@@ -42,23 +89,36 @@ export default function MyWorkMain() {
                 </button>
             </div>
 
-            {isModalOpen && <ModalLayout setIsOpen={setIsModalOpen} />}
+            {isModalOpen && <ModalLayout> <AddTaskModal setIsOpen={setIsModalOpen} /> </ModalLayout>}
+            {
+                editTaskModal.isOpen && <ModalLayout>
+                    <EditTaskModal
+                        task={editTaskModal}
+                        setIsOpen={() => setEditTaskModalOpen((prevState) => ({
+                            ...prevState,
+                            isOpen: false,
+                        }))} />
+                </ModalLayout>
+            }
 
             <ul className='myWork_main_todoCategory'>
-                <li className='main_todoCategory_item'>
-                    <div className='todoCategory_item_label'
-                        onClick={() => setIsOpen(!isOpen)}
+                <li className='main_todoCategory_item' >
+                    <button className='todoCategory_item_label'
+                        onClick={toggleAccordion}
                     >
                         <img
                             src="/centaur-web/images/icons/arrow-right.svg"
                             alt="arrow"
-                            style={isOpen ? { transform: 'rotate(90deg)' } : {}}
+                            style={personalTaskIsOpen ? { transform: 'rotate(90deg)' } : {}}
                         />
                         <p>Personal Task</p>
-                    </div>
+                    </button>
 
                     <ul className="todoCategory_item_list"
-                        style={{ height: isOpen ? '40vh' : '0' }}>
+                        ref={personalTask}
+                        style={{ maxHeight: `${personalTaskHeight}` }}
+                    >
+
                         {listItem}
                     </ul>
                 </li>
