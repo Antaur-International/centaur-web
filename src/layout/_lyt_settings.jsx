@@ -5,7 +5,7 @@ import { ChevronLeft, Heart, UserIcon } from '../icons/Icons'
 export default function SettingsLayout(props) {
     return (
         <section className='layout_wrapper_settings'>
-            <Header />
+            <Header user={props.user} />
             <section className='wrapper_settings_navbar'>
                 <h1>Settings</h1>
                 <ul className='settings_navbar_list'>
@@ -18,7 +18,7 @@ export default function SettingsLayout(props) {
                         </div>
                         <div className='list_item_iconChevron'>
 
-                            <ChevronLeft color="black" />
+                            <ChevronLeft color="black" size="15px" />
                         </div>
                     </li>
                     <li className='navbar_list_item'>
@@ -32,13 +32,20 @@ export default function SettingsLayout(props) {
                         </div>
                         <div className='list_item_iconChevron'>
 
-                            <ChevronLeft color="#3ABE2F" />
+                            <ChevronLeft color="#3ABE2F" size="15px" />
                         </div>
                     </li>
                 </ul>
             </section>
             <section className='wrapper_setting_content'>
-
+                <div className="setting_content__heading">
+                    <h2 className='heading_title'>Account Settings</h2>
+                </div>
+                <div className="setting_content__body">
+                    <div className='body_title'>
+                        <h3>Personal Information</h3>
+                    </div>
+                </div>
             </section>
         </section>
     )

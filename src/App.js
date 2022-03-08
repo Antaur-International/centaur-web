@@ -53,10 +53,10 @@ function App() {
       <RightDrawer activeTab={activeTab} setActiveTab={setActiveTab} />
       <main className='main'>
         {activeTab === "dashboard" && <Dashboard user={instanceUser} />}
-        {activeTab === "department" && <Department setActiveTab={setActiveTab} user={instanceUser} />}
-        {activeTab === "myWork" && <MyWork user={instanceUser} />}
+        {activeTab === "department" && <Department user={instanceUser} setActiveTab={setActiveTab} />}
         {activeTab === "department-subject" && <SubjectLayout user={instanceUser} />}
-        {activeTab === "settings" && <SettingsLayout />}
+        {activeTab === "myWork" && <MyWork user={instanceUser} />}
+        {activeTab === "settings" && <SettingsLayout user={instanceUser} />}
       </main>
     </div>
 

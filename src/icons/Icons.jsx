@@ -97,8 +97,8 @@ export const ChevronRight = () => {
 
 }
 
-export const ChevronLeft = ({ color }) => {
-    return <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+export const ChevronLeft = ({ color, size }) => {
+    return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" clip-rule="evenodd" d="M14.5858 12L7.29289 19.2929L8.70711 20.7071L17.4142 12L8.70711 3.29289L7.29289 4.70711L14.5858 12Z" fill={color ? color : "black"} />
     </svg>
 
