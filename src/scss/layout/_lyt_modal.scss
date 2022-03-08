@@ -47,27 +47,28 @@
                 .modal_content_form {
                     @include displayFlex(column, flex-start, flex-start);
                     gap: 10px;
-                    
                     input {
                         background: #FFFFFF;
                         border: 1px solid rgba(0, 0, 0, 0.14);
                         border-radius: 10px;
                         padding: 10px;
                         outline: none;
-                        width: 90%;
-                        font-size: 1.3vw;
+                        font-size: 1vw;
                         font-weight: 700;
                         font-family: $montserrat_font;
+                        width: -moz-available;
                     }
                     
                     textarea {
+                        font-size: 1vw;
+                        width: -moz-available;
                         font-family: $montserrat_font;
-                        width: 90%;
                         background: #FFFFFF;
                         border: 1px solid rgba(0, 0, 0, 0.14);
                         outline: none;
                         padding: 10px ;
                         border-radius: 10px;
+                        resize: none;
                     }
 
                     .content_form_noteInput {
@@ -75,16 +76,31 @@
                     }
 
                     .content_form_actionBtn {
-                        @include displayFlex(row, center, center);
+                        @include displayFlex(row, flex-start, center);
                         gap: 10px;
                         margin-top: 20px;
+                        width: -moz-available;
                         button {
-                            background: #3ABE2F;
-                            border-radius: 5px;
-                            padding: 5px 10px;
-                            color: white;
+                            @include displayFlex(row, center, center);
+                            gap: 10px;
+                            border-radius: 7px;
+                            padding: 5px 8px;
                             cursor: pointer;
                             transition: 0.3s;
+                        }
+                        .form_actionBtn_reminder {
+                            background: #FFFFFF ;
+                            border: 1px solid rgba(0, 0, 0, 0.18);
+                            border-radius: 7px;
+                        }
+                        .form_actionBtn_addTask {
+                            background: #3ABE2F;
+                            color: white;
+                            margin-left: auto;
+                        }
+                        .form_actionBtn_deleteTask {
+                            background: #D82148;
+                            color: white;
                         }
 
                     }

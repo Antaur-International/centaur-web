@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react'
+import { Clock } from '../../icons/Icons';
 
 export default function EditTaskModal({ setIsOpen, task }) {
 
@@ -36,8 +37,19 @@ export default function EditTaskModal({ setIsOpen, task }) {
                             onChange={(e) => setDescriptionInput(e.target.value)} />
 
                         <div className='content_form_actionBtn'>
-                            <button className='btn' onClick={handleSubmit}>
-                                <p>Add Task</p>
+                            <button className='form_actionBtn_reminder btn'>
+                                <Clock />
+                                <p>Reminder</p>
+                            </button>
+                            <button className='form_actionBtn_reminder btn'>
+                                <Clock />
+                                <p>Group</p>
+                            </button>
+                            <button className='form_actionBtn_addTask btn' onClick={handleSubmit}>
+                                <p>Update</p>
+                            </button>
+                            <button className='form_actionBtn_deleteTask btn' onClick={handleSubmit}>
+                                <p>Delete Task</p>
                             </button>
                         </div>
                     </form>

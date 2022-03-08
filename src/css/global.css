@@ -904,20 +904,22 @@
   border-radius: 10px;
   padding: 10px;
   outline: none;
-  width: 90%;
-  font-size: 1.3vw;
+  font-size: 1vw;
   font-weight: 700;
   font-family: "Montserrat", sans-serif;
+  width: -moz-available;
 }
 
 .bg_modal_wrapper .modal_wrapper_center .wrapper_center_modal .center_modal_content .modal_content_form textarea {
+  font-size: 1vw;
+  width: -moz-available;
   font-family: "Montserrat", sans-serif;
-  width: 90%;
   background: #FFFFFF;
   border: 1px solid rgba(0, 0, 0, 0.14);
   outline: none;
   padding: 10px;
   border-radius: 10px;
+  resize: none;
 }
 
 .bg_modal_wrapper .modal_wrapper_center .wrapper_center_modal .center_modal_content .modal_content_form .content_form_noteInput {
@@ -932,6 +934,25 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  width: -moz-available;
+}
+
+.bg_modal_wrapper .modal_wrapper_center .wrapper_center_modal .center_modal_content .modal_content_form .content_form_actionBtn button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -939,17 +960,28 @@
       -ms-flex-align: center;
           align-items: center;
   gap: 10px;
-  margin-top: 20px;
-}
-
-.bg_modal_wrapper .modal_wrapper_center .wrapper_center_modal .center_modal_content .modal_content_form .content_form_actionBtn button {
-  background: #3ABE2F;
-  border-radius: 5px;
-  padding: 5px 10px;
-  color: white;
+  border-radius: 7px;
+  padding: 5px 8px;
   cursor: pointer;
   -webkit-transition: 0.3s;
   transition: 0.3s;
+}
+
+.bg_modal_wrapper .modal_wrapper_center .wrapper_center_modal .center_modal_content .modal_content_form .content_form_actionBtn .form_actionBtn_reminder {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  border-radius: 7px;
+}
+
+.bg_modal_wrapper .modal_wrapper_center .wrapper_center_modal .center_modal_content .modal_content_form .content_form_actionBtn .form_actionBtn_addTask {
+  background: #3ABE2F;
+  color: white;
+  margin-left: auto;
+}
+
+.bg_modal_wrapper .modal_wrapper_center .wrapper_center_modal .center_modal_content .modal_content_form .content_form_actionBtn .form_actionBtn_deleteTask {
+  background: #D82148;
+  color: white;
 }
 
 .wrapper_not_found {
@@ -1038,13 +1070,14 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  gap: 10px;
-  padding: 10px 10px;
+  gap: 20px;
+  padding: 10px 20px;
   border: none;
   background: #3ABE2F;
-  border-radius: 17px;
+  border-radius: 30px;
   color: white;
   cursor: pointer;
+  font-weight: 600;
 }
 
 .wrapper_myWork_main .myWork_main_todoCategory {
@@ -1149,6 +1182,20 @@
 }
 
 .wrapper_myWork_main .myWork_main_todoCategory .main_todoCategory_item .todoCategory_item_list .item_list_item .list_item_top button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
   background: #FFFFFF;
   border: 1px solid rgba(0, 0, 0, 0.18);
   padding: 5px 8px;
@@ -1176,6 +1223,7 @@
 
 .wrapper_myWork_main .myWork_main_todoCategory .main_todoCategory_item .todoCategory_item_list .list_item_bottom input {
   margin-top: 6px;
+  cursor: pointer;
 }
 
 .wrapper_myWork_main .myWork_main_todoCategory .main_todoCategory_item .todoCategory_item_list .list_item_bottom .bottom_content_title {
@@ -1195,9 +1243,13 @@
   display: grid;
   -ms-grid-columns: 55vw auto;
       grid-template-columns: 55vw auto;
+  -ms-grid-rows: 10vh 1fr 1fr;
+      grid-template-rows: 10vh 1fr 1fr;
       grid-template-areas: "header header" "main todo" "main meetings";
-  grid-gap: 20px;
   padding: 25px 20px 0px 20px;
+  grid-gap: 20px;
+  height: calc(100vh - 25px);
+  overflow-y: scroll;
 }
 
 .lyt_wrapper_myWork .wrapper_myWork_main {
@@ -1205,6 +1257,16 @@
   -ms-grid-row-span: 2;
   -ms-grid-column: 1;
   grid-area: main;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+}
+
+.lyt_wrapper_myWork .wrapper_myWork_main::-webkit-scrollbar {
+  /* WebKit */
+  width: 0;
+  height: 0;
 }
 
 .lyt_wrapper_myWork .wrapper_myWork_header {
@@ -1414,14 +1476,27 @@
 }
 
 .wrapper_popup_bg .wrapper_popup_center .popup_center_content .center_content_actions button {
-  background: #3ABE2F;
-  color: white;
-  border: 1px solid rgba(0, 0, 0, 0.14);
   border-radius: 10px;
   padding: 5px 10px;
-  outline: none;
-  font-size: 1.3vw;
+  font-size: 1vw;
+}
+
+.wrapper_popup_bg .wrapper_popup_center .popup_center_content .center_content_actions .content_action_negativeBtn {
   margin-left: auto;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+}
+
+.wrapper_popup_bg .wrapper_popup_center .popup_center_content .center_content_actions .content_action_negativeBtn:hover {
+  background: #f5f5f5;
+}
+
+.wrapper_popup_bg .wrapper_popup_center .popup_center_content .center_content_actions .content_action_positiveBtn {
+  background: #3ABE2F;
+  color: white;
+}
+
+.wrapper_popup_bg .wrapper_popup_center .popup_center_content .center_content_actions .content_action_positiveBtn:hover {
+  background: #2F9D2F;
 }
 
 .lyt_subject_wrapper {

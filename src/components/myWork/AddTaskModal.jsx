@@ -1,4 +1,5 @@
 import React, { useRef } from 'react'
+import { Clock } from '../../icons/Icons';
 
 export default function AddTaskModal({ setIsOpen }) {
 
@@ -31,7 +32,15 @@ export default function AddTaskModal({ setIsOpen }) {
                             className='content_form_noteInput' placeholder='Note...' />
 
                         <div className='content_form_actionBtn'>
-                            <button className='btn' onClick={handleSubmit}>
+                            <button type='button' className='form_actionBtn_reminder btn'>
+                                <Clock />
+                                <p>Reminder</p>
+                            </button>
+                            <button type='button' className='form_actionBtn_reminder btn'>
+                                <Clock />
+                                <p>Group</p>
+                            </button>
+                            <button type='button' className='form_actionBtn_addTask btn' onClick={handleSubmit}>
                                 <p>Add Task</p>
                             </button>
                         </div>
