@@ -54,8 +54,8 @@ function App() {
       <main className='main'>
         {activeTab === "dashboard" && <Dashboard user={instanceUser} />}
         {activeTab === "department" && <Department user={instanceUser} setActiveTab={setActiveTab} />}
-        {activeTab === "myWork" && <MyWork user={instanceUser} />}
         {activeTab === "department-subject" && <SubjectLayout user={instanceUser} />}
+        {activeTab === "myWork" && <MyWork user={instanceUser} />}
         {activeTab === "settings" && <SettingsLayout user={instanceUser} />}
       </main>
     </div>

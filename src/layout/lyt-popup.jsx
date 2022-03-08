@@ -20,7 +20,13 @@ export default function Popup({ textColor, text, setIsOpen, children, called }) 
                         <h1>{text}</h1>
                     </div>
                     <div className='center_content_actions'>
-                        <button onClick={handleClick} className='btn'>Ok</button>
+                        <button
+                            onClick={() => setIsOpen(false)}
+                            className='content_action_negativeBtn btn'
+                        >
+                            No
+                        </button>
+                        <button onClick={handleClick} className='content_action_positiveBtn btn'>Yes</button>
                     </div>
                 </div>
             </div>

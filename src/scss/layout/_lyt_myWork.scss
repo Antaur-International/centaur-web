@@ -3,14 +3,27 @@
 .lyt_wrapper_myWork {
     display: grid;
     grid-template-columns: 55vw auto;
+    grid-template-rows: 10vh 1fr 1fr;
     grid-template-areas: "header header"
                         "main todo"
                         "main meetings";
-    grid-gap: 20px;
-
+                        
     padding: 25px 20px 0px 20px;
+    grid-gap: 20px;
+    height: calc(100vh - 25px);
+    overflow-y: scroll;
+
     .wrapper_myWork_main {
         grid-area: main;
+        overflow-y: scroll;
+
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;  
+
+        &::-webkit-scrollbar { /* WebKit */
+            width: 0;
+            height: 0;
+        }
     }
 
     .wrapper_myWork_header {
