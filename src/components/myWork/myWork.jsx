@@ -1,14 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { AddIcon, Clock } from '../../icons/Icons'
 import ModalLayout from '../../layout/_lyt_modal'
-import Modal from '../rightDrawer/RightDrawer'
+// import Modal from '../rightDrawer/RightDrawer'
 import AddTaskModal from './AddTaskModal'
 import EditTaskModal from './EditTaskModal'
+import axios from 'axios';
 
 const MyWorkListItem = (props) => {
-    return <li className='item_list_item' onClick={props.onClick}>
+    return <li className='item_list_item' onClick={props.onClick} data-id={props.task._id}>
         <div className='list_item_top'>
-            <p>College</p>
+            <p>{props.task.task_cat}</p>
             <button
                 onClick={(e) => {
                     e.stopPropagation();
@@ -16,13 +17,13 @@ const MyWorkListItem = (props) => {
             ><Clock /> Reminder</button>
         </div>
         <div className='list_item_bottom'>
-            <input type={'checkbox'} onClick={(e) => {
+            <input type={'checkbox'} checked={props.task.task_status === "pending" ? false : true} onClick={(e) => {
                 e.stopPropagation();
             }} />
             <div className='item_bottom_content'>
-                <p className='bottom_content_title'>Complete AJP Practical 12</p>
+                <p className='bottom_content_title'>{props.task.task_title}</p>
                 <p className='bottom_content_task'>
-                    Lorem ipsum dolor sit amet, consectetur
+                    {props.task.task_description}
                 </p>
             </div>
 
@@ -46,28 +47,24 @@ export default function MyWorkMain() {
         task: null
     });
 
-    const task = [
-        {
-            title: "Complete AJP Practical 12",
-            description: "Lorem ispsum dolar sit amet",
-            category: "College",
 
-        },
-        {
-            title: "Complete AJP Practical 12",
-            description: "Lorem ispsum dolar sit amet",
-            category: "College",
+    // saving tasks
+    const [personalTaskList, setPersonalTaskList] = useState([]);
+    const [collegeTaskList, setCollegeTaskList] = useState([]);
 
-        },
-        {
-            title: "Complete AJP Practical 12",
-            description: "Lorem ispsum dolar sit amet",
-            category: "College",
+    const PersonalList = personalTaskList.map((item, key) => {
+        return <MyWorkListItem
+            key={key}
+            task={item}
+            onClick={() => setEditTaskModalOpen((prevState) => ({
+                ...prevState,
+                isOpen: true,
+                task: item
+            }))}
+        />
+    })
 
-        },
-    ]
-
-    const listItem = task.map((item, key) => {
+    const CollegeList = collegeTaskList.map((item, key) => {
         return <MyWorkListItem
             key={key}
             task={item}
@@ -91,11 +88,45 @@ export default function MyWorkMain() {
 
     useEffect(() => {
         setPersonalTaskHeight(personalTaskIsOpen ? `${personalTask.current.scrollHeight}px` : 0);
-    }, [])
 
+        axios.get(`https://centaur-be.herokuapp.com/task/personal/${JSON.parse(sessionStorage.getItem('user')).userid}`)
+            .then(res => {
+                setPersonalTaskList(res.data.tasks);
+            })
+            .catch(err => {
+                console.log(err);
+            })
 
+        axios.get('https://centaur-be.herokuapp.com/task/college')
+            .then(res => {
+                setCollegeTaskList(res.data.tasks);
+                console.log(res.data.tasks);
+            })
+            .catch(err => {
+                console.log(err);
+            })
 
+    }, [personalTaskList.length, collegeTaskList.length])
 
+    const createTask = () => {
+        const newAddedTask = JSON.parse(sessionStorage.getItem('task'));
+        if (newAddedTask.task_cat === 'personal') {
+            setPersonalTaskList([...personalTaskList, newAddedTask]);
+        }
+        else {
+            setCollegeTaskList([...collegeTaskList, newAddedTask]);
+        }
+    }
+
+    const deleteTask = () => {
+        const deletedTask = JSON.parse(sessionStorage.getItem('deletedTask'));
+        if (deletedTask.task_cat === 'Personal') {
+            setPersonalTaskList(personalTaskList.filter(item => item._id !== deletedTask._id));
+        }
+        else {
+            setCollegeTaskList(collegeTaskList.filter(item => item._id !== deletedTask._id));
+        }
+    }
 
     return (
         <section className='wrapper_myWork_main'>
@@ -107,11 +138,12 @@ export default function MyWorkMain() {
                 </button>
             </div>
 
-            {isModalOpen && <ModalLayout> <AddTaskModal setIsOpen={setIsModalOpen} /> </ModalLayout>}
+            {isModalOpen && <ModalLayout> <AddTaskModal handleSubmitUpdate={createTask} setIsOpen={setIsModalOpen} /> </ModalLayout>}
             {
                 editTaskModal.isOpen && <ModalLayout>
                     <EditTaskModal
                         task={editTaskModal}
+                        handleDeleteUpdate={deleteTask}
                         setIsOpen={() => setEditTaskModalOpen((prevState) => ({
                             ...prevState,
                             isOpen: false,
@@ -137,7 +169,7 @@ export default function MyWorkMain() {
                         style={{ maxHeight: `${personalTaskHeight}` }}
                     >
 
-                        {listItem}
+                        {PersonalList}
                     </ul>
                 </li>
                 <li className='main_todoCategory_item' >
@@ -157,12 +189,12 @@ export default function MyWorkMain() {
                         style={{ maxHeight: `${collegeTaskHeight}` }}
                     >
 
-                        {listItem}
+                        {CollegeList}
                     </ul>
                 </li>
             </ul>
 
-        </section >
+        </section>
 
     )
 }

@@ -18,7 +18,8 @@
 
         .wrapper_center_modal {
             width: 30vw;
-            height: 25vw;
+            height: auto;
+            padding-right: 3rem;
             background: white;
             color: white;
             padding: 10px 20px;
@@ -47,16 +48,25 @@
                 .modal_content_form {
                     @include displayFlex(column, flex-start, flex-start);
                     gap: 10px;
+
+                    .cat_select{
+                        padding: 1rem 2rem;
+                        border: 1px solid rgba(0, 0, 0, 0.14);
+                        border-radius: 5px;
+                        padding-left: 1rem;
+                    }
+
                     input {
                         background: #FFFFFF;
                         border: 1px solid rgba(0, 0, 0, 0.14);
-                        border-radius: 10px;
+                        border-radius: 5px;
                         padding: 10px;
                         outline: none;
                         font-size: 1vw;
                         font-weight: 700;
                         font-family: $montserrat_font;
                         width: -moz-available;
+                        width: 95%;
                     }
                     
                     textarea {
@@ -67,8 +77,9 @@
                         border: 1px solid rgba(0, 0, 0, 0.14);
                         outline: none;
                         padding: 10px ;
-                        border-radius: 10px;
+                        border-radius: 5px;
                         resize: none;
+                        width: 95%;
                     }
 
                     .content_form_noteInput {
