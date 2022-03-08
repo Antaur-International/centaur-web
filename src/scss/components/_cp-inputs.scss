@@ -1,0 +1,91 @@
+.cp-input{
+    &.typ-normal{
+        width: 70%;
+        margin: 2rem 0rem;
+        display: grid;
+        grid-template-columns: 10vw 1fr;
+        align-items: flex-start;
+        justify-content: space-between;
+        margin-bottom: 4rem;
+
+        .cp-input__label{
+            font-size: 1vw;
+            font-weight: bold;
+        }
+
+        .cp-input__wrapper{
+            display: flex;  
+        }
+
+        .cp-input__labelL{
+            background-color: rgb(248, 248, 248);
+            border: 1px solid rgba(0, 0, 0, 0.4);
+            border-radius: 6px 0px 0px 6px;
+            padding: 0.75rem 3rem;
+
+            label{
+                font-size: 0.8vw;
+                color: #000;
+                font-weight: bold;
+            }
+        }
+
+        .cp-input__input{
+            border: 1px solid rgba(0, 0, 0, 0.4);
+            border-radius: 0px 6px 6px 0px;
+            padding: 0.75rem 3rem;
+        }
+    }
+
+    &.typ-tag{
+        width: 70%;
+        margin: 2rem 0rem;
+        display: grid;
+        grid-template-columns: 10vw 1fr;
+        align-items: flex-start;
+        justify-content: space-between;
+        margin-bottom: 4rem;
+
+        .cp-input__label{
+            font-size: 1vw;
+            font-weight: bold;
+        }
+
+        .cp-input__wrapper{
+            display: flex; 
+            width: 100%;
+        }
+
+        .cp-input__input{
+            border: 1px solid rgba(0, 0, 0, 0.4);
+            padding: 0.75rem 3rem;
+            border-radius: 0.6rem;
+        }
+    }
+
+    &.typ-column{
+        margin: 2rem 0rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        margin-bottom: 4rem;
+
+        .cp-input__label{
+            font-size: 1vw;
+            font-weight: bold;
+            margin-bottom: 1.2rem;
+        }
+
+        .cp-input__wrapper{
+            display: flex; 
+            width: 100%;
+        }
+
+        .cp-input__input{
+            border: 1px solid rgba(0, 0, 0, 0.4);
+            padding: 0.75rem 1rem;
+            border-radius: 0.6rem;
+        }
+    }
+}

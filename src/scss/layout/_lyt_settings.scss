@@ -67,13 +67,109 @@
         }
 
         .setting_content__body{
-            .body_title{
-                font-size: 1.2vw;
+            .body_title p{
+                font-size: 1.4vw;
                 color: #000;
-                font-weight: 200;
+                font-weight: 400;
                 margin-top: 1.4rem;
-                margin-bottom: 1rem;
+                margin-bottom: 3rem;
+            }
+
+
+            .setting_content__body_idVerify{
+                .idVerify__heading{
+                    p{
+                        font-size: 1.2vw;
+                        color: #000;
+                        font-weight: 400;
+                        margin-top: 1.4rem;
+                        margin-bottom: 3rem;
+                    }
+                }
+
+                .idInputs_verify{
+                    margin-bottom: 3rem;
+                    .file-input {
+                        display: inline-block;
+                        text-align: left;
+                        background: #fff;
+                        padding: 16px;
+                        width: 450px;
+                        height: 250px;
+                        position: relative;
+                        margin-bottom: 2rem;
+                      }
+                      
+                      .file-input > [type='file'] {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        opacity: 0;
+                        z-index: 10;
+                        cursor: pointer;
+                      }
+                      
+                      .file-input > .button {
+                        display: inline-block;
+                        cursor: pointer;
+                        background: #eee;
+                        padding: 8px 16px;
+                        margin-right: 8px;
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        align-items: center;
+                        border: 4px dashed #000;
+                        border-radius: 1rem;
+                        justify-content: center;
+
+                        svg{
+                            width: 30px;
+                            height: 30px;
+                        }
+                      }
+                      
+                    .file-input.-chosen > .label {
+                        opacity: 1;
+                    }
+                }
+            }
+
+            .settings_content__body_profileImage{
+                .profile_title{
+                    p{
+                        font-size: 1.2vw;
+                        color: #000;
+                        font-weight: 400;
+                        margin-top: 1.4rem;
+                        margin-bottom: 3rem;
+                    }
+                }
+
+                .profile_image{
+                    border: 1px dashed #000;
+                    margin-bottom: 4rem;
+                    position: relative;
+
+                    .delete{
+                        color: red;
+                        font-size: 1vw;
+                        position: absolute;
+                        top: 10px;
+                        right: 10px;
+                    }
+
+                    img{
+                        margin: 3rem;
+                        width: 15%;
+                    }
+                }
             }
         }
     }
 }
+
+
+@import "../components/cp-inputs"

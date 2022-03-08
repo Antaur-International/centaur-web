@@ -1138,12 +1138,187 @@
   margin-bottom: 1rem;
 }
 
-.layout_wrapper_settings .wrapper_setting_content .setting_content__body .body_title {
+.layout_wrapper_settings .wrapper_setting_content .setting_content__body .body_title p {
+  font-size: 1.4vw;
+  color: #000;
+  font-weight: 400;
+  margin-top: 1.4rem;
+  margin-bottom: 3rem;
+}
+
+.layout_wrapper_settings .wrapper_setting_content .setting_content__body .setting_content__body_idVerify .idVerify__heading p {
   font-size: 1.2vw;
   color: #000;
-  font-weight: 200;
+  font-weight: 400;
   margin-top: 1.4rem;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
+}
+
+.layout_wrapper_settings .wrapper_setting_content .setting_content__body .setting_content__body_idVerify .idInputs_verify {
+  margin-bottom: 3rem;
+}
+
+.layout_wrapper_settings .wrapper_setting_content .setting_content__body .setting_content__body_idVerify .idInputs_verify .file-input {
+  display: inline-block;
+  text-align: left;
+  background: #fff;
+  padding: 16px;
+  width: 450px;
+  height: 250px;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.layout_wrapper_settings .wrapper_setting_content .setting_content__body .setting_content__body_idVerify .idInputs_verify .file-input > [type='file'] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.layout_wrapper_settings .wrapper_setting_content .setting_content__body .setting_content__body_idVerify .idInputs_verify .file-input > .button {
+  display: inline-block;
+  cursor: pointer;
+  background: #eee;
+  padding: 8px 16px;
+  margin-right: 8px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border: 4px dashed #000;
+  border-radius: 1rem;
+  justify-content: center;
+}
+
+.layout_wrapper_settings .wrapper_setting_content .setting_content__body .setting_content__body_idVerify .idInputs_verify .file-input > .button svg {
+  width: 30px;
+  height: 30px;
+}
+
+.layout_wrapper_settings .wrapper_setting_content .setting_content__body .setting_content__body_idVerify .idInputs_verify .file-input.-chosen > .label {
+  opacity: 1;
+}
+
+.layout_wrapper_settings .wrapper_setting_content .setting_content__body .settings_content__body_profileImage .profile_title p {
+  font-size: 1.2vw;
+  color: #000;
+  font-weight: 400;
+  margin-top: 1.4rem;
+  margin-bottom: 3rem;
+}
+
+.layout_wrapper_settings .wrapper_setting_content .setting_content__body .settings_content__body_profileImage .profile_image {
+  border: 1px dashed #000;
+  margin-bottom: 4rem;
+  position: relative;
+}
+
+.layout_wrapper_settings .wrapper_setting_content .setting_content__body .settings_content__body_profileImage .profile_image .delete {
+  color: red;
+  font-size: 1vw;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.layout_wrapper_settings .wrapper_setting_content .setting_content__body .settings_content__body_profileImage .profile_image img {
+  margin: 3rem;
+  width: 15%;
+}
+
+.cp-input.typ-normal {
+  width: 70%;
+  margin: 2rem 0rem;
+  display: grid;
+  grid-template-columns: 10vw 1fr;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 4rem;
+}
+
+.cp-input.typ-normal .cp-input__label {
+  font-size: 1vw;
+  font-weight: bold;
+}
+
+.cp-input.typ-normal .cp-input__wrapper {
+  display: flex;
+}
+
+.cp-input.typ-normal .cp-input__labelL {
+  background-color: #f8f8f8;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 6px 0px 0px 6px;
+  padding: 0.75rem 3rem;
+}
+
+.cp-input.typ-normal .cp-input__labelL label {
+  font-size: 0.8vw;
+  color: #000;
+  font-weight: bold;
+}
+
+.cp-input.typ-normal .cp-input__input {
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 0px 6px 6px 0px;
+  padding: 0.75rem 3rem;
+}
+
+.cp-input.typ-tag {
+  width: 70%;
+  margin: 2rem 0rem;
+  display: grid;
+  grid-template-columns: 10vw 1fr;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 4rem;
+}
+
+.cp-input.typ-tag .cp-input__label {
+  font-size: 1vw;
+  font-weight: bold;
+}
+
+.cp-input.typ-tag .cp-input__wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.cp-input.typ-tag .cp-input__input {
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  padding: 0.75rem 3rem;
+  border-radius: 0.6rem;
+}
+
+.cp-input.typ-column {
+  margin: 2rem 0rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 4rem;
+}
+
+.cp-input.typ-column .cp-input__label {
+  font-size: 1vw;
+  font-weight: bold;
+  margin-bottom: 1.2rem;
+}
+
+.cp-input.typ-column .cp-input__wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.cp-input.typ-column .cp-input__input {
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  padding: 0.75rem 1rem;
+  border-radius: 0.6rem;
 }
 
 * {
