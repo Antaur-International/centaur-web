@@ -1,15 +1,42 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import Header from '../components/Header'
 import { ChevronLeft, Heart, UserIcon } from '../icons/Icons'
 import { NormalInput, TagInput, ColumnInput } from '../components/settings/Inputs'
-import { AddIcon } from '../icons/Icons'
+import { AddIcon } from '../icons/Icons';
+import * as FormData from "form-data";
+import axios from 'axios'
 
 export default function SettingsLayout(props) {
-
     const name = props.user.name.split(' ');
+
+    const [firstImage, setFirstImage] = React.useState('');
+    const [secondImage, setSecondImage] = React.useState('');
+
+    const frontRef = useRef(null);
+    const backRef = useRef(null);
 
     const firstName = name[0];
     const lastName = name[1];
+
+    const uploadFront = () => {
+        console.log('upload front');
+        let formData = new FormData();
+
+        formData.append("file", frontRef.current.files[0]);
+        formData.append("user_id", props.user._id);
+
+        for (var p of formData) {
+            console.log(p);
+        }
+
+        axios.post('http://localhost:5000/file/upload', formData)
+            .then(res => {
+                console.log(res);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
 
     return (
         <section className='layout_wrapper_settings'>
@@ -39,7 +66,6 @@ export default function SettingsLayout(props) {
                             <p className='item_title_shortList' style={{ color: "#3ABE2F" }}>Personal Information, Email</p>
                         </div>
                         <div className='list_item_iconChevron'>
-
                             <ChevronLeft color="#3ABE2F" size="15px" />
                         </div>
                     </li>
@@ -72,11 +98,11 @@ export default function SettingsLayout(props) {
 
                         <div className="idInputs_verify">
                             <div className="file-input">
-                                <input type='file' />
+                                <input type='file' ref={frontRef} onChange={uploadFront} />
                                 <span class='button'><AddIcon color="#000" /></span>
                             </div>
                             <div className="file-input">
-                                <input type='file' />
+                                <input type='file' ref={backRef} />
                                 <span class='button'><AddIcon color="#000" /></span>
                             </div>
                         </div>
@@ -87,7 +113,7 @@ export default function SettingsLayout(props) {
                         </div>
 
                         <div className="profile_image">
-                            <a href="#" className="delete">Delete</a>
+                            <a className="delete">Delete</a>
                             <img src={props.user.image} alt="profileImage" />
                         </div>
                     </div>

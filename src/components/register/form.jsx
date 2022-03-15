@@ -20,6 +20,7 @@ export default function RegForm() {
     const [passwordMatch, setPasswordMatch] = React.useState(true);
     const [isValidEnrollment, setIsValidEnrollment] = React.useState(true);
     const [isValidPhoneNumber, setIsValidPhoneNumber] = React.useState(true);
+    const [selectedDepartment, setSelectedDepartment] = React.useState('');
 
     const Navigate = useNavigate();
 
@@ -34,6 +35,8 @@ export default function RegForm() {
     const phoneNumber = useRef(null);
     const hideShowImage = useRef(null);
     const hideShowImage2 = useRef(null);
+
+    const [departmentsAvail, setDepartments] = React.useState([{}]);
 
     const validateKey = async () => {
         const userEnteredKey = await license.current.value;
@@ -72,7 +75,20 @@ export default function RegForm() {
         }
     }
 
+    React.useEffect(() => {
+        axios
+            .get('http://localhost:5000/department')
+            .then((res) => {
+                // for initials and debugging purpose 
+                console.log(res.data);
 
+                if (res.data.success) {
+                    setDepartments(res.data.departments);
+                } else {
+                    console.log("An error occurred");
+                }
+            })
+    }, [])
 
     // Validation part is under development
     const handleSubmit = (e) => {
@@ -84,6 +100,7 @@ export default function RegForm() {
         } else {
 
             console.log(userType);
+            console.log(selectedDepartment);
 
             const user = {
                 type: userType,
@@ -93,9 +110,10 @@ export default function RegForm() {
                 password: password.current.value,
                 en_number: enrollmentNumber.current.value,
                 phoneNum: phoneNumber.current.value,
+                department: selectedDepartment,
             }
 
-            axios.post('https://centaur-be.herokuapp.com/user/register', user)
+            axios.post('http://localhost:5000/user/register', user)
                 .then(res => {
                     console.log(res);
                     console.log(res.data);
@@ -286,6 +304,21 @@ export default function RegForm() {
                     {!isValidEnrollment && <p className='errorTxt'>
                         Please enter a valid enrollment number!
                     </p>}
+                </div>
+
+                <div className='page_form_div'>
+                    <label>Select Department</label>
+                    <select onChange={(e) => setSelectedDepartment(e.target.value)}>
+                        <option value="none" disabled selected="true">Select Department</option>
+                        {
+                            departmentsAvail.map((item, key) => {
+                                console.log(item);
+                                return (
+                                    <option value={item._id}>{item.department_name}</option>
+                                )
+                            })
+                        }
+                    </select>
                 </div>
 
 
