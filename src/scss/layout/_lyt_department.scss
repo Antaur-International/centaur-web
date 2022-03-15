@@ -1,3 +1,6 @@
+@import "../components/cp_resource";
+@import "../components/cp_chats";
+
 .lyt_wrapper_department {
     height: calc(100vh - 20px);
     padding: 20px 25px 0 25px;
@@ -24,13 +27,16 @@
                 padding-left: 10px;
 
                .leftPanel_navList_item {
-                   
+                   .selected {
+                    background: rgba(80, 255, 64, 0.548);
+                   }
+
                    .navList_item_label {
                        padding: 8px 10px;
                        @include displayFlex(row, flex-start,center);
 
                        border-radius: 10px;
-                       &:hover{
+                       &:not(.selected):hover {
                            background: rgba(79, 255, 64, 0.2);
                        }
                         gap: 10px;
@@ -52,5 +58,6 @@
                }
            }
         }
+
     }
 }

@@ -1,7 +1,7 @@
 .modalContainer {
   position: fixed;
   top: 0;
-  left: 0;
+  left: -100vw;
   width: 60vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);
@@ -11,7 +11,7 @@
 .modalMain {
   position: fixed;
   top: 0;
-  right: 0;
+  right: -100vw;
   width: 40vw;
   height: 100%;
   background-color: white;
@@ -24,12 +24,12 @@
   display: none;
 }
 
-.displayBlock {
-  display: block;
+.displayLeft {
+  left: 0;
 }
 
-.displayNone {
-  display: none;
+.displayRight {
+  right: 0;
 }
 
 .modalContainer .closeButton {
@@ -41,6 +41,7 @@
   background: none;
   border: none;
   transform: rotate(45deg);
+  outline: none;
 }
 
 .mainContent {

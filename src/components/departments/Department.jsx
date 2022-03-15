@@ -1,11 +1,14 @@
 import React from 'react'
 import Header from '../Header'
-import { CheckMark, AddIcon, ChevronRight, ChevronLeft, UserGroupIcon } from '../../icons/Icons'
+import { CheckMark, AddIcon, ChevronRight, ChevronLeft, UserGroupIcon, ChatIcon, FolderIcon } from '../../icons/Icons'
+import Resource from './Resource/Resource'
+import Members from './Members/Members';
+import Chats from './Chats/Chats';
 
 
 export default function Department(props) {
 
-    const [isOpen, setIsOpen] = React.useState(false)
+    const [selected, setSelected] = React.useState("resource");
 
     return (
         <main className='lyt_wrapper_department'>
@@ -13,21 +16,25 @@ export default function Department(props) {
             <section className='wrapper_department_main'>
                 <div className='department_main_leftPanel'>
                     <ul className='main_leftPanel_navList'>
-                        <li className='leftPanel_navList_item'>
-                            <div className='navList_item_label'>
-                                {/* <UserGroupIcon /> */}
+                        <li className='leftPanel_navList_item'
+                            onClick={() => setSelected("members")}>
+                            <div className={`navList_item_label ${selected === 'members' && 'selected'}`}>
+                                < UserGroupIcon />
                                 <p>Members</p>
                             </div>
                         </li>
-                        <li className='leftPanel_navList_item'>
-                            <div className='navList_item_label'>
-                                {/* <UserGroupIcon /> */}
-                                <p>Public Resources</p>
+                        <li className='leftPanel_navList_item'
+                            onClick={() => setSelected("resource")}>
+                            <div className={`navList_item_label ${selected === 'resource' && 'selected'}`} >
+                                <FolderIcon />
+                                <p>Resources</p>
                             </div>
                         </li>
-                        <li className='leftPanel_navList_item'>
-                            <div className='navList_item_label'>
-                                {/* <UserGroupIcon /> */}
+                        <li className='leftPanel_navList_item'
+                            onClick={() => setSelected("messages")}
+                        >
+                            <div className={`navList_item_label ${selected === 'messages' && 'selected'}`}>
+                                <ChatIcon color="black" />
                                 <p>Messages</p>
                             </div>
                         </li>
@@ -40,7 +47,7 @@ export default function Department(props) {
                             </div>
                             <ul className='navList_item_subMenu'>
                                 <li className='item_subMenu_item'>
-                                    Public Resources
+                                    Android Development
                                 </li>
                             </ul>
                         </li>
@@ -48,9 +55,11 @@ export default function Department(props) {
 
                 </div>
                 <div className='department_main_rightContent'>
-
+                    {selected === "members" && <Members />}
+                    {selected === "resource" && <Resource />}
+                    {selected === "messages" && <Chats />}
                 </div>
             </section>
-        </main>
+        </main >
     )
 }

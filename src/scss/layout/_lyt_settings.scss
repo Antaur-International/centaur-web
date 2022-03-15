@@ -55,6 +55,10 @@
     }
     .wrapper_setting_content{
         grid-area: content;
+        height: 80vh;
+        overflow-y: scroll;
+
+        @include hideScrollbar;
 
         .setting_content__heading{
             .heading_title{

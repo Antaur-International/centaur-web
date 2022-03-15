@@ -24,7 +24,8 @@ export default function Form() {
         }
 
         if (email) {
-            axios.post('http://localhost:5000/user/login', user)
+            setLoading(true)
+            axios.post('https://centaur-be.herokuapp.com/user/login', user)
                 .then(res => {
                     console.log(res.data);
                     if (res.data.success === true) {

@@ -35,10 +35,6 @@ export default function RightDrawer(props) {
                 <FacultyIcon color='#A4A4A4' />
                 <p>Faculty</p>
             </li>
-            <li className='navigation-item'>
-                <ChatIcon color='#A4A4A4' />
-                <p>Chats</p>
-            </li>
             <li className={`navigation-item ${props.activeTab === 'myWork' ? 'selected-item' : ''}`}
                 onClick={() => { props.setActiveTab("myWork") }}
 

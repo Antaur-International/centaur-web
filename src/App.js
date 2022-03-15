@@ -28,7 +28,7 @@ function App() {
 
   React.useEffect(() => {
 
-    setActiveTab(sessionStorage.getItem("activeTab") !== null ? sessionStorage.getItem("activeTab") : "dashboard");
+
 
     if (sessionStorage.getItem('user')) {
       const userFetch = {
@@ -42,10 +42,11 @@ function App() {
         .then(res => {
           setInstanceUser(res.data.user);
           console.log('Running', res.data);
+          setActiveTab(sessionStorage.getItem("activeTab") !== null ? sessionStorage.getItem("activeTab") : "dashboard");
         })
         .catch(err => {
           console.log(err);
-        })
+        });
     } else {
       window.location.href = "/login";
     }

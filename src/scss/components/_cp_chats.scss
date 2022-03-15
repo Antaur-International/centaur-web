@@ -1,0 +1,36 @@
+.cp_wrapper_chats {
+    h2 {
+        margin-bottom: 20px;
+    }
+    .wrapper_chats_list {
+        @include displayFlex(column, flex-start, stretch);
+        gap: 15px;
+
+        .chats_list_item {
+            @include displayFlex(row, flex-start, center);
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+
+            &:not(:last-child) {
+                border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+            }
+
+            p {
+                margin-left: 10px;
+                font-size: 1vw;
+                width: 50%;
+            }
+
+            .list_item_avatar  {
+                img {
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    background-color: #e6e6e6;
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}

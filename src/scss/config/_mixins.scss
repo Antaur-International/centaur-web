@@ -1,4 +1,4 @@
-@mixin displayFlex ($direction, $justify, $align) {
+@mixin displayFlex($direction, $justify, $align) {
     display: flex;
     flex-direction: $direction;
     justify-content: $justify;
@@ -8,7 +8,7 @@
 @mixin formButton() {
     outline: none;
     border: none;
-    background-color: #4FFF40;
+    background-color: #4fff40;
     color: black;
     padding: 10px 20px;
     border-radius: 5px;
@@ -23,18 +23,27 @@
     @include displayFlex(row, center, center);
     cursor: pointer;
     background-color: white;
-    border: 1px solid #DFDFDF;
+    border: 1px solid #dfdfdf;
     border-radius: 10px;
     padding: 10px;
 
-    &:not(:last-child){
+    &:not(:last-child) {
         margin-bottom: 10px;
     }
 
-    p{
+    p {
         font-size: 1.2vw;
         font-family: $barlow_font;
         margin-left: 25px;
     }
-    
+}
+
+@mixin hideScrollbar {
+    ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }

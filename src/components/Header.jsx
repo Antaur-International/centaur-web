@@ -20,7 +20,7 @@ export default function Header(props) {
     return <header className='header'>
 
         {/* Notification Modal */}
-        <Modal show={isOpen} handleClose={handleClose} title="Add a new course">
+        <Modal show={isOpen} handleClose={handleClose}>
             <Notification />
         </Modal>
 
