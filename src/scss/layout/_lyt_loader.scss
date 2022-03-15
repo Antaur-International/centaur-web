@@ -1,0 +1,23 @@
+.bg_wrapper_loader {
+    background: #f5f5f5;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .wrapper_loader_content{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        p{
+            font-size: 2vw;
+            font-weight: bold;
+            color: #000;
+        }
+    }
+}

@@ -27,6 +27,9 @@ function App() {
   const [instanceUser, setInstanceUser] = React.useState({});
 
   React.useEffect(() => {
+
+    setActiveTab(sessionStorage.getItem("activeTab") !== null ? sessionStorage.getItem("activeTab") : "dashboard");
+
     if (sessionStorage.getItem('user')) {
       const userFetch = {
         userid: JSON.parse(sessionStorage.getItem('user')).userid,
@@ -48,9 +51,15 @@ function App() {
     }
   }, []);
 
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+
+    sessionStorage.setItem('activeTab', tab);
+  }
+
   return (
     <div className="App">
-      <RightDrawer activeTab={activeTab} setActiveTab={setActiveTab} />
+      <RightDrawer activeTab={activeTab} setActiveTab={handleTabChange} />
       <main className='main'>
         {activeTab === "dashboard" && <Dashboard user={instanceUser} />}
         {activeTab === "department" && <Department user={instanceUser} setActiveTab={setActiveTab} />}

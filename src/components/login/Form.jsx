@@ -1,8 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import GoogleLogin from 'react-google-login';
-
 import axios from 'axios';
+import Loader from '../../layout/_lyt_loader';
 
 export default function Form() {
 
@@ -13,7 +12,10 @@ export default function Form() {
 
     const Navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const [loading, setLoading] = React.useState(false);
+
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         const user = {
@@ -22,7 +24,8 @@ export default function Form() {
         }
 
         if (email) {
-            axios.post('https://centaur-be.herokuapp.com/user/login', user)
+            setLoading(true);
+            await axios.post('https://centaur-be.herokuapp.com/user/login', user)
                 .then(res => {
                     console.log(res.data);
                     if (res.data.success === true) {
@@ -33,11 +36,13 @@ export default function Form() {
 
                     else {
                         alert(res.data.message);
+                        setLoading(false);
                     }
                 })
                 .catch(err => {
                     console.log(err);
                 })
+
         }
 
     };
@@ -60,6 +65,7 @@ export default function Form() {
 
     return (
         <form className='login_page_form'>
+            {loading && <Loader />}
             <div className='page_form_div'>
                 <label>Email</label>
                 <input ref={email} type="email" placeholder='name@example.com' />
