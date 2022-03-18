@@ -15,8 +15,10 @@ import UserProvider from './data/Context/UserContext';
 import { BrowserRouter as Router, Route, Routes, HashRouter } from 'react-router-dom';
 
 ReactDOM.render(
-  <Router>
-    <HashRouter>
+
+  <HashRouter>
+    <Routes>
+
       <Route path="/" element={<Landing />} />
       <Route path="/login" element={<Login />} />
       <Route path="/dashboard" element={
@@ -26,7 +28,7 @@ ReactDOM.render(
       } />
       <Route path="/register" element={<Register />} />
       <Route path="*" element={<NotFound />} />
-    </HashRouter>
-  </Router>,
+    </Routes>
+  </HashRouter>,
   document.getElementById('root')
 );
