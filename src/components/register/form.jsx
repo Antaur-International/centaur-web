@@ -77,7 +77,7 @@ export default function RegForm() {
 
     React.useEffect(() => {
         axios
-            .get('http://localhost:5000/department')
+            .get(`${process.env.REACT_APP_DEV_URL}/department`)
             .then((res) => {
                 // for initials and debugging purpose 
                 console.log(res.data);
