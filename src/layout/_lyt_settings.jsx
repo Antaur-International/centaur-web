@@ -11,7 +11,6 @@ export default function SettingsLayout(props) {
 
     const user = useContext(UserContext)
 
-    const [name, setName] = useState("");
 
 
 
@@ -21,7 +20,6 @@ export default function SettingsLayout(props) {
 
     React.useEffect(() => {
         user.update();
-        setName(user.status.name);
     }, [])
 
     const handleProfileUpdate = () => {
@@ -167,8 +165,8 @@ export default function SettingsLayout(props) {
                         </div>
 
                         <div className='body_content'>
-                            <TagInput mainLabel="First Name " label="mes.ac.in/" inputType="text" placeholder="Enter Your First Name: " value={name.split(" ")[0]} />
-                            <TagInput mainLabel="Last Name " label="mes.ac.in/" inputType="text" placeholder="Enter Your Last Name: " value={name.split(" ")[1]} />
+                            <TagInput mainLabel="First Name " label="mes.ac.in/" inputType="text" placeholder="Enter Your First Name: " value={user.status.name.split(" ")[0]} />
+                            <TagInput mainLabel="Last Name " label="mes.ac.in/" inputType="text" placeholder="Enter Your Last Name: " value={user.status.name.split(" ")[1]} />
 
                             <NormalInput mainLabel="Email " inputType="text" placeholder="Enter Your Email: " value={user.status.email} />
 

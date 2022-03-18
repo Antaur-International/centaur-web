@@ -12,13 +12,12 @@ import App from './App';
 import UserProvider from './data/Context/UserContext';
 
 // Importing packages
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, HashRouter } from 'react-router-dom';
 
 ReactDOM.render(
 
-  <BrowserRouter basename='/centaur-web'>
+  <HashRouter >
     <Routes>
-
       <Route path="/" element={<Landing />} />
       <Route path="/login" element={<Login />} />
       <Route path="/dashboard" element={
@@ -29,6 +28,6 @@ ReactDOM.render(
       <Route path="/register" element={<Register />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
-  </BrowserRouter>,
+  </HashRouter>,
   document.getElementById('root')
 );
