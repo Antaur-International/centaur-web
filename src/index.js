@@ -12,10 +12,10 @@ import App from './App';
 import UserProvider from './data/Context/UserContext';
 
 // Importing packages
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, HashRouter } from 'react-router-dom';
 
 ReactDOM.render(
-  <Router>
+  <HashRouter>
     <Routes>
       <Route path="/" element={<Landing />} />
       <Route path="/login" element={<Login />} />
@@ -27,6 +27,6 @@ ReactDOM.render(
       <Route path="/register" element={<Register />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
-  </Router>,
+  </HashRouter>,
   document.getElementById('root')
 );
