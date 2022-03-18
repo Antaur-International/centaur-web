@@ -38,7 +38,7 @@ export default function UserProvider({ children }) {
                     console.log(err);
                 });
         } else {
-            window.location.href = '/#/centaur-web/login';
+            window.location.href = './#/login';
         }
     }
 
