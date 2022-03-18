@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router';
 
 export default function Popup({ textColor, text, setIsOpen, children, called }) {
+
+    const Navigate = useNavigate();
 
     const handleClick = () => {
 
         if (called === "header") {
             sessionStorage.removeItem('user');
-            window.location.href = '/login';
+            Navigate('/login');
         }
 
         setIsOpen(false);
