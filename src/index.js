@@ -16,7 +16,7 @@ import { BrowserRouter as Router, Route, Routes, HashRouter } from 'react-router
 
 ReactDOM.render(
 
-  <HashRouter>
+  <HashRouter basename='/centaur-web'>
     <Routes>
 
       <Route path="/" element={<Landing />} />

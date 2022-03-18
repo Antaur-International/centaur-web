@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import Header from '../components/Header'
 import { ChevronLeft, Heart, UserIcon } from '../icons/Icons'
 import { NormalInput, TagInput, ColumnInput } from '../components/settings/Inputs'
@@ -11,7 +11,7 @@ export default function SettingsLayout(props) {
 
     const user = useContext(UserContext)
 
-    const name = user.status.name.split(' ');
+    const [name, setName] = useState("");
 
 
 
@@ -19,23 +19,21 @@ export default function SettingsLayout(props) {
     const backRef = useRef(null);
     const imageRef = useRef(null);
 
-    const firstName = name[0];
-    const lastName = name[1];
-
     React.useEffect(() => {
-        console.log(props.user);
+        user.update();
+        setName(user.status.name);
     }, [])
 
     const handleProfileUpdate = () => {
         let formData = new FormData();
         formData.append("file", imageRef.current.files[0]);
-        formData.append("user_id", props.user._id);
+        formData.append("user_id", user.status._id);
 
         axios.post(`${process.env.REACT_APP_DEV_URL}/file/upload`, formData)
             .then(res => {
                 const data = {
                     image: res.data.file,
-                    id: props.user._id
+                    id: user.status._id
                 }
 
                 axios.post(`${process.env.REACT_APP_DEV_URL}/user/profileImage`, data)
@@ -66,7 +64,7 @@ export default function SettingsLayout(props) {
 
                 const data = {
                     image: res.data.file,
-                    id: props.user._id,
+                    id: user.status._id,
                     front_image: true
                 }
 
@@ -92,7 +90,7 @@ export default function SettingsLayout(props) {
         let formData = new FormData();
 
         formData.append("file", backRef.current.files[0]);
-        formData.append("user_id", props.user._id);
+        formData.append("user_id", user.status._id);
 
         for (var p of formData) {
             console.log(p);
@@ -103,7 +101,7 @@ export default function SettingsLayout(props) {
 
                 const data = {
                     image: res.data.file,
-                    id: props.user._id,
+                    id: user.status._id,
                     front_image: false
                 }
 
@@ -127,7 +125,7 @@ export default function SettingsLayout(props) {
 
     return (
         <section className='layout_wrapper_settings'>
-            <Header user={props.user} />
+            <Header />
             <section className='wrapper_settings_navbar'>
                 <h1>Settings</h1>
                 <ul className='settings_navbar_list'>
@@ -169,8 +167,8 @@ export default function SettingsLayout(props) {
                         </div>
 
                         <div className='body_content'>
-                            <TagInput mainLabel="First Name " label="mes.ac.in/" inputType="text" placeholder="Enter Your First Name: " value={firstName} />
-                            <TagInput mainLabel="Last Name " label="mes.ac.in/" inputType="text" placeholder="Enter Your Last Name: " value={lastName} />
+                            <TagInput mainLabel="First Name " label="mes.ac.in/" inputType="text" placeholder="Enter Your First Name: " value={name.split(" ")[0]} />
+                            <TagInput mainLabel="Last Name " label="mes.ac.in/" inputType="text" placeholder="Enter Your Last Name: " value={name.split(" ")[1]} />
 
                             <NormalInput mainLabel="Email " inputType="text" placeholder="Enter Your Email: " value={user.status.email} />
 
@@ -182,15 +180,15 @@ export default function SettingsLayout(props) {
                         <div className="idVerify__heading">
                             <p className='heading_title'>
                                 <img src='/centaur-web/images/icons/tick-green.svg' alt='confirmation icon' />
-                                {props.user.idImageFront && props.user.idImageBack ? "You have completed your ID verification" : "Please complete your student verification by adding scanned images of your ID"}</p>
+                                {user.status.idImageFront && user.status.idImageBack ? "You have completed your ID verification" : "Please complete your student verification by adding scanned images of your ID"}</p>
                         </div>
                         <div className="idInputs_verify">
                             {
-                                props.user.idImageFront ?
+                                user.status.idImageFront ?
                                     <div>
                                         <h2>Front Side Of ID:</h2>
                                         <br />
-                                        <img src={props.user.idImageFront} alt='idFront' />
+                                        <img src={user.status.idImageFront} alt='idFront' />
                                     </div> :
                                     <div className="file-input">
                                         <input type='file' ref={frontRef} onChange={uploadFront} />
@@ -199,11 +197,11 @@ export default function SettingsLayout(props) {
                             }
 
                             {
-                                props.user.idImageBack ?
+                                user.status.idImageBack ?
                                     <div>
                                         <h2>Back Side Of ID:</h2>
                                         <br />
-                                        <img src={props.user.idImageBack} alt='idBack' />
+                                        <img src={user.status.idImageBack} alt='idBack' />
                                     </div> :
                                     <div className="file-input">
                                         <input type='file' ref={backRef} onChange={uploadBack} />
@@ -222,9 +220,7 @@ export default function SettingsLayout(props) {
                                 <input className='delete' type='file' ref={imageRef} onChange={handleProfileUpdate} />
                                 Choose Image
                             </label>
-                            <a href='#' className="upload">Upload</a>
-                            <img src={props.user.image} alt="profileImage" />
-                            <a className="delete">Delete</a>
+                            <button className="upload">Upload</button>
                             <img src={user.status.image} alt="profileImage" />
                         </div>
                     </div>

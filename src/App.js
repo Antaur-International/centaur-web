@@ -26,26 +26,6 @@ function App() {
   const user = useContext(UserContext);
 
   React.useEffect(() => {
-    if (sessionStorage.getItem('user')) {
-      const userFetch = {
-        userid: JSON.parse(sessionStorage.getItem('user')).userid,
-        userEmail: JSON.parse(sessionStorage.getItem('user')).userEmail
-      };
-
-      console.log(userFetch);
-
-      axios.post(`${process.env.REACT_APP_DEV_URL}/user/getUser`, userFetch)
-        .then(res => {
-          setInstanceUser(res.data.user);
-          console.log('Running', res.data);
-          setActiveTab(sessionStorage.getItem("activeTab") !== null ? sessionStorage.getItem("activeTab") : "dashboard");
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    } else {
-      window.location.href = "/login";
-    }
 
     user.update();
     setActiveTab(sessionStorage.getItem("activeTab") !== null ? sessionStorage.getItem("activeTab") : "dashboard");
@@ -53,7 +33,9 @@ function App() {
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
-    sessionStorage.setItem('activeTab', tab);
+    if (tab !== "settings") {
+      sessionStorage.setItem('activeTab', tab)
+    };
   }
 
   return (
