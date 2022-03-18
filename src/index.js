@@ -12,11 +12,11 @@ import App from './App';
 import UserProvider from './data/Context/UserContext';
 
 // Importing packages
-import { BrowserRouter as Router, Route, Routes, HashRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 ReactDOM.render(
 
-  <HashRouter basename='/centaur-web'>
+  <BrowserRouter basename='/centaur-web'>
     <Routes>
 
       <Route path="/" element={<Landing />} />
@@ -29,6 +29,6 @@ ReactDOM.render(
       <Route path="/register" element={<Register />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
-  </HashRouter>,
+  </BrowserRouter>,
   document.getElementById('root')
 );
