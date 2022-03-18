@@ -18,18 +18,12 @@ import './App.css';
 Importing the packages
 */
 
-
-window.process = { env: { NODE_ENV: "production" } };
-
 function App() {
 
   const [activeTab, setActiveTab] = React.useState("dashboard");
   const [instanceUser, setInstanceUser] = React.useState({});
 
   React.useEffect(() => {
-
-
-
     if (sessionStorage.getItem('user')) {
       const userFetch = {
         userid: JSON.parse(sessionStorage.getItem('user')).userid,
@@ -38,7 +32,7 @@ function App() {
 
       console.log(userFetch);
 
-      axios.post('https://centaur-be.herokuapp.com/user/getUser', userFetch)
+      axios.post(`${process.env.REACT_APP_DEV_URL}/user/getUser`, userFetch)
         .then(res => {
           setInstanceUser(res.data.user);
           console.log('Running', res.data);

@@ -89,7 +89,7 @@ export default function MyWorkMain() {
     useEffect(() => {
         setPersonalTaskHeight(personalTaskIsOpen ? `${personalTask.current.scrollHeight}px` : 0);
 
-        axios.get(`https://centaur-be.herokuapp.com/task/personal/${JSON.parse(sessionStorage.getItem('user')).userid}`)
+        axios.get(`${process.env.REACT_APP_DEV_URL}/task/personal/${JSON.parse(sessionStorage.getItem('user')).userid}`)
             .then(res => {
                 setPersonalTaskList(res.data.tasks);
             })
@@ -97,7 +97,7 @@ export default function MyWorkMain() {
                 console.log(err);
             })
 
-        axios.get('https://centaur-be.herokuapp.com/task/college')
+        axios.get(`${process.env.REACT_APP_DEV_URL}/task/college`)
             .then(res => {
                 setCollegeTaskList(res.data.tasks);
                 console.log(res.data.tasks);

@@ -25,7 +25,7 @@ export default function Form() {
 
         if (email) {
             setLoading(true)
-            axios.post('https://centaur-be.herokuapp.com/user/login', user)
+            axios.post(`${process.env.REACT_APP_DEV_URL}/user/login`, user)
                 .then(res => {
                     console.log(res.data);
                     if (res.data.success === true) {

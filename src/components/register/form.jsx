@@ -113,7 +113,7 @@ export default function RegForm() {
                 department: selectedDepartment,
             }
 
-            axios.post('http://localhost:5000/user/register', user)
+            axios.post(`${process.env.REACT_APP_DEV_URL}/user/register`, user)
                 .then(res => {
                     console.log(res);
                     console.log(res.data);

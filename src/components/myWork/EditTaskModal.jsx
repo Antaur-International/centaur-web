@@ -6,23 +6,41 @@ export default function EditTaskModal({ setIsOpen, task, handleDeleteUpdate }) {
 
     const [titleInput, setTitleInput] = useState(task.task.task_title);
     const [descriptionInput, setDescriptionInput] = useState(task.task.task_description);
+    const [dateInput, setDateInput] = useState(task.task.task_deadline);
 
     const taskCategory = useRef(null);
     const reminderDate = useRef(null);
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const updateBtn = e.target.getAttribute('data-id');
+
         const title = titleInput;
         const description = descriptionInput;
         const reminder = reminderDate.current.value;
-        console.log({ title, description, reminder });
+
+        const data = {
+            task_title: title,
+            task_description: description,
+            task_deadline: reminder
+        };
+
+        axios.put(`${process.env.REACT_APP_DEV_URL}/task/${updateBtn}`, data)
+            .then(res => {
+                console.log(res);
+                setIsOpen(false);
+                // refresh the page
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
 
     const handleDelete = (e) => {
         e.preventDefault();
         const deleteBtn = e.target.getAttribute('data-id');
 
-        axios.delete(`https://centaur-be.herokuapp.com/task/${deleteBtn}`)
+        axios.delete(`${process.env.REACT_APP_DEV_URL}/task/${deleteBtn}`)
             .then(res => {
                 console.log(res.data);
                 sessionStorage.setItem('deletedTask', JSON.stringify(res.data.task));
@@ -64,14 +82,14 @@ export default function EditTaskModal({ setIsOpen, task, handleDeleteUpdate }) {
                             <button type='button' className='form_actionBtn_reminder btn'>
                                 <Clock />
                                 <p>Reminder</p>
-                                <input ref={reminderDate} type="date" value={task.task.task_deadline} />
+                                <input ref={reminderDate} type="date" value={dateInput} onChange={(e) => setDateInput(e.target.value)} />
                             </button>
                             {/* <button className='form_actionBtn_reminder btn'>
                                 <Clock />
                                 <p>Group</p>
                             </button> */}
                             <button className='form_actionBtn_addTask btn' data-id={task.task._id} onClick={handleSubmit}>
-                                <p>Update</p>
+                                Update
                             </button>
                             <button className='form_actionBtn_deleteTask btn' data-id={task.task._id} onClick={(e) => { handleDelete(e); }}>
                                 Delete Task

@@ -2,24 +2,50 @@ import React, { useRef } from 'react'
 import Header from '../components/Header'
 import { ChevronLeft, Heart, UserIcon } from '../icons/Icons'
 import { NormalInput, TagInput, ColumnInput } from '../components/settings/Inputs'
-import { AddIcon } from '../icons/Icons';
+import { AddIcon, CheckMark } from '../icons/Icons';
 import * as FormData from "form-data";
 import axios from 'axios'
 
 export default function SettingsLayout(props) {
     const name = props.user.name.split(' ');
 
-    const [firstImage, setFirstImage] = React.useState('');
-    const [secondImage, setSecondImage] = React.useState('');
-
     const frontRef = useRef(null);
     const backRef = useRef(null);
+    const imageRef = useRef(null);
 
     const firstName = name[0];
     const lastName = name[1];
 
+    React.useEffect(() => {
+        console.log(props.user);
+    }, [])
+
+    const handleProfileUpdate = () => {
+        let formData = new FormData();
+        formData.append("file", imageRef.current.files[0]);
+        formData.append("user_id", props.user._id);
+
+        axios.post(`${process.env.REACT_APP_DEV_URL}/file/upload`, formData)
+            .then(res => {
+                const data = {
+                    image: res.data.file,
+                    id: props.user._id
+                }
+
+                axios.post(`${process.env.REACT_APP_DEV_URL}/user/profileImage`, data)
+                    .then(res => {
+                        console.log(res);
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    };
+
     const uploadFront = () => {
-        console.log('upload front');
         let formData = new FormData();
 
         formData.append("file", frontRef.current.files[0]);
@@ -29,11 +55,66 @@ export default function SettingsLayout(props) {
             console.log(p);
         }
 
-        axios.post('http://localhost:5000/file/upload', formData)
+        axios.post(`${process.env.REACT_APP_DEV_URL}/file/upload`, formData)
             .then(res => {
-                console.log(res);
+
+                const data = {
+                    image: res.data.file,
+                    id: props.user._id,
+                    front_image: true
+                }
+
+                console.log(data);
+
+                axios.post(`${process.env.REACT_APP_DEV_URL}/user/updateImage`, data)
+                    .then(res => {
+                        console.log(res);
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+
+                console.log(res.data.file);
             })
             .catch(err => {
+                console.log("hit");
+                console.log(err);
+            });
+    }
+
+    const uploadBack = () => {
+        let formData = new FormData();
+
+        formData.append("file", backRef.current.files[0]);
+        formData.append("user_id", props.user._id);
+
+        for (var p of formData) {
+            console.log(p);
+        }
+
+        axios.post(`${process.env.REACT_APP_DEV_URL}/file/upload`, formData)
+            .then(res => {
+
+                const data = {
+                    image: res.data.file,
+                    id: props.user._id,
+                    front_image: false
+                }
+
+                console.log(data);
+
+                axios.post(`${process.env.REACT_APP_DEV_URL}/user/updateImage`, data)
+                    .then(res => {
+                        console.log(res);
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+
+                console.log(res.data.file);
+            })
+            .catch(err => {
+                console.log("hit");
                 console.log(err);
             });
     }
@@ -93,18 +174,36 @@ export default function SettingsLayout(props) {
                     </div>
                     <div className='setting_content__body_idVerify'>
                         <div className="idVerify__heading">
-                            <p className='heading_title'>Please complete your student verification by adding scanned images of your ID</p>
+                            <p className='heading_title'>
+                                <img src='/centaur-web/images/icons/tick-green.svg' alt='confirmation icon' />
+                                {props.user.idImageFront && props.user.idImageBack ? "You have completed your ID verification" : "Please complete your student verification by adding scanned images of your ID"}</p>
                         </div>
-
                         <div className="idInputs_verify">
-                            <div className="file-input">
-                                <input type='file' ref={frontRef} onChange={uploadFront} />
-                                <span class='button'><AddIcon color="#000" /></span>
-                            </div>
-                            <div className="file-input">
-                                <input type='file' ref={backRef} />
-                                <span class='button'><AddIcon color="#000" /></span>
-                            </div>
+                            {
+                                props.user.idImageFront ?
+                                    <div>
+                                        <h2>Front Side Of ID:</h2>
+                                        <br />
+                                        <img src={props.user.idImageFront} alt='idFront' />
+                                    </div> :
+                                    <div className="file-input">
+                                        <input type='file' ref={frontRef} onChange={uploadFront} />
+                                        <span class='button'><AddIcon color="#000" /></span>
+                                    </div>
+                            }
+
+                            {
+                                props.user.idImageBack ?
+                                    <div>
+                                        <h2>Back Side Of ID:</h2>
+                                        <br />
+                                        <img src={props.user.idImageBack} alt='idBack' />
+                                    </div> :
+                                    <div className="file-input">
+                                        <input type='file' ref={backRef} onChange={uploadBack} />
+                                        <span class='button'><AddIcon color="#000" /></span>
+                                    </div>
+                            }
                         </div>
                     </div>
                     <div className='settings_content__body_profileImage'>
@@ -113,7 +212,11 @@ export default function SettingsLayout(props) {
                         </div>
 
                         <div className="profile_image">
-                            <a className="delete">Delete</a>
+                            <label className='imageUpload'>
+                                <input className='delete' type='file' ref={imageRef} onChange={handleProfileUpdate} />
+                                Choose Image
+                            </label>
+                            <a href='#' className="upload">Upload</a>
                             <img src={props.user.image} alt="profileImage" />
                         </div>
                     </div>

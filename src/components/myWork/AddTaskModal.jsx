@@ -24,7 +24,7 @@ export default function AddTaskModal({ setIsOpen, handleSubmitUpdate }) {
 
         console.log(task);
 
-        axios.post('https://centaur-be.herokuapp.com/task', task)
+        axios.post(`${process.env.REACT_APP_DEV_URL}/task`, task)
             .then(res => {
                 sessionStorage.setItem('task', JSON.stringify(res.data.task));
                 setTask(res.data.task);
