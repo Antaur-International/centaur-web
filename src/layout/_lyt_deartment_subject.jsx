@@ -3,7 +3,7 @@ import Header from '../components/Header'
 export default function SubjectLayout(props) {
     return (
         <main className='lyt_subject_wrapper'>
-            <Header user={props.user} />
+            <Header />
             <section className="subject_wrapper_content">
                 <div className='wrapper_content_card'>
                     <h2>AJP</h2>

@@ -8,8 +8,8 @@
     .wrapper_department_main {
         margin-top: 20px;
 
-        display: grid ;
-        grid-template-columns: 1fr 3fr; 
+        display: grid;
+        grid-template-columns: 1fr 3fr;
         grid-template-rows: 85vh;
         grid-gap: 20px;
 
@@ -19,45 +19,62 @@
             border-radius: 5px;
             padding: 20px 10px;
 
+            .main_leftPanel_navList {
+                @include displayFlex(column, flex-start, stretch);
+                gap: 16px;
 
-           .main_leftPanel_navList {
-               @include displayFlex(column, flex-start,stretch);
-               gap: 16px;
-               
                 padding-left: 10px;
 
-               .leftPanel_navList_item {
-                   .selected {
-                    background: rgba(80, 255, 64, 0.548);
-                   }
+                .leftPanel_navList_item {
+                    .selected {
+                        background: rgba(80, 255, 64, 0.548);
+                    }
 
-                   .navList_item_label {
-                       padding: 8px 10px;
-                       @include displayFlex(row, flex-start,center);
+                    .navList_item_label {
+                        padding: 8px 10px;
+                        @include displayFlex(row, flex-start, center);
 
-                       border-radius: 10px;
-                       &:not(.selected):hover {
-                           background: rgba(79, 255, 64, 0.2);
-                       }
+                        border-radius: 10px;
+                        &:not(.selected):hover {
+                            background: rgba(79, 255, 64, 0.2);
+                        }
                         gap: 10px;
-                        p{
+                        p {
                             font-size: 1vw;
                             color: #2f2f2f;
                         }
                         cursor: pointer;
-                   }
+                    }
 
-                   .navList_item_subMenu {
-                          @include displayFlex(column, flex-start,stretch);
-                          gap: 10px;
-                          
-                          .item_subMenu_item {
-                              padding-left: 50px;
-                          }
-                   }
-               }
-           }
+                    .navList_item_subMenu {
+                        @include displayFlex(column, flex-start, stretch);
+                        gap: 10px;
+                        padding: 10px;
+                        padding-left: 20px;
+                        .item_subMenu_item {
+                            padding-left: 50px;
+                            font-size: 1vw;
+                            padding: 8px 10px;
+                            border-radius: 10px;
+                            cursor: pointer;
+                            &:hover {
+                                background: rgba(79, 255, 64, 0.2);
+                            }
+
+                            &.selected {
+                                background: rgba(80, 255, 64, 0.548);
+                            }
+
+                            &:not(.selected):hover {
+                                background: rgba(79, 255, 64, 0.2);
+                            }
+                        }
+                    }
+                }
+            }
         }
-
+        // .department_main_rightContent {
+        //     height: 100%;
+        // }
     }
 }

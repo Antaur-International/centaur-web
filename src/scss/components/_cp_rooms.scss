@@ -1,0 +1,108 @@
+.cp_wrapper_room {
+    @include displayFlex(column, space-between, stretch);
+    height: 100%;
+
+    .wrapper_room_title {
+        @include displayFlex(row, flex-start, center);
+        gap: 10px;
+        padding: 10px 5px;
+        border-bottom: 1px solid #e6e6e6;
+
+        .room_title_img {
+            border-radius: 50%;
+            width: 60px;
+        }
+    }
+
+    .wrapper_room_section {
+        @include displayFlex(column, end, stretch);
+        gap: 20px;
+
+        .room_section_chats {
+            overflow-y: scroll;
+            height: 65vh;
+            @include hideScrollbar();
+            width: 100%;
+            .section_chats_display {
+                @include displayFlex(column, end, end);
+                gap: 30px;
+                padding-top: 15px;
+                padding-bottom: 15px;
+
+                .section_chats_userChat {
+                    @include displayFlex(row, center, flex-start);
+                    gap: 10px;
+
+                    &.endUser {
+                        align-self: flex-start;
+                    }
+
+                    &.self {
+                        align-self: flex-end;
+
+                        .chats_userChat_img{
+                            display: none;
+                        }
+                    }
+
+                    .chats_userChat_img {
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 10px;
+                    }
+
+                    .chats_userChat_name {
+                        font-size: 0.9vw;
+
+                        .userChat_name_time {
+                            font-size: 0.6vw;
+                            color: #999;
+                        }
+                    }
+
+                    .chats_userChat_content {
+                        width: 80%;
+                        font-size: 1vw;
+                        border-radius: 10px;
+                        padding: 5px 10px;
+                        background: #ffffff;
+                        box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.14);
+                    }
+                }
+            }
+        }
+
+        .room_section_inputArea {
+            @include displayFlex(row, stretch, center);
+            gap: 10px;
+
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 10px;
+            position: relative;
+            padding: 10px;
+            button {
+                cursor: pointer;
+                display: grid;
+                border: none;
+                place-items: center;
+                background: none;
+            }
+
+            .section_inputArea_emojiPicker {
+                position: absolute;
+                top: -330px;
+                left: 0;
+            }
+
+            .section_inputArea_sendBtn {
+                margin-left: auto;
+            }
+
+            input {
+                border: none;
+                outline: none;
+                width: 100%;
+            }
+        }
+    }
+}
