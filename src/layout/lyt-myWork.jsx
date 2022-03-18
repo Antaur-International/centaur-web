@@ -8,7 +8,7 @@ export default function MyWork(props) {
     return (
         <section className='lyt_wrapper_myWork'>
             <div className='wrapper_myWork_header'>
-                <Header user={props.user} />
+                <Header />
             </div>
             <div className='wrapper_myWork_main'>
                 <MyWorkMain />

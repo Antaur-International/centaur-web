@@ -4,11 +4,16 @@ import { CheckMark, AddIcon, ChevronRight, ChevronLeft, UserGroupIcon, ChatIcon,
 import Resource from './Resource/Resource'
 import Members from './Members/Members';
 import Chats from './Chats/Chats';
+import Room from './Chats/Room';
 
 
 export default function Department(props) {
 
     const [selected, setSelected] = React.useState("resource");
+
+    const changeTab = (tab) => {
+        setSelected(tab);
+    }
 
     return (
         <main className='lyt_wrapper_department'>
@@ -33,7 +38,7 @@ export default function Department(props) {
                         <li className='leftPanel_navList_item'
                             onClick={() => setSelected("messages")}
                         >
-                            <div className={`navList_item_label ${selected === 'messages' && 'selected'}`}>
+                            <div className={`navList_item_label ${selected === 'messages' || selected === 'room' ? 'selected' : ''}`}>
                                 <ChatIcon color="black" />
                                 <p>Messages</p>
                             </div>
@@ -57,7 +62,8 @@ export default function Department(props) {
                 <div className='department_main_rightContent'>
                     {selected === "members" && <Members />}
                     {selected === "resource" && <Resource />}
-                    {selected === "messages" && <Chats />}
+                    {selected === "messages" && <Chats changeTab={changeTab} />}
+                    {selected === "room" && <Room changeTab={changeTab} />}
                 </div>
             </section>
         </main >

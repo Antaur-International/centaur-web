@@ -1,14 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Header from "./Header"
-import axios from 'axios';
 import "./dashboard.css";
 import { CalenderIcon, MoreIcon, VideoIcon } from '../icons/Icons';
 
 import TodoLayout from '../layout/lyt-todo';
 import Modal from './rightDrawer/RightDrawer';
 import Newsstand from './newsstand/newsstand';
-
-var sessionStorage = window.sessionStorage;
+import { UserContext } from '../data/Context/UserContext';
 
 const MeetingsListItem = (props) => {
     return <li>
@@ -21,9 +19,11 @@ const MeetingsListItem = (props) => {
     </li>
 }
 
-export default function Dashboard(props) {
+export default function Dashboard() {
     const [greeting, setGreeting] = React.useState("Evening");
     const [isOpen, setIsOpen] = React.useState(false);
+
+    const user = useContext(UserContext)
 
     const handleOpen = () => {
         setIsOpen(true);
@@ -47,11 +47,11 @@ export default function Dashboard(props) {
         <Modal show={isOpen} handleClose={handleClose} >
             <Newsstand />
         </Modal>
-        <Header user={props.user} />
+        <Header />
         <section className='welcome'>
             <img src="https://i.ibb.co/XpFJZS0/fox-image.png" alt="" />
             <div>
-                <h2>Good {greeting}, <br />  <b style={{ fontSize: "2vw" }}>{props.user.name}</b></h2>
+                <h2>Good {greeting}, <br />  <b style={{ fontSize: "2vw" }}>{user.status.name}</b></h2>
                 <button>Go to Schedules </button>
             </div>
         </section>

@@ -6,7 +6,8 @@
 
         .publicResource_list_item {
             @include displayFlex(row, flex-start, center);
-            border: 1px solid rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 0, 0, 0.15);
+
             border-radius: 5px;
             padding: 10px 15px;
 

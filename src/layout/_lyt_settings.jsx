@@ -1,13 +1,19 @@
-import React, { useRef } from 'react'
+import React, { useContext, useRef } from 'react'
 import Header from '../components/Header'
 import { ChevronLeft, Heart, UserIcon } from '../icons/Icons'
 import { NormalInput, TagInput, ColumnInput } from '../components/settings/Inputs'
 import { AddIcon, CheckMark } from '../icons/Icons';
 import * as FormData from "form-data";
 import axios from 'axios'
+import { UserContext } from '../data/Context/UserContext';
 
 export default function SettingsLayout(props) {
-    const name = props.user.name.split(' ');
+
+    const user = useContext(UserContext)
+
+    const name = user.status.name.split(' ');
+
+
 
     const frontRef = useRef(null);
     const backRef = useRef(null);
@@ -49,7 +55,7 @@ export default function SettingsLayout(props) {
         let formData = new FormData();
 
         formData.append("file", frontRef.current.files[0]);
-        formData.append("user_id", props.user._id);
+        formData.append("user_id", user.status._id);
 
         for (var p of formData) {
             console.log(p);
@@ -166,10 +172,10 @@ export default function SettingsLayout(props) {
                             <TagInput mainLabel="First Name " label="mes.ac.in/" inputType="text" placeholder="Enter Your First Name: " value={firstName} />
                             <TagInput mainLabel="Last Name " label="mes.ac.in/" inputType="text" placeholder="Enter Your Last Name: " value={lastName} />
 
-                            <NormalInput mainLabel="Email " inputType="text" placeholder="Enter Your Email: " value={props.user.email} />
+                            <NormalInput mainLabel="Email " inputType="text" placeholder="Enter Your Email: " value={user.status.email} />
 
-                            <ColumnInput mainLabel="Phone Number " inputType="text" placeholder="00000 00000" value={props.user.phoneNum} />
-                            <ColumnInput mainLabel="Enrollment Number " inputType="text" placeholder="EN-0000000000" value={props.user.en_number} />
+                            <ColumnInput mainLabel="Phone Number " inputType="text" placeholder="00000 00000" value={user.status.phoneNum} />
+                            <ColumnInput mainLabel="Enrollment Number " inputType="text" placeholder="EN-0000000000" value={user.status.en_number} />
                         </div>
                     </div>
                     <div className='setting_content__body_idVerify'>
@@ -218,6 +224,8 @@ export default function SettingsLayout(props) {
                             </label>
                             <a href='#' className="upload">Upload</a>
                             <img src={props.user.image} alt="profileImage" />
+                            <a className="delete">Delete</a>
+                            <img src={user.status.image} alt="profileImage" />
                         </div>
                     </div>
                 </div>

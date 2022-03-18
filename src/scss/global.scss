@@ -22,6 +22,7 @@
     font-family: "Poppins", sans-serif;
     transition: all 0.3s ease-in-out;
     outline: none;
+    scroll-behavior: smooth;
 }
 
 html {
@@ -44,6 +45,6 @@ li {
 }
 
 input {
-    caret-color: #4FFF40;
+    caret-color: #3ABE2F;
     outline: none;
 }
