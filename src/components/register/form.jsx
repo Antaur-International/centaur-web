@@ -21,6 +21,8 @@ export default function RegForm() {
     const [isValidEnrollment, setIsValidEnrollment] = React.useState(true);
     const [isValidPhoneNumber, setIsValidPhoneNumber] = React.useState(true);
     const [selectedDepartment, setSelectedDepartment] = React.useState('');
+    const [semesters, setSemesters] = React.useState([]);
+    const [selectedSemester, setSelectedSemester] = React.useState('');
 
     const Navigate = useNavigate();
 
@@ -53,6 +55,29 @@ export default function RegForm() {
 
     }
 
+    const handleDepartmentChange = (e) => {
+        setSelectedDepartment(e.target.value);
+
+        axios.get(`${process.env.REACT_APP_DEV_URL}/department/${e.target.value}`)
+            .then(res => {
+                const semesterIds = res.data.department.semesters;
+                semesterIds.map((semester, index) => {
+                    console.log(`${process.env.REACT_APP_DEV_URL}/semester/${semester}`);
+                    axios.get(`${process.env.REACT_APP_DEV_URL}/semester/${semester}`)
+                        .then(res => {
+                            console.log(res.data);
+                            setSemesters(semesters => [...semesters, res.data.semester]);
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        })
+                })
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
     const changePasswordType = (e) => {
 
         if (password.current.type === 'password') {
@@ -79,9 +104,6 @@ export default function RegForm() {
         axios
             .get(`${process.env.REACT_APP_DEV_URL}/department`)
             .then((res) => {
-                // for initials and debugging purpose 
-                console.log(res.data);
-
                 if (res.data.success) {
                     setDepartments(res.data.departments);
                 } else {
@@ -111,6 +133,7 @@ export default function RegForm() {
                 en_number: enrollmentNumber.current.value,
                 phoneNum: phoneNumber.current.value,
                 department: selectedDepartment,
+                semester: selectedSemester
             }
 
             axios.post(`${process.env.REACT_APP_DEV_URL}/user/register`, user)
@@ -308,13 +331,25 @@ export default function RegForm() {
 
                 <div className='page_form_div'>
                     <label>Select Department</label>
-                    <select onChange={(e) => setSelectedDepartment(e.target.value)}>
+                    <select onChange={handleDepartmentChange}>
                         <option value="none" disabled selected="true">Select Department</option>
                         {
                             departmentsAvail.map((item, key) => {
-                                console.log(item);
                                 return (
                                     <option value={item._id}>{item.department_name}</option>
+                                )
+                            })
+                        }
+                    </select>
+                </div>
+
+                <div className='page_form_div'>
+                    <label>Select Semester</label>
+                    <select onChange={(e) => setSelectedSemester(e.target.value)}>
+                        {
+                            semesters.map((item, key) => {
+                                return (
+                                    <option value={item._id}>{item.name}</option>
                                 )
                             })
                         }

@@ -10,16 +10,17 @@ import { UserContext } from '../data/Context/UserContext';
 export default function SettingsLayout(props) {
 
     const user = useContext(UserContext)
-
-
-
-
+    const [semesters, setSemesters] = useState([]);
+    const [selectedSemester, setSelectedSemester] = useState('');
     const frontRef = useRef(null);
     const backRef = useRef(null);
     const imageRef = useRef(null);
 
     React.useEffect(() => {
         user.update();
+
+        setSemesters(user.status.department.semesters);
+        console.log(user.status.department.semesters);
     }, [])
 
     const handleProfileUpdate = () => {
@@ -169,6 +170,24 @@ export default function SettingsLayout(props) {
                             <TagInput mainLabel="Last Name " label="mes.ac.in/" inputType="text" placeholder="Enter Your Last Name: " value={user.status.name.split(" ")[1]} />
 
                             <NormalInput mainLabel="Email " inputType="text" placeholder="Enter Your Email: " value={user.status.email} />
+
+                            <NormalInput mainLabel="Department " inputType="text" placeholder="Enter your department: " value={user.status.department.department_name} />
+
+                            <div className='cp-input typ-normal'>
+                                <label className='cp-input__label'>Semester</label>
+                                <div className='cp-input__wrapper'>
+                                    <select className='cp-input__select' value={user.status.batch._id}>
+                                        <option value="">Select Semester</option>
+                                        {
+                                            semesters.map((semester, index) => {
+                                                return (
+                                                    <option key={index} value={semester._id} selected={semester._id === user.status.batch._id ? true : false}>{semester.name}</option>
+                                                )
+                                            })
+                                        }
+                                    </select>
+                                </div>
+                            </div>
 
                             <ColumnInput mainLabel="Phone Number " inputType="text" placeholder="00000 00000" value={user.status.phoneNum} />
                             <ColumnInput mainLabel="Enrollment Number " inputType="text" placeholder="EN-0000000000" value={user.status.en_number} />
