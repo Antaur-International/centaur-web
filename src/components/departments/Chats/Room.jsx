@@ -1,6 +1,21 @@
 import React, { useRef, useState } from 'react'
-import { EmojiICon, SendIcon } from '../../../icons/Icons'
+import { EmojiICon, InfoIcon, SendIcon } from '../../../icons/Icons'
 import EmojiPicker, { SKIN_TONE_MEDIUM_DARK } from 'emoji-picker-react';
+
+const UserChat = ({ userImg, chat, time, userType, userName }) => {
+    return (
+        <div className={`section_chats_userChat ${userType}`}>
+            <img src={userImg} alt={userName} className='chats_userChat_img ' />
+            <div>
+                <p className='chats_userChat_name'>{userName} <i className='userChat_name_time'>{time}</i></p>
+                <p className='chats_userChat_content'>
+                    {chat}
+                </p>
+            </div>
+
+        </div>
+    )
+}
 
 export default function Room() {
 
@@ -9,6 +24,32 @@ export default function Room() {
     const [showEmoji, setShowEmoji] = useState(false);
     const [selectedEmoji, setSelectedEmoji] = useState('');
     const [message, setMessage] = useState('');
+
+    const [visible, setVisible] = useState(false);
+
+    const chatHistory = [
+        {
+            userImg: 'https://via.placeholder.com/150',
+            chat: "So I was testing today the UI for our applications and found that the UI is not very good, but don't be sad, I will fix it soon. This is just a test message. I am testing the width of this text display box",
+            time: '12:00',
+            userType: 'endUser',
+            userName: 'Tester 01'
+        },
+        {
+            userImg: 'https://via.placeholder.com/150',
+            chat: "So I was testing today the UI for our applications and found that the UI is not very good, but don't be sad, I will fix it soon. This is just a test message. I am testing the width of this text display box",
+            time: '12:00',
+            userType: 'self',
+            userName: 'You'
+        },
+        {
+            userImg: 'https://via.placeholder.com/150',
+            chat: "This is a sample small text message.",
+            time: '12:00',
+            userType: 'endUser',
+            userName: 'Tester 02'
+        },
+    ]
 
     const handleInputChange = (e) => {
         setMessage(e.target.value);
@@ -22,8 +63,21 @@ export default function Room() {
     return (
         <section className='cp_wrapper_room'>
             <div className='wrapper_room_title'>
-                <img src="https://via.placeholder.com/150" alt="avatar" className='room_title_img' />
+                <img src="https://via.placeholder.com/100" alt="avatar" className='room_title_img' />
                 <h2>College Group</h2>
+                <div className='room_title_extraIcon'>
+                    <div onClick={() => setVisible(!visible)}>
+                        <InfoIcon color={"#3ABE2F"} />
+
+                    </div>
+                    <div className='title_extraIcon_infoDisplay'
+                        style={{
+                            visibility: visible ? 'visible' : 'hidden'
+                        }}>
+                        <p>Messages you send in this group are secured with end-to-end encryption.</p>
+                    </div>
+
+                </div>
             </div>
             <section className='wrapper_room_section'>
                 <div className='room_section_chats'>
@@ -31,38 +85,15 @@ export default function Room() {
 
 
                         {
-                            [1, 2, 3, 4, 5, 6, 7].map((value, key) => {
+                            chatHistory.map((value, key) => {
                                 return (
-                                    <div key={key} className='section_chats_userChat endUser'>
-                                        <img src="https://via.placeholder.com/150" alt="avatar" className='chats_userChat_img ' />
-
-                                        <div>
-
-                                            <p className='chats_userChat_name'>Bedant Hota <i className='userChat_name_time'>11:02 PM</i></p>
-                                            <p className='chats_userChat_content'>
-                                                Sir, we talked to the professor about the project.
-                                            </p>
-                                        </div>
-
-                                    </div>
+                                    <UserChat
+                                        {...value}
+                                    />
                                 )
                             })
                         }
-
-                        <div className='section_chats_userChat self'>
-                            <img src="https://via.placeholder.com/150" alt="avatar" className='chats_userChat_img ' />
-
-                            <div>
-
-                                <p className='chats_userChat_name'>You <i className='userChat_name_time'>11:02 PM</i></p>
-                                <p className='chats_userChat_content'>
-                                    Sir, we talked to the professor about the project.
-                                </p>
-                            </div>
-
-                        </div>
                     </div>
-
 
                 </div>
                 <div className='room_section_inputArea'>

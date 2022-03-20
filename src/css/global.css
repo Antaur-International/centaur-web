@@ -1369,9 +1369,41 @@
   padding: 10px 5px;
   border-bottom: 1px solid #e6e6e6;
 }
+
+.cp_wrapper_room .wrapper_room_title h2 {
+  color: #1f1f1f;
+}
+
 .cp_wrapper_room .wrapper_room_title .room_title_img {
   border-radius: 50%;
-  width: 60px;
+  width: 50px;
+}
+
+.cp_wrapper_room .wrapper_room_title .room_title_extraIcon {
+  margin-left: auto;
+  position: relative;
+}
+
+.cp_wrapper_room .wrapper_room_title .room_title_extraIcon svg {
+  cursor: pointer;
+}
+
+.cp_wrapper_room .wrapper_room_title .room_title_extraIcon .title_extraIcon_infoDisplay {
+  background-color: #fafafa;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 8px 10px;
+  border-radius: 5px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  position: absolute;
+  right: 0px;
+  top: 40px;
+}
+
+.cp_wrapper_room .wrapper_room_title .room_title_extraIcon .title_extraIcon_infoDisplay p {
+  font-size: 0.8vw;
+  color: #303030;
 }
 .cp_wrapper_room .wrapper_room_section {
   display: flex;
@@ -1424,19 +1456,23 @@
   border-radius: 10px;
 }
 .cp_wrapper_room .wrapper_room_section .room_section_chats .section_chats_display .section_chats_userChat .chats_userChat_name {
-  font-size: 0.9vw;
+  font-size: 0.7vw;
 }
 .cp_wrapper_room .wrapper_room_section .room_section_chats .section_chats_display .section_chats_userChat .chats_userChat_name .userChat_name_time {
   font-size: 0.6vw;
   color: #999;
 }
 .cp_wrapper_room .wrapper_room_section .room_section_chats .section_chats_display .section_chats_userChat .chats_userChat_content {
-  width: 80%;
-  font-size: 1vw;
-  border-radius: 10px;
+  max-width: 30vw;
+  min-width: 10vw;
+  font-size: 0.9vw;
+  border-radius: 5px;
+  word-wrap: break-word;
   padding: 5px 10px;
   background: #ffffff;
-  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.14);
+  color: #2b2b2b;
+  -webkit-box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.14);
+          box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.14);
 }
 .cp_wrapper_room .wrapper_room_section .room_section_inputArea {
   display: flex;
@@ -1503,6 +1539,89 @@
   border-radius: 50%;
   background-color: #e6e6e6;
   margin-right: 10px;
+}
+
+.cp_wrapper_members {
+  height: 85vh;
+  overflow-y: scroll;
+  ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+  /* Hide scrollbar for Chrome, Safari and Opera */
+}
+
+.cp_wrapper_members::-webkit-scrollbar {
+  display: none;
+}
+
+.cp_wrapper_members h2 {
+  font-size: 1.5vw;
+  margin-bottom: 20px;
+}
+
+.cp_wrapper_members .wrapper_members_section {
+  margin-top: 20px;
+}
+
+.cp_wrapper_members .wrapper_members_section .members_section_label {
+  margin-bottom: 20px;
+}
+
+.cp_wrapper_members .wrapper_members_section .members_section_label p {
+  font-size: 1.2vw;
+  color: #3abe2f;
+  position: relative;
+}
+
+.cp_wrapper_members .wrapper_members_section .members_section_label p::after {
+  content: "";
+  width: calc(100% - 100px);
+  height: 1px;
+  background: #3abe2f;
+  position: absolute;
+  left: 8%;
+  top: 50%;
+}
+
+.cp_wrapper_members .wrapper_members_section .wrapper_members_list {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(200px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.cp_wrapper_members .wrapper_members_section .wrapper_members_list .members_list_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+}
+
+.cp_wrapper_members .wrapper_members_section .wrapper_members_list .members_list_item .list_item_avatar img {
+  border-radius: 50%;
+  width: 100px;
+}
+
+.cp_wrapper_members .wrapper_members_section .wrapper_members_list .members_list_item .list_item_name {
+  font-size: 1vw;
+  color: #2f2f2f;
+}
+
+.cp_wrapper_members .wrapper_members_section .wrapper_members_list .members_list_item .list_item_role {
+  font-size: 0.8vw;
+  color: #2f2f2f;
 }
 
 .lyt_wrapper_department {

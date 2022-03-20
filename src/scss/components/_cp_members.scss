@@ -1,0 +1,60 @@
+.cp_wrapper_members {
+    height: 85vh;
+    overflow-y: scroll;
+
+    @include hideScrollbar();
+
+    h2 {
+        font-size: 1.5vw;
+        margin-bottom: 20px;
+    }
+    .wrapper_members_section {
+        margin-top: 20px;
+        .members_section_label {
+            p {
+                font-size: 1.2vw;
+                color: #3abe2f;
+                position: relative;
+
+                &::after {
+                    content: "";
+                    width: calc(100% - 100px);
+                    height: 1px;
+                    background: #3abe2f;
+                    position: absolute;
+                    left: 8%;
+                    top: 50%;
+                }
+            }
+            margin-bottom: 20px;
+        }
+
+        .wrapper_members_list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+
+            .members_list_item {
+                @include displayFlex(column, center, center);
+                gap: 10px;
+
+                .list_item_avatar {
+                    img {
+                        border-radius: 50%;
+                        width: 100px;
+                    }
+                }
+
+                .list_item_name {
+                    font-size: 1vw;
+                    color: #2f2f2f;
+                }
+
+                .list_item_role {
+                    font-size: 0.8vw;
+                    color: #2f2f2f;
+                }
+            }
+        }
+    }
+}
