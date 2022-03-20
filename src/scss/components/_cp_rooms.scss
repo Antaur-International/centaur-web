@@ -7,10 +7,34 @@
         gap: 10px;
         padding: 10px 5px;
         border-bottom: 1px solid #e6e6e6;
-
+        h2 {
+            color: #1f1f1f;
+        }
         .room_title_img {
             border-radius: 50%;
-            width: 60px;
+            width: 50px;
+        }
+        .room_title_extraIcon {
+            margin-left: auto;
+            position: relative;
+            svg {
+                cursor: pointer;
+            }
+
+            .title_extraIcon_infoDisplay {
+                background-color: #fafafa;
+                border: 1px solid rgba(0, 0, 0, 0.15);
+                padding: 8px 10px;
+                border-radius: 5px;
+                width: max-content;
+                position: absolute;
+                right: 0px;
+                top: 40px;
+                p{
+                    font-size: 0.8vw;
+                    color: #303030;
+                }
+            }
         }
     }
 
@@ -52,7 +76,7 @@
                     }
 
                     .chats_userChat_name {
-                        font-size: 0.9vw;
+                        font-size: 0.7vw;
 
                         .userChat_name_time {
                             font-size: 0.6vw;
@@ -61,11 +85,14 @@
                     }
 
                     .chats_userChat_content {
-                        width: 80%;
-                        font-size: 1vw;
-                        border-radius: 10px;
+                        max-width: 30vw;
+                        min-width: 10vw;
+                        font-size: 0.9vw;
+                        border-radius: 5px;
+                        word-wrap: break-word;
                         padding: 5px 10px;
                         background: #ffffff;
+                        color:#2b2b2b ;
                         box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.14);
                     }
                 }
