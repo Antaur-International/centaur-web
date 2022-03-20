@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 @import "./config/_variables";
 @import "./config/_mixins";
 @import "./layout/lyt-modelWrapper";
@@ -15,6 +15,7 @@
 @import "./layout/lyt_settings";
 @import "./layout/lyt_loader";
 @import "./layout/lyt_department";
+@import "./layout/lyt_forgotPassword";
 
 * {
     margin: 0;
@@ -45,6 +46,6 @@ li {
 }
 
 input {
-    caret-color: #3ABE2F;
+    caret-color: #3abe2f;
     outline: none;
 }
