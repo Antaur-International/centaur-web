@@ -15,6 +15,19 @@
 
         .cp-input__wrapper{
             display: flex;  
+
+            .cp-input__select{
+                width: 80%;
+                border: 1px solid #ccc;
+                border-radius: 0.5rem;
+                padding: 1rem 1rem;
+                font-size: 1vw;
+                font-weight: bold;
+                color: #333;
+                background-color: #fff;
+                cursor: pointer;
+                outline: none;
+            }
         }
 
         .cp-input__labelL{

@@ -26,7 +26,7 @@ export default function UserProvider({ children }) {
             console.log(userFetch);
 
 
-            axios.post('https://centaur-be.herokuapp.com/user/getUser', userFetch)
+            axios.post('http://localhost:5000/user/getUser', userFetch)
                 .then(res => {
                     setUserInstance(res.data.user);
                     console.log('Running', res.data);
