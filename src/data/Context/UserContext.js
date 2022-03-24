@@ -26,7 +26,7 @@ export default function UserProvider({ children }) {
             console.log(userFetch);
 
 
-            axios.post('http://localhost:5000/user/getUser', userFetch)
+            axios.post(`${process.env.REACT_APP_DEV_URL}/user/getUser`, userFetch)
                 .then(res => {
                     setUserInstance(res.data.user);
                     console.log('Running', res.data);

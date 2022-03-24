@@ -6,14 +6,24 @@ import Members from './Members/Members';
 import Chats from './Chats/Chats';
 import Room from './Chats/Room';
 
+import { UserContext } from '../../data/Context/UserContext';
+
 
 export default function Department(props) {
 
     const [selected, setSelected] = React.useState("resource");
 
+    const user = React.useContext(UserContext);
+    var sessionUser = JSON.parse(sessionStorage.getItem('user'));
+
     const changeTab = (tab) => {
         setSelected(tab);
     }
+
+    React.useEffect(() => {
+        console.log(sessionStorage.getItem('user'));
+        console.log(user.status);
+    }, [])
 
     return (
         <main className='lyt_wrapper_department'>
@@ -48,12 +58,18 @@ export default function Department(props) {
                                 <ChevronLeft size="15" />
                                 <p style={{
                                     fontSize: "0.9vw",
-                                }} >Semester 06</p>
+                                }} >{user.status.batch.name}</p>
                             </div>
                             <ul className='navList_item_subMenu'>
-                                <li className='item_subMenu_item'>
-                                    Android Development
-                                </li>
+                                {
+                                    user.status.batch.subjects.map((subj, index) => {
+                                        return (
+                                            <li className='item_subMenu_item'>
+                                                {subj.name}
+                                            </li>
+                                        )
+                                    })
+                                }
                             </ul>
                         </li>
                     </ul>

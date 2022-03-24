@@ -38,7 +38,6 @@ export default function Dashboard() {
         const hours = date.getHours();
         const greetingTemp = hours < 12 ? "Morning" : hours < 18 ? "Afternoon" : "Evening";
         console.log(greeting + " " + hours);
-
         setGreeting(greetingTemp)
     }, []);
 

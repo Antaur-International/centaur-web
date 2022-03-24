@@ -1,29 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ResourceList from './ResourceList'
+import { UserContext } from '../../../data/Context/UserContext';
 
 export default function Resource() {
 
-    const DummyData = [
-        {
-            id: 1,
-            title: "Syllabus.pdf",
-            date: "02.02.2020",
-            type: "PDF",
-        },
-        {
-            id: 2,
-            title: "Exam time table.pdf",
-            date: "12.03.2020",
-            type: "PDF",
-        },
-    ]
+    const [resources, setResources] = useState([]);
+    const user = React.useContext(UserContext);
+
+    React.useEffect(() => {
+        setResources(user.status.batch.resources);
+    }, [])
 
     return (
         <section className='cp_wrapper_publicResource'>
             <h2>Resource</h2>
             <ul className='wrapper_publicResource_list'>
                 {
-                    DummyData.map((item, index) => {
+                    resources.map((item, index) => {
                         return (
                             <ResourceList item={item} />
                         )

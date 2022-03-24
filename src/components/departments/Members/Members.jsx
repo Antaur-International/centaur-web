@@ -1,6 +1,29 @@
 import React from 'react'
+import axios from 'axios'
 
 export default function Members() {
+
+    const [faculty, setFaculty] = React.useState([]);
+    const [student, setStudent] = React.useState([]);
+
+    React.useEffect(() => {
+        axios.get(`${process.env.REACT_APP_DEV_URL}/user/getFaculty`)
+            .then(res => {
+                setFaculty(res.data.faculty);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+
+        axios.get(`${process.env.REACT_APP_DEV_URL}/user/getStudents`)
+            .then(res => {
+                setStudent(res.data.students);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }, []);
+
     return (
         <section className='cp_wrapper_members'>
             <h2>Members</h2>
@@ -12,14 +35,14 @@ export default function Members() {
 
                 <ul className='wrapper_members_list'>
                     {
-                        [1, 2, 3, 4, 5, 6, 7].map(() => {
+                        faculty.map((fac, index) => {
                             return <li className='members_list_item'>
                                 <div className='list_item_avatar'>
-                                    <img src="https://via.placeholder.com/150" alt="avatar" />
+                                    <img src={fac.image} alt="avatar" />
                                 </div>
 
                                 <p className='list_item_name'>
-                                    Bedant Hota
+                                    {fac.name}
                                 </p>
                                 <p className='list_item_role'>
                                     Faculty
@@ -36,14 +59,14 @@ export default function Members() {
                 </div>
                 <ul className='wrapper_members_list'>
                     {
-                        [1, 2, 3, 4, 5, 6, 7].map(() => {
+                        student.map((stud, index) => {
                             return <li className='members_list_item'>
                                 <div className='list_item_avatar'>
-                                    <img src="https://via.placeholder.com/150" alt="avatar" />
+                                    <img src={stud.image} alt="avatar" />
                                 </div>
 
                                 <p className='list_item_name'>
-                                    Pratham Yadav
+                                    {stud.name}
                                 </p>
                                 <p className='list_item_role'>
                                     Student
