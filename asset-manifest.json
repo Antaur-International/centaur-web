@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/centaur-web/static/css/main.0d2e352a.css",
-    "main.js": "/centaur-web/static/js/main.dce14d82.js",
+    "main.js": "/centaur-web/static/js/main.ebb4fe8b.js",
     "static/media/welcomeBackground.svg": "/centaur-web/static/media/welcomeBackground.428243bd58b08d0b6139.svg",
     "index.html": "/centaur-web/index.html",
     "main.0d2e352a.css.map": "/centaur-web/static/css/main.0d2e352a.css.map",
-    "main.dce14d82.js.map": "/centaur-web/static/js/main.dce14d82.js.map"
+    "main.ebb4fe8b.js.map": "/centaur-web/static/js/main.ebb4fe8b.js.map"
   },
   "entrypoints": [
     "static/css/main.0d2e352a.css",
-    "static/js/main.dce14d82.js"
+    "static/js/main.ebb4fe8b.js"
   ]
 }
