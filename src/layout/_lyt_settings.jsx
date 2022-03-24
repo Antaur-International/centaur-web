@@ -1,15 +1,16 @@
-import React, { useContext, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Header from '../components/Header'
 import { ChevronLeft, Heart, UserIcon } from '../icons/Icons'
 import { NormalInput, TagInput, ColumnInput } from '../components/settings/Inputs'
-import { AddIcon, CheckMark } from '../icons/Icons';
+import { AddIcon } from '../icons/Icons';
 import * as FormData from "form-data";
 import axios from 'axios'
-import { UserContext } from '../data/Context/UserContext';
+import { API_HOST } from '../API/constant';
 
-export default function SettingsLayout(props) {
 
-    const user = useContext(UserContext)
+export default function SettingsLayout({ user }) {
+
+
     const [semesters, setSemesters] = useState([]);
     const [selectedSemester, setSelectedSemester] = useState('');
     const frontRef = useRef(null);
@@ -17,25 +18,23 @@ export default function SettingsLayout(props) {
     const imageRef = useRef(null);
 
     React.useEffect(() => {
-        user.update();
-
-        setSemesters(user.status.department.semesters);
-        console.log(user.status.department.semesters);
+        setSemesters(user.department.semesters);
+        console.log(user.department.semesters);
     }, [])
 
     const handleProfileUpdate = () => {
         let formData = new FormData();
         formData.append("file", imageRef.current.files[0]);
-        formData.append("user_id", user.status._id);
+        formData.append("user_id", user._id);
 
-        axios.post(`${process.env.REACT_APP_DEV_URL}/file/upload`, formData)
+        axios.post(`${API_HOST}/file/upload`, formData)
             .then(res => {
                 const data = {
                     image: res.data.file,
-                    id: user.status._id
+                    id: user._id
                 }
 
-                axios.post(`${process.env.REACT_APP_DEV_URL}/user/profileImage`, data)
+                axios.post(`${API_HOST}/user/profileImage`, data)
                     .then(res => {
                         console.log(res);
                     })
@@ -52,24 +51,24 @@ export default function SettingsLayout(props) {
         let formData = new FormData();
 
         formData.append("file", frontRef.current.files[0]);
-        formData.append("user_id", user.status._id);
+        formData.append("user_id", user._id);
 
         for (var p of formData) {
             console.log(p);
         }
 
-        axios.post(`${process.env.REACT_APP_DEV_URL}/file/upload`, formData)
+        axios.post(`${API_HOST}/file/upload`, formData)
             .then(res => {
 
                 const data = {
                     image: res.data.file,
-                    id: user.status._id,
+                    id: user._id,
                     front_image: true
                 }
 
                 console.log(data);
 
-                axios.post(`${process.env.REACT_APP_DEV_URL}/user/updateImage`, data)
+                axios.post(`${API_HOST}/user/updateImage`, data)
                     .then(res => {
                         console.log(res);
                     })
@@ -89,24 +88,24 @@ export default function SettingsLayout(props) {
         let formData = new FormData();
 
         formData.append("file", backRef.current.files[0]);
-        formData.append("user_id", user.status._id);
+        formData.append("user_id", user._id);
 
         for (var p of formData) {
             console.log(p);
         }
 
-        axios.post(`${process.env.REACT_APP_DEV_URL}/file/upload`, formData)
+        axios.post(`${API_HOST}/file/upload`, formData)
             .then(res => {
 
                 const data = {
                     image: res.data.file,
-                    id: user.status._id,
+                    id: user._id,
                     front_image: false
                 }
 
                 console.log(data);
 
-                axios.post(`${process.env.REACT_APP_DEV_URL}/user/updateImage`, data)
+                axios.post(`${API_HOST}/user/updateImage`, data)
                     .then(res => {
                         console.log(res);
                     })
@@ -124,7 +123,7 @@ export default function SettingsLayout(props) {
 
     return (
         <section className='layout_wrapper_settings'>
-            <Header />
+            <Header user={user} />
             <section className='wrapper_settings_navbar'>
                 <h1>Settings</h1>
                 <ul className='settings_navbar_list'>
@@ -166,22 +165,22 @@ export default function SettingsLayout(props) {
                         </div>
 
                         <div className='body_content'>
-                            <TagInput mainLabel="First Name " label="mes.ac.in/" inputType="text" placeholder="Enter Your First Name: " value={user.status.name.split(" ")[0]} />
-                            <TagInput mainLabel="Last Name " label="mes.ac.in/" inputType="text" placeholder="Enter Your Last Name: " value={user.status.name.split(" ")[1]} />
+                            <TagInput mainLabel="First Name " label="mes.ac.in/" inputType="text" placeholder="Enter Your First Name: " value={user.name.split(" ")[0]} />
+                            <TagInput mainLabel="Last Name " label="mes.ac.in/" inputType="text" placeholder="Enter Your Last Name: " value={user.name.split(" ")[1]} />
 
-                            <NormalInput mainLabel="Email " inputType="text" placeholder="Enter Your Email: " value={user.status.email} />
+                            <NormalInput mainLabel="Email " inputType="text" placeholder="Enter Your Email: " value={user.email} />
 
-                            <NormalInput mainLabel="Department " inputType="text" placeholder="Enter your department: " value={user.status.department.department_name} />
+                            <NormalInput mainLabel="Department " inputType="text" placeholder="Enter your department: " value={user.department.department_name} />
 
                             <div className='cp-input typ-normal'>
                                 <label className='cp-input__label'>Semester</label>
                                 <div className='cp-input__wrapper'>
-                                    <select className='cp-input__select' value={user.status.batch._id}>
+                                    <select className='cp-input__select' value={user.batch._id}>
                                         <option value="">Select Semester</option>
                                         {
                                             semesters.map((semester, index) => {
                                                 return (
-                                                    <option key={index} value={semester._id} selected={semester._id === user.status.batch._id ? true : false}>{semester.name}</option>
+                                                    <option key={index} value={semester._id} selected={semester._id === user.batch._id ? true : false}>{semester.name}</option>
                                                 )
                                             })
                                         }
@@ -189,23 +188,23 @@ export default function SettingsLayout(props) {
                                 </div>
                             </div>
 
-                            <ColumnInput mainLabel="Phone Number " inputType="text" placeholder="00000 00000" value={user.status.phoneNum} />
-                            <ColumnInput mainLabel="Enrollment Number " inputType="text" placeholder="EN-0000000000" value={user.status.en_number} />
+                            <ColumnInput mainLabel="Phone Number " inputType="text" placeholder="00000 00000" value={user.phoneNum} />
+                            <ColumnInput mainLabel="Enrollment Number " inputType="text" placeholder="EN-0000000000" value={user.en_number} />
                         </div>
                     </div>
                     <div className='setting_content__body_idVerify'>
                         <div className="idVerify__heading">
                             <p className='heading_title'>
                                 <img src='/centaur-web/images/icons/tick-green.svg' alt='confirmation icon' />
-                                {user.status.idImageFront && user.status.idImageBack ? "You have completed your ID verification" : "Please complete your student verification by adding scanned images of your ID"}</p>
+                                {user.idImageFront && user.idImageBack ? "You have completed your ID verification" : "Please complete your student verification by adding scanned images of your ID"}</p>
                         </div>
                         <div className="idInputs_verify">
                             {
-                                user.status.idImageFront ?
+                                user.idImageFront ?
                                     <div>
                                         <h2>Front Side Of ID:</h2>
                                         <br />
-                                        <img src={user.status.idImageFront} alt='idFront' />
+                                        <img src={user.idImageFront} alt='idFront' />
                                     </div> :
                                     <div className="file-input">
                                         <input type='file' ref={frontRef} onChange={uploadFront} />
@@ -214,11 +213,11 @@ export default function SettingsLayout(props) {
                             }
 
                             {
-                                user.status.idImageBack ?
+                                user.idImageBack ?
                                     <div>
                                         <h2>Back Side Of ID:</h2>
                                         <br />
-                                        <img src={user.status.idImageBack} alt='idBack' />
+                                        <img src={user.idImageBack} alt='idBack' />
                                     </div> :
                                     <div className="file-input">
                                         <input type='file' ref={backRef} onChange={uploadBack} />
@@ -238,7 +237,7 @@ export default function SettingsLayout(props) {
                                 Choose Image
                             </label>
                             <button className="upload">Upload</button>
-                            <img src={user.status.image} alt="profileImage" />
+                            <img src={user.image} alt="profileImage" />
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,7 @@
 
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+
+import { API_HOST } from './API/constant';
 
 // Importing the components
 import RightDrawer from './components/LeftDrawer';
@@ -21,32 +23,61 @@ Importing the packages
 
 function App() {
 
-  const [activeTab, setActiveTab] = React.useState("dashboard");
-  const [instanceUser, setInstanceUser] = React.useState({});
-  const user = useContext(UserContext);
+  const [activeTab, setActiveTab] = useState("dashboard");
+  const [instanceUser, setInstanceUser] = useState({});
+
 
   React.useEffect(() => {
 
-    user.update();
-    setActiveTab(sessionStorage.getItem("activeTab") !== null ? sessionStorage.getItem("activeTab") : "dashboard");
+    if (sessionStorage.getItem('user')) {
+      const userFetch = {
+        userid: JSON.parse(sessionStorage.getItem('user')).userid,
+        userEmail: JSON.parse(sessionStorage.getItem('user')).userEmail
+      };
+
+      console.log(userFetch);
+      console.log(API_HOST);
+
+
+      axios.post(`${API_HOST}/user/getUser`, userFetch)
+        .then(res => {
+          setInstanceUser(res.data.user);
+          sessionStorage.setItem('instanceUser', JSON.stringify(res.data.user));
+          console.log('Running', res.data);
+          console.log(instanceUser);
+        })
+        .then(() => {
+          setActiveTab(sessionStorage.getItem("activeTab") !== null ? sessionStorage.getItem("activeTab") : "dashboard");
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    } else {
+      window.location.href = './#/login';
+    }
+
   }, []);
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
-    if (tab !== "settings") {
-      sessionStorage.setItem('activeTab', tab)
-    };
+
+    sessionStorage.setItem('activeTab', tab)
+
   }
+
+  useEffect(() => {
+
+  }, []);
 
   return (
     <div className="App">
       <RightDrawer activeTab={activeTab} setActiveTab={handleTabChange} />
       <main className='main'>
-        {activeTab === "dashboard" && <Dashboard />}
+        {activeTab === "dashboard" && <Dashboard user={instanceUser} />}
         {activeTab === "department" && <Department user={instanceUser} setActiveTab={setActiveTab} />}
-        {activeTab === "department-subject" && <SubjectLayout />}
-        {activeTab === "myWork" && <MyWork />}
-        {activeTab === "settings" && <SettingsLayout />}
+        {activeTab === "department-subject" && <SubjectLayout user={instanceUser} />}
+        {activeTab === "myWork" && <MyWork user={instanceUser} />}
+        {activeTab === "settings" && <SettingsLayout user={instanceUser} />}
       </main>
     </div>
 

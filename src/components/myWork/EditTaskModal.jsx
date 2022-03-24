@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import axios from 'axios';
 import { Clock } from '../../icons/Icons';
-
+import { API_HOST } from '../../API/constant';
 export default function EditTaskModal({ setIsOpen, task, handleDeleteUpdate }) {
 
     const [titleInput, setTitleInput] = useState(task.task.task_title);
@@ -25,7 +25,7 @@ export default function EditTaskModal({ setIsOpen, task, handleDeleteUpdate }) {
             task_deadline: reminder
         };
 
-        axios.put(`${process.env.REACT_APP_DEV_URL}/task/${updateBtn}`, data)
+        axios.put(`${API_HOST}/task/${updateBtn}`, data)
             .then(res => {
                 console.log(res);
                 setIsOpen(false);
@@ -40,7 +40,7 @@ export default function EditTaskModal({ setIsOpen, task, handleDeleteUpdate }) {
         e.preventDefault();
         const deleteBtn = e.target.getAttribute('data-id');
 
-        axios.delete(`${process.env.REACT_APP_DEV_URL}/task/${deleteBtn}`)
+        axios.delete(`${API_HOST}/task/${deleteBtn}`)
             .then(res => {
                 console.log(res.data);
                 sessionStorage.setItem('deletedTask', JSON.stringify(res.data.task));

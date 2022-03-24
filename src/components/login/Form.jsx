@@ -25,10 +25,7 @@ export default function Form() {
 
         if (email) {
             setLoading(true)
-            console.log('====================================');
-            console.log(API_HOST);
-            console.log('====================================');
-            axios.post(`${process.env.REACT_APP_DEV_URL}/user/login`, user)
+            axios.post(`${API_HOST}/user/login`, user)
                 .then(res => {
                     console.log(res.data);
                     if (res.data.success === true) {

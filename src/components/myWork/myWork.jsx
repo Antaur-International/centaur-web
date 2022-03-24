@@ -5,6 +5,7 @@ import ModalLayout from '../../layout/_lyt_modal'
 import AddTaskModal from './AddTaskModal'
 import EditTaskModal from './EditTaskModal'
 import axios from 'axios';
+import { API_HOST } from '../../API/constant'
 
 const MyWorkListItem = (props) => {
     return <li className='item_list_item' onClick={props.onClick} data-id={props.task._id}>
@@ -89,7 +90,7 @@ export default function MyWorkMain() {
     useEffect(() => {
         setPersonalTaskHeight(personalTaskIsOpen ? `${personalTask.current.scrollHeight}px` : 0);
 
-        axios.get(`${process.env.REACT_APP_DEV_URL}/task/personal/${JSON.parse(sessionStorage.getItem('user')).userid}`)
+        axios.get(`${API_HOST}/task/personal/${JSON.parse(sessionStorage.getItem('user')).userid}`)
             .then(res => {
                 setPersonalTaskList(res.data.tasks);
             })
@@ -97,7 +98,7 @@ export default function MyWorkMain() {
                 console.log(err);
             })
 
-        axios.get(`${process.env.REACT_APP_DEV_URL}/task/college`)
+        axios.get(`${API_HOST}/task/college`)
             .then(res => {
                 setCollegeTaskList(res.data.tasks);
                 console.log(res.data.tasks);

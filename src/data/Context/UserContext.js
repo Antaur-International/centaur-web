@@ -12,8 +12,6 @@ A component which contains userInstance state and a context provider
 */
 export default function UserProvider({ children }) {
 
-    let navigate = useNavigate();
-
     const [userInstance, setUserInstance] = useState({});
 
     const updateState = () => {
@@ -26,7 +24,8 @@ export default function UserProvider({ children }) {
             console.log(userFetch);
             console.log(API_HOST);
 
-            axios.post(`http://localhost:5000/user/getUser`, userFetch)
+
+            axios.post(`${API_HOST}/user/getUser`, userFetch)
                 .then(res => {
                     setUserInstance(res.data.user);
                     console.log('Running', res.data);

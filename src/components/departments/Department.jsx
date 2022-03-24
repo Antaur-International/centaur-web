@@ -7,7 +7,8 @@ import Chats from './Chats/Chats';
 import Room from './Chats/Room';
 
 
-export default function Department(props) {
+
+export default function Department({ user }) {
 
     const [selected, setSelected] = React.useState("resource");
 
@@ -15,9 +16,13 @@ export default function Department(props) {
         setSelected(tab);
     }
 
+    React.useEffect(() => {
+        console.log(sessionStorage.getItem('user'));
+    }, [])
+
     return (
         <main className='lyt_wrapper_department'>
-            <Header user={props.user} />
+            <Header user={user} />
             <section className='wrapper_department_main'>
                 <div className='department_main_leftPanel'>
                     <ul className='main_leftPanel_navList'>
@@ -48,12 +53,18 @@ export default function Department(props) {
                                 <ChevronLeft size="15" />
                                 <p style={{
                                     fontSize: "0.9vw",
-                                }} >Semester 06</p>
+                                }} >{user.batch.name}</p>
                             </div>
                             <ul className='navList_item_subMenu'>
-                                <li className='item_subMenu_item'>
-                                    Android Development
-                                </li>
+                                {
+                                    user.batch.subjects.map((subj, index) => {
+                                        return (
+                                            <li className='item_subMenu_item'>
+                                                {subj.name}
+                                            </li>
+                                        )
+                                    })
+                                }
                             </ul>
                         </li>
                     </ul>
@@ -61,7 +72,7 @@ export default function Department(props) {
                 </div>
                 <div className='department_main_rightContent'>
                     {selected === "members" && <Members />}
-                    {selected === "resource" && <Resource />}
+                    {selected === "resource" && <Resource user={user} />}
                     {selected === "messages" && <Chats changeTab={changeTab} />}
                     {selected === "room" && <Room changeTab={changeTab} />}
                 </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from '../components/Header'
-export default function SubjectLayout(props) {
+export default function SubjectLayout({ user }) {
     return (
         <main className='lyt_subject_wrapper'>
             <Header />

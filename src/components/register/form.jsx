@@ -2,6 +2,7 @@ import React, { useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 // import Popup from '../../layout/lyt-popup';
 import axios from 'axios';
+import { API_HOST } from '../../API/constant';
 
 
 export default function RegForm() {
@@ -58,12 +59,12 @@ export default function RegForm() {
     const handleDepartmentChange = (e) => {
         setSelectedDepartment(e.target.value);
 
-        axios.get(`${process.env.REACT_APP_DEV_URL}/department/${e.target.value}`)
+        axios.get(`${API_HOST}/department/${e.target.value}`)
             .then(res => {
                 const semesterIds = res.data.department.semesters;
                 semesterIds.map((semester, index) => {
-                    console.log(`${process.env.REACT_APP_DEV_URL}/semester/${semester}`);
-                    axios.get(`${process.env.REACT_APP_DEV_URL}/semester/${semester}`)
+                    console.log(`${API_HOST}/semester/${semester}`);
+                    axios.get(`${API_HOST}/semester/${semester}`)
                         .then(res => {
                             console.log(res.data);
                             setSemesters(semesters => [...semesters, res.data.semester]);
@@ -102,7 +103,7 @@ export default function RegForm() {
 
     React.useEffect(() => {
         axios
-            .get(`${process.env.REACT_APP_DEV_URL}/department`)
+            .get(`${API_HOST}/department`)
             .then((res) => {
                 if (res.data.success) {
                     setDepartments(res.data.departments);
@@ -136,7 +137,7 @@ export default function RegForm() {
                 semester: selectedSemester
             }
 
-            axios.post(`${process.env.REACT_APP_DEV_URL}/user/register`, user)
+            axios.post(`${API_HOST}/user/register`, user)
                 .then(res => {
                     console.log(res);
                     console.log(res.data);

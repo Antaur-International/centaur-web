@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 import { Clock } from '../../icons/Icons';
 import axios from 'axios';
+import { API_HOST } from '../../API/constant';
 
 export default function AddTaskModal({ setIsOpen, handleSubmitUpdate }) {
 
@@ -24,7 +25,7 @@ export default function AddTaskModal({ setIsOpen, handleSubmitUpdate }) {
 
         console.log(task);
 
-        axios.post(`${process.env.REACT_APP_DEV_URL}/task`, task)
+        axios.post(`${API_HOST}/task`, task)
             .then(res => {
                 sessionStorage.setItem('task', JSON.stringify(res.data.task));
                 setTask(res.data.task);

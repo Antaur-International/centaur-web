@@ -8,19 +8,19 @@ export default function ResourceList({ item }) {
     return (
         <li className='publicResource_list_item'>
             <PDFIcon />
-            <p className='list_item_title'>{item.title}</p>
-            <p className='list_item_date'>{item.date}</p>
+            <div>
+                <p className='list_item_title'>{item.resource_name}</p>
+                <p className='list_item_description'>{item.resource_description}</p>
+            </div>
+            <p className='list_item_date'>{item.resource_created_on.toString()}</p>
             <div className='list_item_extra' onClick={() => setIsOpen(!isOpen)}>
                 <DotsIcon />
 
-                {isOpen && <a
-                    href='/centaur-web/images/EmmotionsExpressed.jpg'
-                    className='item_extra_download'
-                    download={"Emmotions Expressed"}
-                >
+                {isOpen && <div
+                    className='item_extra_download'>
                     <DownloadIcon />
-                    <p>Download</p>
-                </a>}
+                    <a href={item.resource_attachments[0]}>Download</a>
+                </div>}
 
 
             </div>
