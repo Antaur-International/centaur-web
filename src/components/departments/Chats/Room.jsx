@@ -1,10 +1,10 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { EmojiICon, InfoIcon, SendIcon } from '../../../icons/Icons'
 import EmojiPicker, { SKIN_TONE_MEDIUM_DARK } from 'emoji-picker-react';
 
 const UserChat = ({ userImg, chat, time, userType, userName }) => {
     return (
-        <div className={`section_chats_userChat ${userType}`}>
+        <li className={`section_chats_userChat ${userType}`}>
             <img src={userImg} alt={userName} className='chats_userChat_img ' />
             <div>
                 <p className='chats_userChat_name'>{userName} <i className='userChat_name_time'>{time}</i></p>
@@ -13,13 +13,20 @@ const UserChat = ({ userImg, chat, time, userType, userName }) => {
                 </p>
             </div>
 
-        </div>
+        </li>
     )
 }
 
 export default function Room() {
 
     const inputRef = useRef(null);
+    const messagesList = useRef(null);
+
+    useEffect(() => {
+        let scrollHeight = messagesList.current.scrollHeight;
+        messagesList.current.scrollTo(0, scrollHeight);
+
+    }, []);
 
     const [showEmoji, setShowEmoji] = useState(false);
     const [selectedEmoji, setSelectedEmoji] = useState('');
@@ -45,6 +52,27 @@ export default function Room() {
         {
             userImg: 'https://via.placeholder.com/150',
             chat: "This is a sample small text message.",
+            time: '12:00',
+            userType: 'endUser',
+            userName: 'Tester 02'
+        },
+        {
+            userImg: 'https://via.placeholder.com/150',
+            chat: "So I was testing today the UI for our applications and found that the UI is not very good, but don't be sad, I will fix it soon. This is just a test message. I am testing the width of this text display box",
+            time: '12:00',
+            userType: 'endUser',
+            userName: 'Tester 01'
+        },
+        {
+            userImg: 'https://via.placeholder.com/150',
+            chat: "So I was testing today the UI for our applications and found that the UI is not very good, but don't be sad, I will fix it soon. This is just a test message. I am testing the width of this text display box",
+            time: '12:00',
+            userType: 'self',
+            userName: 'You'
+        },
+        {
+            userImg: 'https://via.placeholder.com/150',
+            chat: "Last message on the screen",
             time: '12:00',
             userType: 'endUser',
             userName: 'Tester 02'
@@ -81,9 +109,7 @@ export default function Room() {
             </div>
             <section className='wrapper_room_section'>
                 <div className='room_section_chats'>
-                    <div className='section_chats_display'>
-
-
+                    <ul className='section_chats_display' ref={messagesList}>
                         {
                             chatHistory.map((value, key) => {
                                 return (
@@ -93,7 +119,7 @@ export default function Room() {
                                 )
                             })
                         }
-                    </div>
+                    </ul>
 
                 </div>
                 <div className='room_section_inputArea'>
@@ -131,6 +157,6 @@ export default function Room() {
 
                 </div>
             </section>
-        </section>
+        </section >
     )
 }

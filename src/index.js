@@ -13,6 +13,7 @@ import UserProvider from './data/Context/UserContext';
 
 // Importing packages
 import { BrowserRouter, Route, Routes, HashRouter } from 'react-router-dom';
+import ForgotPasswordPage from './layout/_lyt_forgotPassword';
 
 ReactDOM.render(
 
@@ -25,6 +26,7 @@ ReactDOM.render(
           <App />
         </UserProvider>
       } />
+      <Route path='forgotPassword' element={<ForgotPasswordPage />} />
       <Route path="/register" element={<Register />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
