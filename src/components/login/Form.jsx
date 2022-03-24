@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Loader from '../../layout/_lyt_loader';
-
+import { API_HOST } from '../../API/constant';
 export default function Form() {
 
     const email = useRef(null);
@@ -25,6 +25,9 @@ export default function Form() {
 
         if (email) {
             setLoading(true)
+            console.log('====================================');
+            console.log(API_HOST);
+            console.log('====================================');
             axios.post(`${process.env.REACT_APP_DEV_URL}/user/login`, user)
                 .then(res => {
                     console.log(res.data);

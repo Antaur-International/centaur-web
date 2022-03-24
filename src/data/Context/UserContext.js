@@ -1,7 +1,7 @@
 import React, { useState, createContext } from 'react';
 import axios from 'axios';
 import { useNavigate, Navigate } from 'react-router-dom';
-
+import { API_HOST } from '../../API/constant';
 /*
 A context is a way to share data between components without having to pass props
 */
@@ -24,9 +24,9 @@ export default function UserProvider({ children }) {
             };
 
             console.log(userFetch);
+            console.log(API_HOST);
 
-
-            axios.post('http://localhost:5000/user/getUser', userFetch)
+            axios.post(`http://localhost:5000/user/getUser`, userFetch)
                 .then(res => {
                     setUserInstance(res.data.user);
                     console.log('Running', res.data);
