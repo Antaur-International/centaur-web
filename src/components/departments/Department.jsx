@@ -71,7 +71,7 @@ export default function Department({ user }) {
 
                 </div>
                 <div className='department_main_rightContent'>
-                    {selected === "members" && <Members />}
+                    {selected === "members" && <Members user={user} />}
                     {selected === "resource" && <Resource user={user} />}
                     {selected === "messages" && <Chats changeTab={changeTab} />}
                     {selected === "room" && <Room changeTab={changeTab} />}

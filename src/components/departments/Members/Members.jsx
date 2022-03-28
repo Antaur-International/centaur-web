@@ -1,27 +1,19 @@
 import React from 'react'
 import axios from 'axios'
 import { API_HOST } from '../../../API/constant';
-export default function Members() {
+export default function Members({ user }) {
 
     const [faculty, setFaculty] = React.useState([]);
     const [student, setStudent] = React.useState([]);
 
     React.useEffect(() => {
-        axios.get(`${API_HOST}/user/getFaculty`)
-            .then(res => {
-                setFaculty(res.data.faculty);
-            })
-            .catch(err => {
-                console.log(err);
-            });
-
-        axios.get(`${API_HOST}/user/getStudents`)
-            .then(res => {
-                setStudent(res.data.students);
-            })
-            .catch(err => {
-                console.log(err);
-            });
+        user.batch.students.map((user, index) => {
+            if (user.type === 'staff') {
+                setFaculty((faculty) => [...faculty, user]);
+            } else {
+                setStudent((student) => [...student, user]);
+            }
+        })
     }, []);
 
     return (
@@ -36,7 +28,7 @@ export default function Members() {
                 <ul className='wrapper_members_list'>
                     {
                         faculty.map((fac, index) => {
-                            return <li className='members_list_item'>
+                            return <li key={index} className='members_list_item'>
                                 <div className='list_item_avatar'>
                                     <img src={fac.image} alt="avatar" />
                                 </div>

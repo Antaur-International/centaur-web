@@ -1,8 +1,22 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { EmojiICon, InfoIcon, SendIcon } from '../../../icons/Icons'
 import EmojiPicker, { SKIN_TONE_MEDIUM_DARK } from 'emoji-picker-react';
+import { io } from 'socket.io-client';
+import queryString from "query-string";
+
+// define a socket
+let socket;
 
 const UserChat = ({ userImg, chat, time, userType, userName }) => {
+
+    useEffect(() => {
+        // connect to the socket
+        socket = io(`http://localhost:5000`);
+
+        // listen for new message
+        socket.emit("join");
+    }, []);
+
     return (
         <li className={`section_chats_userChat ${userType}`}>
             <img src={userImg} alt={userName} className='chats_userChat_img ' />
