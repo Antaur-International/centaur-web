@@ -1,0 +1,60 @@
+.lyt_wrapper_liveClasses {
+    padding: $dashboardPadding;
+    @include displayFlex(column, stretch, stretch);
+    gap: 20px;
+
+    .wrapper_liveClasses_main {
+        h2 {
+            font-size: 1.4vw;
+            font-weight: 600;
+            color: $title_color_green;
+            margin-bottom: 20px;
+        }
+
+        .liveClasses_main_onGoing {
+            h3 {
+                font-size: $font_size_1;
+                font-weight: 600;
+                color: $title_color_green;
+                margin-bottom: 20px;
+                position: relative;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    left: 7%;
+                    width: 93%;
+                    height: 1px;
+                    background: linear-gradient(to right, #40a137, #3abe2f);
+                    z-index: -1;
+                }
+            }
+            .main_onGoing_list {
+                @include displayFlex(column, flex-start, stretch);
+            }
+        }
+
+        .liveClasses_main_scheduled {
+            opacity: 0.5;
+            h3 {
+                font-size: $font_size_1;
+                font-weight: 600;
+                color: $title_color_green;
+                margin-bottom: 20px;
+                position: relative;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    left: 8%;
+                    width: 92%;
+                    height: 1px;
+                    background: linear-gradient(to right, #40a137, #3abe2f);
+                    z-index: -1;
+                }
+            }
+        }
+    }
+}

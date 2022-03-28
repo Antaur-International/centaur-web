@@ -17,6 +17,7 @@ import { UserContext } from './data/Context/UserContext';
 import "./css/global.css";
 import './App.css';
 import Helmet from 'react-helmet';
+import LiveClassesLyt from './layout/_lyt_live_classes';
 
 /*
 Importing the packages
@@ -83,6 +84,7 @@ function App() {
         {activeTab === "department-subject" && <SubjectLayout user={instanceUser} />}
         {activeTab === "myWork" && <MyWork user={instanceUser} />}
         {activeTab === "settings" && <SettingsLayout user={instanceUser} />}
+        {activeTab === "live-classes" && <LiveClassesLyt user={instanceUser} />}
       </main>
     </div>
 

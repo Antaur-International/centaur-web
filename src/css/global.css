@@ -18,7 +18,7 @@
   font-size: 2vw;
   font-weight: 700;
   line-height: 1.2;
-  color: #40A137;
+  color: #40a137;
 }
 
 .cp_newsstand_wrapper .wrapper_newsCard_list {
@@ -2746,6 +2746,91 @@
   font-family: "Barlow", sans-serif;
   cursor: pointer;
   text-align: center;
+}
+
+.lyt_wrapper_liveClasses {
+  padding: 20px 25px 0 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: stretch;
+      -ms-flex-pack: stretch;
+          justify-content: stretch;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  gap: 20px;
+}
+
+.lyt_wrapper_liveClasses .wrapper_liveClasses_main h2 {
+  font-size: 1.4vw;
+  font-weight: 600;
+  color: #40a137;
+  margin-bottom: 20px;
+}
+
+.lyt_wrapper_liveClasses .wrapper_liveClasses_main .liveClasses_main_onGoing h3 {
+  font-size: 1.2vw;
+  font-weight: 600;
+  color: #40a137;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.lyt_wrapper_liveClasses .wrapper_liveClasses_main .liveClasses_main_onGoing h3::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 7%;
+  width: 93%;
+  height: 1px;
+  background: -webkit-gradient(linear, left top, right top, from(#40a137), to(#3abe2f));
+  background: linear-gradient(to right, #40a137, #3abe2f);
+  z-index: -1;
+}
+
+.lyt_wrapper_liveClasses .wrapper_liveClasses_main .liveClasses_main_onGoing .main_onGoing_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+.lyt_wrapper_liveClasses .wrapper_liveClasses_main .liveClasses_main_scheduled {
+  opacity: 0.5;
+}
+
+.lyt_wrapper_liveClasses .wrapper_liveClasses_main .liveClasses_main_scheduled h3 {
+  font-size: 1.2vw;
+  font-weight: 600;
+  color: #40a137;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.lyt_wrapper_liveClasses .wrapper_liveClasses_main .liveClasses_main_scheduled h3::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 8%;
+  width: 92%;
+  height: 1px;
+  background: -webkit-gradient(linear, left top, right top, from(#40a137), to(#3abe2f));
+  background: linear-gradient(to right, #40a137, #3abe2f);
+  z-index: -1;
 }
 
 * {
