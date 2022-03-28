@@ -16,6 +16,7 @@ import { UserContext } from './data/Context/UserContext';
 // CSS files
 import "./css/global.css";
 import './App.css';
+import Helmet from 'react-helmet';
 
 /*
 Importing the packages
@@ -23,7 +24,7 @@ Importing the packages
 
 function App() {
 
-  const [activeTab, setActiveTab] = useState("dashboard");
+  const [activeTab, setActiveTab] = useState("");
   const [instanceUser, setInstanceUser] = useState({});
 
 
@@ -71,6 +72,10 @@ function App() {
 
   return (
     <div className="App">
+      <Helmet>
+        <title>Dashboard - Centaur</title>
+        <meta name="description" content="Manage all your resource at one stop" />
+      </Helmet>
       <RightDrawer activeTab={activeTab} setActiveTab={handleTabChange} />
       <main className='main'>
         {activeTab === "dashboard" && <Dashboard user={instanceUser} />}

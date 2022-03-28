@@ -1,4 +1,5 @@
 import React from 'react'
+import Helmet from 'react-helmet';
 import { useNavigate } from 'react-router';
 import NavBar from '../components/landing/navBar';
 
@@ -23,6 +24,10 @@ export default function ForgotPasswordPage() {
     return (
         <section className='lyt_wrapper_forgotPassword'>
             <NavBar />
+            <Helmet>
+                <title>Forgot Password - Centaur</title>
+                <meta name="description" content="Forgot Password page" />
+            </Helmet>
 
             <form className='wrapper_forgotPassword_form'>
                 <h2>Forgot Password?</h2>

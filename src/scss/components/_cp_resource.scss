@@ -1,4 +1,32 @@
+@import "./cp_addResource";
+
 .cp_wrapper_publicResource {
+    .wrapper_top_section {
+        width: 100%;
+        @include displayFlex(row, space-between, center);
+        h2 {
+            font-size: 1.4vw;
+            font-weight: bold;
+            color: #000;
+        }
+        .top_section_addBtn {
+            @include displayFlex(row, space-between, center);
+            gap: 20px;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 12px;
+            font-size: 0.8vw;
+            background-color: #a9ffa1;
+            color: #2b2b2b;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #17fa03;
+                color: black;
+            }
+        }
+    }
+
     .wrapper_publicResource_list {
         margin-top: 20px;
         @include displayFlex(column, flex-start, stretch);

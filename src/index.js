@@ -10,22 +10,21 @@ import Login from './layout/lyt-login';
 import Register from './layout/lyt-register';
 import App from './App';
 import UserProvider from './data/Context/UserContext';
-
-// Importing packages
-import { BrowserRouter, Route, Routes, HashRouter } from 'react-router-dom';
 import ForgotPasswordPage from './layout/_lyt_forgotPassword';
+// Importing packages
+import { Route, Routes, HashRouter } from 'react-router-dom';
 
 ReactDOM.render(
 
   <HashRouter >
     <Routes>
       <Route path="/" element={<Landing />} />
-      <Route path="/login" element={<Login />} />
       <Route path="/dashboard" element={
         <UserProvider>
           <App />
         </UserProvider>
       } />
+      <Route path="/login" element={<Login />} />
       <Route path='forgotPassword' element={<ForgotPasswordPage />} />
       <Route path="/register" element={<Register />} />
       <Route path="*" element={<NotFound />} />
