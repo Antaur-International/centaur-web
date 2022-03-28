@@ -16,6 +16,8 @@ import { UserContext } from './data/Context/UserContext';
 // CSS files
 import "./css/global.css";
 import './App.css';
+import Helmet from 'react-helmet';
+import LiveClassesLyt from './layout/_lyt_live_classes';
 
 /*
 Importing the packages
@@ -23,7 +25,7 @@ Importing the packages
 
 function App() {
 
-  const [activeTab, setActiveTab] = useState("dashboard");
+  const [activeTab, setActiveTab] = useState("");
   const [instanceUser, setInstanceUser] = useState({});
 
 
@@ -71,6 +73,10 @@ function App() {
 
   return (
     <div className="App">
+      <Helmet>
+        <title>Dashboard - Centaur</title>
+        <meta name="description" content="Manage all your resource at one stop" />
+      </Helmet>
       <RightDrawer activeTab={activeTab} setActiveTab={handleTabChange} />
       <main className='main'>
         {activeTab === "dashboard" && <Dashboard user={instanceUser} />}
@@ -78,6 +84,7 @@ function App() {
         {activeTab === "department-subject" && <SubjectLayout user={instanceUser} />}
         {activeTab === "myWork" && <MyWork user={instanceUser} />}
         {activeTab === "settings" && <SettingsLayout user={instanceUser} />}
+        {activeTab === "live-classes" && <LiveClassesLyt user={instanceUser} />}
       </main>
     </div>
 

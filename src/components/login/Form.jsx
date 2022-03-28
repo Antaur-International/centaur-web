@@ -79,7 +79,6 @@ export default function Form() {
                     />
                     <button onClick={changePasswordType} type='button'>
                         <img src="/centaur-web/images/icons/eye_open.svg" alt=''
-
                             ref={hideShowImage}
                         />
                     </button>

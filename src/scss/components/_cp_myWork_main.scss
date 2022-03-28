@@ -1,13 +1,11 @@
 .wrapper_myWork_main {
     @include displayFlex(column, start, normal);
 
-
     .myWork_main_title {
         @include displayFlex(row, space-between, start);
-        
 
         h1 {
-            color: #3ABE2F;
+            color: #3abe2f;
             font-size: 2vw;
         }
 
@@ -16,7 +14,7 @@
             gap: 20px;
             padding: 10px 20px;
             border: none;
-            background: #3ABE2F;
+            background: #3abe2f;
             border-radius: 30px;
             color: white;
             cursor: pointer;
@@ -29,7 +27,6 @@
         margin-top: 20px;
 
         .main_todoCategory_item {
-
             &:not(:last-child) {
                 margin-bottom: 20px;
             }
@@ -37,12 +34,11 @@
             .todoCategory_item_label {
                 @include displayFlex(row, flex-start, center);
                 gap: 10px;
-                color: #3ABE2F;
+                color: #3abe2f;
                 background: none;
                 border: none;
 
-
-                p{
+                p {
                     font-size: 1vw;
                 }
 
@@ -55,25 +51,24 @@
                 overflow: hidden;
 
                 .item_list_item {
-                    border: 2px solid #27C619;
+                    border: 2px solid #27c619;
                     border-radius: 8px;
                     padding: 10px;
                     cursor: pointer;
                     margin-bottom: 10px;
 
-
                     .list_item_top {
                         @include displayFlex(row, space-between, start);
-                        
+
                         &:not(:last-child) {
                             margin-bottom: 10px;
                         }
 
                         p {
-                            background-color: #A9FFA1;
-                            color: black;   
+                            background-color: #a9ffa1;
+                            color: black;
                             padding: 5px 8px;
-                            font-size: .9vw;
+                            font-size: 0.9vw;
                             border-radius: 100px;
                             font-family: $barlow_font;
                         }
@@ -81,7 +76,7 @@
                         button {
                             @include displayFlex(row, center, center);
                             gap: 10px;
-                            background: #FFFFFF;
+                            background: #ffffff;
                             border: 1px solid rgba(0, 0, 0, 0.18);
                             padding: 5px 8px;
                             border-radius: 7px;
@@ -96,20 +91,19 @@
 
                     margin-top: 10px;
 
-                    
                     input {
                         margin-top: 6px;
                         cursor: pointer;
                     }
-                    
+
                     .bottom_content_title {
                         font-size: 1.2vw;
                         font-weight: bold;
                         font-family: $montserrat_font;
                     }
-                    
+
                     .bottom_content_task {
-                        font-size: .8vw;
+                        font-size: 0.8vw;
                         font-weight: normal;
                         font-family: $montserrat_font;
                     }

@@ -1,9 +1,15 @@
 import React from 'react'
+import Helmet from 'react-helmet'
 import NavBar from '../components/landing/navBar'
 
 export default function Landing() {
+
     return (
         <section className='wrapper_landing_page'>
+            <Helmet>
+                <title>Home - Centaur</title>
+                <meta name="description" content="Centaur - resource gathering made easy" />
+            </Helmet>
             <NavBar />
             <section className='landing_page_body'>
                 <div className='page_body_leftSec'>

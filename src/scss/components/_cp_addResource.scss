@@ -1,0 +1,25 @@
+.center_modal_form {
+    color: black;
+    @include displayFlex(column, center, flex-start);
+    gap: 15px;
+    margin-top: 20px;
+    width: 100%;
+    .modal_form_inputGrp {
+        @include displayFlex(column, flex-start, flex-start);
+        gap: 15px;
+        label {
+            font-size: 1vw;
+        }
+    }
+    .modal_form_uploadBtn {
+        border: 1px solid #3abe2f;
+        border-radius: 5px;
+        color: black;
+        padding: 8px 10px;
+        cursor: pointer;
+        &:hover {
+            background-color: #3abe2f;
+            color: white;
+        }
+    }
+}
