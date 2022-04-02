@@ -6,6 +6,7 @@ export default function NavBar() {
         <header className='landing_page_header'>
             <div className='page_header_logo'>
                 <img src='/centaur-web/images/icons/icon.svg' alt="" />
+                <p className='page_header_title'>Centaur</p>
             </div>
             <nav className='page_header_nav'>
                 <ul className='header_nav_list'>

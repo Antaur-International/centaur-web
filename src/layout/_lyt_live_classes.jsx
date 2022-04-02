@@ -18,7 +18,6 @@ export default function LiveClassesLyt({ user }) {
                 <section className='liveClasses_main_scheduled'>
                     <h3>Scheduled</h3>
                 </section>
-
             </section>
         </main>
     )
