@@ -1,34 +1,52 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Link as HashLink } from 'react-scroll'
 
 export default function NavBar() {
+
+    const Navigate = useNavigate();
+
     return (
         <header className='landing_page_header'>
-            <div className='page_header_logo'>
+            <div className='page_header_logo' onClick={() => {
+                Navigate('/');
+            }}>
                 <img src='/centaur-web/images/icons/icon.svg' alt="" />
                 <p className='page_header_title'>Centaur</p>
             </div>
             <nav className='page_header_nav'>
                 <ul className='header_nav_list'>
                     <li className='nav_list_item'>
-                        <Link to='/' className='nav_list_item_link'>
+                        <HashLink to='home'
+                            spy={true}
+                            className='nav_list_item_link'>
                             Home
-                        </Link>
+                        </HashLink>
                     </li>
                     <li className='nav_list_item'>
-                        <Link to='/#features' className='nav_list_item_link'>
+                        <HashLink
+                            to='features'
+                            smooth={true}
+                            spy={true}
+                            className='nav_list_item_link'>
                             Features
-                        </Link>
+                        </HashLink>
                     </li>
                     <li className='nav_list_item'>
-                        <Link to='/#teams' className='nav_list_item_link'>
+                        <HashLink to='teams'
+                            smooth={true}
+                            spy={true}
+                            className='nav_list_item_link'>
                             Teams
-                        </Link>
+                        </HashLink>
                     </li>
                     <li className='nav_list_item'>
-                        <Link to='/#faq' className='nav_list_item_link'>
+                        <HashLink to='faq'
+                            smooth={true}
+                            spy={true}
+                            className='nav_list_item_link'>
                             FAQ
-                        </Link>
+                        </HashLink>
                     </li>
                 </ul>
             </nav>

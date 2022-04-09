@@ -4,7 +4,9 @@
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 100;
     width: calc(100vw - 40px);
+    background: transparent;
 
     .page_header_logo {
         @include displayFlex(row, center, center);
@@ -13,6 +15,7 @@
             font-family: $website_name_font;
             text-decoration: none;
         }
+        cursor: pointer;
     }
 
     .page_header_nav {
