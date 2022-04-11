@@ -1,6 +1,9 @@
 import React from 'react'
 import Helmet from 'react-helmet'
+import Features from '../components/landing/Features'
+import Home from '../components/landing/Home'
 import NavBar from '../components/landing/navBar'
+import Teams from '../components/landing/Teams'
 
 export default function Landing() {
 
@@ -12,13 +15,9 @@ export default function Landing() {
             </Helmet>
             <NavBar />
             <section className='landing_page_body'>
-                <div className='page_body_leftSec'>
-                    <h1>College <span style={{ color: '#4FFF40' }}>Made Easy</span></h1>
-                    <p>One stop for every resource</p>
-                </div>
-                <div className='page_body_rightSec'>
-                    <img src='/centaur-web/images/mockup01.png' alt='' />
-                </div>
+                <Home />
+                <Features />
+                <Teams />
             </section>
         </section>
     )

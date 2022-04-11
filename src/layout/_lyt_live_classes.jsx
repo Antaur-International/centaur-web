@@ -12,13 +12,13 @@ export default function LiveClassesLyt({ user }) {
                     <ul className='main_onGoing_list'>
                         <li className='onGoing_list_item'>
                             <p>AJP</p>
+
                         </li>
                     </ul>
                 </section>
                 <section className='liveClasses_main_scheduled'>
                     <h3>Scheduled</h3>
                 </section>
-
             </section>
         </main>
     )

@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import "./config/animation";
 @import "./config/_variables";
 @import "./config/_mixins";
 @import "./layout/lyt-modelWrapper";
@@ -49,4 +50,9 @@ li {
 input {
     caret-color: #3abe2f;
     outline: none;
+}
+
+a {
+    cursor: pointer !important;
+    text-decoration: none;
 }

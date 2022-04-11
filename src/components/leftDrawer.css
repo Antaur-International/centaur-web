@@ -6,8 +6,8 @@
 .navigation {
   width: 20vw;
   height: 100vh;
-  background: var(--lightGreen);
-  box-shadow: -7px -2px 54px rgba(0, 0, 0, 0.25);
+  background-color: white;
+  /* box-shadow: -7px -2px 54px rgba(0, 0, 0, 0.25); */
   display: flex;
   flex-direction: column;
 }
@@ -51,7 +51,31 @@
   cursor: pointer;
   padding: 17px;
   font-size: 1vw;
+  position: relative;
+  z-index: 10;
 }
+
+.navigation .navigation-list .navigation-item:not(.selected-item):before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0px;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    #d1ffd6 0%,
+    rgba(255, 255, 255, 0.0729167) 92.71%,
+    rgba(180, 255, 187, 0) 100%
+  );
+  z-index: -1;
+  transition: all 0.5s ease-in;
+}
+
+.navigation .navigation-list .navigation-item:not(.selected-item):hover:before {
+  width: 100%;
+}
+
 .navigation .navigation-list .navigation-item:not(:last-child) {
   margin-bottom: 13px;
 }
@@ -121,8 +145,8 @@
 .smallNav {
   width: 5vw;
   height: 100vh;
-  background: var(--lightGreen);
-  box-shadow: -7px -2px 54px rgba(0, 0, 0, 0.25);
+  background: white;
+  /* box-shadow: -7px -2px 54px rgba(0, 0, 0, 0.25); */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -146,6 +170,17 @@
 .smallNav .navigation-list .navigation-item {
   padding: 20px;
   cursor: pointer;
+  transition: all 0.5s ease-in;
+}
+
+.smallNav .navigation-list .navigation-item:not(.selected-item):hover {
+  background: linear-gradient(
+    90deg,
+    #d1ffd6 0%,
+    rgba(255, 255, 255, 0.0729167) 92.71%,
+    rgba(180, 255, 187, 0) 100%
+  );
+  border-radius: 100px;
 }
 
 .smallNav .navigation-list .navigation-item a {

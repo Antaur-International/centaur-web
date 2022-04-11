@@ -1,44 +1,41 @@
-@import "../components/cp_login-form";;
+@import "../components/cp_login-form";
 
-.wrapper_login_page{
+.wrapper_login_page {
     width: 100vw;
     height: 100vh;
-    
+
     display: grid;
     place-items: center;
 
     .login_page_form {
         width: 23%;
         @include displayFlex(column, center, stretch);
-        
-        .page_form_thirdParty{
+
+        .page_form_thirdParty {
             @include displayFlex(column, center, stretch);
             margin-top: 20px;
-            
+
             .form_thirdParty_section {
                 @include googleAuthBtn();
-                
             }
         }
 
-
         .page_form_links {
-        @include displayFlex(row, space-between, center);
-        margin: 10px 0;
+            @include displayFlex(row, space-between, center);
+            margin: 10px 0;
 
-            a{
+            a {
                 font-size: 1vw;
                 font-family: $barlow_font;
-                color: #40A137;
+                color: #40a137;
                 text-decoration: none;
                 transition: all 0.3s ease-in;
             }
-            
         }
 
         .page_form_div {
-            @include displayFlex(column, center, stretch);  
-            
+            @include displayFlex(column, center, stretch);
+
             &:not(:last-child) {
                 margin-bottom: 20px;
             }
@@ -48,9 +45,9 @@
                 font-family: $barlow_font;
                 margin-bottom: 10px;
             }
-            
+
             input {
-                background: #FFFFFF;
+                background: #ffffff;
                 border: 1px solid rgba(0, 0, 0, 0.4);
                 border-radius: 6px;
                 padding: 10px;
@@ -75,15 +72,14 @@
                     background: none;
                     cursor: pointer;
                     transition: all 0.3s ease-in;
+                    display: grid;
+                    place-items: center;
                 }
             }
         }
 
         .page_form_btn {
-            @include formButton()
+            @include formButton();
         }
-
     }
-
-
 }

@@ -1,171 +1,159 @@
 .wrapper_register_page {
-    
     display: grid;
     place-items: center;
 
     margin-top: 10vh;
     margin-bottom: 5vh;
 
-    .register_page_form{
+    .register_page_form {
         width: 23%;
         @include displayFlex(column, center, stretch);
-        
-        .page_form_thirdParty{
+
+        .page_form_thirdParty {
             @include displayFlex(column, center, stretch);
             margin-top: 20px;
-            
+
             .form_thirdParty_section {
                 @include googleAuthBtn();
-                
             }
         }
-    
 
-    .page_form_links {
-        @include displayFlex(row, space-between, center);
-        margin: 10px 0;
+        .page_form_links {
+            @include displayFlex(row, space-between, center);
+            margin: 10px 0;
 
-            a{
+            a {
                 font-size: 1vw;
                 font-family: $barlow_font;
-                color: #40A137;
+                color: #40a137;
                 text-decoration: none;
                 transition: all 0.3s ease-in;
             }
-            
-    }
-
-    .page_form_wrapper {
-        @include displayFlex(column, auto, stretch);
-        height: 45vh;
-        overflow-y: scroll;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        padding: 10px;
-        border-radius: 10px;
-        // background-color: #fff;
-        // box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-        // border: 1px solid #e0e0e0;
-        &::-webkit-scrollbar{
-            display: none;
         }
-        transition: all 0.3s ease-in;
-    }
 
-    .page_form_div {
-        @include displayFlex(column, center, stretch);  
-        
-        &:not(:last-child) {
+        .page_form_wrapper {
+            @include displayFlex(column, auto, stretch);
+            height: 45vh;
+            overflow-y: scroll;
+            margin-top: 20px;
             margin-bottom: 20px;
-        }
-
-        label {
-            font-size: $font_size_1;
-            font-family: $barlow_font;
-            margin-bottom: 10px;
-            color: rgba(0, 0, 0, 0.363);
-        }
-
-        .validInput {
-            border-color: #40A137 !important;
-        }
-
-        .invalidInput{
-        border: 1px solid red !important;
-
-        }
-
-
-        
-        input {
-            background: #FFFFFF;
-            border: 1px solid rgba(0, 0, 0, 0.4);
-            box-sizing: border-box;
-            border-radius: 6px;
-            padding: 10px 10px;
-            font-family: $barlow_font;
-            font-size: $font_size_1;
-            outline: none;
+            padding: 10px;
+            border-radius: 10px;
+            // background-color: #fff;
+            // box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            // border: 1px solid #e0e0e0;
+            @include hideScrollbar();
             transition: all 0.3s ease-in;
+        }
 
-            &[type="number"] {
-                appearance: textField;
+        .page_form_div {
+            @include displayFlex(column, center, stretch);
+
+            &:not(:last-child) {
+                margin-bottom: 20px;
             }
-        }
 
-        .errorTxt {
-            color: red;
-            font-size: 1vw;
-            font-family: $barlow_font;
-            margin-top: 5px;
-        }
-
-        .form_div_input_prefix {
-            border: 1px solid rgba(0, 0, 0, 0.4);
-            border-radius: 6px;
-            padding: 0 10px;
-
-            span{
+            label {
                 font-size: $font_size_1;
                 font-family: $barlow_font;
+                margin-bottom: 10px;
                 color: rgba(0, 0, 0, 0.363);
-                user-select: none;
             }
-            input {
-                border: none !important;
-            }
-        }
 
-        .form_div_password_input {
-            border: 1px solid rgba(0, 0, 0, 0.4);
-            border-radius: 6px;
-            @include displayFlex(row, flex-start, center);
-            input {
-                border: none;
-                width: 100%;
-                // justify-self: auto;
+            .validInput {
+                border-color: #40a137 !important;
             }
-            button {
-                margin-left: auto;
-                margin-right: 20px;
-                border: none;
-                background: none;
-                cursor: pointer;
+
+            .invalidInput {
+                border: 1px solid red !important;
+            }
+
+            input {
+                background: #ffffff;
+                border: 1px solid rgba(0, 0, 0, 0.4);
+                box-sizing: border-box;
+                border-radius: 6px;
+                padding: 10px 10px;
+                font-family: $barlow_font;
+                font-size: $font_size_1;
+                outline: none;
                 transition: all 0.3s ease-in;
-                display: grid;
-                place-items: center;
-            }
-        }
 
-        select {
-            background: #FFFFFF;
-            border: 1px solid rgba(0, 0, 0, 0.4);
-            box-sizing: border-box;
-            border-radius: 6px;
-            padding: 12px 10px;
-            font-family: $barlow_font;
-            font-size: $font_size_1;
-            outline: none;
-            transition: all 0.3s ease-in;
-
-            datalist {
-
-                option {
-                    font-family: $barlow_font;
-                    font-size: .5vw;
-
-                    &:hover {
-                        background: blue;
-                    }
+                &[type="number"] {
+                    appearance: textField;
                 }
             }
 
+            .errorTxt {
+                color: red;
+                font-size: 1vw;
+                font-family: $barlow_font;
+                margin-top: 5px;
+            }
+
+            .form_div_input_prefix {
+                border: 1px solid rgba(0, 0, 0, 0.4);
+                border-radius: 6px;
+                padding: 0 10px;
+
+                span {
+                    font-size: $font_size_1;
+                    font-family: $barlow_font;
+                    color: rgba(0, 0, 0, 0.363);
+                    user-select: none;
+                }
+                input {
+                    border: none !important;
+                }
+            }
+
+            .form_div_password_input {
+                border: 1px solid rgba(0, 0, 0, 0.4);
+                border-radius: 6px;
+                @include displayFlex(row, flex-start, center);
+                input {
+                    border: none;
+                    width: 100%;
+                    // justify-self: auto;
+                }
+                button {
+                    margin-left: auto;
+                    margin-right: 20px;
+                    border: none;
+                    background: none;
+                    cursor: pointer;
+                    transition: all 0.3s ease-in;
+                    display: grid;
+                    place-items: center;
+                }
+            }
+
+            select {
+                background: #ffffff;
+                border: 1px solid rgba(0, 0, 0, 0.4);
+                box-sizing: border-box;
+                border-radius: 6px;
+                padding: 12px 10px;
+                font-family: $barlow_font;
+                font-size: $font_size_1;
+                outline: none;
+                transition: all 0.3s ease-in;
+
+                datalist {
+                    option {
+                        font-family: $barlow_font;
+                        font-size: 0.5vw;
+
+                        &:hover {
+                            background: blue;
+                        }
+                    }
+                }
+            }
+        }
+
+        .page_form_btn {
+            @include formButton();
         }
     }
-
-    .page_form_btn {
-        @include formButton()
-    }
-}
-
 }

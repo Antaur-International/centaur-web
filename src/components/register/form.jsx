@@ -77,6 +77,12 @@ export default function RegForm() {
             .catch(err => {
                 console.log(err);
             })
+
+        const sorted = semesters.sort((a, b) => {
+            return a.semesterId - b.semesterId;
+        });
+
+        setSemesters(sorted);
     }
 
     const changePasswordType = (e) => {
@@ -301,7 +307,7 @@ export default function RegForm() {
                 </div>
 
                 {/* ENROLLMENT NUMBER */}
-                <div className='page_form_div'>
+                {userType !== 'staff' && <div className='page_form_div'>
                     <label>Enrollment Number</label>
                     <div className='form_div_input_prefix'>
                         <span>EN</span>
@@ -328,11 +334,14 @@ export default function RegForm() {
                     {!isValidEnrollment && <p className='errorTxt'>
                         Please enter a valid enrollment number!
                     </p>}
-                </div>
+                </div>}
 
+                {/* SELECT DEPARTMENT */}
                 <div className='page_form_div'>
                     <label>Select Department</label>
-                    <select onChange={handleDepartmentChange}>
+                    <select
+                        disabled={!isValidKey && userType === 'staff'}
+                        onChange={handleDepartmentChange}>
                         <option value="none" disabled selected="true">Select Department</option>
                         {
                             departmentsAvail.map((item, key) => {
@@ -344,9 +353,12 @@ export default function RegForm() {
                     </select>
                 </div>
 
-                <div className='page_form_div'>
+                {/* SELECT SEMESTER */}
+                {userType !== 'staff' && <div className='page_form_div'>
                     <label>Select Semester</label>
-                    <select onChange={(e) => setSelectedSemester(e.target.value)}>
+                    <select
+                        disabled={semesters.length === 0}
+                        onChange={(e) => setSelectedSemester(e.target.value)}>
                         {
                             semesters.map((item, key) => {
                                 return (
@@ -355,7 +367,7 @@ export default function RegForm() {
                             })
                         }
                     </select>
-                </div>
+                </div>}
 
 
                 {/* PHONE NUMBER */}

@@ -1,0 +1,35 @@
+.page_body_home {
+    @include displayFlex(rows, space-between, center);
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 0 9vw;
+    padding-right: 0;
+
+    .body_home_leftSec {
+        h1 {
+            font-size: 3vw;
+            font-family: $montserrat_font;
+            font-weight: bold;
+        }
+        p {
+            margin-top: 20px;
+            font-family: $montserrat_font;
+            font-weight: normal;
+            font-size: 1.2vw;
+        }
+    }
+    .body_home_rightSec {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-position: 100% 100%;
+        background-size: cover;
+
+        img {
+            width: 60%;
+            margin: auto;
+        }
+    }
+}
