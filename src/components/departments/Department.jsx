@@ -73,10 +73,10 @@ export default function Department({ user }) {
                 <div className='department_main_rightContent'>
                     {selected === "members" && <Members user={user} />}
                     {selected === "resource" && <Resource user={user} />}
-                    {selected === "messages" && <Chats changeTab={changeTab} />}
-                    {selected === "room" && <Room changeTab={changeTab} />}
+                    {selected === "messages" && <Chats changeTab={changeTab} user={user} />}
+                    {selected === "room" && <Room changeTab={changeTab} user={user} />}
                 </div>
             </section>
-        </main >
+        </main>
     )
 }

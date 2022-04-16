@@ -1,6 +1,11 @@
 import React from 'react'
 
-export default function Chats({ changeTab }) {
+export default function Chats({ changeTab, user }) {
+
+    React.useEffect(() => {
+
+    }, [])
+
     return (
         <section className='cp_wrapper_chats'>
             <h2>Chat Rooms</h2>
@@ -10,7 +15,7 @@ export default function Chats({ changeTab }) {
                     <div className='list_item_avatar'>
                         <img src="https://via.placeholder.com/150" alt="avatar" />
                     </div>
-                    <p className='list_item_title'>College</p>
+                    <p className='list_item_title' data_rid={user.batch.chatroom._id}>{user.batch.chatroom.room_name}</p>
                 </li>
             </ul>
         </section>

@@ -3,44 +3,43 @@ import { EmojiICon, InfoIcon, SendIcon } from '../../../icons/Icons'
 import EmojiPicker, { SKIN_TONE_MEDIUM_DARK } from 'emoji-picker-react';
 import { io } from 'socket.io-client';
 import queryString from "query-string";
+import { API_HOST } from '../../../API/constant';
+import axios from 'axios';
 
 // define a socket
 let socket;
 
-const UserChat = ({ userImg, chat, time, userType, userName }) => {
+const UserChat = (user) => {
+
+    const [userType, setUserType] = useState();
 
     useEffect(() => {
-        // connect to the socket
-        socket = io(`http://localhost:5000`);
-
-        // listen for new message
-        socket.emit("join");
+        console.log(user);
+        console.log(user.user.sender._id + ' === ' + user.currentUser._id);
+        if (user.user.sender === user.currentUser._id) {
+            setUserType("self");
+        } else {
+            setUserType("endUser");
+        }
     }, []);
 
     return (
         <li className={`section_chats_userChat ${userType}`}>
-            <img src={userImg} alt={userName} className='chats_userChat_img ' />
+            <img src={user.user.sender.image} alt={user.user.sender.name} className='chats_userChat_img' />
             <div>
-                <p className='chats_userChat_name'>{userName} <i className='userChat_name_time'>{time}</i></p>
+                <p className='chats_userChat_name'>{user.user.sender.name} <i className='userChat_name_time'>{user.user.time}</i></p>
                 <p className='chats_userChat_content'>
-                    {chat}
+                    {user.user.message}
                 </p>
             </div>
-
         </li>
     )
 }
 
-export default function Room() {
+export default function Room({ user }) {
 
     const inputRef = useRef(null);
     const messagesList = useRef(null);
-
-    useEffect(() => {
-        let scrollHeight = messagesList.current.scrollHeight;
-        messagesList.current.scrollTo(0, scrollHeight);
-
-    }, []);
 
     const [showEmoji, setShowEmoji] = useState(false);
     const [selectedEmoji, setSelectedEmoji] = useState('');
@@ -48,57 +47,46 @@ export default function Room() {
 
     const [visible, setVisible] = useState(false);
 
-    const chatHistory = [
-        {
-            userImg: 'https://via.placeholder.com/150',
-            chat: "So I was testing today the UI for our applications and found that the UI is not very good, but don't be sad, I will fix it soon. This is just a test message. I am testing the width of this text display box",
-            time: '12:00',
-            userType: 'endUser',
-            userName: 'Tester 01'
-        },
-        {
-            userImg: 'https://via.placeholder.com/150',
-            chat: "So I was testing today the UI for our applications and found that the UI is not very good, but don't be sad, I will fix it soon. This is just a test message. I am testing the width of this text display box",
-            time: '12:00',
-            userType: 'self',
-            userName: 'You'
-        },
-        {
-            userImg: 'https://via.placeholder.com/150',
-            chat: "This is a sample small text message.",
-            time: '12:00',
-            userType: 'endUser',
-            userName: 'Tester 02'
-        },
-        {
-            userImg: 'https://via.placeholder.com/150',
-            chat: "So I was testing today the UI for our applications and found that the UI is not very good, but don't be sad, I will fix it soon. This is just a test message. I am testing the width of this text display box",
-            time: '12:00',
-            userType: 'endUser',
-            userName: 'Tester 01'
-        },
-        {
-            userImg: 'https://via.placeholder.com/150',
-            chat: "So I was testing today the UI for our applications and found that the UI is not very good, but don't be sad, I will fix it soon. This is just a test message. I am testing the width of this text display box",
-            time: '12:00',
-            userType: 'self',
-            userName: 'You'
-        },
-        {
-            userImg: 'https://via.placeholder.com/150',
-            chat: "Last message on the screen",
-            time: '12:00',
-            userType: 'endUser',
-            userName: 'Tester 02'
-        },
-    ]
+    const [chatHistory, setChatHistory] = useState([]);
+
+    useEffect(() => {
+        let scrollHeight = messagesList.current.scrollHeight;
+        messagesList.current.scrollTo(0, scrollHeight);
+
+        // establishing connection with socket.io
+        socket = io('http://localhost:8080');
+        console.log(socket);
+
+        // join the room entered by the user
+        socket.emit('join', user.batch.chatroom._id);
+
+        socket.on('chatroom', (chatroom) => {
+            console.log(chatroom);
+            setChatHistory(chatroom.messages);
+        });
+    }, []);
 
     const handleInputChange = (e) => {
         setMessage(e.target.value);
     }
 
     const handleSubmitBtn = () => {
-        console.log({ message });
+        const time = new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString();
+        const chatNew = {
+            sender: user._id,
+            message: message,
+            time: time,
+            chatroom: user.batch.chatroom._id
+        };
+
+        console.log(chatNew);
+
+        // send the message to the server
+        socket.emit('chat', chatNew);
+        socket.on('chatroom', (chatroom) => {
+            setChatHistory(chatroom.messages);
+        });
+
         setMessage("");
     }
 
@@ -106,7 +94,7 @@ export default function Room() {
         <section className='cp_wrapper_room'>
             <div className='wrapper_room_title'>
                 <img src="https://via.placeholder.com/100" alt="avatar" className='room_title_img' />
-                <h2>College Group</h2>
+                <h2>{user.batch.chatroom.room_name}</h2>
                 <div className='room_title_extraIcon'>
                     <div onClick={() => setVisible(!visible)}>
                         <InfoIcon color={"#3ABE2F"} />
@@ -128,7 +116,8 @@ export default function Room() {
                             chatHistory.map((value, key) => {
                                 return (
                                     <UserChat
-                                        {...value}
+                                        user={value}
+                                        currentUser={user}
                                     />
                                 )
                             })
@@ -168,9 +157,8 @@ export default function Room() {
                     <button onClick={handleSubmitBtn} className='section_inputArea_sendBtn'>
                         <SendIcon scale={24} />
                     </button>
-
                 </div>
             </section>
-        </section >
+        </section>
     )
 }
