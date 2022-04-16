@@ -14,20 +14,14 @@ const UserChat = (user) => {
     const [userType, setUserType] = useState();
 
     useEffect(() => {
-        // console.log(user);
+        console.log(user);
         console.log(user.user.sender._id + ' === ' + user.currentUser._id);
         if (user.user.sender._id === user.currentUser._id) {
             setUserType("self");
-            console.log('====================================');
-            console.log(userType);
-            console.log('====================================');
         } else {
             setUserType("endUser");
         }
     }, []);
-
-
-
 
     return (
         <li className={`section_chats_userChat ${userType}`}>
@@ -56,7 +50,8 @@ export default function Room({ user }) {
     const [chatHistory, setChatHistory] = useState([]);
 
     useEffect(() => {
-        scrollToBottom(messagesList.current);
+        let scrollHeight = messagesList.current.scrollHeight;
+        messagesList.current.scrollTo(0, scrollHeight);
 
         // establishing connection with socket.io
         socket = io('http://localhost:8080');
@@ -66,9 +61,8 @@ export default function Room({ user }) {
         socket.emit('join', user.batch.chatroom._id);
 
         socket.on('chatroom', (chatroom) => {
-            console.log('First time logging ====================================');
+            console.log("Messages when user connected !\n");
             console.log(chatroom);
-            console.log('====================================');
             setChatHistory(chatroom.messages);
         });
     }, []);
@@ -79,7 +73,6 @@ export default function Room({ user }) {
 
     const handleSubmitBtn = () => {
         const time = new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString();
-
         const chatNew = {
             sender: user._id,
             message: message,
@@ -87,28 +80,16 @@ export default function Room({ user }) {
             chatroom: user.batch.chatroom._id
         };
 
-        console.log('User Chat ====================================');
         console.log(chatNew);
-        console.log('=============================================');
 
         // send the message to the server
         socket.emit('chat', chatNew);
         socket.on('chatroom', (chatroom) => {
+            console.log(chatroom);
             setChatHistory(chatroom.messages);
-            console.log('Room Law ====================================');
-            console.log(chatroom.messages);
-            console.log('====================================');
         });
 
-
         setMessage("");
-    }
-
-    const scrollToBottom = (element) => {
-        element.scrollIntoView({ behavior: 'smooth', block: 'end' });;
-        console.log('====================================');
-        console.log(element);
-        console.log('====================================');
     }
 
     return (
@@ -131,8 +112,8 @@ export default function Room({ user }) {
                 </div>
             </div>
             <section className='wrapper_room_section'>
-                <div className='room_section_chats' ref={messagesList}>
-                    <ul className='section_chats_display' >
+                <div className='room_section_chats'>
+                    <ul className='section_chats_display' ref={messagesList}>
                         {
                             chatHistory.map((value, key) => {
                                 return (
@@ -174,11 +155,6 @@ export default function Room({ user }) {
                     <input type={'text'}
                         value={message}
                         ref={inputRef}
-                        onKeyPress={(e) => {
-                            if (e.key === 'Enter') {
-                                handleSubmitBtn();
-                            }
-                        }}
                         onChange={handleInputChange} placeholder="Start typing here" />
                     <button onClick={handleSubmitBtn} className='section_inputArea_sendBtn'>
                         <SendIcon scale={24} />
