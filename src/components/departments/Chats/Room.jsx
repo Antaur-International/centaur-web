@@ -27,7 +27,7 @@ const UserChat = (user) => {
         <li className={`section_chats_userChat ${userType}`}>
             <img src={user.user.sender.image} alt={user.user.sender.name} className='chats_userChat_img' />
             <div>
-                <p className='chats_userChat_name'>{user.user.sender.name} <i className='userChat_name_time'>{user.user.time}</i></p>
+                <p className='chats_userChat_name'>{userType === 'self' ? "You" : user.user.sender.name} <i className='userChat_name_time'>{user.user.time}</i></p>
                 <p className='chats_userChat_content'>
                     {user.user.message}
                 </p>
@@ -36,7 +36,7 @@ const UserChat = (user) => {
     )
 }
 
-export default function Room({ user }) {
+export default function Room({ user, changeTab }) {
 
     const inputRef = useRef(null);
     const messagesList = useRef(null);
@@ -50,8 +50,6 @@ export default function Room({ user }) {
     const [chatHistory, setChatHistory] = useState([]);
 
     useEffect(() => {
-        let scrollHeight = messagesList.current.scrollHeight;
-        messagesList.current.scrollTo(0, scrollHeight);
 
         // establishing connection with socket.io
         socket = io('http://localhost:8080');
@@ -64,7 +62,10 @@ export default function Room({ user }) {
             console.log("Messages when user connected !\n");
             console.log(chatroom);
             setChatHistory(chatroom.messages);
+            messagesList.current.scrollTop = messagesList.current.scrollHeight;
         });
+
+
     }, []);
 
     const handleInputChange = (e) => {
@@ -89,6 +90,8 @@ export default function Room({ user }) {
             setChatHistory(chatroom.messages);
         });
 
+        messagesList.current.scrollTop = messagesList.current.scrollHeight;
+
         setMessage("");
     }
 
@@ -98,22 +101,27 @@ export default function Room({ user }) {
                 <img src="https://via.placeholder.com/100" alt="avatar" className='room_title_img' />
                 <h2>{user.batch.chatroom.room_name}</h2>
                 <div className='room_title_extraIcon'>
-                    <div onClick={() => setVisible(!visible)}>
+                    <div
+                        onMouseOver={() => {
+                            setVisible(true)
+                        }}
+                        onMouseLeave={() => {
+                            setVisible(false)
+                        }}
+
+                    >
                         <InfoIcon color={"#3ABE2F"} />
 
                     </div>
-                    <div className='title_extraIcon_infoDisplay'
-                        style={{
-                            visibility: visible ? 'visible' : 'hidden'
-                        }}>
+                    {visible && <div className='title_extraIcon_infoDisplay'>
                         <p>Messages you send in this group are secured with end-to-end encryption.</p>
-                    </div>
+                    </div>}
 
                 </div>
             </div>
             <section className='wrapper_room_section'>
-                <div className='room_section_chats'>
-                    <ul className='section_chats_display' ref={messagesList}>
+                <div className='room_section_chats' ref={messagesList}>
+                    <ul className='section_chats_display' >
                         {
                             chatHistory.map((value, key) => {
                                 return (
@@ -155,6 +163,11 @@ export default function Room({ user }) {
                     <input type={'text'}
                         value={message}
                         ref={inputRef}
+                        onKeyPress={(e) => {
+                            if (e.key === 'Enter') {
+                                handleSubmitBtn();
+                            }
+                        }}
                         onChange={handleInputChange} placeholder="Start typing here" />
                     <button onClick={handleSubmitBtn} className='section_inputArea_sendBtn'>
                         <SendIcon scale={24} />
