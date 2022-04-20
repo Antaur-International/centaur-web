@@ -64,7 +64,7 @@ export default function Room({ user, changeTab }) {
     useEffect(() => {
 
         // establishing connection with socket.io
-        socket = io('http://localhost:8080');
+        socket = io(`${API_HOST}`);
         console.log(socket);
 
         // join the room entered by the user
