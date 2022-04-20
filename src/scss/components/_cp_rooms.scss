@@ -93,6 +93,7 @@
                     .chats_userChat_name {
                         @include displayFlex(row, center, center);
                         font-size: 1vw;
+                        padding-right: 20px;
 
                         .userChat_name_time {
                             margin-left: auto;
@@ -102,8 +103,8 @@
                     }
 
                     .chats_userChat_content {
-                        max-width: 30vw;
-                        min-width: 10vw;
+                        max-width: 40vw;
+                        min-width: 20vw;
                         font-size: 1vw;
                         border-radius: 5px;
                         word-wrap: break-word;

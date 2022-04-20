@@ -2795,6 +2795,7 @@
       -ms-flex-align: center;
           align-items: center;
   font-size: 1vw;
+  padding-right: 20px;
 }
 
 .cp_wrapper_room .wrapper_room_section .room_section_chats .section_chats_display .section_chats_userChat .chats_userChat_name .userChat_name_time {
@@ -2804,8 +2805,8 @@
 }
 
 .cp_wrapper_room .wrapper_room_section .room_section_chats .section_chats_display .section_chats_userChat .chats_userChat_content {
-  max-width: 30vw;
-  min-width: 10vw;
+  max-width: 40vw;
+  min-width: 20vw;
   font-size: 1vw;
   border-radius: 5px;
   word-wrap: break-word;

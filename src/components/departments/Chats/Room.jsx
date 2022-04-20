@@ -13,6 +13,8 @@ const UserChat = (user) => {
 
     const [userType, setUserType] = useState();
 
+    const [date, setDate] = useState(user.user.time);
+
     useEffect(() => {
         console.log(user);
         console.log(user.user.sender._id + ' === ' + user.currentUser._id);
@@ -21,13 +23,23 @@ const UserChat = (user) => {
         } else {
             setUserType("endUser");
         }
+
+        const event = new Date('7/4/2022 7:02:16 pm');
+
+        setDate(event.toDateString());
     }, []);
 
     return (
         <li className={`section_chats_userChat ${userType}`}>
             <img src={user.user.sender.image} alt={user.user.sender.name} className='chats_userChat_img' />
             <div>
-                <p className='chats_userChat_name'>{userType === 'self' ? "You" : user.user.sender.name} <i className='userChat_name_time'>{user.user.time}</i></p>
+                <p className='chats_userChat_name'>
+                    {userType === 'self' ? "You" : user.user.sender.name}
+
+                    <i className='userChat_name_time'>
+                        {user.user.time}
+                    </i>
+                </p>
                 <p className='chats_userChat_content'>
                     {user.user.message}
                 </p>
