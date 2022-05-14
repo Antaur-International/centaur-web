@@ -18,6 +18,7 @@ import "./css/global.css";
 import './App.css';
 import Helmet from 'react-helmet';
 import LiveClassesLyt from './layout/_lyt_live_classes';
+import JoinMeeting from './layout/_lyt_joinMeeting';
 
 /*
 Importing the packages
@@ -84,7 +85,8 @@ function App() {
         {activeTab === "department-subject" && <SubjectLayout user={instanceUser} />}
         {activeTab === "myWork" && <MyWork user={instanceUser} />}
         {activeTab === "settings" && <SettingsLayout user={instanceUser} />}
-        {activeTab === "live-classes" && <LiveClassesLyt user={instanceUser} />}
+        {activeTab === "live-classes" && <LiveClassesLyt setActiveTab={setActiveTab} user={instanceUser} />}
+        {activeTab === "joinClasses" && <JoinMeeting setActiveTab={setActiveTab} user={instanceUser} />}
       </main>
     </div>
 

@@ -63,9 +63,12 @@ export default function Form() {
         }
     }, []);
 
+	if(loading){
+		return <Loader />
+	}
+
     return (
         <form className='login_page_form'>
-            {loading && <Loader />}
             <div className='page_form_div'>
                 <label>Email</label>
                 <input ref={email} type="email" placeholder='name@example.com' />

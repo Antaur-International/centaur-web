@@ -43,7 +43,9 @@ export default function TodoLayout() {
 
     return (
         <ul className='lyt_todo_wrapper'>
-            {listItem}
+            {
+                todos.length > 0 ? listItem : <p className='no_todo_text'>No Todo's</p>
+            }
         </ul>
     )
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import { EmptyNotifications } from '../EmptyState/EmptyNotifications'
 
 // Notification Card Function
 const NotificationCard = (props) => {
@@ -24,6 +25,9 @@ const NotificationCard = (props) => {
 }
 
 export default function Notification() {
+
+    const [notificationsList, setNotificationsList] = React.useState([])
+
     return (
         <section className='lyt_notification_wrapper'>
             <div className='notification_wrapper_title'>
@@ -42,9 +46,9 @@ export default function Notification() {
             </div>
             <ul className='notification_wrapper_list'>
                 {
-                    [1, 2].map((item, key) => {
+                    notificationsList.length > 0 ? notificationsList.map((item, key) => {
                         return <NotificationCard key={key} />
-                    })
+                    }) : <EmptyNotifications />
                 }
             </ul>
         </section>

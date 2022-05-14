@@ -1,0 +1,64 @@
+.wrapper_lyt_joinMeeting {
+    padding: 15px 25px;
+    @include displayFlex(column, stretch, stretch);
+    gap: 20px;
+    .lyt_joinMeeting_userInteraction {
+        background: #2c2828;
+        border-radius: 10px;
+        width: 40vw;
+        margin: 0 auto;
+        @include displayFlex(column, center, center);
+        gap: 20px;
+        padding: 10px 15px;
+        .joinMeeting_userInteraction_userArea {
+            border: 10px;
+            overflow: hidden;
+            width: max-content;
+            height: max-content;
+
+            .userInteraction_userArea_video {
+                aspect-ratio: 16/9;
+                width: 100%;
+                transform: rotateY(180deg);
+            }
+        }
+
+        .joinMeeting_userInteraction_controls {
+            .userInteraction_controls_list {
+                @include displayFlex(row, center, center);
+                gap: 10px;
+
+                .controls_list_item {
+                    .list_item_btn {
+                        display: grid;
+                        place-items: center;
+                        background: #222222;
+                        border: none;
+                        border-radius: 10px;
+                        padding: 10px;
+                        cursor: pointer;
+
+                        &:hover {
+                            background: #3abe2f;
+                            color: #ffffff;
+                        }
+                    }
+                    .endCall_btn {
+                        display: grid;
+                        place-items: center;
+                        background: red;
+                        border: none;
+                        border-radius: 10px;
+                        padding: 5px;
+                        cursor: pointer;
+
+                        &:hover {
+                            background-color: rgba(255, 0, 0, 0.75);
+                            color: #ffffff;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

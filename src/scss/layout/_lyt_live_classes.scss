@@ -31,7 +31,48 @@
                 }
             }
             .main_onGoing_list {
-                @include displayFlex(column, flex-start, stretch);
+                @include displayFlex(row, flex-start, stretch);
+                flex-wrap: wrap;
+                gap: 20px;
+
+                .onGoing_list_item {
+                    @include displayFlex(column, flex-start, stretch);
+                    gap: 10px;
+                    background: #ffffff;
+                    border: 1px solid rgba(0, 0, 0, 0.15);
+                    box-sizing: border-box;
+                    border-radius: 10px;
+
+                    padding: 10px 20px;
+                    width: 20vw;
+
+                    .list_item_title {
+                        font-size: $font_size_1;
+                        font-weight: 600;
+                    }
+
+                    .list_item_description {
+                        font-size: 1vw;
+                        font-style: italic;
+                        font-weight: 400;
+                        margin-bottom: 10px;
+                    }
+
+                    .list_item_joinBtn {
+                        margin-top: 20px;
+                        margin-left: auto;
+                        outline: none;
+                        border: none;
+                        background-color: #3abe2f;
+                        color: #ffffff;
+                        border-radius: 10px;
+                        padding: 5px 20px;
+                        font-size: 1vw;
+                        font-weight: 500;
+                        cursor: pointer;
+                        transition: all 0.3s ease-in-out;
+                    }
+                }
             }
         }
 
