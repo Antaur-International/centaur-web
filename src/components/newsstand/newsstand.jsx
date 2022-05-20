@@ -1,6 +1,7 @@
 import React from 'react'
 import { NewspaperIcon } from '../../icons/Icons';
 import axios from 'axios';
+import { API_HOST } from '../../API/constant';
 
 const NewsCardItem = (props) => {
     return <li className='wrapper_newsCard_item'>
@@ -21,7 +22,7 @@ export default function Newsstand() {
 
     React.useEffect(() => {
         axios
-            .get('http://localhost:5000/msbte/news')
+            .get(`${API_HOST}/msbte/news`)
             .then(res => {
                 console.log(res.data.newsData);
                 setNews(res.data.newsData);
