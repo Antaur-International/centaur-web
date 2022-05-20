@@ -307,7 +307,7 @@ export default function RegForm() {
                 </div>
 
                 {/* ENROLLMENT NUMBER */}
-                {userType !== 'staff' && <div className='page_form_div'>
+                {<div className='page_form_div'>
                     <label>Enrollment Number</label>
                     <div className='form_div_input_prefix'>
                         <span>EN</span>
@@ -376,7 +376,7 @@ export default function RegForm() {
                     <div className='form_div_input_prefix'>
                         <span>+91</span>
                         <input
-                            type="text"
+                            type="number"
                             placeholder='XXXXXXXX'
                             ref={phoneNumber}
                             maxLength="10"
