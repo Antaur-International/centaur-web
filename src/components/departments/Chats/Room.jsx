@@ -16,7 +16,7 @@ const UserChat = (user) => {
     const [date, setDate] = useState(user.user.time);
 
     useEffect(() => {
-        console.log(user);
+        console.log(user.user.sender.image);
         console.log(user.user.sender._id + ' === ' + user.currentUser._id);
         if (user.user.sender._id === user.currentUser._id) {
             setUserType("self");
@@ -69,6 +69,7 @@ export default function Room({ user, changeTab }) {
 
         // join the room entered by the user
         socket.emit('join', user.batch.chatroom._id);
+        console.log(user);
 
         socket.on('chatroom', (chatroom) => {
             console.log("Messages when user connected !\n");

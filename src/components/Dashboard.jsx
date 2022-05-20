@@ -6,6 +6,8 @@ import { CalenderIcon, MoreIcon, VideoIcon } from '../icons/Icons';
 import TodoLayout from '../layout/lyt-todo';
 import Modal from './rightDrawer/RightDrawer';
 import Newsstand from './newsstand/newsstand';
+import { API_HOST } from '../API/constant';
+import axios from 'axios';
 
 const MeetingsListItem = (props) => {
     return <li>
@@ -18,9 +20,22 @@ const MeetingsListItem = (props) => {
     </li>
 }
 
+const NewsCardItem = (props) => {
+    return <li className='wrapper_newsCard_item'>
+        <div className='newsCard_item_head'>
+            <p className='item_head_category'>{props.category}</p>
+        </div>
+
+        <p className='newsCard_item_content'>
+            {props.content}
+        </p>
+    </li>
+}
+
 export default function Dashboard({ user }) {
     const [greeting, setGreeting] = React.useState("Evening");
     const [isOpen, setIsOpen] = React.useState(false);
+    const [news, setNews] = React.useState([]);
 
     const handleOpen = () => {
         setIsOpen(true);
@@ -35,6 +50,16 @@ export default function Dashboard({ user }) {
         const hours = date.getHours();
         const greetingTemp = hours < 12 ? "Morning" : hours < 18 ? "Afternoon" : "Evening";
         setGreeting(greetingTemp)
+
+        axios
+            .get(`${API_HOST}/msbte/news`)
+            .then(res => {
+                console.log(res.data.newsData);
+                setNews(res.data.newsData);
+            })
+            .catch(err => {
+                console.log(err);
+            });
     }, []);
 
 
@@ -52,21 +77,40 @@ export default function Dashboard({ user }) {
         </section>
         <section className='calender'>
             <div className='dashboardCardLabel'>
-                <p>Todo</p>
-                <MoreIcon />
+                <div className='topLayer'>
+                    <p>Todo</p>
+                    <MoreIcon />
+                </div>
             </div>
-            <TodoLayout />
+            <TodoLayout user={user} />
         </section>
         <section className='news' onClick={handleOpen}>
-            <div className='dashboardCardLabel'>
-                <p>Newsstand</p>
-                <MoreIcon />
+            <div className='dashboardCardLabel newsStand'>
+                <div className='topLayer'>
+                    <p>Newsstand</p>
+                    <MoreIcon />
+                </div>
+
+                <section className='cp_newsstand_wrapper'>
+                    <ul className='wrapper_newsCard_list'>
+                        {
+                            news.map(news => {
+                                return <NewsCardItem
+                                    category="MSBTE"
+                                    content={news.innerText}
+                                />
+                            })
+                        }
+                    </ul>
+                </section>
             </div>
         </section>
         <section className='meetings'>
             <div className='dashboardCardLabel'>
-                <p>Upcoming Meetings</p>
-                <CalenderIcon />
+                <div className='topLayer'>
+                    <p>Upcoming Meetings</p>
+                    <CalenderIcon />
+                </div>
             </div>
             <ul>
                 <MeetingsListItem meeting={{ title: "AJP", titleLong: "Advance Java Programing" }} />

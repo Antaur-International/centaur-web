@@ -168,8 +168,7 @@ export default function MyWorkMain() {
 
                     <ul className="todoCategory_item_list"
                         ref={personalTask}
-                        style={{ maxHeight: `${personalTaskHeight}` }}
-                    >
+                        style={{ maxHeight: `${personalTaskHeight}` }}>
 
                         {PersonalList}
                     </ul>

@@ -29,15 +29,15 @@ export default function RegForm() {
 
     const [isOpen, setIsOpen] = React.useState(false);
 
-    const license = useRef(null);
-    const name = useRef(null);
-    const email = useRef(null);
-    const password = useRef(null);
-    const confirmPassword = useRef(null);
-    const enrollmentNumber = useRef(null);
-    const phoneNumber = useRef(null);
-    const hideShowImage = useRef(null);
-    const hideShowImage2 = useRef(null);
+    const license = useRef();
+    const name = useRef();
+    const email = useRef();
+    const password = useRef();
+    const confirmPassword = useRef();
+    const enrollmentNumber = useRef();
+    const phoneNumber = useRef();
+    const hideShowImage = useRef();
+    const hideShowImage2 = useRef();
 
     const [departmentsAvail, setDepartments] = React.useState([{}]);
 
@@ -123,25 +123,39 @@ export default function RegForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (name.current.value === '' || email.current.value === '' || password.current.value === '' || confirmPassword.current.value === '' || enrollmentNumber.current.value === '' || phoneNumber.current.value === '') {
+        if (name.current.value === '' || email.current.value === '' || password.current.value === '' || confirmPassword.current.value === '' || phoneNumber.current.value === '') {
+            if (userType === 'student') {
+                if (enrollmentNumber.current.value === '') {
+                    setIsOpen(true);
+                    alert('Please fill all the fields');
+
+                }
+            }
             setIsOpen(true);
             alert('Please fill all the fields');
         } else {
 
-            console.log(userType);
-            console.log(selectedDepartment);
-
-            const user = {
+            let user = {
                 type: userType,
                 privilege: userType ? 'student' : 'admin',
                 name: name.current.value,
                 email: email.current.value,
                 password: password.current.value,
-                en_number: enrollmentNumber.current.value,
                 phoneNum: phoneNumber.current.value,
                 department: selectedDepartment,
                 semester: selectedSemester
             }
+
+            if (userType === 'staff') {
+                user = {
+                    ...user,
+                    en_number: 1,
+
+                }
+            }
+
+
+            console.log(user);
 
             axios.post(`${API_HOST}/user/register`, user)
                 .then(res => {
@@ -307,12 +321,13 @@ export default function RegForm() {
                 </div>
 
                 {/* ENROLLMENT NUMBER */}
-                {<div className='page_form_div'>
+                {userType !== 'staff' && <div className='page_form_div'>
                     <label>Enrollment Number</label>
                     <div className='form_div_input_prefix'>
                         <span>EN</span>
                         <input
                             type="number"
+                            value=""
                             placeholder='XXXXXXXX'
                             ref={enrollmentNumber}
                             disabled={!isValidKey && userType === 'staff'}
