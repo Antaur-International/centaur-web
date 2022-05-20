@@ -123,21 +123,37 @@ export default function RegForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (name.current.value === '' || email.current.value === '' || password.current.value === '' || confirmPassword.current.value === '' || enrollmentNumber.current.value === '' || phoneNumber.current.value === '') {
+        if (name.current.value === '' || email.current.value === '' || password.current.value === '' || confirmPassword.current.value === '' || phoneNumber.current.value === '') {
+            if (userType === 'student') {
+                if (enrollmentNumber.current.value === '') {
+                    setIsOpen(true);
+                    alert('Please fill all the fields');
+
+                }
+            }
             setIsOpen(true);
             alert('Please fill all the fields');
         } else {
-            const user = {
+
+            let user = {
                 type: userType,
                 privilege: userType ? 'student' : 'admin',
                 name: name.current.value,
                 email: email.current.value,
                 password: password.current.value,
-                en_number: enrollmentNumber.current.value,
                 phoneNum: phoneNumber.current.value,
                 department: selectedDepartment,
                 semester: selectedSemester
             }
+
+            if (userType === 'staff') {
+                user = {
+                    ...user,
+                    en_number: 1,
+
+                }
+            }
+
 
             console.log(user);
 
@@ -305,7 +321,7 @@ export default function RegForm() {
                 </div>
 
                 {/* ENROLLMENT NUMBER */}
-                <div className={`page_form_div ${userType === 'staff' && 'd-none'}`}>
+                {userType !== 'staff' && <div className='page_form_div'>
                     <label>Enrollment Number</label>
                     <div className='form_div_input_prefix'>
                         <span>EN</span>
@@ -333,7 +349,7 @@ export default function RegForm() {
                     {!isValidEnrollment && <p className='errorTxt'>
                         Please enter a valid enrollment number!
                     </p>}
-                </div>
+                </div>}
 
                 {/* SELECT DEPARTMENT */}
                 <div className='page_form_div'>
@@ -375,7 +391,7 @@ export default function RegForm() {
                     <div className='form_div_input_prefix'>
                         <span>+91</span>
                         <input
-                            type="text"
+                            type="number"
                             placeholder='XXXXXXXX'
                             ref={phoneNumber}
                             maxLength="10"
