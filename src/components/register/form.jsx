@@ -137,20 +137,26 @@ export default function RegForm() {
 
             let user = {
                 type: userType,
-                privilege: userType ? 'student' : 'admin',
+                privilege: userType === 'student' ? 'student' : 'admin',
                 name: name.current.value,
                 email: email.current.value,
                 password: password.current.value,
                 phoneNum: phoneNumber.current.value,
                 department: selectedDepartment,
-                semester: selectedSemester
+                semester: selectedSemester,
             }
 
             if (userType === 'staff') {
                 user = {
                     ...user,
-                    en_number: 1,
+                    en_number: "",
+                }
+            }
 
+            if (userType === 'student') {
+                user = {
+                    ...user,
+                    en_number: enrollmentNumber.current.value,
                 }
             }
 
@@ -369,7 +375,7 @@ export default function RegForm() {
                 </div>
 
                 {/* SELECT SEMESTER */}
-                {userType !== 'staff' && <div className='page_form_div'>
+                <div className='page_form_div'>
                     <label>Select Semester</label>
                     <select
                         disabled={semesters.length === 0}
@@ -382,7 +388,7 @@ export default function RegForm() {
                             })
                         }
                     </select>
-                </div>}
+                </div>
 
 
                 {/* PHONE NUMBER */}
