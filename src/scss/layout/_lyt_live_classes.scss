@@ -11,6 +11,20 @@
             margin-bottom: 20px;
         }
 
+        .liveClasses_main_createBtn {
+            @include displayFlex(row, center, center);
+            margin-bottom: 20px;
+            outline: none;
+            border: none;
+
+            font-family: $poppins_font;
+            background-color: #3abe2f;
+            color: #fff;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
         .liveClasses_main_onGoing {
             h3 {
                 font-size: $font_size_1;
@@ -99,3 +113,5 @@
         }
     }
 }
+
+@import "../components/cp_addMettings";
