@@ -28,8 +28,13 @@ export default function RightDrawer(props) {
                 <DepartmentIcon color={props.activeTab === "department" || props.activeTab === "department-subject" ? "#37BC2B" : "#A4A4A4"} />
                 <p>Departments</p>
             </li>
-            <li className='navigation-item'>
-                <ScheduleIcon color='#A4A4A4' />
+            <li className={`navigation-item ${props.activeTab === 'calender' ? 'selected-item' : ''}`}
+                onClick={() => { props.setActiveTab("calender") }}
+
+            >
+                <ScheduleIcon color={
+                    props.activeTab === "calender" ? "#37BC2B" : "#A4A4A4"
+                } />
                 <p>Schedules</p>
             </li>
             <li className='navigation-item'>
@@ -61,5 +66,5 @@ export default function RightDrawer(props) {
             </button>
         </section>
 
-    </nav >;
+    </nav>;
 }
