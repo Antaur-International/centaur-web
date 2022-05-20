@@ -6,6 +6,7 @@ import AddTaskModal from './AddTaskModal'
 import EditTaskModal from './EditTaskModal'
 import axios from 'axios';
 import { API_HOST } from '../../API/constant'
+import { EmptyTaskList } from '../EmptyState/EmptyTaskList'
 
 const MyWorkListItem = (props) => {
     return <li className='item_list_item' onClick={props.onClick} data-id={props.task._id}>
@@ -53,7 +54,7 @@ export default function MyWorkMain() {
     const [personalTaskList, setPersonalTaskList] = useState([]);
     const [collegeTaskList, setCollegeTaskList] = useState([]);
 
-    const PersonalList = personalTaskList.map((item, key) => {
+    const PersonalList = personalTaskList.length > 0 ? personalTaskList.map((item, key) => {
         return <MyWorkListItem
             key={key}
             task={item}
@@ -63,9 +64,9 @@ export default function MyWorkMain() {
                 task: item
             }))}
         />
-    })
+    }) : <EmptyTaskList />
 
-    const CollegeList = collegeTaskList.map((item, key) => {
+    const CollegeList = collegeTaskList.length > 0 ? collegeTaskList.map((item, key) => {
         return <MyWorkListItem
             key={key}
             task={item}
@@ -75,7 +76,7 @@ export default function MyWorkMain() {
                 task: item
             }))}
         />
-    })
+    }) : <EmptyTaskList />
 
     const toggleAccordion = () => {
         setPersonalTaskIsOpen(!personalTaskIsOpen)

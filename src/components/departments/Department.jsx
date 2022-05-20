@@ -5,6 +5,7 @@ import Resource from './Resource/Resource'
 import Members from './Members/Members';
 import Chats from './Chats/Chats';
 import Room from './Chats/Room';
+import { Subjects } from './Subjects/Subjects';
 
 
 
@@ -59,7 +60,9 @@ export default function Department({ user }) {
                                 {
                                     user.batch.subjects.map((subj, index) => {
                                         return (
-                                            <li className='item_subMenu_item'>
+                                            <li className='item_subMenu_item' onClick={() => {
+                                                setSelected(`subjects ${subj.name}`)
+                                            }}>
                                                 {subj.name}
                                             </li>
                                         )
@@ -75,6 +78,7 @@ export default function Department({ user }) {
                     {selected === "resource" && <Resource user={user} />}
                     {selected === "messages" && <Chats changeTab={changeTab} user={user} />}
                     {selected === "room" && <Room changeTab={changeTab} user={user} />}
+                    {selected.includes("subject") && <Subjects subject={selected} />}
                 </div>
             </section>
         </main>
