@@ -6,4 +6,4 @@ if (process.env.NODE_ENV === "development") {
     API = "https://centaur-be.herokuapp.com";
 }
 
-export const API_HOST = API;
+export const API_HOST = "https://centaur-be.herokuapp.com";
