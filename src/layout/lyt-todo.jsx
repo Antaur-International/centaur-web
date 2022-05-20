@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { SingleTick, HamBurger } from '../icons/Icons'
+import { API_HOST } from '../API/constant';
 
 
 export default function TodoLayout({ user }) {
@@ -9,7 +10,7 @@ export default function TodoLayout({ user }) {
 
     React.useEffect(() => {
         axios
-            .get(`http://localhost:5000/task/personal/${user._id}`)
+            .get(`${API_HOST}/task/personal/${user._id}`)
             .then(res => {
                 setTodos(res.data.tasks);
                 console.log(res.data.tasks);

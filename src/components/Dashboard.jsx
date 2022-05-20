@@ -6,6 +6,7 @@ import { CalenderIcon, MoreIcon, VideoIcon } from '../icons/Icons';
 import TodoLayout from '../layout/lyt-todo';
 import Modal from './rightDrawer/RightDrawer';
 import Newsstand from './newsstand/newsstand';
+import { API_HOST } from '../API/constant';
 import axios from 'axios';
 
 const MeetingsListItem = (props) => {
@@ -51,7 +52,7 @@ export default function Dashboard({ user }) {
         setGreeting(greetingTemp)
 
         axios
-            .get('http://localhost:5000/msbte/news')
+            .get(`${API_HOST}/msbte/news`)
             .then(res => {
                 console.log(res.data.newsData);
                 setNews(res.data.newsData);
