@@ -1,22 +1,36 @@
 import React from 'react'
-import { NewspaperIcon } from '../../icons/Icons'
+import { NewspaperIcon } from '../../icons/Icons';
+import axios from 'axios';
 
 const NewsCardItem = (props) => {
     return <li className='wrapper_newsCard_item'>
-        <div className='newsCard_item_head'>
-            <div className='item_head_date'>
-                <p>{props.date}</p>
+        <a target='_blank' href={props.link} title="link" rel="noreferrer">
+            <div className='newsCard_item_head'>
+                <p className='item_head_category'>{props.category}</p>
             </div>
-            <p className='item_head_category'>{props.category}</p>
-        </div>
 
-        <p className='newsCard_item_content'>
-            {props.content}
-        </p>
+            <p className='newsCard_item_content'>
+                {props.content}
+            </p>
+        </a>
     </li>
 }
 
 export default function Newsstand() {
+    const [news, setNews] = React.useState([]);
+
+    React.useEffect(() => {
+        axios
+            .get('http://localhost:5000/msbte/news')
+            .then(res => {
+                console.log(res.data.newsData);
+                setNews(res.data.newsData);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }, []);
+
     return (
         <section className='cp_newsstand_wrapper'>
             <div className='wrapper_title'>
@@ -25,21 +39,14 @@ export default function Newsstand() {
             </div>
 
             <ul className='wrapper_newsCard_list'>
-                <NewsCardItem
-                    date="17 Feb 2020"
-                    category="MSBTE"
-                    content='One week online faculty development training program on " ENHANCING INDUSTRY INSTITUTE INTERACTION" from 07th to 11 th March, 2022 organised by Government polytechnic, Nanded.( English)(34 kb)'
-                />
-                <NewsCardItem
-                    date="17 Feb 2020"
-                    category="MSBTE"
-                    content='One week online faculty development training program on " ENHANCING INDUSTRY INSTITUTE INTERACTION" from 07th to 11 th March, 2022 organised by Government polytechnic, Nanded.( English)(34 kb)'
-                />
-                <NewsCardItem
-                    date="17 Feb 2020"
-                    category="MSBTE"
-                    content='One week online faculty development training program on " ENHANCING INDUSTRY INSTITUTE INTERACTION" from 07th to 11 th March, 2022 organised by Government polytechnic, Nanded.( English)(34 kb)'
-                />
+                {news.map(news => (
+                    <NewsCardItem
+                        key={news.id}
+                        category="MSBTE"
+                        content={news.innerText}
+                        link={news.href}
+                    />
+                ))}
             </ul>
         </section>
     )

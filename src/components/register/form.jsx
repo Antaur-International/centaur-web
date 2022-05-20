@@ -127,10 +127,6 @@ export default function RegForm() {
             setIsOpen(true);
             alert('Please fill all the fields');
         } else {
-
-            console.log(userType);
-            console.log(selectedDepartment);
-
             const user = {
                 type: userType,
                 privilege: userType ? 'student' : 'admin',
@@ -142,6 +138,8 @@ export default function RegForm() {
                 department: selectedDepartment,
                 semester: selectedSemester
             }
+
+            console.log(user);
 
             axios.post(`${API_HOST}/user/register`, user)
                 .then(res => {

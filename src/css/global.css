@@ -68,6 +68,10 @@
   border-radius: 10px;
   padding: 10px 20px;
   cursor: pointer;
+  width: 90%;
+}
+.cp_newsstand_wrapper .wrapper_newsCard_list .wrapper_newsCard_item a {
+  color: #000;
 }
 .cp_newsstand_wrapper .wrapper_newsCard_list .wrapper_newsCard_item .newsCard_item_head {
   display: flex;

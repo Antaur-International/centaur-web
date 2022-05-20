@@ -14,7 +14,7 @@ export default function MyWork({ user }) {
                 <MyWorkMain />
             </div>
             <div className='wrapper_myWork_todo'>
-                <TodoLayout />
+                <TodoLayout user={user} />
             </div>
         </section>
     )
