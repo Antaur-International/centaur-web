@@ -12,7 +12,7 @@ import axios from 'axios';
 import SubjectLayout from './layout/_lyt_deartment_subject';
 import SettingsLayout from './layout/_lyt_settings';
 import { UserContext } from './data/Context/UserContext';
-
+import Calender from "./components/calendar/Calendar";
 // CSS files
 import "./css/global.css";
 import './App.css';
@@ -83,6 +83,7 @@ function App() {
         {activeTab === "dashboard" && <Dashboard user={instanceUser} />}
         {activeTab === "department" && <Department user={instanceUser} setActiveTab={setActiveTab} />}
         {activeTab === "department-subject" && <SubjectLayout user={instanceUser} />}
+        {activeTab === "calender" && <Calender setActiveTab={setActiveTab} user={instanceUser} />}
         {activeTab === "myWork" && <MyWork user={instanceUser} />}
         {activeTab === "settings" && <SettingsLayout user={instanceUser} />}
         {activeTab === "live-classes" && <LiveClassesLyt setActiveTab={setActiveTab} user={instanceUser} />}
