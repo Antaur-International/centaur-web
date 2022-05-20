@@ -29,15 +29,15 @@ export default function RegForm() {
 
     const [isOpen, setIsOpen] = React.useState(false);
 
-    const license = useRef(null);
-    const name = useRef(null);
-    const email = useRef(null);
-    const password = useRef(null);
-    const confirmPassword = useRef(null);
-    const enrollmentNumber = useRef(null);
-    const phoneNumber = useRef(null);
-    const hideShowImage = useRef(null);
-    const hideShowImage2 = useRef(null);
+    const license = useRef();
+    const name = useRef();
+    const email = useRef();
+    const password = useRef();
+    const confirmPassword = useRef();
+    const enrollmentNumber = useRef();
+    const phoneNumber = useRef();
+    const hideShowImage = useRef();
+    const hideShowImage2 = useRef();
 
     const [departmentsAvail, setDepartments] = React.useState([{}]);
 
@@ -305,12 +305,13 @@ export default function RegForm() {
                 </div>
 
                 {/* ENROLLMENT NUMBER */}
-                {userType !== 'staff' && <div className='page_form_div'>
+                <div className={`page_form_div ${userType === 'staff' && 'd-none'}`}>
                     <label>Enrollment Number</label>
                     <div className='form_div_input_prefix'>
                         <span>EN</span>
                         <input
                             type="number"
+                            value=""
                             placeholder='XXXXXXXX'
                             ref={enrollmentNumber}
                             disabled={!isValidKey && userType === 'staff'}
@@ -332,7 +333,7 @@ export default function RegForm() {
                     {!isValidEnrollment && <p className='errorTxt'>
                         Please enter a valid enrollment number!
                     </p>}
-                </div>}
+                </div>
 
                 {/* SELECT DEPARTMENT */}
                 <div className='page_form_div'>
