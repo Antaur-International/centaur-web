@@ -8,13 +8,14 @@
     transform: translate(-50%, -50%);
     position: absolute;
     z-index: 2;
+    display: grid;
+    place-items: center;
 
     .modal_wrapper_center {
         position: fixed;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-
 
         .wrapper_center_modal {
             width: 30vw;
@@ -36,20 +37,19 @@
                 z-index: 10;
             }
 
-            .center_modal_header{
+            .center_modal_header {
                 color: black;
                 font-size: 2vh;
             }
 
             .center_modal_content {
-             
                 margin-top: 20px;
 
                 .modal_content_form {
                     @include displayFlex(column, flex-start, flex-start);
                     gap: 10px;
 
-                    .cat_select{
+                    .cat_select {
                         padding: 1rem 2rem;
                         border: 1px solid rgba(0, 0, 0, 0.14);
                         border-radius: 5px;
@@ -57,7 +57,7 @@
                     }
 
                     input {
-                        background: #FFFFFF;
+                        background: #ffffff;
                         border: 1px solid rgba(0, 0, 0, 0.14);
                         border-radius: 5px;
                         padding: 10px;
@@ -68,15 +68,15 @@
                         width: -moz-available;
                         width: 95%;
                     }
-                    
+
                     textarea {
                         font-size: 1vw;
                         width: -moz-available;
                         font-family: $montserrat_font;
-                        background: #FFFFFF;
+                        background: #ffffff;
                         border: 1px solid rgba(0, 0, 0, 0.14);
                         outline: none;
-                        padding: 10px ;
+                        padding: 10px;
                         border-radius: 5px;
                         resize: none;
                         width: 95%;
@@ -100,22 +100,20 @@
                             transition: 0.3s;
                         }
                         .form_actionBtn_reminder {
-                            background: #FFFFFF ;
+                            background: #ffffff;
                             border: 1px solid rgba(0, 0, 0, 0.18);
                             border-radius: 7px;
                         }
                         .form_actionBtn_addTask {
-                            background: #3ABE2F;
+                            background: #3abe2f;
                             color: white;
                             margin-left: auto;
                         }
                         .form_actionBtn_deleteTask {
-                            background: #D82148;
+                            background: #d82148;
                             color: white;
                         }
-
                     }
-                    
                 }
             }
         }

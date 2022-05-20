@@ -1,0 +1,39 @@
+.cp_wrapper_createMeeting {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    @include displayFlex(column, flex-start, flex-start);
+    gap: 20px;
+    .wrapper_createMeeting_inputGrp {
+        @include displayFlex(column, flex-start, flex-start);
+        gap: 5px;
+
+        label {
+            font-size: 0.9vw;
+            font-weight: 600;
+            opacity: 0.8;
+            color: #2b2b2b;
+        }
+
+        input {
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.14);
+            border-radius: 5px;
+            padding: 10px;
+        }
+    }
+
+    .wrapper_createMeeting_btn {
+        outline: none;
+        border: none;
+        background-color: #3abe2f;
+        color: #ffffff;
+        width: 100%;
+        padding: 8px 0;
+        border-radius: 5px;
+        font-size: 0.9vw;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+}
