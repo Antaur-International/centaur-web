@@ -5,16 +5,19 @@ import interactionPlugin from "@fullcalendar/interaction" // needed for dayClick
 
 import ModalLayout from '../../layout/_lyt_modal'
 import AddEventModal from './AddEventModal';
+import EditEventModal from './EditEventModal';
 import axios from 'axios';
 import { API_HOST } from '../../API/constant';
 
-export default function Calendar() {
+export default function Calendar({ user }) {
 
     const [events, setEvents] = React.useState([]);
     const [tasks, setTasks] = React.useState([]);
     const [selectedDate, setSelectedDate] = React.useState();
+    const [data, setData] = React.useState({});
 
     const [isModalOpen, setIsModalOpen] = React.useState(false);
+    const [isEditModalOpen, setEditModalOpen] = React.useState(false);
 
     React.useEffect(() => {
         axios.get(`${API_HOST}/events`)
@@ -32,6 +35,12 @@ export default function Calendar() {
         setIsModalOpen(true);
     }
 
+    const handleEventClick = (arg) => {
+        console.log(arg);
+        setData(arg.event._def);
+        setEditModalOpen(true);
+    }
+
     const renderEventContent = (eventInfo) => {
         return (
             <div className="fc-event-container">
@@ -47,10 +56,13 @@ export default function Calendar() {
                 plugins={[dayGridPlugin, interactionPlugin]}
                 initialView="dayGridMonth"
                 dateClick={handleDateClick}
+                eventClick={handleEventClick}
+                eventDisplay="block"
                 events={events}
             />
 
             {isModalOpen && <ModalLayout> <AddEventModal selectedDate={selectedDate} setIsOpen={setIsModalOpen} /> </ModalLayout>}
+            {isEditModalOpen && <ModalLayout> <EditEventModal user={user} data={data} setIsOpen={setEditModalOpen} /> </ModalLayout>}
         </>
     )
 }

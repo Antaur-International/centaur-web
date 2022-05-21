@@ -88,3 +88,58 @@ td {
     background-color: #3abe2f !important;
     color: #fff !important;
 }
+<<<<<<< HEAD
+=======
+
+.subject_label {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.subject_select {
+    display: block;
+    margin-top: 20px;
+    border: 1px solid #3abe2f;
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+.subject_input {
+    display: block;
+    margin-top: 20px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+.fc-event-time {
+    display: none;
+}
+
+.fc-event-title {
+    font-size: 1rem;
+}
+
+.react-datetime-picker__inputGroup {
+    height: fit-content;
+    border: none;
+}
+
+.react-datetime-picker__wrapper {
+    border: none;
+}
+
+.meeting_title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.meeting_desc {
+    font-size: 1.2rem;
+}
+
+.meeting_joinBtn {
+    border: none;
+    background-color: transparent;
+}
+>>>>>>> 3a6620a52aa0f709114da97004aefe6c9eb2a217

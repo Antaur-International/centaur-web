@@ -29,6 +29,7 @@ Importing the packages
 function App() {
 
   const [instanceUser, setInstanceUser] = useState({});
+  const [meetings, setMeetings] = React.useState([]);
 
   const { activeTab, updateNavigation } = useNavigation();
 
@@ -57,6 +58,17 @@ function App() {
         .catch(err => {
           console.log(err);
         });
+
+      axios
+        .get(`${API_HOST}/meet`)
+        .then(res => {
+          console.log(res.data);
+          setMeetings(res.data.meets);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+
     } else {
       window.location.href = './#/login';
     }

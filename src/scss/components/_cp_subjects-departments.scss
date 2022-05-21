@@ -1,9 +1,7 @@
 .cp_wrapper_subject {
     height: 100%;
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 20vw;
-    grid-template-rows: 100px 1fr 1fr;
+    @include displayFlex(column, stretch, stretch);
 
     .subject_faculty_title {
         .faculty_title_title {
@@ -35,12 +33,14 @@
                 .head_info_facultyName {
                     font-weight: 400;
                 }
+
                 .head_info_department {
                     font-weight: 300;
                     font-size: 0.8vw;
                 }
             }
         }
+
         .faculty_card_info {
             .card_info_text {
                 font-size: 1vw;
@@ -57,6 +57,7 @@
         gap: 20px;
 
         padding: 10px;
+
         .faculty_resource_item {
             padding: 10px;
             width: 100%;
@@ -77,12 +78,14 @@
                 opacity: 0.5;
                 margin-left: auto;
             }
+
             .resource_item_action {
                 display: grid;
                 margin-left: auto;
                 place-items: center;
 
                 position: relative;
+
                 .item_action_button {
                     background: transparent;
                     outline: none;

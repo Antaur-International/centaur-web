@@ -12,6 +12,7 @@ import { Subjects } from './Subjects/Subjects';
 export default function Department({ user }) {
 
     const [selected, setSelected] = React.useState("resource");
+    const [selectedSubject, setSelectedSubject] = React.useState({});
 
     const changeTab = (tab) => {
         setSelected(tab);
@@ -62,6 +63,7 @@ export default function Department({ user }) {
                                         return (
                                             <li className='item_subMenu_item' onClick={() => {
                                                 setSelected(`subjects ${subj.name}`)
+                                                setSelectedSubject(subj)
                                             }}>
                                                 {subj.name}
                                             </li>
@@ -78,7 +80,7 @@ export default function Department({ user }) {
                     {selected === "resource" && <Resource user={user} />}
                     {selected === "messages" && <Chats changeTab={changeTab} user={user} />}
                     {selected === "room" && <Room changeTab={changeTab} user={user} />}
-                    {selected.includes("subject") && <Subjects subject={selected} />}
+                    {selected.includes("subject") && <Subjects subject={selected} selectedSubject={selectedSubject} />}
                 </div>
             </section>
         </main>

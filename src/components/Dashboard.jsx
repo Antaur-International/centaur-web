@@ -10,14 +10,23 @@ import { API_HOST } from '../API/constant';
 import axios from 'axios';
 import { useAuth } from '../data/Context/UserContext';
 
-const MeetingsListItem = (props) => {
+
+const MeetingsListItem = ({ user, meeting }) => {
+
+    let date = new Date(meeting.meet_date);
+
+    const JoinMeeting = (meet_id) => {
+        window.open(`https://grp-call-peer-js.herokuapp.com/${meet_id}?userId=${user._id}`, "_blank");
+        // window.open(`http://localhost:4000/${meet_id}?userId=${user._id}`, "_blank");
+    }
+
     return <li>
         <div>
-            <h3>{props.meeting.title}</h3>
-            <VideoIcon />
+            <h3 className='meeting_title'>{meeting.meet_title}</h3>
+            <button onClick={() => JoinMeeting(meeting._id)} className='meeting_joinBtn'><VideoIcon /></button>
         </div>
-        <p>{props.meeting.titleLong}</p>
-        <p className='meeting-time'>10:00 AM - 11:00 AM</p>
+        <p className='meeting_desc'>{meeting.meet_description}</p>
+        <p className='meeting-time'>{date.getDate() + "-" + date.getMonth() + "-" + date.getFullYear()}</p>
     </li>
 }
 
@@ -33,7 +42,7 @@ const NewsCardItem = (props) => {
     </li>
 }
 
-export default function Dashboard({ user }) {
+export default function Dashboard({ user, meetings }) {
     const [greeting, setGreeting] = React.useState("Evening");
     const [isOpen, setIsOpen] = React.useState(false);
     const [news, setNews] = React.useState([]);
@@ -54,6 +63,8 @@ export default function Dashboard({ user }) {
         const greetingTemp = hours < 12 ? "Morning" : hours < 18 ? "Afternoon" : "Evening";
         setGreeting(greetingTemp)
 
+        console.log(meetings);
+
         axios
             .get(`${API_HOST}/msbte/news`)
             .then(res => {
@@ -63,6 +74,7 @@ export default function Dashboard({ user }) {
             .catch(err => {
                 console.log(err);
             });
+
     }, []);
 
 
@@ -116,9 +128,11 @@ export default function Dashboard({ user }) {
                 </div>
             </div>
             <ul>
-                <MeetingsListItem meeting={{ title: "AJP", titleLong: "Advance Java Programing" }} />
-                <MeetingsListItem meeting={{ title: "OSY", titleLong: "Operating System" }} />
-                <MeetingsListItem meeting={{ title: "AJP", titleLong: "Advance Java Programing" }} />
+                {
+                    meetings.map(meeting => {
+                        return <MeetingsListItem user={user} meeting={meeting} />
+                    })
+                }
             </ul>
         </section>
     </section>;

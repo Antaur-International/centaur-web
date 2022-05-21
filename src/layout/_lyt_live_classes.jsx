@@ -12,23 +12,35 @@ export default function LiveClassesLyt({ user }) {
 
     const [show, setShow] = React.useState(false);
 
-    const [meetings, setMeetings] = React.useState([]);
+    const [onGoingMeetings, setonGoingMeetings] = React.useState([]);
+    const [scheduledMeetings, setScheduledMeetings] = React.useState([]);
+    const [pastMeetings, setPastMeetings] = React.useState([]);
 
     useEffect(() => {
-        console.log(user);
-        getMeetingsList();
-    }, [])
-
-    const getMeetingsList = () => {
         axios.get(`${API_HOST}/meet`)
             .then(res => {
-                console.log(res.data.meets);
-                setMeetings(res.data.meets);
+                let meets = res.data.meets;
+                let dateToday = new Date().getDate();
+
+                meets.forEach(meet => {
+                    let meetDate = new Date(meet.meet_date).getDate();
+
+                    if (meetDate === dateToday) {
+                        setonGoingMeetings(onGoingMeetings => [...onGoingMeetings, meet]);
+                    }
+                    else if (meetDate < dateToday) {
+                        setPastMeetings(pastMeetings => [...pastMeetings, meet]);
+                    }
+                    else if (meetDate > dateToday) {
+                        setScheduledMeetings(scheduledMeetings => [...scheduledMeetings, meet]);
+                    }
+
+                })
             })
             .catch(err => {
                 console.log(err);
             })
-    }
+    }, [])
 
     const JoinMeeting = (meet_id) => {
         window.open(`https://grp-call-peer-js.herokuapp.com/${meet_id}?userId=${user._id}`, "_blank");
@@ -57,7 +69,7 @@ export default function LiveClassesLyt({ user }) {
                     <ul className='main_onGoing_list'>
 
                         {
-                            meetings.map((meeting, index) => {
+                            onGoingMeetings.map((meeting, index) => {
                                 return (
                                     <li className='onGoing_list_item' key={index}>
                                         <p className='list_item_title'>{meeting.meet_title}</p>
@@ -72,8 +84,46 @@ export default function LiveClassesLyt({ user }) {
 
                     </ul>
                 </section>
-                <section className='liveClasses_main_scheduled'>
+                <section className='liveClasses_main_onGoing'>
                     <h3>Scheduled</h3>
+                    <ul className='main_onGoing_list'>
+
+                        {
+                            scheduledMeetings.map((meeting, index) => {
+                                return (
+                                    <li className='onGoing_list_item' key={index}>
+                                        <p className='list_item_title'>{meeting.meet_title}</p>
+                                        <p className='list_item_description'>{meeting.meet_description}</p>
+                                        <button
+                                            onClick={() => JoinMeeting(meeting._id)}
+                                            className='list_item_joinBtn'>Join</button>
+                                    </li>
+                                )
+                            })
+                        }
+
+                    </ul>
+                </section>
+                <section className='liveClasses_main_onGoing' style={{ marginBottom: "40px" }}>
+                    <h3>Past Meetings</h3>
+                    <ul className='main_onGoing_list'>
+                        {
+                            pastMeetings.map((meeting, index) => {
+                                return (
+                                    <li className='onGoing_list_item disabled' key={index}>
+                                        <p className='list_item_title'>{meeting.meet_title}</p>
+                                        <p className='list_item_description'>{meeting.meet_description}</p>
+                                        <button
+                                            style={{ backgroundColor: '#ccc', cursor: 'not-allowed' }}
+                                            disabled="true"
+                                            onClick={() => JoinMeeting(meeting._id)}
+                                            className='list_item_joinBtn'>Join</button>
+                                    </li>
+                                )
+                            })
+                        }
+
+                    </ul>
                 </section>
             </section>
         </main>

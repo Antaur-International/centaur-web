@@ -40,7 +40,7 @@ export default function Header({ user }) {
         {isPopupOpen && <Popup called="header" setIsOpen={setIsPopupOpen} text="Are you sure you want to log out?" textColor={"red"} />}
 
         <form className="header__search">
-            <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search here..." />
+            <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Use /u for users" />
             <button onClick={() => {
                 updateNavigation("search");
                 setExtra({
