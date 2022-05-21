@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import { AddIcon, Clock } from '../../icons/Icons'
+import { BlockPicker } from "react-color";
 
 import axios from 'axios';
 import { API_HOST } from '../../API/constant';
@@ -10,6 +11,8 @@ export default function AddEventModal({ selectedDate, setIsOpen }) {
     const eventDateStart = useRef(null);
     const eventDateEnd = useRef(null);
 
+    const [color, setColor] = React.useState('#F47373');
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -18,6 +21,7 @@ export default function AddEventModal({ selectedDate, setIsOpen }) {
             event_description: eventDescription.current.value,
             date: selectedDate,
             event_created_by: JSON.parse(sessionStorage.getItem('user')).userid,
+            color: color,
         }
 
         console.log(event);
@@ -31,6 +35,11 @@ export default function AddEventModal({ selectedDate, setIsOpen }) {
             .catch(err => {
                 console.log(err);
             })
+    }
+
+    const handleColorChange = (color) => {
+        setColor(color.hex);
+        console.log(color.hex);
     }
 
     return (
@@ -51,7 +60,8 @@ export default function AddEventModal({ selectedDate, setIsOpen }) {
                         <textarea
                             ref={eventDescription}
                             className='content_form_noteInput' placeholder='Event Description...' />
-
+                        <br />
+                        <BlockPicker color={color} onChangeComplete={handleColorChange} />
                         <div className='content_form_actionBtn'>
                             <button type='button' className='form_actionBtn_addTask btn' onClick={(e) => { handleSubmit(e); }}>
                                 <p>Add Event</p>

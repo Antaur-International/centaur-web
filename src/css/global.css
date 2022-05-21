@@ -2206,6 +2206,7 @@
   cursor: pointer;
 }
 .lyt_wrapper_liveClasses .wrapper_liveClasses_main .liveClasses_main_onGoing h3 {
+  margin-top: 20px;
   font-size: 1.2vw;
   font-weight: 600;
   color: #40a137;
@@ -2242,6 +2243,9 @@
   border-radius: 10px;
   padding: 10px 20px;
   width: 20vw;
+}
+.lyt_wrapper_liveClasses .wrapper_liveClasses_main .liveClasses_main_onGoing .main_onGoing_list .onGoing_list_item.disabled {
+  opacity: 0.5;
 }
 .lyt_wrapper_liveClasses .wrapper_liveClasses_main .liveClasses_main_onGoing .main_onGoing_list .onGoing_list_item .list_item_title {
   font-size: 1.2vw;
@@ -2502,4 +2506,35 @@ td {
   border: 1px solid #000;
   border-radius: 5px;
   padding: 10px 20px;
+}
+
+.fc-event-time {
+  display: none;
+}
+
+.fc-event-title {
+  font-size: 1rem;
+}
+
+.react-datetime-picker__inputGroup {
+  height: fit-content;
+  border: none;
+}
+
+.react-datetime-picker__wrapper {
+  border: none;
+}
+
+.meeting_title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.meeting_desc {
+  font-size: 1.2rem;
+}
+
+.meeting_joinBtn {
+  border: none;
+  background-color: transparent;
 }/*# sourceMappingURL=global.css.map */

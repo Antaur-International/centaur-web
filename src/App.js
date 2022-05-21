@@ -28,6 +28,7 @@ function App() {
 
   const [activeTab, setActiveTab] = useState("");
   const [instanceUser, setInstanceUser] = useState({});
+  const [meetings, setMeetings] = React.useState([]);
 
 
   React.useEffect(() => {
@@ -55,6 +56,17 @@ function App() {
         .catch(err => {
           console.log(err);
         });
+
+      axios
+        .get(`${API_HOST}/meet`)
+        .then(res => {
+          console.log(res.data);
+          setMeetings(res.data.meets);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+
     } else {
       window.location.href = './#/login';
     }
@@ -80,7 +92,7 @@ function App() {
       </Helmet>
       <RightDrawer activeTab={activeTab} setActiveTab={handleTabChange} />
       <main className='main'>
-        {activeTab === "dashboard" && <Dashboard user={instanceUser} />}
+        {activeTab === "dashboard" && <Dashboard user={instanceUser} meetings={meetings} />}
         {activeTab === "department" && <Department user={instanceUser} setActiveTab={setActiveTab} />}
         {activeTab === "department-subject" && <SubjectLayout user={instanceUser} />}
         {activeTab === "calender" && <Calender setActiveTab={setActiveTab} user={instanceUser} />}
