@@ -62,3 +62,28 @@ a {
 .d-none {
     display: none;
 }
+
+td {
+    height: fit-content;
+}
+
+.fc-view-harness.fc-view-harness-active {
+    height: 80vh !important;
+}
+
+.fc.fc-media-screen.fc-direction-ltr.fc-theme-standard {
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.fc-prev-button,
+.fc-next-button {
+    background-color: #3abe2f !important;
+    border: none !important;
+    margin: 0px 5px !important;
+}
+
+.fc-day-today {
+    background-color: #3abe2f !important;
+    color: #fff !important;
+}
