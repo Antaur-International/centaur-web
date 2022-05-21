@@ -1,9 +1,12 @@
 let API = "";
 
+const localhost_url = "http://localhost:5000";
+const hosted_url = "https://centaur-be.herokuapp.com";
+
 if (process.env.NODE_ENV === "development") {
-    API = "http://localhost:5000";
+    API = localhost_url;
 } else if (process.env.NODE_ENV === "production") {
-    API = "https://centaur-be.herokuapp.com";
+    API = hosted_url;
 }
 
-export const API_HOST = "http://localhost:5000";
+export const API_HOST = hosted_url;
