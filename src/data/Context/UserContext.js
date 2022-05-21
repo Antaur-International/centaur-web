@@ -1,4 +1,4 @@
-import React, { useState, createContext } from 'react';
+import React, { useState, createContext, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate, Navigate } from 'react-router-dom';
 import { API_HOST } from '../../API/constant';
@@ -10,10 +10,20 @@ export const UserContext = createContext({ status: null, update: () => { } });
 /*
 A component which contains userInstance state and a context provider
 */
+
+export const useAuth = () => {
+    return useContext(UserContext);
+}
 export default function UserProvider({ children }) {
 
     const [userInstance, setUserInstance] = useState({});
     const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+    const Navigate = useNavigate();
+
+    useEffect(() => {
+        updateState();
+    }, [])
 
     const updateState = () => {
         if (sessionStorage.getItem('user')) {
@@ -29,6 +39,7 @@ export default function UserProvider({ children }) {
             axios.post(`${API_HOST}/user/getUser`, userFetch)
                 .then(res => {
                     setUserInstance(res.data.user);
+                    setIsAuthenticated(true);
                     console.log('Running', res.data);
                 })
                 .then(() => {
@@ -42,8 +53,14 @@ export default function UserProvider({ children }) {
         }
     }
 
+    const logout = () => {
+        sessionStorage.clear();
+        setIsAuthenticated(false);
+        Navigate('/login');
+    }
+
     return (
-        <UserContext.Provider value={{ status: userInstance, update: updateState, isAuthenticated: isAuthenticated, setIsAuthenticated: setIsAuthenticated }}>
+        <UserContext.Provider value={{ userInstance, setUserInstance, isAuthenticated, setIsAuthenticated, updateState, logout }}>
             {children}
         </UserContext.Provider>
     )

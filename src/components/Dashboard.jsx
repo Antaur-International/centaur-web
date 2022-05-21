@@ -8,6 +8,7 @@ import Modal from './rightDrawer/RightDrawer';
 import Newsstand from './newsstand/newsstand';
 import { API_HOST } from '../API/constant';
 import axios from 'axios';
+import { useAuth } from '../data/Context/UserContext';
 
 const MeetingsListItem = (props) => {
     return <li>
@@ -36,6 +37,8 @@ export default function Dashboard({ user }) {
     const [greeting, setGreeting] = React.useState("Evening");
     const [isOpen, setIsOpen] = React.useState(false);
     const [news, setNews] = React.useState([]);
+
+    const { userInstance, isAuthenticated } = useAuth();
 
     const handleOpen = () => {
         setIsOpen(true);
@@ -67,7 +70,7 @@ export default function Dashboard({ user }) {
         <Modal show={isOpen} handleClose={handleClose} >
             <Newsstand />
         </Modal>
-        <Header user={user} />
+        <Header />
         <section className='welcome'>
             <img src="https://i.ibb.co/XpFJZS0/fox-image.png" alt="" />
             <div>

@@ -26,6 +26,16 @@
   outline: none;
 }
 
+.header form button {
+  border: none;
+  background: none;
+  font-size: 1.1vw;
+  outline: none;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
 .header .notifications {
   background: #fafffa;
   box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.13);
