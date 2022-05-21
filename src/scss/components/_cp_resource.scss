@@ -4,11 +4,13 @@
     .wrapper_top_section {
         width: 100%;
         @include displayFlex(row, space-between, center);
+
         h2 {
             font-size: 1.4vw;
             font-weight: bold;
             color: #000;
         }
+
         .top_section_addBtn {
             @include displayFlex(row, space-between, center);
             gap: 20px;
@@ -26,59 +28,61 @@
             }
         }
     }
+}
 
-    .wrapper_publicResource_list {
-        margin-top: 20px;
-        @include displayFlex(column, flex-start, stretch);
-        gap: 15px;
+.wrapper_publicResource_list {
+    margin-top: 20px;
+    @include displayFlex(column, flex-start, stretch);
+    gap: 15px;
 
-        .publicResource_list_item {
-            @include displayFlex(row, flex-start, center);
-            border: 1px solid rgba(0, 0, 0, 0.15);
+    .publicResource_list_item {
+        @include displayFlex(row, flex-start, center);
+        border: 1px solid rgba(0, 0, 0, 0.15);
 
-            border-radius: 5px;
-            padding: 10px 15px;
+        border-radius: 5px;
+        padding: 10px 15px;
 
-            .list_item_title {
-                margin-left: 10px;
-                font-size: 1vw;
-                width: 100%;
-            }
+        .list_item_title {
+            margin-left: 10px;
+            font-size: 1vw;
+            width: 100%;
+        }
 
-            .list_item_description {
-                margin-left: 10px;
-                font-size: 1vw;
-                width: 100%;
-            }
-            .list_item_date {
-                font-size: 0.9vw;
-                margin-left: auto;
-                margin-right: auto;
-                opacity: 0.6;
-            }
-            .list_item_extra {
-                display: grid;
-                place-items: center;
-                cursor: pointer;
-                position: relative;
+        .list_item_description {
+            margin-left: 10px;
+            font-size: 1vw;
+            width: 100%;
+        }
 
-                .item_extra_download {
-                    position: absolute;
-                    right: 8px;
-                    top: 30px;
-                    background-color: white;
-                    user-select: none;
-                    @include displayFlex(row, center, center);
-                    gap: 5px;
-                    border: 1px solid rgba(0, 0, 0, 0.5);
-                    border-radius: 5px;
-                    padding: 5px 10px;
-                    text-decoration: none;
+        .list_item_date {
+            font-size: 0.9vw;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.6;
+        }
 
-                    p {
-                        color: black;
-                        font-size: 1vw;
-                    }
+        .list_item_extra {
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            position: relative;
+
+            .item_extra_download {
+                position: absolute;
+                right: 8px;
+                top: 30px;
+                background-color: white;
+                user-select: none;
+                @include displayFlex(row, center, center);
+                gap: 5px;
+                border: 1px solid rgba(0, 0, 0, 0.5);
+                border-radius: 5px;
+                padding: 5px 10px;
+                text-decoration: none;
+
+                p {
+                    color: black;
+                    font-size: 1vw;
                 }
             }
         }

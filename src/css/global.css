@@ -1611,7 +1611,8 @@
   background-color: #17fa03;
   color: black;
 }
-.cp_wrapper_publicResource .wrapper_publicResource_list {
+
+.wrapper_publicResource_list {
   margin-top: 20px;
   display: flex;
   flex-direction: column;
@@ -1619,7 +1620,7 @@
   align-items: stretch;
   gap: 15px;
 }
-.cp_wrapper_publicResource .wrapper_publicResource_list .publicResource_list_item {
+.wrapper_publicResource_list .publicResource_list_item {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -1628,29 +1629,29 @@
   border-radius: 5px;
   padding: 10px 15px;
 }
-.cp_wrapper_publicResource .wrapper_publicResource_list .publicResource_list_item .list_item_title {
+.wrapper_publicResource_list .publicResource_list_item .list_item_title {
   margin-left: 10px;
   font-size: 1vw;
   width: 100%;
 }
-.cp_wrapper_publicResource .wrapper_publicResource_list .publicResource_list_item .list_item_description {
+.wrapper_publicResource_list .publicResource_list_item .list_item_description {
   margin-left: 10px;
   font-size: 1vw;
   width: 100%;
 }
-.cp_wrapper_publicResource .wrapper_publicResource_list .publicResource_list_item .list_item_date {
+.wrapper_publicResource_list .publicResource_list_item .list_item_date {
   font-size: 0.9vw;
   margin-left: auto;
   margin-right: auto;
   opacity: 0.6;
 }
-.cp_wrapper_publicResource .wrapper_publicResource_list .publicResource_list_item .list_item_extra {
+.wrapper_publicResource_list .publicResource_list_item .list_item_extra {
   display: grid;
   place-items: center;
   cursor: pointer;
   position: relative;
 }
-.cp_wrapper_publicResource .wrapper_publicResource_list .publicResource_list_item .list_item_extra .item_extra_download {
+.wrapper_publicResource_list .publicResource_list_item .list_item_extra .item_extra_download {
   position: absolute;
   right: 8px;
   top: 30px;
@@ -1666,7 +1667,7 @@
   padding: 5px 10px;
   text-decoration: none;
 }
-.cp_wrapper_publicResource .wrapper_publicResource_list .publicResource_list_item .list_item_extra .item_extra_download p {
+.wrapper_publicResource_list .publicResource_list_item .list_item_extra .item_extra_download p {
   color: black;
   font-size: 1vw;
 }
@@ -1932,9 +1933,10 @@
 .cp_wrapper_subject {
   height: 100%;
   width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 20vw;
-  grid-template-rows: 100px 1fr 1fr;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: stretch;
 }
 .cp_wrapper_subject .subject_faculty_title .faculty_title_title {
   font-size: 1.4vw;
@@ -2479,4 +2481,25 @@ td {
 .fc-day-today {
   background-color: #3abe2f !important;
   color: #fff !important;
+}
+
+.subject_label {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.subject_select {
+  display: block;
+  margin-top: 20px;
+  border: 1px solid #3abe2f;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+
+.subject_input {
+  display: block;
+  margin-top: 20px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 10px 20px;
 }/*# sourceMappingURL=global.css.map */

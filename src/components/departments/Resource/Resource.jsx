@@ -3,6 +3,8 @@ import { AddIcon } from '../../../icons/Icons';
 import ModalLayout from '../../../layout/_lyt_modal';
 import AddResource from './AddResource';
 import ResourceList from './ResourceList'
+import { API_HOST } from '../../../API/constant';
+import axios from 'axios'
 
 export default function Resource({ user }) {
 
@@ -11,7 +13,14 @@ export default function Resource({ user }) {
     const [showModal, setShowModal] = useState(false);
 
     React.useEffect(() => {
-        setResources(user.batch.resources);
+        axios.get(`${API_HOST}/resource`)
+            .then(res => {
+                console.log(res.data.resources);
+                setResources(res.data.resources);
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }, [])
 
     return (
@@ -28,7 +37,7 @@ export default function Resource({ user }) {
                 </button>}
                 {
                     showModal && <ModalLayout >
-                        <AddResource setIsOpen={setShowModal} />
+                        <AddResource user={user} setIsOpen={setShowModal} />
                     </ModalLayout>
                 }
 

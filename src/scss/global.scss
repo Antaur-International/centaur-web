@@ -87,3 +87,24 @@ td {
     background-color: #3abe2f !important;
     color: #fff !important;
 }
+
+.subject_label {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.subject_select {
+    display: block;
+    margin-top: 20px;
+    border: 1px solid #3abe2f;
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+.subject_input {
+    display: block;
+    margin-top: 20px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 10px 20px;
+}
