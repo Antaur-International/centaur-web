@@ -16,8 +16,7 @@ const UserChat = (user) => {
     const [date, setDate] = useState(user.user.time);
 
     useEffect(() => {
-        console.log(user.user.sender.image);
-        console.log(user.user.sender._id + ' === ' + user.currentUser._id);
+        // console.log(user.user.sender._id + ' === ' + user.currentUser._id);
         if (user.user.sender._id === user.currentUser._id) {
             setUserType("self");
         } else {
@@ -65,20 +64,17 @@ export default function Room({ user, changeTab }) {
 
         // establishing connection with socket.io
         socket = io(`${API_HOST}`);
-        console.log(socket);
 
         // join the room entered by the user
         socket.emit('join', user.batch.chatroom._id);
-        console.log(user);
 
         socket.on('chatroom', (chatroom) => {
             console.log("Messages when user connected !\n");
-            console.log(chatroom);
             setChatHistory(chatroom.messages);
-            messagesList.current.scrollTop = messagesList.current.scrollHeight;
+            if (messagesList.current) {
+                messagesList.current.scrollTop = messagesList.current.scrollHeight;
+            }
         });
-
-
     }, []);
 
     const handleInputChange = (e) => {
@@ -94,12 +90,12 @@ export default function Room({ user, changeTab }) {
             chatroom: user.batch.chatroom._id
         };
 
-        console.log(chatNew);
+        // console.log(chatNew);
 
         // send the message to the server
         socket.emit('chat', chatNew);
         socket.on('chatroom', (chatroom) => {
-            console.log(chatroom);
+            console.log("Socket Data: ", chatroom);
             setChatHistory(chatroom.messages);
         });
 

@@ -5,8 +5,12 @@ import { SearchIcon, BellIcon } from '../icons/Icons';
 import Modal from './rightDrawer/RightDrawer';
 import Notification from './notification/notification';
 import Popup from '../layout/lyt-popup';
+import { useNavigation } from '../data/Context/NavigationContext';
 
 export default function Header({ user }) {
+
+    const { updateNavigation } = useNavigation();
+
     const [isOpen, setIsOpen] = React.useState(false);
     const [isPopupOpen, setIsPopupOpen] = React.useState(false);
     const handleOpen = () => {
@@ -27,7 +31,11 @@ export default function Header({ user }) {
 
         <form className="header__search">
             <input type="text" placeholder="Search here..." />
-            <SearchIcon />
+            <button onClick={() => {
+                updateNavigation("search");
+            }}>
+                <SearchIcon />
+            </button>
         </form>
         <button
             className='notifications'

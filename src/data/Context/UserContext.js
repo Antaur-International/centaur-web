@@ -13,6 +13,7 @@ A component which contains userInstance state and a context provider
 export default function UserProvider({ children }) {
 
     const [userInstance, setUserInstance] = useState({});
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     const updateState = () => {
         if (sessionStorage.getItem('user')) {
@@ -42,7 +43,7 @@ export default function UserProvider({ children }) {
     }
 
     return (
-        <UserContext.Provider value={{ status: userInstance, update: updateState }}>
+        <UserContext.Provider value={{ status: userInstance, update: updateState, isAuthenticated: isAuthenticated, setIsAuthenticated: setIsAuthenticated }}>
             {children}
         </UserContext.Provider>
     )

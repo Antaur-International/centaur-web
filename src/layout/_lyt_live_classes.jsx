@@ -7,7 +7,7 @@ import Modal from '../components/rightDrawer/RightDrawer'
 import Popup from './lyt-popup';
 import ModalLayout from "./_lyt_modal";
 
-export default function LiveClassesLyt({ user, setActiveTab }) {
+export default function LiveClassesLyt({ user }) {
 
 
     const [show, setShow] = React.useState(false);

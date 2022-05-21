@@ -19,16 +19,18 @@ import './App.css';
 import Helmet from 'react-helmet';
 import LiveClassesLyt from './layout/_lyt_live_classes';
 import JoinMeeting from './layout/_lyt_joinMeeting';
-
+import { Search } from './components/Search/Search';
+import { useNavigation } from './data/Context/NavigationContext';
+import { FacultyDetails } from "./layout/_lyt_facutlyDetails";
 /*
 Importing the packages
 */
 
 function App() {
 
-  const [activeTab, setActiveTab] = useState("");
   const [instanceUser, setInstanceUser] = useState({});
 
+  const { activeTab, updateNavigation } = useNavigation();
 
   React.useEffect(() => {
 
@@ -50,7 +52,7 @@ function App() {
           console.log(instanceUser);
         })
         .then(() => {
-          setActiveTab(sessionStorage.getItem("activeTab") !== null ? sessionStorage.getItem("activeTab") : "dashboard");
+          updateNavigation(sessionStorage.getItem("activeTab") !== null ? sessionStorage.getItem("activeTab") : "dashboard");
         })
         .catch(err => {
           console.log(err);
@@ -62,7 +64,7 @@ function App() {
   }, []);
 
   const handleTabChange = (tab) => {
-    setActiveTab(tab);
+    updateNavigation(tab);
 
     sessionStorage.setItem('activeTab', tab)
 
@@ -80,14 +82,17 @@ function App() {
       </Helmet>
       <RightDrawer activeTab={activeTab} setActiveTab={handleTabChange} />
       <main className='main'>
+
         {activeTab === "dashboard" && <Dashboard user={instanceUser} />}
-        {activeTab === "department" && <Department user={instanceUser} setActiveTab={setActiveTab} />}
+        {activeTab === "department" && <Department user={instanceUser} />}
         {activeTab === "department-subject" && <SubjectLayout user={instanceUser} />}
-        {activeTab === "calender" && <Calender setActiveTab={setActiveTab} user={instanceUser} />}
+        {activeTab === "calender" && <Calender />}
         {activeTab === "myWork" && <MyWork user={instanceUser} />}
         {activeTab === "settings" && <SettingsLayout user={instanceUser} />}
-        {activeTab === "live-classes" && <LiveClassesLyt setActiveTab={setActiveTab} user={instanceUser} />}
-        {activeTab === "joinClasses" && <JoinMeeting setActiveTab={setActiveTab} user={instanceUser} />}
+        {activeTab === "live-classes" && <LiveClassesLyt user={instanceUser} />}
+        {activeTab === "joinClasses" && <JoinMeeting user={instanceUser} />}
+        {activeTab === "search" && <Search />}
+        {activeTab === "faculty" && <FacultyDetails />}
       </main>
     </div>
 

@@ -13,6 +13,7 @@ import UserProvider from './data/Context/UserContext';
 import ForgotPasswordPage from './layout/_lyt_forgotPassword';
 // Importing packages
 import { Route, Routes, HashRouter } from 'react-router-dom';
+import { NavigationProvider } from './data/Context/NavigationContext';
 
 ReactDOM.render(
 
@@ -21,7 +22,9 @@ ReactDOM.render(
       <Route path="/" element={<Landing />} />
       <Route path="/dashboard" element={
         <UserProvider>
-          <App />
+          <NavigationProvider>
+            <App />
+          </NavigationProvider>
         </UserProvider>
       } />
       <Route path="/login" element={<Login />} />
