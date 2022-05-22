@@ -52,6 +52,8 @@ export default function Room({ user, changeTab }) {
     const inputRef = useRef(null);
     const messagesList = useRef(null);
 
+    const socketRef = useRef(null);
+
     const [showEmoji, setShowEmoji] = useState(false);
     const [selectedEmoji, setSelectedEmoji] = useState('');
     const [message, setMessage] = useState('');
@@ -94,11 +96,10 @@ export default function Room({ user, changeTab }) {
 
         // send the message to the server
         socket.emit('chat', chatNew);
-        socket.on('chatroom', (chatroom) => {
-            console.log("Socket Data: ", chatroom);
+        socket.on('new chat', (chatroom) => {
+            console.log(chatroom);
             setChatHistory(chatroom.messages);
         });
-
         messagesList.current.scrollTop = messagesList.current.scrollHeight;
 
         setMessage("");

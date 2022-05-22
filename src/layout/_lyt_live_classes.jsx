@@ -43,8 +43,8 @@ export default function LiveClassesLyt({ user }) {
     }, [])
 
     const JoinMeeting = (meet_id) => {
-        window.open(`https://grp-call-peer-js.herokuapp.com/${meet_id}?userId=${user._id}`, "_blank");
-        // window.open(`http://localhost:4000/${meet_id}?userId=${user._id}`, "_blank");
+        // window.open(`https://grp-call-peer-js.herokuapp.com/${meet_id}?userId=${user._id}`, "_blank");
+        window.open(`http://localhost:4000/${meet_id}?userId=${user._id}`, "_blank");
     }
 
     return (

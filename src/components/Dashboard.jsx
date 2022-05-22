@@ -9,6 +9,7 @@ import Newsstand from './newsstand/newsstand';
 import { API_HOST } from '../API/constant';
 import axios from 'axios';
 import { useAuth } from '../data/Context/UserContext';
+import { EmptyMeet } from './EmptyState/EmptyMeet';
 
 
 const MeetingsListItem = ({ user, meeting }) => {
@@ -126,12 +127,13 @@ export default function Dashboard({ user, meetings }) {
                     <CalenderIcon />
                 </div>
             </div>
-            <ul>
+            <ul className='meetings_list'>
                 {
-                    meetings.map(meeting => {
+                    meetings.map.length > 0 ? meetings.map(meeting => {
                         return <MeetingsListItem user={user} meeting={meeting} />
-                    })
+                    }) : <EmptyMeet />
                 }
+
             </ul>
         </section>
     </section>;

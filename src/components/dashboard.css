@@ -106,15 +106,15 @@
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
   padding: 20px;
-  overflow-y: scroll;
-  scrollbar-width: none;
 }
 
 .meetings ul {
+  height: 20vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
   list-style: none;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: stretch;
 }
 
@@ -130,7 +130,7 @@
   margin-top: 20px;
 }
 
-.meetings ul li>div {
+.meetings ul li > div {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -164,7 +164,7 @@
   align-items: center;
 }
 
-.dashboardCardLabel .topLayer>p {
+.dashboardCardLabel .topLayer > p {
   font-size: 1.2vw;
   font-weight: bold;
   color: #209f15;

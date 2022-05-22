@@ -167,7 +167,7 @@
 }
 
 .cp_newsstand_wrapper .wrapper_newsCard_list .wrapper_newsCard_item {
-  background: #FFFFFF;
+  background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   padding: 10px 20px;
@@ -201,8 +201,8 @@
 }
 
 .cp_newsstand_wrapper .wrapper_newsCard_list .wrapper_newsCard_item .newsCard_item_head .item_head_date {
-  background: #FFFFFF;
-  border: 1px solid #209F15;
+  background: #ffffff;
+  border: 1px solid #209f15;
   border-radius: 10px;
   padding: 5px 10px;
 }
