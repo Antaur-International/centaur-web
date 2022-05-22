@@ -5,11 +5,14 @@ import { useAuth } from '../../data/Context/UserContext';
 export const UserList = ({ key }) => {
 
     const [users, setUsers] = useState([]);
-    const { extra } = useNavigation();
+    const { extra, reload, setReload } = useNavigation();
     const { userInstance, isAuthenticated } = useAuth();
 
     useEffect(() => {
+        search()
+    }, [])
 
+    function search() {
         const searchKeyword = extra.searchKeyword.split(" ").slice(1).join(" ");
 
         userInstance.batch.students.map((user, index) => {
@@ -23,8 +26,7 @@ export const UserList = ({ key }) => {
         })
 
         console.log("Searched users: ", users);
-
-    }, [])
+    }
 
     return (
         <ul className='cp_wrapper_usersList'>

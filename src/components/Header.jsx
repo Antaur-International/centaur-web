@@ -10,7 +10,7 @@ import { useAuth } from '../data/Context/UserContext';
 
 export default function Header({ user }) {
 
-    const { updateNavigation, setExtra } = useNavigation();
+    const { updateNavigation, setExtra, activeTab, updateAreaToSearch } = useNavigation();
     const { userInstance, isAuthenticated } = useAuth();
 
     const [isOpen, setIsOpen] = React.useState(false);
@@ -41,11 +41,11 @@ export default function Header({ user }) {
 
         <form className="header__search">
             <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Use /u for users" />
-            <button onClick={() => {
-                updateNavigation("search");
-                setExtra({
-                    searchKeyword: search
-                })
+            <button type='button' onClick={() => {
+                if (activeTab !== 'search') {
+                    updateNavigation('search');
+                }
+                updateAreaToSearch(search);
             }}>
                 <SearchIcon />
             </button>

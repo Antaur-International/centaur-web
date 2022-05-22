@@ -5,41 +5,16 @@ import { UserList } from './UserList';
 
 export const Search = () => {
 
-    const { extra, setExtra } = useNavigation();
-    const [search, setSearch] = useState('');
-    const [areaToSearch, setAreaToSearch] = useState('');
-
-    useEffect(() => {
-        const key = extra.searchKeyword;
-
-        if (key) {
-            const searchCategory = key.split(" ")[0];
-            const searchKeyword = key.split(" ").slice(1).join(" ");
-            setSearch(searchKeyword);
-
-            switch (searchCategory) {
-                case '/u':
-                    setAreaToSearch('users');
-                    break;
-
-                default:
-                    console.log('search default');
-                    break;
-            }
-
-        }
-
-    }, [])
+    const { extra, setExtra, areaToSearch, updateAreaToSearch } = useNavigation();
 
     return (
         <section className='lyt_wrapper_searchPage'>
             <Header />
             <p className='wrapper_searchPage_label'>
-                Showing results for {search}
+                Showing results for {extra.searchKeyword}
             </p>
-            {
-                areaToSearch === 'users' && <UserList key={extra} />
-            }
+            {areaToSearch === 'users' && <UserList />}
+            {areaToSearch === 'rooms' && <p>Rooms</p>}
         </section>
     )
 }
