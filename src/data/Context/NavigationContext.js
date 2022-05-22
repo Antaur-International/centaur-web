@@ -10,7 +10,7 @@ export function useNavigation() {
 
 
 export function NavigationProvider({ children }) {
-  const [activeTab, setActiveTab] = useState("dashboard");
+  const [activeTab, setActiveTab] = useState("");
   const [extra, setExtra] = useState({});
   const [areaToSearch, setAreaToSearch] = useState("");
   const [reload, setReload] = useState(false);
