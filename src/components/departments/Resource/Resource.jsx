@@ -4,7 +4,7 @@ import ModalLayout from '../../../layout/_lyt_modal';
 import AddResource from './AddResource';
 import ResourceList from './ResourceList'
 import { API_HOST } from '../../../API/constant';
-import axios from 'axios'
+import axios from 'axios';
 
 export default function Resource({ user }) {
 

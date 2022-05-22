@@ -32,7 +32,11 @@ export function NavigationProvider({ children }) {
           setExtra({ searchKeyword: searchKey });
           break;
         case '/r':
-          setAreaToSearch('rooms');
+          setAreaToSearch('');
+          setTimeout(() => {
+            setAreaToSearch('rooms');
+          }, 100);
+          setExtra({ searchKeyword: searchKey });
           break
         case '/e':
           setAreaToSearch('events');

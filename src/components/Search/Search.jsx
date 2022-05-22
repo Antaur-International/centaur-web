@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigation } from '../../data/Context/NavigationContext'
+import ResourceList from '../departments/Resource/ResourceList';
 import Header from '../Header';
+import { Resource } from './SearchedResource';
 import { UserList } from './UserList';
 
 export const Search = () => {
@@ -14,7 +16,7 @@ export const Search = () => {
                 Showing results for {extra.searchKeyword}
             </p>
             {areaToSearch === 'users' && <UserList />}
-            {areaToSearch === 'rooms' && <p>Rooms</p>}
+            {areaToSearch === 'rooms' && <Resource />}
         </section>
     )
 }

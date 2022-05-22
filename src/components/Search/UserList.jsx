@@ -20,7 +20,7 @@ export const UserList = ({ key }) => {
             console.log(user.name);
             console.log(searchKeyword);
 
-            if (user.name === searchKeyword) {
+            if (user.name.includes(searchKeyword)) {
                 setUsers((prev) => [...prev, user]);
             }
         })
