@@ -98,7 +98,7 @@ function App() {
         {activeTab === "dashboard" && <Dashboard meetings={meetings} user={instanceUser} />}
         {activeTab === "department" && <Department user={instanceUser} />}
         {activeTab === "department-subject" && <SubjectLayout user={instanceUser} />}
-        {activeTab === "calender" && <Calender />}
+        {activeTab === "calender" && <Calender user={instanceUser} />}
         {activeTab === "myWork" && <MyWork user={instanceUser} />}
         {activeTab === "settings" && <SettingsLayout user={instanceUser} />}
         {activeTab === "live-classes" && <LiveClassesLyt user={instanceUser} />}
