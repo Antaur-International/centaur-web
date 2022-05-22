@@ -39,7 +39,11 @@ export function NavigationProvider({ children }) {
           setExtra({ searchKeyword: searchKey });
           break
         case '/e':
-          setAreaToSearch('events');
+          setAreaToSearch('');
+          setTimeout(() => {
+            setAreaToSearch('events');
+          }, 100);
+          setExtra({ searchKeyword: searchKey });
           break
         default:
           console.log('search default');

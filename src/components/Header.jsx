@@ -39,8 +39,17 @@ export default function Header({ user }) {
 
         {isPopupOpen && <Popup called="header" setIsOpen={setIsPopupOpen} text="Are you sure you want to log out?" textColor={"red"} />}
 
-        <form className="header__search">
-            <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Use /u for users" />
+        <form className="header__search" onSubmit={(e) => {
+            e.preventDefault();
+        }}>
+            <input type="text" value={search} onKeyUp={(e) => {
+                if (e.key === "Enter") {
+                    if (activeTab !== 'search') {
+                        updateNavigation('search');
+                    }
+                    updateAreaToSearch(search);
+                }
+            }} onChange={(e) => setSearch(e.target.value)} placeholder="Use /u for users" />
             <button type='button' onClick={() => {
                 if (activeTab !== 'search') {
                     updateNavigation('search');

@@ -5,8 +5,8 @@ import { useAuth } from '../../data/Context/UserContext';
 export const UserList = ({ key }) => {
 
     const [users, setUsers] = useState([]);
-    const { extra, reload, setReload } = useNavigation();
-    const { userInstance, isAuthenticated } = useAuth();
+    const { extra } = useNavigation();
+    const { userInstance } = useAuth();
 
     useEffect(() => {
         search()
