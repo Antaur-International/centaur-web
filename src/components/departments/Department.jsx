@@ -13,6 +13,7 @@ export default function Department({ user }) {
 
     const [selected, setSelected] = React.useState("resource");
     const [selectedSubject, setSelectedSubject] = React.useState({});
+    const [isSubjectOpen, setIsSubjectOpen] = React.useState(false);
 
     const changeTab = (tab) => {
         setSelected(tab);
@@ -51,13 +52,20 @@ export default function Department({ user }) {
                             </div>
                         </li>
                         <li className='leftPanel_navList_item' >
-                            <div className='navList_item_label' style={{ opacity: "0.5" }}>
-                                <ChevronLeft size="15" />
+                            <div className='navList_item_label' style={{ opacity: "0.5" }} onClick={(e) => {
+                                setIsSubjectOpen(!isSubjectOpen);
+                            }}>
+                                <ChevronLeft style={{
+                                    transform: isSubjectOpen ? "rotate(90deg)" : "rotate(0deg)",
+                                }} size="15" />
+
                                 <p style={{
                                     fontSize: "0.9vw",
                                 }} >{user.batch.name}</p>
                             </div>
-                            <ul className='navList_item_subMenu'>
+                            <ul className='navList_item_subMenu' style={{
+                                display: isSubjectOpen ? "flex" : "none"
+                            }}>
                                 {
                                     user.batch.subjects.map((subj, index) => {
                                         return (

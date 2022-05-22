@@ -1,8 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
 import axios from 'axios';
+import { useAuth } from "../../data/Context/UserContext";
 import { Clock } from '../../icons/Icons';
 import { API_HOST } from '../../API/constant';
 export default function EditTaskModal({ setIsOpen, task, handleDeleteUpdate }) {
+
+    const { userInstance } = useAuth();
 
     const [titleInput, setTitleInput] = useState(task.task.task_title);
     const [descriptionInput, setDescriptionInput] = useState(task.task.task_description);

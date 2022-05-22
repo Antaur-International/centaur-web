@@ -2,8 +2,11 @@ import React, { useRef } from 'react'
 import { Clock } from '../../icons/Icons';
 import axios from 'axios';
 import { API_HOST } from '../../API/constant';
+import { useAuth } from '../../data/Context/UserContext';
 
 export default function AddTaskModal({ setIsOpen, handleSubmitUpdate }) {
+
+    const { userInstance } = useAuth();
 
     const taskTitle = useRef(null);
     const taskDescription = useRef(null);
@@ -14,13 +17,20 @@ export default function AddTaskModal({ setIsOpen, handleSubmitUpdate }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const task = {
+        let task = {
             task_title: taskTitle.current.value,
             task_description: taskDescription.current.value,
             task_cat: taskCategory.current.value,
             createdBy: JSON.parse(sessionStorage.getItem('user')).userid,
             task_deadline: taskRemDate.current.value,
             task_status: 'pending',
+        }
+
+        if (userInstance.type === "student") {
+            task = {
+                ...task,
+                task_cat: 'Personal'
+            }
         }
 
         console.log(task);
@@ -49,11 +59,11 @@ export default function AddTaskModal({ setIsOpen, handleSubmitUpdate }) {
                 </button>
                 <div className='center_modal_content'>
                     <form className='modal_content_form'>
-                        <select className='cat_select' ref={taskCategory}>
+                        {userInstance.type === 'staff' && <select className='cat_select' ref={taskCategory}>
                             <option value="">Select Category</option>
                             <option value="Personal">Personal</option>
                             <option value="College">College</option>
-                        </select>
+                        </select>}
                         <input type="text" ref={taskTitle} placeholder='Task Title' />
                         <textarea
                             ref={taskDescription}

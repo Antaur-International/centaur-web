@@ -17,6 +17,7 @@ export function NavigationProvider({ children }) {
 
   const updateNavigation = (tab) => {
     setActiveTab(tab);
+    sessionStorage.setItem('activeTab', tab)
   }
 
   const updateAreaToSearch = (searchKey) => {
