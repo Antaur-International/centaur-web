@@ -1,5 +1,5 @@
 
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import "./header.css";
 import { SearchIcon, BellIcon } from '../icons/Icons';
 import Modal from './rightDrawer/RightDrawer';
@@ -9,6 +9,19 @@ import { useNavigation } from '../data/Context/NavigationContext';
 import { useAuth } from '../data/Context/UserContext';
 
 export default function Header({ user }) {
+
+    const inputRef = useRef();
+
+    useEffect(() => {
+
+        window.onkeydown = (e) => {
+            if (e.ctrlKey && e.key === '/') {
+                inputRef.current.focus()
+                return null
+            }
+        }
+
+    }, [])
 
     const { updateNavigation, setExtra, activeTab, updateAreaToSearch } = useNavigation();
     const { userInstance, isAuthenticated } = useAuth();
@@ -42,14 +55,14 @@ export default function Header({ user }) {
         <form className="header__search" onSubmit={(e) => {
             e.preventDefault();
         }}>
-            <input type="text" value={search} onKeyUp={(e) => {
+            <input type="text" ref={inputRef} value={search} onKeyUp={(e) => {
                 if (e.key === "Enter") {
                     if (activeTab !== 'search') {
                         updateNavigation('search');
                     }
                     updateAreaToSearch(search);
                 }
-            }} onChange={(e) => setSearch(e.target.value)} placeholder="Use /u for users" />
+            }} onChange={(e) => setSearch(e.target.value)} placeholder="/u for users, /r for resource, /e for events..." />
             <button type='button' onClick={() => {
                 if (activeTab !== 'search') {
                     updateNavigation('search');
