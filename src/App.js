@@ -95,7 +95,7 @@ function App() {
       <RightDrawer activeTab={activeTab} setActiveTab={handleTabChange} />
       <main className='main'>
 
-        {activeTab === "dashboard" && <Dashboard user={instanceUser} />}
+        {activeTab === "dashboard" && <Dashboard meetings={meetings} user={instanceUser} />}
         {activeTab === "department" && <Department user={instanceUser} />}
         {activeTab === "department-subject" && <SubjectLayout user={instanceUser} />}
         {activeTab === "calender" && <Calender />}

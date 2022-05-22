@@ -46,7 +46,6 @@ export default function Dashboard({ user, meetings }) {
     const [greeting, setGreeting] = React.useState("Evening");
     const [isOpen, setIsOpen] = React.useState(false);
     const [news, setNews] = React.useState([]);
-
     const { userInstance, isAuthenticated } = useAuth();
 
     const handleOpen = () => {

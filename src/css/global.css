@@ -2512,11 +2512,7 @@
   color: black;
 }
 
-<<<<<<< HEAD
-.cp_wrapper_publicResource .wrapper_publicResource_list {
-=======
 .wrapper_publicResource_list {
->>>>>>> 3a6620a52aa0f709114da97004aefe6c9eb2a217
   margin-top: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2533,9 +2529,8 @@
           align-items: stretch;
   gap: 15px;
 }
-<<<<<<< HEAD
 
-.cp_wrapper_publicResource .wrapper_publicResource_list .publicResource_list_item {
+.wrapper_publicResource_list .publicResource_list_item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2549,66 +2544,39 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-=======
-.wrapper_publicResource_list .publicResource_list_item {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
->>>>>>> 3a6620a52aa0f709114da97004aefe6c9eb2a217
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 5px;
   padding: 10px 15px;
 }
-<<<<<<< HEAD
 
-.cp_wrapper_publicResource .wrapper_publicResource_list .publicResource_list_item .list_item_title {
-=======
 .wrapper_publicResource_list .publicResource_list_item .list_item_title {
->>>>>>> 3a6620a52aa0f709114da97004aefe6c9eb2a217
   margin-left: 10px;
   font-size: 1vw;
   width: 100%;
 }
-<<<<<<< HEAD
 
-.cp_wrapper_publicResource .wrapper_publicResource_list .publicResource_list_item .list_item_description {
-=======
 .wrapper_publicResource_list .publicResource_list_item .list_item_description {
->>>>>>> 3a6620a52aa0f709114da97004aefe6c9eb2a217
   margin-left: 10px;
   font-size: 1vw;
   width: 100%;
 }
-<<<<<<< HEAD
 
-.cp_wrapper_publicResource .wrapper_publicResource_list .publicResource_list_item .list_item_date {
-=======
 .wrapper_publicResource_list .publicResource_list_item .list_item_date {
->>>>>>> 3a6620a52aa0f709114da97004aefe6c9eb2a217
   font-size: 0.9vw;
   margin-left: auto;
   margin-right: auto;
   opacity: 0.6;
 }
-<<<<<<< HEAD
 
-.cp_wrapper_publicResource .wrapper_publicResource_list .publicResource_list_item .list_item_extra {
-  display: -ms-grid;
-=======
 .wrapper_publicResource_list .publicResource_list_item .list_item_extra {
->>>>>>> 3a6620a52aa0f709114da97004aefe6c9eb2a217
+  display: -ms-grid;
   display: grid;
   place-items: center;
   cursor: pointer;
   position: relative;
 }
-<<<<<<< HEAD
 
-.cp_wrapper_publicResource .wrapper_publicResource_list .publicResource_list_item .list_item_extra .item_extra_download {
-=======
 .wrapper_publicResource_list .publicResource_list_item .list_item_extra .item_extra_download {
->>>>>>> 3a6620a52aa0f709114da97004aefe6c9eb2a217
   position: absolute;
   right: 8px;
   top: 30px;
@@ -2636,12 +2604,8 @@
   padding: 5px 10px;
   text-decoration: none;
 }
-<<<<<<< HEAD
 
-.cp_wrapper_publicResource .wrapper_publicResource_list .publicResource_list_item .list_item_extra .item_extra_download p {
-=======
 .wrapper_publicResource_list .publicResource_list_item .list_item_extra .item_extra_download p {
->>>>>>> 3a6620a52aa0f709114da97004aefe6c9eb2a217
   color: black;
   font-size: 1vw;
 }
@@ -3049,19 +3013,19 @@
 .cp_wrapper_subject {
   height: 100%;
   width: 100%;
-<<<<<<< HEAD
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 20vw;
-      grid-template-columns: 1fr 20vw;
-  -ms-grid-rows: 100px 1fr 1fr;
-      grid-template-rows: 100px 1fr 1fr;
-=======
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: stretch;
-  align-items: stretch;
->>>>>>> 3a6620a52aa0f709114da97004aefe6c9eb2a217
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: stretch;
+      -ms-flex-pack: stretch;
+          justify-content: stretch;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
 }
 
 .cp_wrapper_subject .subject_faculty_title .faculty_title_title {
@@ -3551,13 +3515,11 @@
   padding: 10px 20px;
   width: 20vw;
 }
-<<<<<<< HEAD
 
-=======
 .lyt_wrapper_liveClasses .wrapper_liveClasses_main .liveClasses_main_onGoing .main_onGoing_list .onGoing_list_item.disabled {
   opacity: 0.5;
 }
->>>>>>> 3a6620a52aa0f709114da97004aefe6c9eb2a217
+
 .lyt_wrapper_liveClasses .wrapper_liveClasses_main .liveClasses_main_onGoing .main_onGoing_list .onGoing_list_item .list_item_title {
   font-size: 1.2vw;
   font-weight: 600;
@@ -3970,9 +3932,6 @@ td {
   background-color: #3abe2f !important;
   color: #fff !important;
 }
-<<<<<<< HEAD
-/*# sourceMappingURL=global.css.map */
-=======
 
 .subject_label {
   font-size: 1.2rem;
@@ -4004,6 +3963,8 @@ td {
 }
 
 .react-datetime-picker__inputGroup {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
   height: fit-content;
   border: none;
 }
@@ -4024,5 +3985,5 @@ td {
 .meeting_joinBtn {
   border: none;
   background-color: transparent;
-}/*# sourceMappingURL=global.css.map */
->>>>>>> 3a6620a52aa0f709114da97004aefe6c9eb2a217
+}
+/*# sourceMappingURL=global.css.map */
