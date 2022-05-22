@@ -114,8 +114,12 @@ td {
     display: none;
 }
 
+.fc-h-event .fc-event-title-container {
+    padding: 10px;
+}
+
 .fc-event-title {
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 .react-datetime-picker__inputGroup {
@@ -139,4 +143,8 @@ td {
 .meeting_joinBtn {
     border: none;
     background-color: transparent;
+}
+
+.dateLabel {
+    color: #000;
 }

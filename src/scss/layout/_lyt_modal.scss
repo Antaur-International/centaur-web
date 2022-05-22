@@ -46,8 +46,15 @@
                 margin-top: 20px;
 
                 .modal_content_form {
+                    height: 400px;
+                    overflow-y: scroll;
+                    overflow-x: hidden;
                     @include displayFlex(column, flex-start, flex-start);
                     gap: 10px;
+
+                    &::-webkit-scrollbar {
+                        display: none;
+                    }
 
                     .cat_select {
                         padding: 1rem 2rem;
@@ -66,7 +73,7 @@
                         font-weight: 700;
                         font-family: $montserrat_font;
                         width: -moz-available;
-                        width: 95%;
+                        width: 90%;
                     }
 
                     textarea {
@@ -91,6 +98,7 @@
                         gap: 10px;
                         margin-top: 20px;
                         width: -moz-available;
+
                         button {
                             @include displayFlex(row, center, center);
                             gap: 10px;
@@ -99,16 +107,19 @@
                             cursor: pointer;
                             transition: 0.3s;
                         }
+
                         .form_actionBtn_reminder {
                             background: #ffffff;
                             border: 1px solid rgba(0, 0, 0, 0.18);
                             border-radius: 7px;
                         }
+
                         .form_actionBtn_addTask {
                             background: #3abe2f;
                             color: white;
                             margin-left: auto;
                         }
+
                         .form_actionBtn_deleteTask {
                             background: #d82148;
                             color: white;
