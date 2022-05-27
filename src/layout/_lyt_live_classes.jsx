@@ -7,6 +7,9 @@ import Modal from '../components/rightDrawer/RightDrawer'
 import Popup from './lyt-popup';
 import ModalLayout from "./_lyt_modal";
 
+const HOSTED_MEET_URL = "https://grp-call-peer-js.herokuapp.com";
+const LOCALHOST_MEET_URL = "http://localhost:4000";
+
 export default function LiveClassesLyt({ user }) {
 
 
@@ -42,11 +45,6 @@ export default function LiveClassesLyt({ user }) {
             })
     }, [])
 
-    const JoinMeeting = (meet_id) => {
-        // window.open(`https://grp-call-peer-js.herokuapp.com/${meet_id}?userId=${user._id}`, "_blank");
-        window.open(`http://localhost:4000/${meet_id}?userId=${user._id}`, "_blank");
-    }
-
     return (
         <main className='lyt_wrapper_liveClasses'>
             <Header user={user} />
@@ -74,9 +72,11 @@ export default function LiveClassesLyt({ user }) {
                                     <li className='onGoing_list_item' key={index}>
                                         <p className='list_item_title'>{meeting.meet_title}</p>
                                         <p className='list_item_description'>{meeting.meet_description}</p>
-                                        <button
-                                            onClick={() => JoinMeeting(meeting._id)}
-                                            className='list_item_joinBtn'>Join</button>
+                                        <a
+                                            href={`${HOSTED_MEET_URL}/${meeting._id}?userId=${user._id}`}
+                                            target="_blank"
+                                            rel='noreferrer'
+                                            className='list_item_joinBtn'>Join</a>
                                     </li>
                                 )
                             })
@@ -94,9 +94,11 @@ export default function LiveClassesLyt({ user }) {
                                     <li className='onGoing_list_item' key={index}>
                                         <p className='list_item_title'>{meeting.meet_title}</p>
                                         <p className='list_item_description'>{meeting.meet_description}</p>
-                                        <button
-                                            onClick={() => JoinMeeting(meeting._id)}
-                                            className='list_item_joinBtn'>Join</button>
+                                        <a
+                                            href={`${LOCALHOST_MEET_URL}/${meeting._id}?userId=${user._id}`}
+                                            target="_blank"
+                                            rel='noreferrer'
+                                            className='list_item_joinBtn'>Join</a>
                                     </li>
                                 )
                             })
@@ -113,11 +115,13 @@ export default function LiveClassesLyt({ user }) {
                                     <li className='onGoing_list_item disabled' key={index}>
                                         <p className='list_item_title'>{meeting.meet_title}</p>
                                         <p className='list_item_description'>{meeting.meet_description}</p>
-                                        <button
+                                        <a
+                                            href={`${LOCALHOST_MEET_URL}/${meeting._id}?userId=${user._id}`}
+                                            target="_blank"
                                             style={{ backgroundColor: '#ccc', cursor: 'not-allowed' }}
                                             disabled="true"
-                                            onClick={() => JoinMeeting(meeting._id)}
-                                            className='list_item_joinBtn'>Join</button>
+                                            rel='noreferrer'
+                                            className='list_item_joinBtn'>Join</a>
                                     </li>
                                 )
                             })
