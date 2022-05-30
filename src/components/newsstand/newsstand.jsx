@@ -25,7 +25,7 @@ export default function Newsstand() {
         axios
             .get(`${API_HOST}/msbte/news`)
             .then(res => {
-                // console.log(res.data.newsData);
+                console.log(res.data.newsData);
                 setNews(res.data.newsData);
             })
             .catch(err => {
@@ -35,7 +35,7 @@ export default function Newsstand() {
 
     React.useEffect(() => {
         axios
-            .get(`${API_HOST}/msbte/onlineActivities`)
+            .get(`${API_HOST}/msbte/activities`)
             .then(res => {
                 console.log(res.data.onlineActivitiesData);
                 setCircular(res.data.onlineActivitiesData);
