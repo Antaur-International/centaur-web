@@ -35,10 +35,10 @@ export default function Newsstand() {
 
     React.useEffect(() => {
         axios
-            .get(`${API_HOST}/msbte/activities`)
+            .get(`${API_HOST}/msbte/circular`)
             .then(res => {
-                console.log(res.data.onlineActivitiesData);
-                setCircular(res.data.onlineActivitiesData);
+                console.log(res.data.reducedData);
+                setCircular(res.data.reducedData);
             })
             .catch(err => {
                 console.log(err);
