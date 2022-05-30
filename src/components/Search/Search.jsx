@@ -5,7 +5,7 @@ import Header from '../Header';
 import { SearchedEvents } from './SearchedEvents';
 import { Resource } from './SearchedResource';
 import { UserList } from './UserList';
-
+import { BoxLoading } from 'react-loadingg';
 export const Search = () => {
 
     const { extra, areaToSearch } = useNavigation();

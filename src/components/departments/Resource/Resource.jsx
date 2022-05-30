@@ -24,10 +24,6 @@ export default function Resource({ user }) {
             })
     }, [])
 
-    // if (loading) {
-    //     return <BoxLoading color="#65FF52" />
-
-    // }
 
     return (
         <section className='cp_wrapper_publicResource'>
