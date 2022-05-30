@@ -40,7 +40,7 @@ export const UserList = ({ key }) => {
     return (
         <ul className='cp_wrapper_usersList'>
             {
-                users.map((user, index) => {
+                users.length > 0 ? users.map((user, index) => {
                     return <li key={index} className='cp_usersList_item'>
                         <div className='cp_usersList_item_avatar'>
                             <img src={user.image} alt="avatar" />
@@ -50,7 +50,7 @@ export const UserList = ({ key }) => {
                             {user.name}
                         </p>
                     </li>
-                })
+                }) : <EmptySearch />
             }
         </ul>
     )

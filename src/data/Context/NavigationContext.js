@@ -54,9 +54,9 @@ export function NavigationProvider({ children }) {
   }
 
   useEffect(() => {
-    if (sessionStorage.getItem('activeTab')) {
-      setActiveTab(sessionStorage.getItem('activeTab'));
-    }
+
+    setActiveTab(sessionStorage.getItem('activeTab'));
+
 
   }, [])
 

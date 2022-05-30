@@ -7,6 +7,7 @@ import Modal from '../components/rightDrawer/RightDrawer'
 import { useAuth } from '../data/Context/UserContext';
 import Popup from './lyt-popup';
 import ModalLayout from "./_lyt_modal";
+import { BoxLoading } from 'react-loadingg';
 
 const HOSTED_MEET_URL = "https://grp-call-peer-js.herokuapp.com";
 const LOCALHOST_MEET_URL = "http://localhost:4000";
@@ -20,6 +21,7 @@ export default function LiveClassesLyt() {
     const [onGoingMeetings, setonGoingMeetings] = React.useState([]);
     const [scheduledMeetings, setScheduledMeetings] = React.useState([]);
     const [pastMeetings, setPastMeetings] = React.useState([]);
+    const [isLoading, setIsLoading] = React.useState(true);
 
     useEffect(() => {
         axios.get(`${API_HOST}/meet`)
@@ -41,6 +43,7 @@ export default function LiveClassesLyt() {
                     }
 
                 })
+                setIsLoading(false);
             })
             .catch(err => {
                 console.log(err);
@@ -69,19 +72,20 @@ export default function LiveClassesLyt() {
                     <ul className='main_onGoing_list'>
 
                         {
-                            onGoingMeetings.map((meeting, index) => {
-                                return (
-                                    <li className='onGoing_list_item' key={index}>
-                                        <p className='list_item_title'>{meeting.meet_title}</p>
-                                        <p className='list_item_description'>{meeting.meet_description}</p>
-                                        <a
-                                            href={`${HOSTED_MEET_URL}/${meeting._id}?userId=${userInstance._id}`}
-                                            target="_blank"
-                                            rel='noreferrer'
-                                            className='list_item_joinBtn'>Join</a>
-                                    </li>
-                                )
-                            })
+                            isLoading ? <BoxLoading color="#65FF52" /> :
+                                onGoingMeetings.map((meeting, index) => {
+                                    return (
+                                        <li className='onGoing_list_item' key={index}>
+                                            <p className='list_item_title'>{meeting.meet_title}</p>
+                                            <p className='list_item_description'>{meeting.meet_description}</p>
+                                            <a
+                                                href={`${HOSTED_MEET_URL}/${meeting._id}?userId=${userInstance._id}`}
+                                                target="_blank"
+                                                rel='noreferrer'
+                                                className='list_item_joinBtn'>Join</a>
+                                        </li>
+                                    )
+                                })
                         }
 
                     </ul>
@@ -91,19 +95,20 @@ export default function LiveClassesLyt() {
                     <ul className='main_onGoing_list'>
 
                         {
-                            scheduledMeetings.map((meeting, index) => {
-                                return (
-                                    <li className='onGoing_list_item' key={index}>
-                                        <p className='list_item_title'>{meeting.meet_title}</p>
-                                        <p className='list_item_description'>{meeting.meet_description}</p>
-                                        <a
-                                            href={`${LOCALHOST_MEET_URL}/${meeting._id}?userId=${userInstance._id}`}
-                                            target="_blank"
-                                            rel='noreferrer'
-                                            className='list_item_joinBtn'>Join</a>
-                                    </li>
-                                )
-                            })
+                            isLoading ? <BoxLoading color="#65FF52" /> :
+                                scheduledMeetings.map((meeting, index) => {
+                                    return (
+                                        <li className='onGoing_list_item' key={index}>
+                                            <p className='list_item_title'>{meeting.meet_title}</p>
+                                            <p className='list_item_description'>{meeting.meet_description}</p>
+                                            <a
+                                                href={`${LOCALHOST_MEET_URL}/${meeting._id}?userId=${userInstance._id}`}
+                                                target="_blank"
+                                                rel='noreferrer'
+                                                className='list_item_joinBtn'>Join</a>
+                                        </li>
+                                    )
+                                })
                         }
 
                     </ul>
@@ -112,21 +117,15 @@ export default function LiveClassesLyt() {
                     <h3>Past Meetings</h3>
                     <ul className='main_onGoing_list'>
                         {
-                            pastMeetings.map((meeting, index) => {
-                                return (
-                                    <li className='onGoing_list_item disabled' key={index}>
-                                        <p className='list_item_title'>{meeting.meet_title}</p>
-                                        <p className='list_item_description'>{meeting.meet_description}</p>
-                                        <a
-                                            href={`${LOCALHOST_MEET_URL}/${meeting._id}?userId=${userInstance._id}`}
-                                            target="_blank"
-                                            style={{ backgroundColor: '#ccc', cursor: 'not-allowed' }}
-                                            disabled="true"
-                                            rel='noreferrer'
-                                            className='list_item_joinBtn'>Join</a>
-                                    </li>
-                                )
-                            })
+                            isLoading ? <BoxLoading color="#65FF52" /> :
+                                pastMeetings.map((meeting, index) => {
+                                    return (
+                                        <li className='onGoing_list_item disabled' key={index}>
+                                            <p className='list_item_title'>{meeting.meet_title}</p>
+                                            <p className='list_item_description'>{meeting.meet_description}</p>
+                                        </li>
+                                    )
+                                })
                         }
 
                     </ul>

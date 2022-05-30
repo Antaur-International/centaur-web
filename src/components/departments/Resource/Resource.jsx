@@ -6,6 +6,7 @@ import ResourceList from './ResourceList'
 import { API_HOST } from '../../../API/constant';
 import axios from 'axios';
 import { BoxLoading } from 'react-loadingg';
+import { EmptyResource } from '../../EmptyState/EmptyResource';
 export default function Resource({ user }) {
 
     const [resources, setResources] = useState([]);
@@ -42,15 +43,16 @@ export default function Resource({ user }) {
                         <AddResource user={user} setIsOpen={setShowModal} />
                     </ModalLayout>
                 }
-
             </div>
+
+
             <ul className='wrapper_publicResource_list'>
                 {
-                    loading ? <BoxLoading color="#65FF52" /> : resources.map((item, index) => {
+                    loading ? <BoxLoading color="#65FF52" /> : (resources.length > 0 ? resources.map((item, index) => {
                         return (
                             <ResourceList item={item} />
                         )
-                    })
+                    }) : <EmptyResource />)
                 }
             </ul>
         </section>
