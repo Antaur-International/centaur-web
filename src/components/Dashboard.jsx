@@ -12,7 +12,6 @@ import { useAuth } from '../data/Context/UserContext';
 import { EmptyMeet } from './EmptyState/EmptyMeet';
 
 
-
 const MeetingsListItem = ({ user, meeting }) => {
 
     let date = new Date(meeting.meet_date);
@@ -48,6 +47,7 @@ export default function Dashboard({ user, meetings }) {
     const [greeting, setGreeting] = React.useState("Evening");
     const [isOpen, setIsOpen] = React.useState(false);
     const [news, setNews] = React.useState([]);
+    const [loadingNews, setLoadingNews] = React.useState(true);
     const { userInstance, isAuthenticated } = useAuth();
 
     const handleOpen = () => {

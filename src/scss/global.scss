@@ -1,26 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
-@import "./config/animation";
-@import "./config/_variables";
-@import "./config/_mixins";
-@import "./layout/lyt-modelWrapper";
-@import "./layout/lyt-todo";
-@import "./layout/lyt_landing";
-@import "./layout/lyt_login";
-@import "./layout/lyt_register";
-@import "./layout/lyt_modal";
-@import "./layout/lyt_not_found";
-@import "./layout/lyt_myWork";
-@import "./layout/lyt_notification";
-@import "./layout/lyt_popup";
-@import "./layout/lyt_deartment_subject";
-@import "./layout/lyt_settings";
-@import "./layout/lyt_loader";
-@import "./layout/lyt_department";
-@import "./layout/lyt_forgotPassword";
-@import "./layout/lyt_live_classes";
-@import "./layout/lyt_joinMeeting";
-@import "./components/cp_emptyState";
-@import "./layout/lyt_searchPage";
 
 * {
     margin: 0;
@@ -152,3 +130,27 @@ td {
 .dateLabel {
     color: #000;
 }
+
+@import "./config/animation";
+@import "./config/_variables";
+@import "./config/_mixins";
+@import "./layout/lyt-modelWrapper";
+@import "./layout/lyt-todo";
+@import "./layout/lyt_landing";
+@import "./layout/lyt_login";
+@import "./layout/lyt_register";
+@import "./layout/lyt_modal";
+@import "./layout/lyt_not_found";
+@import "./layout/lyt_myWork";
+@import "./layout/lyt_notification";
+@import "./layout/lyt_popup";
+@import "./layout/lyt_deartment_subject";
+@import "./layout/lyt_settings";
+@import "./layout/lyt_loader";
+@import "./layout/lyt_department";
+@import "./layout/lyt_forgotPassword";
+@import "./layout/lyt_live_classes";
+@import "./layout/lyt_joinMeeting";
+@import "./components/cp_emptyState";
+@import "./layout/lyt_searchPage";
+@import "./layout/lyt_facultyDetails";
