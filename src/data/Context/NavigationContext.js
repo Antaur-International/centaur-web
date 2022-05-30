@@ -1,4 +1,4 @@
-import React, { useState, useContext, createContext } from 'react'
+import React, { useState, useContext, createContext, useEffect } from 'react'
 
 
 const NavigationContext = createContext()
@@ -52,6 +52,13 @@ export function NavigationProvider({ children }) {
       }
     }
   }
+
+  useEffect(() => {
+    if (sessionStorage.getItem('activeTab')) {
+      setActiveTab(sessionStorage.getItem('activeTab'));
+    }
+
+  }, [])
 
   return (
     <NavigationContext.Provider value={{

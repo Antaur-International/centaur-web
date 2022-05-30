@@ -2,13 +2,14 @@ import React from 'react';
 import Header from "./Header"
 import "./dashboard.css";
 import { CalenderIcon, MoreIcon, VideoIcon } from '../icons/Icons';
-
+import { BoxLoading } from 'react-loadingg';
 import TodoLayout from '../layout/lyt-todo';
 import Modal from './rightDrawer/RightDrawer';
 import Newsstand from './newsstand/newsstand';
 import { API_HOST } from '../API/constant';
 import axios from 'axios';
 import { useAuth } from '../data/Context/UserContext';
+import { EmptyMeet } from './EmptyState/EmptyMeet';
 
 
 const MeetingsListItem = ({ user, meeting }) => {
@@ -46,6 +47,7 @@ export default function Dashboard({ user, meetings }) {
     const [greeting, setGreeting] = React.useState("Evening");
     const [isOpen, setIsOpen] = React.useState(false);
     const [news, setNews] = React.useState([]);
+    const [loadingNews, setLoadingNews] = React.useState(true);
     const { userInstance, isAuthenticated } = useAuth();
 
     const handleOpen = () => {
@@ -62,12 +64,10 @@ export default function Dashboard({ user, meetings }) {
         const greetingTemp = hours < 12 ? "Morning" : hours < 18 ? "Afternoon" : "Evening";
         setGreeting(greetingTemp)
 
-        console.log(meetings);
-
         axios
             .get(`${API_HOST}/msbte/news`)
             .then(res => {
-                console.log(res.data.newsData);
+                // console.log(res.data.newsData);
                 setNews(res.data.newsData);
             })
             .catch(err => {
@@ -75,6 +75,10 @@ export default function Dashboard({ user, meetings }) {
             });
 
     }, []);
+
+    if (!isAuthenticated) {
+        return <BoxLoading color="#65FF52" />
+    }
 
 
     return <section className='dashboard'>
@@ -85,7 +89,7 @@ export default function Dashboard({ user, meetings }) {
         <section className='welcome'>
             <img src="https://i.ibb.co/XpFJZS0/fox-image.png" alt="" />
             <div>
-                <h2>Good {greeting}, <br />  <b style={{ fontSize: "2vw" }}>{user.name}</b></h2>
+                <h2>Good {greeting}, <br />  <b style={{ fontSize: "2vw" }}>{userInstance.name}</b></h2>
                 <button>Go to Schedules </button>
             </div>
         </section>
@@ -96,7 +100,7 @@ export default function Dashboard({ user, meetings }) {
                     <MoreIcon />
                 </div>
             </div>
-            <TodoLayout user={user} />
+            <TodoLayout user={userInstance} />
         </section>
         <section className='news' onClick={handleOpen}>
             <div className='dashboardCardLabel newsStand'>
@@ -110,6 +114,7 @@ export default function Dashboard({ user, meetings }) {
                         {
                             news.map(news => {
                                 return <NewsCardItem
+                                    key={news.id}
                                     category="MSBTE"
                                     content={news.innerText}
                                 />
@@ -126,12 +131,13 @@ export default function Dashboard({ user, meetings }) {
                     <CalenderIcon />
                 </div>
             </div>
-            <ul>
+            <ul className='meetings_list'>
                 {
-                    meetings.map(meeting => {
-                        return <MeetingsListItem user={user} meeting={meeting} />
-                    })
+                    meetings.map.length > 0 ? meetings.map(meeting => {
+                        return <MeetingsListItem key={meeting._id} user={userInstance} meeting={meeting} />
+                    }) : <EmptyMeet />
                 }
+
             </ul>
         </section>
     </section>;

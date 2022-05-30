@@ -25,9 +25,9 @@ export default function AddResource({ user, setIsOpen }) {
         formData.append("file", resourceRef.current.files[0]);
         formData.append("user_id", user._id);
 
-        for (var p of formData) {
-            console.log(p);
-        }
+        // for (var p of formData) {
+        // console.log(p);
+        // }
 
         axios.post(`${API_HOST}/file/upload`, formData)
             .then(res => {
@@ -40,11 +40,11 @@ export default function AddResource({ user, setIsOpen }) {
                     resource_created_by: user._id,
                 }
 
-                console.log(data);
+                // console.log(data);
 
                 axios.post(`${API_HOST}/resource`, data)
                     .then(res => {
-                        console.log(res);
+                        // console.log(res);
                         setIsOpen(false);
                     })
                     .catch(err => {

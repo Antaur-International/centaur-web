@@ -8,7 +8,10 @@ import Popup from '../layout/lyt-popup';
 import { useNavigation } from '../data/Context/NavigationContext';
 import { useAuth } from '../data/Context/UserContext';
 
-export default function Header({ user }) {
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+
+export default function Header() {
 
     const inputRef = useRef();
 
@@ -39,9 +42,9 @@ export default function Header({ user }) {
         setIsOpen(false);
     }
 
-    if (!isAuthenticated) {
-        return null;
-    }
+    // if (!isAuthenticated) {
+    //     return null;
+    // }
 
     return <header className='header'>
 
@@ -79,7 +82,10 @@ export default function Header({ user }) {
             <BellIcon />
         </button>
         <section className='userProfile' onClick={() => setIsPopupOpen(true)}>
-            <img src={userInstance.image} alt="User Profile" />
+            {
+                isAuthenticated ? <img src={userInstance.image} alt="User Profile" /> : <Skeleton circle />
+
+            }
             <div>
                 <h3>{userInstance.name}</h3>
                 <p>EN {userInstance.en_number}</p>

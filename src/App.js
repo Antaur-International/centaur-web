@@ -28,59 +28,23 @@ Importing the packages
 
 function App() {
 
-  const [instanceUser, setInstanceUser] = useState({});
   const [meetings, setMeetings] = React.useState([]);
 
-  const { activeTab, updateNavigation } = useNavigation();
+  const { activeTab } = useNavigation();
 
   React.useEffect(() => {
 
-    if (sessionStorage.getItem('user')) {
-      const userFetch = {
-        userid: JSON.parse(sessionStorage.getItem('user')).userid,
-        userEmail: JSON.parse(sessionStorage.getItem('user')).userEmail
-      };
 
-      console.log(userFetch);
-      console.log(API_HOST);
-
-
-      axios.post(`${API_HOST}/user/getUser`, userFetch)
-        .then(res => {
-          setInstanceUser(res.data.user);
-          sessionStorage.setItem('instanceUser', JSON.stringify(res.data.user));
-          console.log('Running', res.data);
-          console.log(instanceUser);
-        })
-        .then(() => {
-          updateNavigation(sessionStorage.getItem("activeTab") !== null ? sessionStorage.getItem("activeTab") : "dashboard");
-        })
-        .catch(err => {
-          console.log(err);
-        });
-
-      axios
-        .get(`${API_HOST}/meet`)
-        .then(res => {
-          console.log(res.data);
-          setMeetings(res.data.meets);
-        })
-        .catch(err => {
-          console.log(err);
-        });
-
-    } else {
-      window.location.href = './#/login';
-    }
+    axios
+      .get(`${API_HOST}/meet`)
+      .then(res => {
+        setMeetings(res.data.meets);
+      })
+      .catch(err => {
+        console.log(err);
+      });
 
   }, []);
-
-  const handleTabChange = (tab) => {
-    updateNavigation(tab);
-
-    sessionStorage.setItem('activeTab', tab)
-
-  }
 
   useEffect(() => {
 
@@ -92,17 +56,17 @@ function App() {
         <title>Dashboard - Centaur</title>
         <meta name="description" content="Manage all your resource at one stop" />
       </Helmet>
-      <RightDrawer activeTab={activeTab} setActiveTab={handleTabChange} />
+      <RightDrawer />
       <main className='main'>
 
-        {activeTab === "dashboard" && <Dashboard meetings={meetings} user={instanceUser} />}
-        {activeTab === "department" && <Department user={instanceUser} />}
-        {activeTab === "department-subject" && <SubjectLayout user={instanceUser} />}
-        {activeTab === "calender" && <Calender user={instanceUser} />}
-        {activeTab === "myWork" && <MyWork user={instanceUser} />}
-        {activeTab === "settings" && <SettingsLayout user={instanceUser} />}
-        {activeTab === "live-classes" && <LiveClassesLyt user={instanceUser} />}
-        {activeTab === "joinClasses" && <JoinMeeting user={instanceUser} />}
+        {activeTab === "dashboard" && <Dashboard meetings={meetings} />}
+        {activeTab === "department" && <Department />}
+        {activeTab === "department-subject" && <SubjectLayout />}
+        {activeTab === "calender" && <Calender />}
+        {activeTab === "myWork" && <MyWork />}
+        {activeTab === "settings" && <SettingsLayout />}
+        {activeTab === "live-classes" && <LiveClassesLyt />}
+        {activeTab === "joinClasses" && <JoinMeeting />}
         {activeTab === "search" && <Search />}
         {activeTab === "faculty" && <FacultyDetails />}
       </main>

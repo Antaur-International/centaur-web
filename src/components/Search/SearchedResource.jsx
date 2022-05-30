@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { API_HOST } from '../../API/constant';
 import { useNavigation } from '../../data/Context/NavigationContext';
 import ResourceList from '../departments/Resource/ResourceList'
-
+import { BoxLoading } from 'react-loadingg';
+import { EmptySearch } from '../EmptyState/EmptySearch';
 export const Resource = () => {
 
     const [resources, setResources] = useState([]);
@@ -20,7 +21,6 @@ export const Resource = () => {
                     return resource.resource_name.toLowerCase().includes(searchKeyword.toLowerCase());
                 })
 
-                console.log(filteredResources);
                 setResources(filteredResources);
 
                 setLoading(false);
@@ -31,16 +31,16 @@ export const Resource = () => {
     }, [])
 
     if (loading) {
-        return null
+        return <BoxLoading color="#65FF52" />
     }
 
     return (
         <ul className='wrapper_publicResource_list'>
-            {resources.map((item, index) => {
+            {resources.length > 0 ? resources.map((item, index) => {
                 return (
                     <ResourceList key={index} item={item} />
                 )
-            })}
+            }) : <EmptySearch />}
         </ul>
     )
 }

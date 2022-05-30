@@ -15,7 +15,6 @@ export default function ForgotPasswordPage() {
 
     const handleButtonClick = (e) => {
         e.preventDefault();
-        console.log(enteredEmail);
         navigate('/login');
     }
 

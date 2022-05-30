@@ -52,6 +52,8 @@ export default function Room({ user, changeTab }) {
     const inputRef = useRef(null);
     const messagesList = useRef(null);
 
+    const socketRef = useRef(null);
+
     const [showEmoji, setShowEmoji] = useState(false);
     const [selectedEmoji, setSelectedEmoji] = useState('');
     const [message, setMessage] = useState('');
@@ -69,7 +71,7 @@ export default function Room({ user, changeTab }) {
         socket.emit('join', user.batch.chatroom._id);
 
         socket.on('chatroom', (chatroom) => {
-            console.log("Messages when user connected !\n");
+            // console.log("Messages when user connected !\n");
             setChatHistory(chatroom.messages);
             if (messagesList.current) {
                 messagesList.current.scrollTop = messagesList.current.scrollHeight;
@@ -94,11 +96,10 @@ export default function Room({ user, changeTab }) {
 
         // send the message to the server
         socket.emit('chat', chatNew);
-        socket.on('chatroom', (chatroom) => {
-            console.log("Socket Data: ", chatroom);
+        socket.on('new chat', (chatroom) => {
+            // console.log(chatroom);
             setChatHistory(chatroom.messages);
         });
-
         messagesList.current.scrollTop = messagesList.current.scrollHeight;
 
         setMessage("");

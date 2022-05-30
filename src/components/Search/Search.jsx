@@ -5,10 +5,10 @@ import Header from '../Header';
 import { SearchedEvents } from './SearchedEvents';
 import { Resource } from './SearchedResource';
 import { UserList } from './UserList';
-
+import { BoxLoading } from 'react-loadingg';
 export const Search = () => {
 
-    const { extra, setExtra, areaToSearch, updateAreaToSearch } = useNavigation();
+    const { extra, areaToSearch } = useNavigation();
 
     return (
         <section className='lyt_wrapper_searchPage'>

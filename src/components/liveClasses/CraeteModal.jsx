@@ -19,7 +19,7 @@ export const CreateModal = ({ hideModal }) => {
 
         axios.post(`${API_HOST}/meet`, meeting)
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 hideModal();
             })
             .catch(err => {

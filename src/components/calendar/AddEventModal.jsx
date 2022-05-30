@@ -1,7 +1,8 @@
 import React, { useRef } from 'react'
 import { AddIcon, Clock } from '../../icons/Icons'
 import { BlockPicker } from "react-color";
-import TextField from '@mui/material/TextField';
+// import { TextField } from '@mui/material';
+// import {TextField} from '@mui/material/TextField';
 import axios from 'axios';
 import { API_HOST } from '../../API/constant';
 
@@ -24,8 +25,8 @@ export default function AddEventModal({ selectedDate, setIsOpen }) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        console.log(eventDateTime)
-        console.log(eventDateEndTime.split('T'))
+        // console.log(eventDateTime)
+        // console.log(eventDateEndTime.split('T'))
 
         const event = {
             title: eventTitle.current.value,
@@ -36,10 +37,9 @@ export default function AddEventModal({ selectedDate, setIsOpen }) {
             color: color,
         }
 
-        console.log(event);
         axios.post(`${API_HOST}/events`, event)
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 setIsOpen(false);
                 // refresh the page
                 window.location.reload();
@@ -51,7 +51,6 @@ export default function AddEventModal({ selectedDate, setIsOpen }) {
 
     const handleColorChange = (color) => {
         setColor(color.hex);
-        console.log(color.hex);
     }
 
     return (
@@ -73,7 +72,7 @@ export default function AddEventModal({ selectedDate, setIsOpen }) {
                             ref={eventDescription}
                             className='content_form_noteInput' placeholder='Event Description...' />
                         <label className='dateLabel'>Set Start Date and Time</label>
-                        <TextField
+                        {/* <TextField
                             id="datetime-local"
                             name="dateAndTime"
                             type="time"
@@ -82,9 +81,9 @@ export default function AddEventModal({ selectedDate, setIsOpen }) {
                             InputLabelProps={{
                                 shrink: true,
                             }}
-                        />
+                        /> */}
                         <label className='dateLabel'>Set End Date and Time</label>
-                        <TextField
+                        {/* <TextField
                             id="datetime-local"
                             name="dateAndTime"
                             onChange={handleDateEndTimeChange}
@@ -93,7 +92,7 @@ export default function AddEventModal({ selectedDate, setIsOpen }) {
                             InputLabelProps={{
                                 shrink: true,
                             }}
-                        />
+                        /> */}
                         <br />
                         <BlockPicker color={color} onChangeComplete={handleColorChange} />
                         <div className='content_form_actionBtn'>

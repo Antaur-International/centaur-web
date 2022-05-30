@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigation } from '../../data/Context/NavigationContext';
 import { useAuth } from '../../data/Context/UserContext';
-
+import { BoxLoading } from 'react-loadingg';
+import { EmptySearch } from '../EmptyState/EmptySearch';
 export const UserList = ({ key }) => {
 
     const [users, setUsers] = useState([]);
     const { extra } = useNavigation();
     const { userInstance } = useAuth();
+
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         search()
@@ -17,15 +20,21 @@ export const UserList = ({ key }) => {
 
         userInstance.batch.students.map((user, index) => {
 
-            console.log(user.name);
-            console.log(searchKeyword);
+            // console.log(user.name);
+            // console.log(searchKeyword);
 
             if (user.name.includes(searchKeyword)) {
                 setUsers((prev) => [...prev, user]);
             }
         })
 
-        console.log("Searched users: ", users);
+        setLoading(false);
+
+        // console.log("Searched users: ", users);
+    }
+
+    if (loading) {
+        return <BoxLoading color="#65FF52" />
     }
 
     return (

@@ -5,23 +5,25 @@ import AddResource from './AddResource';
 import ResourceList from './ResourceList'
 import { API_HOST } from '../../../API/constant';
 import axios from 'axios';
-
+import { BoxLoading } from 'react-loadingg';
 export default function Resource({ user }) {
 
     const [resources, setResources] = useState([]);
-
+    const [loading, setLoading] = useState(true);
     const [showModal, setShowModal] = useState(false);
 
     React.useEffect(() => {
         axios.get(`${API_HOST}/resource`)
             .then(res => {
-                console.log(res.data.resources);
+                // console.log(res.data.resources);
                 setResources(res.data.resources);
+                setLoading(false);
             })
             .catch(err => {
                 console.log(err);
             })
     }, [])
+
 
     return (
         <section className='cp_wrapper_publicResource'>
@@ -44,7 +46,7 @@ export default function Resource({ user }) {
             </div>
             <ul className='wrapper_publicResource_list'>
                 {
-                    resources.map((item, index) => {
+                    loading ? <BoxLoading color="#65FF52" /> : resources.map((item, index) => {
                         return (
                             <ResourceList item={item} />
                         )

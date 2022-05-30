@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react'
 import { API_HOST } from '../../API/constant';
 import { useNavigation } from '../../data/Context/NavigationContext';
+import { BoxLoading } from 'react-loadingg';
+import { EmptySearch } from '../EmptyState/EmptySearch';
 
 export const SearchedEvents = () => {
 
@@ -16,7 +18,6 @@ export const SearchedEvents = () => {
 
         axios.get(`${API_HOST}/events`)
             .then(res => {
-                console.log("EVENTS >>> ", res.data);
 
                 const filteredEvents = res.data.filter(event => {
                     return event.title.toLowerCase().includes(searchKeyword.toLowerCase());
@@ -31,13 +32,13 @@ export const SearchedEvents = () => {
     }, [])
 
     if (loading) {
-        return null
+        return <BoxLoading color="#65FF52" />
     }
 
     return (
         <ul className='wrapper_publicResource_list'>
             {
-                events.map((item, index) => {
+                events.length > 0 ? events.map((item, index) => {
                     return (
                         <li className='publicResource_list_item' key={index}>
                             <p className='list_item_title'>{item.title}</p>
@@ -45,7 +46,7 @@ export const SearchedEvents = () => {
                         </li>
                     )
                 }
-                )
+                ) : <EmptySearch />
             }
         </ul>
     )

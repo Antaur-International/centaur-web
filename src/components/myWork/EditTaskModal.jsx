@@ -30,7 +30,7 @@ export default function EditTaskModal({ setIsOpen, task, handleDeleteUpdate }) {
 
         axios.put(`${API_HOST}/task/${updateBtn}`, data)
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 setIsOpen(false);
                 // refresh the page
             })
@@ -45,7 +45,7 @@ export default function EditTaskModal({ setIsOpen, task, handleDeleteUpdate }) {
 
         axios.delete(`${API_HOST}/task/${deleteBtn}`)
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 sessionStorage.setItem('deletedTask', JSON.stringify(res.data.task));
                 setIsOpen(false);
                 handleDeleteUpdate();

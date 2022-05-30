@@ -1,0 +1,35 @@
+.lyt_wrapper_facultyDetails {
+    padding: 15px 25px;
+    @include displayFlex(column, stretch, stretch);
+    gap: 20px;
+    height: 100%;
+
+    .wrapper_facultyDetails_tree {
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+}
+
+.wrapper_facultyDetails_title {
+    font-size: 1.5vw;
+    text-align: center;
+}
+
+.facultyDetails_facultyList_item {
+    @include displayFlex(column, center, center);
+    gap: 10px;
+    img {
+        width: 7vw;
+        border-radius: 100%;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: cover;
+    }
+    p {
+        margin: 0;
+        font-size: 1vw;
+
+        color: #2b2b2b;
+    }
+}

@@ -6,32 +6,35 @@ import { AddIcon } from '../icons/Icons';
 import * as FormData from "form-data";
 import axios from 'axios'
 import { API_HOST } from '../API/constant';
+import { useAuth } from '../data/Context/UserContext';
+import { BoxLoading } from 'react-loadingg';
 
+export default function SettingsLayout() {
 
-export default function SettingsLayout({ user }) {
-
+    const { userInstance, isAuthenticated } = useAuth();
 
     const [semesters, setSemesters] = useState([]);
-    const [selectedSemester, setSelectedSemester] = useState('');
     const frontRef = useRef(null);
     const backRef = useRef(null);
     const imageRef = useRef(null);
 
     React.useEffect(() => {
-        setSemesters(user.department.semesters);
-        console.log(user.department.semesters);
+        if (isAuthenticated) {
+            setSemesters(userInstance.department.semesters);
+        }
+
     }, [])
 
     const handleProfileUpdate = () => {
         let formData = new FormData();
         formData.append("file", imageRef.current.files[0]);
-        formData.append("user_id", user._id);
+        formData.append("user_id", userInstance._id);
 
         axios.post(`${API_HOST}/file/upload`, formData)
             .then(res => {
                 const data = {
                     image: res.data.file,
-                    id: user._id
+                    id: userInstance._id
                 }
 
                 axios.post(`${API_HOST}/user/profileImage`, data)
@@ -51,18 +54,18 @@ export default function SettingsLayout({ user }) {
         let formData = new FormData();
 
         formData.append("file", frontRef.current.files[0]);
-        formData.append("user_id", user._id);
+        formData.append("user_id", userInstance._id);
 
-        for (var p of formData) {
-            console.log(p);
-        }
+        // for (var p of formData) {
+        //     console.log(p);
+        // }
 
         axios.post(`${API_HOST}/file/upload`, formData)
             .then(res => {
 
                 const data = {
                     image: res.data.file,
-                    id: user._id,
+                    id: userInstance._id,
                     front_image: true
                 }
 
@@ -70,13 +73,11 @@ export default function SettingsLayout({ user }) {
 
                 axios.post(`${API_HOST}/user/updateImage`, data)
                     .then(res => {
-                        console.log(res);
                     })
                     .catch(err => {
                         console.log(err);
                     })
 
-                console.log(res.data.file);
             })
             .catch(err => {
                 console.log("hit");
@@ -88,22 +89,21 @@ export default function SettingsLayout({ user }) {
         let formData = new FormData();
 
         formData.append("file", backRef.current.files[0]);
-        formData.append("user_id", user._id);
+        formData.append("user_id", userInstance._id);
 
-        for (var p of formData) {
-            console.log(p);
-        }
+        // for (var p of formData) {
+        //     console.log(p);
+        // }
 
         axios.post(`${API_HOST}/file/upload`, formData)
             .then(res => {
 
                 const data = {
                     image: res.data.file,
-                    id: user._id,
+                    id: userInstance._id,
                     front_image: false
                 }
 
-                console.log(data);
 
                 axios.post(`${API_HOST}/user/updateImage`, data)
                     .then(res => {
@@ -113,7 +113,6 @@ export default function SettingsLayout({ user }) {
                         console.log(err);
                     })
 
-                console.log(res.data.file);
             })
             .catch(err => {
                 console.log("hit");
@@ -121,9 +120,13 @@ export default function SettingsLayout({ user }) {
             });
     }
 
+    if (!isAuthenticated) {
+        return <BoxLoading color="#65FF52" />
+    }
+
     return (
         <section className='layout_wrapper_settings'>
-            <Header user={user} />
+            <Header />
             <section className='wrapper_settings_navbar'>
                 <h1>Settings</h1>
                 <ul className='settings_navbar_list'>
@@ -165,22 +168,22 @@ export default function SettingsLayout({ user }) {
                         </div>
 
                         <div className='body_content'>
-                            <TagInput mainLabel="First Name " label="mes.ac.in/" inputType="text" placeholder="Enter Your First Name: " value={user.name.split(" ")[0]} />
-                            <TagInput mainLabel="Last Name " label="mes.ac.in/" inputType="text" placeholder="Enter Your Last Name: " value={user.name.split(" ")[1]} />
+                            <TagInput mainLabel="First Name " label="mes.ac.in/" inputType="text" placeholder="Enter Your First Name: " value={userInstance.name.split(" ")[0]} />
+                            <TagInput mainLabel="Last Name " label="mes.ac.in/" inputType="text" placeholder="Enter Your Last Name: " value={userInstance.name.split(" ")[1]} />
 
-                            <NormalInput mainLabel="Email " inputType="text" placeholder="Enter Your Email: " value={user.email} />
+                            <NormalInput mainLabel="Email " inputType="text" placeholder="Enter Your Email: " value={userInstance.email} />
 
-                            <NormalInput mainLabel="Department " inputType="text" placeholder="Enter your department: " value={user.department.department_name} />
+                            <NormalInput mainLabel="Department " inputType="text" placeholder="Enter your department: " value={userInstance.department.department_name} />
 
                             <div className='cp-input typ-normal'>
                                 <label className='cp-input__label'>Semester</label>
                                 <div className='cp-input__wrapper'>
-                                    <select className='cp-input__select' value={user.batch._id}>
+                                    <select className='cp-input__select' value={userInstance.batch._id}>
                                         <option value="">Select Semester</option>
                                         {
                                             semesters.map((semester, index) => {
                                                 return (
-                                                    <option key={index} value={semester._id} selected={semester._id === user.batch._id ? true : false}>{semester.name}</option>
+                                                    <option key={index} value={semester._id} selected={semester._id === userInstance.batch._id ? true : false}>{semester.name}</option>
                                                 )
                                             })
                                         }
@@ -188,23 +191,23 @@ export default function SettingsLayout({ user }) {
                                 </div>
                             </div>
 
-                            <ColumnInput mainLabel="Phone Number " inputType="text" placeholder="00000 00000" value={user.phoneNum} />
-                            <ColumnInput mainLabel="Enrollment Number " inputType="text" placeholder="EN-0000000000" value={user.en_number} />
+                            <ColumnInput mainLabel="Phone Number " inputType="text" placeholder="00000 00000" value={userInstance.phoneNum} />
+                            <ColumnInput mainLabel="Enrollment Number " inputType="text" placeholder="EN-0000000000" value={userInstance.en_number} />
                         </div>
                     </div>
                     <div className='setting_content__body_idVerify'>
                         <div className="idVerify__heading">
                             <p className='heading_title'>
                                 <img src='/centaur-web/images/icons/tick-green.svg' alt='confirmation icon' />
-                                {user.idImageFront && user.idImageBack ? "You have completed your ID verification" : "Please complete your student verification by adding scanned images of your ID"}</p>
+                                {userInstance.idImageFront && userInstance.idImageBack ? "You have completed your ID verification" : "Please complete your student verification by adding scanned images of your ID"}</p>
                         </div>
                         <div className="idInputs_verify">
                             {
-                                user.idImageFront ?
+                                userInstance.idImageFront ?
                                     <div>
                                         <h2>Front Side Of ID:</h2>
                                         <br />
-                                        <img src={user.idImageFront} alt='idFront' />
+                                        <img src={userInstance.idImageFront} alt='idFront' />
                                     </div> :
                                     <div className="file-input">
                                         <input type='file' ref={frontRef} onChange={uploadFront} />
@@ -213,11 +216,11 @@ export default function SettingsLayout({ user }) {
                             }
 
                             {
-                                user.idImageBack ?
+                                userInstance.idImageBack ?
                                     <div>
                                         <h2>Back Side Of ID:</h2>
                                         <br />
-                                        <img src={user.idImageBack} alt='idBack' />
+                                        <img src={userInstance.idImageBack} alt='idBack' />
                                     </div> :
                                     <div className="file-input">
                                         <input type='file' ref={backRef} onChange={uploadBack} />
@@ -237,7 +240,7 @@ export default function SettingsLayout({ user }) {
                                 Choose Image
                             </label>
                             <button className="upload">Upload</button>
-                            <img src={user.image} alt="profileImage" />
+                            <img src={userInstance.image} alt="profileImage" />
                         </div>
                     </div>
                 </div>
