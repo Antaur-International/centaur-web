@@ -62,6 +62,17 @@
   line-height: 1.2;
   color: #40a137;
 }
+.cp_newsstand_wrapper details summary {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.5vw;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #40a137;
+  margin: 20px 10px;
+}
+.cp_newsstand_wrapper details summary h1 {
+  display: inline;
+}
 .cp_newsstand_wrapper .wrapper_newsCard_list {
   display: flex;
   flex-direction: column;

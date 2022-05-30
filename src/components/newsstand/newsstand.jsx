@@ -19,6 +19,7 @@ const NewsCardItem = (props) => {
 
 export default function Newsstand() {
     const [news, setNews] = React.useState([]);
+    const [circulars, setCircular] = React.useState([]);
 
     React.useEffect(() => {
         axios
@@ -32,23 +33,56 @@ export default function Newsstand() {
             });
     }, []);
 
+    React.useEffect(() => {
+        axios
+            .get(`${API_HOST}/msbte/onlineActivities`)
+            .then(res => {
+                console.log(res.data.onlineActivitiesData);
+                setCircular(res.data.onlineActivitiesData);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }, []);
+
     return (
         <section className='cp_newsstand_wrapper'>
             <div className='wrapper_title'>
                 <NewspaperIcon width="45" height="45" />
                 <h1>News Stand</h1>
             </div>
+            <details>
+                <summary>
+                    <h1>Latest Circulars</h1>
+                </summary>
 
-            <ul className='wrapper_newsCard_list'>
-                {news.map(news => (
-                    <NewsCardItem
-                        key={news.id}
-                        category="MSBTE"
-                        content={news.innerText}
-                        link={news.href}
-                    />
-                ))}
-            </ul>
+                <ul className='wrapper_newsCard_list'>
+                    {news.map(news => (
+                        <NewsCardItem
+                            key={news.id}
+                            category="MSBTE"
+                            content={news.innerText}
+                            link={news.href}
+                        />
+                    ))}
+                </ul>
+            </details>
+            <details>
+                <summary>
+                    <h1>Latest Activies</h1>
+                </summary>
+
+                <ul className='wrapper_newsCard_list'>
+                    {circulars.map(news => (
+                        <NewsCardItem
+                            key={news.id}
+                            category="MSBTE"
+                            content={news.innerText}
+                            link={news.href}
+                        />
+                    ))}
+                </ul>
+            </details>
         </section>
     )
 }
