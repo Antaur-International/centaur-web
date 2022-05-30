@@ -22,6 +22,8 @@ import JoinMeeting from './layout/_lyt_joinMeeting';
 import { Search } from './components/Search/Search';
 import { useNavigation } from './data/Context/NavigationContext';
 import { FacultyDetails } from "./layout/_lyt_facutlyDetails";
+
+import Snackbar from "./components/Snackbar/Snackbar";
 /*
 Importing the packages
 */
@@ -29,7 +31,8 @@ Importing the packages
 function App() {
 
   const [meetings, setMeetings] = React.useState([]);
-
+  const [snackbarState, setSnackbarState] = React.useState(false);
+  const [message, setMessage] = React.useState("");
   const { activeTab } = useNavigation();
 
   React.useEffect(() => {
@@ -58,18 +61,18 @@ function App() {
       </Helmet>
       <RightDrawer />
       <main className='main'>
-
         {activeTab === "dashboard" && <Dashboard meetings={meetings} />}
         {activeTab === "department" && <Department />}
         {activeTab === "department-subject" && <SubjectLayout />}
         {activeTab === "calender" && <Calender />}
-        {activeTab === "myWork" && <MyWork />}
+        {activeTab === "myWork" && <MyWork setSnackbarOpenState={setSnackbarState} openState={snackbarState} setMessage={setMessage} />}
         {activeTab === "settings" && <SettingsLayout />}
         {activeTab === "live-classes" && <LiveClassesLyt />}
         {activeTab === "joinClasses" && <JoinMeeting />}
         {activeTab === "search" && <Search />}
         {activeTab === "faculty" && <FacultyDetails />}
       </main>
+      <Snackbar message={message} setState={setSnackbarState} openState={snackbarState} />
     </div>
 
   );

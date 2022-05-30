@@ -154,3 +154,36 @@ td {
 @import "./components/cp_emptyState";
 @import "./layout/lyt_searchPage";
 @import "./layout/lyt_facultyDetails";
+
+
+.snackbar_global_wrapper {
+    width: fit-content;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3E3E3E;
+    padding: 5px 20px;
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+    border-radius: 7px;
+    box-shadow: 4px 4px 11px 1px rgba(0, 0, 0, 0.31);
+
+    p.msg-ctn {
+        font-size: 1.5rem;
+        width: max-content;
+    }
+}
+
+.closeButton {
+    padding: 10px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    transform: rotate(45deg);
+    outline: none;
+}

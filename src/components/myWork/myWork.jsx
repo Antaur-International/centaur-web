@@ -33,7 +33,7 @@ const MyWorkListItem = (props) => {
     </li>
 }
 
-export default function MyWorkMain() {
+export default function MyWorkMain({ setSnackbarOpenState, openState, setMessage }) {
 
     const personalTask = useRef(null);
     const [personalTaskHeight, setPersonalTaskHeight] = useState(0);
@@ -140,7 +140,7 @@ export default function MyWorkMain() {
                 </button>
             </div>
 
-            {isModalOpen && <ModalLayout> <AddTaskModal handleSubmitUpdate={createTask} setIsOpen={setIsModalOpen} /> </ModalLayout>}
+            {isModalOpen && <ModalLayout> <AddTaskModal setSnackbarOpenState={setSnackbarOpenState} openState={openState} setMessage={setMessage} handleSubmitUpdate={createTask} setIsOpen={setIsModalOpen} /> </ModalLayout>}
             {
                 editTaskModal.isOpen && <ModalLayout>
                     <EditTaskModal

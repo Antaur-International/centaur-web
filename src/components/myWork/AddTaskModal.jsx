@@ -4,7 +4,7 @@ import axios from 'axios';
 import { API_HOST } from '../../API/constant';
 import { useAuth } from '../../data/Context/UserContext';
 
-export default function AddTaskModal({ setIsOpen, handleSubmitUpdate }) {
+export default function AddTaskModal({ setSnackbarOpenState, openState, setMessage, setIsOpen, handleSubmitUpdate }) {
 
     const { userInstance } = useAuth();
 
@@ -39,6 +39,8 @@ export default function AddTaskModal({ setIsOpen, handleSubmitUpdate }) {
             .then(res => {
                 sessionStorage.setItem('task', JSON.stringify(res.data.task));
                 setTask(res.data.task);
+                setMessage(res.data.message);
+                setSnackbarOpenState(true);
                 setIsOpen(false);
             })
             .catch(err => {
@@ -59,11 +61,11 @@ export default function AddTaskModal({ setIsOpen, handleSubmitUpdate }) {
                 </button>
                 <div className='center_modal_content'>
                     <form className='modal_content_form'>
-                        {userInstance.type === 'staff' && <select className='cat_select' ref={taskCategory}>
+                        <select className='cat_select' ref={taskCategory}>
                             <option value="">Select Category</option>
                             <option value="Personal">Personal</option>
                             <option value="College">College</option>
-                        </select>}
+                        </select>
                         <input type="text" ref={taskTitle} placeholder='Task Title' />
                         <textarea
                             ref={taskDescription}
