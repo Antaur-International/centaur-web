@@ -20,7 +20,6 @@ export const Resource = () => {
                     return resource.resource_name.toLowerCase().includes(searchKeyword.toLowerCase());
                 })
 
-                console.log(filteredResources);
                 setResources(filteredResources);
 
                 setLoading(false);

@@ -3,18 +3,20 @@ import axios from 'axios'
 import { SingleTick, HamBurger } from '../icons/Icons'
 import { API_HOST } from '../API/constant';
 import { EmptyTaskList } from '../components/EmptyState/EmptyTaskList';
+import { useAuth } from '../data/Context/UserContext';
 
 
-export default function TodoLayout({ user }) {
+export default function TodoLayout() {
+
+    const { userInstance } = useAuth();
 
     const [todos, setTodos] = React.useState([]);
 
     React.useEffect(() => {
         axios
-            .get(`${API_HOST}/task/personal/${user._id}`)
+            .get(`${API_HOST}/task/personal/${userInstance._id}`)
             .then(res => {
                 setTodos(res.data.tasks);
-                console.log(res.data.tasks);
             })
             .catch(err => {
                 console.log(err);

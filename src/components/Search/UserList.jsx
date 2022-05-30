@@ -17,15 +17,15 @@ export const UserList = ({ key }) => {
 
         userInstance.batch.students.map((user, index) => {
 
-            console.log(user.name);
-            console.log(searchKeyword);
+            // console.log(user.name);
+            // console.log(searchKeyword);
 
             if (user.name.includes(searchKeyword)) {
                 setUsers((prev) => [...prev, user]);
             }
         })
 
-        console.log("Searched users: ", users);
+        // console.log("Searched users: ", users);
     }
 
     return (

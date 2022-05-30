@@ -102,7 +102,7 @@ export default function MyWorkMain() {
         axios.get(`${API_HOST}/task/college`)
             .then(res => {
                 setCollegeTaskList(res.data.tasks);
-                console.log(res.data.tasks);
+                // console.log(res.data.tasks);
             })
             .catch(err => {
                 console.log(err);

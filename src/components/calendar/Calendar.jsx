@@ -8,8 +8,11 @@ import AddEventModal from './AddEventModal';
 import EditEventModal from './EditEventModal';
 import axios from 'axios';
 import { API_HOST } from '../../API/constant';
+import { useAuth } from '../../data/Context/UserContext'
 
-export default function Calendar({ user }) {
+export default function Calendar() {
+
+    const { userInstance } = useAuth();
 
     const [events, setEvents] = React.useState([]);
     const [tasks, setTasks] = React.useState([]);
@@ -22,7 +25,7 @@ export default function Calendar({ user }) {
     React.useEffect(() => {
         axios.get(`${API_HOST}/events`)
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 setEvents(res.data);
             })
             .catch(err => {
@@ -36,7 +39,6 @@ export default function Calendar({ user }) {
     }
 
     const handleEventClick = (arg) => {
-        console.log(arg);
         setData(arg.event._def);
         setEditModalOpen(true);
     }
@@ -62,7 +64,7 @@ export default function Calendar({ user }) {
             />
 
             {isModalOpen && <ModalLayout> <AddEventModal selectedDate={selectedDate} setIsOpen={setIsModalOpen} /> </ModalLayout>}
-            {isEditModalOpen && <ModalLayout> <EditEventModal user={user} data={data} setIsOpen={setEditModalOpen} /> </ModalLayout>}
+            {isEditModalOpen && <ModalLayout> <EditEventModal user={userInstance} data={data} setIsOpen={setEditModalOpen} /> </ModalLayout>}
         </>
     )
 }

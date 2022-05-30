@@ -1,31 +1,34 @@
 import React from 'react'
 import Header from '../Header'
-import { CheckMark, AddIcon, ChevronRight, ChevronLeft, UserGroupIcon, ChatIcon, FolderIcon } from '../../icons/Icons'
+import { ChevronLeft, UserGroupIcon, ChatIcon, FolderIcon } from '../../icons/Icons'
 import Resource from './Resource/Resource'
 import Members from './Members/Members';
 import Chats from './Chats/Chats';
 import Room from './Chats/Room';
 import { Subjects } from './Subjects/Subjects';
+import { useAuth } from '../../data/Context/UserContext';
 
 
 
-export default function Department({ user }) {
+export default function Department() {
 
     const [selected, setSelected] = React.useState("resource");
     const [selectedSubject, setSelectedSubject] = React.useState({});
     const [isSubjectOpen, setIsSubjectOpen] = React.useState(false);
 
+    const { userInstance, isAuthenticated } = useAuth();
+
     const changeTab = (tab) => {
         setSelected(tab);
     }
 
-    React.useEffect(() => {
-        console.log(sessionStorage.getItem('user'));
-    }, [])
+    if (!isAuthenticated) {
+        return <div>Loading...</div>
+    }
 
     return (
         <main className='lyt_wrapper_department'>
-            <Header user={user} />
+            <Header user={userInstance} />
             <section className='wrapper_department_main'>
                 <div className='department_main_leftPanel'>
                     <ul className='main_leftPanel_navList'>
@@ -61,13 +64,13 @@ export default function Department({ user }) {
 
                                 <p style={{
                                     fontSize: "0.9vw",
-                                }} >{user.batch.name}</p>
+                                }} >{userInstance.batch.name}</p>
                             </div>
                             <ul className='navList_item_subMenu' style={{
                                 display: isSubjectOpen ? "flex" : "none"
                             }}>
                                 {
-                                    user.batch.subjects.map((subj, index) => {
+                                    userInstance.batch.subjects.map((subj, index) => {
                                         return (
                                             <li className='item_subMenu_item' onClick={() => {
                                                 setSelected(`subjects ${subj.name}`)
@@ -84,10 +87,10 @@ export default function Department({ user }) {
 
                 </div>
                 <div className='department_main_rightContent'>
-                    {selected === "members" && <Members user={user} />}
-                    {selected === "resource" && <Resource user={user} />}
-                    {selected === "messages" && <Chats changeTab={changeTab} user={user} />}
-                    {selected === "room" && <Room changeTab={changeTab} user={user} />}
+                    {selected === "members" && <Members user={userInstance} />}
+                    {selected === "resource" && <Resource user={userInstance} />}
+                    {selected === "messages" && <Chats changeTab={changeTab} user={userInstance} />}
+                    {selected === "room" && <Room changeTab={changeTab} user={userInstance} />}
                     {selected.includes("subject") && <Subjects subject={selected} selectedSubject={selectedSubject} />}
                 </div>
             </section>

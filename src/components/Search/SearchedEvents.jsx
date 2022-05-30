@@ -16,7 +16,6 @@ export const SearchedEvents = () => {
 
         axios.get(`${API_HOST}/events`)
             .then(res => {
-                console.log("EVENTS >>> ", res.data);
 
                 const filteredEvents = res.data.filter(event => {
                     return event.title.toLowerCase().includes(searchKeyword.toLowerCase());

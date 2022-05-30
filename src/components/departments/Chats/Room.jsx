@@ -71,7 +71,7 @@ export default function Room({ user, changeTab }) {
         socket.emit('join', user.batch.chatroom._id);
 
         socket.on('chatroom', (chatroom) => {
-            console.log("Messages when user connected !\n");
+            // console.log("Messages when user connected !\n");
             setChatHistory(chatroom.messages);
             if (messagesList.current) {
                 messagesList.current.scrollTop = messagesList.current.scrollHeight;
@@ -97,7 +97,7 @@ export default function Room({ user, changeTab }) {
         // send the message to the server
         socket.emit('chat', chatNew);
         socket.on('new chat', (chatroom) => {
-            console.log(chatroom);
+            // console.log(chatroom);
             setChatHistory(chatroom.messages);
         });
         messagesList.current.scrollTop = messagesList.current.scrollHeight;

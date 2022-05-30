@@ -43,7 +43,6 @@ export default function RegForm() {
 
     const validateKey = async () => {
         const userEnteredKey = await license.current.value;
-        console.log(license.current.disabled);
         if (userEnteredKey === serialNumber) {
             setIsValidKey(true);
             license.current.className += " validInput";
@@ -63,10 +62,8 @@ export default function RegForm() {
             .then(res => {
                 const semesterIds = res.data.department.semesters;
                 semesterIds.map((semester, index) => {
-                    console.log(`${API_HOST}/semester/${semester}`);
                     axios.get(`${API_HOST}/semester/${semester}`)
                         .then(res => {
-                            console.log(res.data);
                             setSemesters(semesters => [...semesters, res.data.semester]);
                         })
                         .catch(err => {
@@ -97,7 +94,6 @@ export default function RegForm() {
     }
 
     const changeConfirmPasswordType = (e) => {
-        console.log(hideShowImage2.current.src);
         if (confirmPassword.current.type === 'password') {
             confirmPassword.current.type = 'text';
             hideShowImage2.current.src = '/centaur-web/images/icons/eye_open.svg';
@@ -161,12 +157,9 @@ export default function RegForm() {
             }
 
 
-            console.log(user);
 
             axios.post(`${API_HOST}/user/register`, user)
                 .then(res => {
-                    console.log(res);
-                    console.log(res.data);
                     if (res.data.success) {
                         alert('User registered successfully');
                         Navigate('/login');

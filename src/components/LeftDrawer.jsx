@@ -4,7 +4,7 @@ import { DashboardIcon, DepartmentIcon, ScheduleIcon, FacultyIcon, ChatIcon, Liv
 import { useNavigation } from '../data/Context/NavigationContext';
 
 
-export default function RightDrawer(props) {
+export default function RightDrawer() {
 
     const { activeTab, updateNavigation } = useNavigation();
 

@@ -11,7 +11,7 @@ export default function EditEventModal({ data, user, setIsOpen }) {
     const handleDelete = () => {
         axios.delete(`${API_HOST}/events/${data.extendedProps._id}`)
             .then(res => {
-                console.log(res);
+                // console.log(res);    
                 setIsOpen(false);
                 // refres
                 window.location.reload();
@@ -29,7 +29,7 @@ export default function EditEventModal({ data, user, setIsOpen }) {
 
         axios.put(`${API_HOST}/events/${data.extendedProps._id}`, updateData)
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 setIsOpen(false);
                 // refresh the page
                 window.location.reload();

@@ -8,7 +8,7 @@ import { UserList } from './UserList';
 
 export const Search = () => {
 
-    const { extra, setExtra, areaToSearch, updateAreaToSearch } = useNavigation();
+    const { extra, areaToSearch } = useNavigation();
 
     return (
         <section className='lyt_wrapper_searchPage'>

@@ -40,6 +40,10 @@ li {
     text-decoration: none;
 }
 
+.skeleton {
+    animation: skeleton-loading 1s linear infinite alternate;
+}
+
 .btn {
     outline: none;
     border: none;

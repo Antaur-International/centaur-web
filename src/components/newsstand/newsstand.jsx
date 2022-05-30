@@ -24,7 +24,7 @@ export default function Newsstand() {
         axios
             .get(`${API_HOST}/msbte/news`)
             .then(res => {
-                console.log(res.data.newsData);
+                // console.log(res.data.newsData);
                 setNews(res.data.newsData);
             })
             .catch(err => {

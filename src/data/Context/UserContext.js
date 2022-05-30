@@ -32,18 +32,17 @@ export default function UserProvider({ children }) {
                 userEmail: JSON.parse(sessionStorage.getItem('user')).userEmail
             };
 
-            console.log(userFetch);
-            console.log(API_HOST);
+            // console.log(userFetch);
+            // console.log(API_HOST);
 
 
             axios.post(`${API_HOST}/user/getUser`, userFetch)
                 .then(res => {
                     setUserInstance(res.data.user);
                     setIsAuthenticated(true);
-                    console.log('Running', res.data);
                 })
                 .then(() => {
-                    console.log({ userInstance });
+                    // console.log({ userInstance });
                 })
                 .catch(err => {
                     console.log(err);

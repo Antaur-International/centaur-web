@@ -25,8 +25,8 @@ export default function AddEventModal({ selectedDate, setIsOpen }) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        console.log(eventDateTime)
-        console.log(eventDateEndTime.split('T'))
+        // console.log(eventDateTime)
+        // console.log(eventDateEndTime.split('T'))
 
         const event = {
             title: eventTitle.current.value,
@@ -37,10 +37,9 @@ export default function AddEventModal({ selectedDate, setIsOpen }) {
             color: color,
         }
 
-        console.log(event);
         axios.post(`${API_HOST}/events`, event)
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 setIsOpen(false);
                 // refresh the page
                 window.location.reload();
@@ -52,7 +51,6 @@ export default function AddEventModal({ selectedDate, setIsOpen }) {
 
     const handleColorChange = (color) => {
         setColor(color.hex);
-        console.log(color.hex);
     }
 
     return (

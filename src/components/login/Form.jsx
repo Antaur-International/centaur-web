@@ -27,7 +27,7 @@ export default function Form() {
             setLoading(true)
             axios.post(`${API_HOST}/user/login`, user)
                 .then(res => {
-                    console.log(res.data);
+                    // console.log(res.data);
                     if (res.data.success === true) {
                         console.log('User logged in successfully');
                         sessionStorage.setItem('user', JSON.stringify(res.data.session));
@@ -63,9 +63,9 @@ export default function Form() {
         }
     }, []);
 
-	if(loading){
-		return <Loader />
-	}
+    if (loading) {
+        return <Loader />
+    }
 
     return (
         <form className='login_page_form'>

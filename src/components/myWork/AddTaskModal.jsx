@@ -33,7 +33,7 @@ export default function AddTaskModal({ setIsOpen, handleSubmitUpdate }) {
             }
         }
 
-        console.log(task);
+        // console.log(task);
 
         axios.post(`${API_HOST}/task`, task)
             .then(res => {

@@ -4,14 +4,16 @@ import { API_HOST } from '../API/constant';
 import Header from '../components/Header'
 import { CreateModal } from '../components/liveClasses/CraeteModal'
 import Modal from '../components/rightDrawer/RightDrawer'
+import { useAuth } from '../data/Context/UserContext';
 import Popup from './lyt-popup';
 import ModalLayout from "./_lyt_modal";
 
 const HOSTED_MEET_URL = "https://grp-call-peer-js.herokuapp.com";
 const LOCALHOST_MEET_URL = "http://localhost:4000";
 
-export default function LiveClassesLyt({ user }) {
+export default function LiveClassesLyt() {
 
+    const { userInstance } = useAuth();
 
     const [show, setShow] = React.useState(false);
 
@@ -47,12 +49,12 @@ export default function LiveClassesLyt({ user }) {
 
     return (
         <main className='lyt_wrapper_liveClasses'>
-            <Header user={user} />
+            <Header />
             <section className='wrapper_liveClasses_main'>
                 <h2>Live Classes</h2>
 
                 {
-                    user.type === "staff" && <button onClick={() => setShow(true)} className='liveClasses_main_createBtn'>
+                    userInstance.type === "staff" && <button onClick={() => setShow(true)} className='liveClasses_main_createBtn'>
                         Create a meeting
                     </button>
                 }
@@ -73,7 +75,7 @@ export default function LiveClassesLyt({ user }) {
                                         <p className='list_item_title'>{meeting.meet_title}</p>
                                         <p className='list_item_description'>{meeting.meet_description}</p>
                                         <a
-                                            href={`${HOSTED_MEET_URL}/${meeting._id}?userId=${user._id}`}
+                                            href={`${HOSTED_MEET_URL}/${meeting._id}?userId=${userInstance._id}`}
                                             target="_blank"
                                             rel='noreferrer'
                                             className='list_item_joinBtn'>Join</a>
@@ -95,7 +97,7 @@ export default function LiveClassesLyt({ user }) {
                                         <p className='list_item_title'>{meeting.meet_title}</p>
                                         <p className='list_item_description'>{meeting.meet_description}</p>
                                         <a
-                                            href={`${LOCALHOST_MEET_URL}/${meeting._id}?userId=${user._id}`}
+                                            href={`${LOCALHOST_MEET_URL}/${meeting._id}?userId=${userInstance._id}`}
                                             target="_blank"
                                             rel='noreferrer'
                                             className='list_item_joinBtn'>Join</a>
@@ -116,7 +118,7 @@ export default function LiveClassesLyt({ user }) {
                                         <p className='list_item_title'>{meeting.meet_title}</p>
                                         <p className='list_item_description'>{meeting.meet_description}</p>
                                         <a
-                                            href={`${LOCALHOST_MEET_URL}/${meeting._id}?userId=${user._id}`}
+                                            href={`${LOCALHOST_MEET_URL}/${meeting._id}?userId=${userInstance._id}`}
                                             target="_blank"
                                             style={{ backgroundColor: '#ccc', cursor: 'not-allowed' }}
                                             disabled="true"
