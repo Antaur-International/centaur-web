@@ -32,7 +32,18 @@ export default function TodoLayout() {
                     <HamBurger />
                 </div>
                 <label className='m_container'>
-                    <input type={'checkbox'} className="checkbox_done" />
+                    <input type={'checkbox'} onChange={(e) => {
+                        if (e.target.checked) {
+                            axios.delete(`${API_HOST}/task/${todo._id}`)
+                                .then(res => {
+                                    // console.log(res.data);
+                                    sessionStorage.setItem('deletedTask', JSON.stringify(res.data.task));
+                                })
+                                .catch(err => {
+                                    console.log(err);
+                                })
+                        }
+                    }} className="checkbox_done" />
                     <span class="checkmark"></span>
                 </label>
                 <div className='item_main_todoText'>
