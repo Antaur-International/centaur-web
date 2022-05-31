@@ -1,8 +1,8 @@
 import React, { useRef } from 'react'
 import { AddIcon, Clock } from '../../icons/Icons'
 import { BlockPicker } from "react-color";
-// import { TextField } from '@mui/material';
-// import {TextField} from '@mui/material/TextField';
+import { TextField } from '@mui/material';
+// import { TextField } from '@mui/material/TextField';
 import axios from 'axios';
 import { API_HOST } from '../../API/constant';
 
@@ -71,19 +71,8 @@ export default function AddEventModal({ selectedDate, setIsOpen }) {
                         <input
                             ref={eventDescription}
                             className='content_form_noteInput' placeholder='Event Description...' />
-                        <label className='dateLabel'>Set Start Date and Time</label>
-                        {/* <TextField
-                            id="datetime-local"
-                            name="dateAndTime"
-                            type="time"
-                            onChange={handleTimeChange}
-                            className="textFieldStartDate"
-                            InputLabelProps={{
-                                shrink: true,
-                            }}
-                        /> */}
                         <label className='dateLabel'>Set End Date and Time</label>
-                        {/* <TextField
+                        <TextField
                             id="datetime-local"
                             name="dateAndTime"
                             onChange={handleDateEndTimeChange}
@@ -92,7 +81,7 @@ export default function AddEventModal({ selectedDate, setIsOpen }) {
                             InputLabelProps={{
                                 shrink: true,
                             }}
-                        /> */}
+                        />
                         <br />
                         <BlockPicker color={color} onChangeComplete={handleColorChange} />
                         <div className='content_form_actionBtn'>
