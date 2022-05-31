@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { AddIcon } from '../../icons/Icons'
 
 const Snackbar = ({ message, setState, openState }) => {
@@ -6,6 +6,15 @@ const Snackbar = ({ message, setState, openState }) => {
     const handleClose = () => {
         setState(false);
     }
+
+    useEffect(() => {
+        if (openState) {
+            setTimeout(() => {
+                handleClose();
+            }, 3000);
+        }
+    })
+
 
     return (
         <div style={{ visibility: openState ? 'visible' : 'hidden' }} className='snackbar_global_wrapper'>

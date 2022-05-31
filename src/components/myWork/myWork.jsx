@@ -7,6 +7,7 @@ import EditTaskModal from './EditTaskModal'
 import axios from 'axios';
 import { API_HOST } from '../../API/constant'
 import { EmptyTaskList } from '../EmptyState/EmptyTaskList'
+import { BoxLoading } from 'react-loadingg';
 
 const MyWorkListItem = (props) => {
     return <li className='item_list_item' onClick={props.onClick} data-id={props.task._id}>

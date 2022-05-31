@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { DotsIcon, FolderIcon } from '../../../icons/Icons'
 import ResourceList from '../Resource/ResourceList';
+import { EmptyResource } from "../../EmptyState/EmptyResource";
+
 
 export const Subjects = ({ subject, selectedSubject }) => {
 
@@ -36,11 +38,11 @@ export const Subjects = ({ subject, selectedSubject }) => {
 
             <ul className='wrapper_publicResource_list'>
                 {
-                    selectedSubject.resources.map((resource, index) => {
+                    selectedSubject.resources.length > 0 ? selectedSubject.resources.map((resource, index) => {
                         return (
                             <ResourceList item={resource} />
                         )
-                    })
+                    }) : <EmptyResource />
                 }
             </ul>
 
