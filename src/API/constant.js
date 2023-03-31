@@ -1,7 +1,7 @@
 let API = "";
 
 const localhost_url = "http://localhost:5000";
-const hosted_url = "https://centaur-be.herokuapp.com";
+const hosted_url = "https://centaur.onrender.com";
 
 if (process.env.NODE_ENV === "development") {
     API = localhost_url;
