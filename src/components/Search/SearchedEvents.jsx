@@ -12,23 +12,24 @@ export const SearchedEvents = () => {
     const { extra } = useNavigation();
 
     useEffect(() => {
+      const searchKeyword = extra.searchKeyword.split(" ").slice(1).join(" ");
 
-        const searchKeyword = extra.searchKeyword.split(" ").slice(1).join(" ");
+      axios
+        .get(`${API_HOST}/events`)
+        .then((res) => {
+          const filteredEvents = res.data.filter((event) => {
+            return event.title
+              .toLowerCase()
+              .includes(searchKeyword.toLowerCase());
+          });
 
-
-        axios.get(`${API_HOST}/events`)
-            .then(res => {
-
-                const filteredEvents = res.data.filter(event => {
-                    return event.title.toLowerCase().includes(searchKeyword.toLowerCase());
-                })
-
-                setEvents(filteredEvents);
-                setLoading(false);
-            })
-            .catch(err => {
-                console.log(err);
-            })
+          setEvents(filteredEvents);
+          setLoading(false);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     if (loading) {

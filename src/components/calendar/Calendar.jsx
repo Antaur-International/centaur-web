@@ -11,60 +11,76 @@ import { API_HOST } from '../../API/constant';
 import { useAuth } from '../../data/Context/UserContext'
 
 export default function Calendar() {
+  const { userInstance } = useAuth();
 
-    const { userInstance } = useAuth();
+  const [events, setEvents] = React.useState([]);
+  const [selectedDate, setSelectedDate] = React.useState();
+  const [data, setData] = React.useState({});
 
-    const [events, setEvents] = React.useState([]);
-    const [tasks, setTasks] = React.useState([]);
-    const [selectedDate, setSelectedDate] = React.useState();
-    const [data, setData] = React.useState({});
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [isEditModalOpen, setEditModalOpen] = React.useState(false);
 
-    const [isModalOpen, setIsModalOpen] = React.useState(false);
-    const [isEditModalOpen, setEditModalOpen] = React.useState(false);
+  React.useEffect(() => {
+    axios
+      .get(`${API_HOST}/events`)
+      .then((res) => {
+        // console.log(res.data);
+        setEvents(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
-    React.useEffect(() => {
-        axios.get(`${API_HOST}/events`)
-            .then(res => {
-                // console.log(res.data);
-                setEvents(res.data);
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }, []);
+  const handleDateClick = (arg) => {
+    setSelectedDate(arg.dateStr);
+    setIsModalOpen(true);
+  };
 
-    const handleDateClick = (arg) => {
-        setSelectedDate(arg.dateStr);
-        setIsModalOpen(true);
-    }
+  const handleEventClick = (arg) => {
+    setData(arg.event._def);
+    setEditModalOpen(true);
+  };
 
-    const handleEventClick = (arg) => {
-        setData(arg.event._def);
-        setEditModalOpen(true);
-    }
+  // const renderEventContent = (eventInfo) => {
+  //     return (
+  //         <div className="fc-event-container">
+  //             <div className="fc-event-title">{eventInfo.event.event_title}</div>
+  //             <div className="fc-event-description">{eventInfo.event.event_description}</div>
+  //         </div>
+  //     );
+  // }
 
-    const renderEventContent = (eventInfo) => {
-        return (
-            <div className="fc-event-container">
-                <div className="fc-event-title">{eventInfo.event.event_title}</div>
-                <div className="fc-event-description">{eventInfo.event.event_description}</div>
-            </div>
-        );
-    }
+  return (
+    <>
+      <FullCalendar
+        plugins={[dayGridPlugin, interactionPlugin]}
+        initialView="dayGridMonth"
+        dateClick={handleDateClick}
+        eventClick={handleEventClick}
+        eventDisplay="block"
+        events={events}
+      />
 
-    return (
-        <>
-            <FullCalendar
-                plugins={[dayGridPlugin, interactionPlugin]}
-                initialView="dayGridMonth"
-                dateClick={handleDateClick}
-                eventClick={handleEventClick}
-                eventDisplay="block"
-                events={events}
-            />
-
-            {isModalOpen && <ModalLayout> <AddEventModal selectedDate={selectedDate} setIsOpen={setIsModalOpen} /> </ModalLayout>}
-            {isEditModalOpen && <ModalLayout> <EditEventModal user={userInstance} data={data} setIsOpen={setEditModalOpen} /> </ModalLayout>}
-        </>
-    )
+      {isModalOpen && (
+        <ModalLayout>
+          {" "}
+          <AddEventModal
+            selectedDate={selectedDate}
+            setIsOpen={setIsModalOpen}
+          />{" "}
+        </ModalLayout>
+      )}
+      {isEditModalOpen && (
+        <ModalLayout>
+          {" "}
+          <EditEventModal
+            user={userInstance}
+            data={data}
+            setIsOpen={setEditModalOpen}
+          />{" "}
+        </ModalLayout>
+      )}
+    </>
+  );
 }

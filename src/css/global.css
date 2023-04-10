@@ -1090,14 +1090,14 @@ td {
 .wrapper_myWork_main {
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: normal;
 }
 .wrapper_myWork_main .myWork_main_title {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: start;
+  align-items: flex-start;
 }
 .wrapper_myWork_main .myWork_main_title h1 {
   color: #3abe2f;
@@ -1120,7 +1120,7 @@ td {
 .wrapper_myWork_main .myWork_main_todoCategory {
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: normal;
   margin-top: 20px;
 }
@@ -1145,7 +1145,7 @@ td {
 .wrapper_myWork_main .myWork_main_todoCategory .main_todoCategory_item .todoCategory_item_list {
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: normal;
   overflow: hidden;
 }
@@ -1160,7 +1160,7 @@ td {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: start;
+  align-items: flex-start;
 }
 .wrapper_myWork_main .myWork_main_todoCategory .main_todoCategory_item .todoCategory_item_list .item_list_item .list_item_top:not(:last-child) {
   margin-bottom: 10px;
@@ -1874,7 +1874,7 @@ td {
 .cp_wrapper_room .wrapper_room_section {
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: stretch;
   gap: 20px;
 }
@@ -1894,8 +1894,8 @@ td {
 .cp_wrapper_room .wrapper_room_section .room_section_chats .section_chats_display {
   display: flex;
   flex-direction: column;
-  justify-content: end;
-  align-items: end;
+  justify-content: flex-end;
+  align-items: flex-end;
   gap: 50px;
   padding-top: 15px;
   padding-bottom: 15px;

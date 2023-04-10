@@ -9,4 +9,6 @@ if (process.env.NODE_ENV === "development") {
     API = hosted_url;
 }
 
+console.log("API: ", API);
+
 export const API_HOST = hosted_url;

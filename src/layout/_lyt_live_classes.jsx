@@ -2,10 +2,8 @@ import axios from 'axios';
 import React, { useEffect } from 'react'
 import { API_HOST } from '../API/constant';
 import Header from '../components/Header'
-import { CreateModal } from '../components/liveClasses/CraeteModal'
-import Modal from '../components/rightDrawer/RightDrawer'
-import { useAuth } from '../data/Context/UserContext';
-import Popup from './lyt-popup';
+import { CreateModal } from "../components/liveClasses/CraeteModal";
+import { useAuth } from "../data/Context/UserContext";
 import ModalLayout from "./_lyt_modal";
 import { BoxLoading } from 'react-loadingg';
 

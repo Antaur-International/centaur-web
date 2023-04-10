@@ -1,6 +1,6 @@
 import React, { useState, createContext, useEffect, useContext } from 'react';
 import axios from 'axios';
-import { useNavigate, Navigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { API_HOST } from '../../API/constant';
 /*
 A context is a way to share data between components without having to pass props

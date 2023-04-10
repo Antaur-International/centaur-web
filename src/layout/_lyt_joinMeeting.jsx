@@ -24,15 +24,6 @@ export default function JoinMeeting() {
         setIsCameraOn(true);
     }, [])
 
-    const changeAudioState = () => {
-        let video = videoRef.current;
-        if (video.muted) {
-            video.muted = false;
-        } else {
-            video.muted = true;
-        }
-    }
-
     const changeCameraState = () => {
 
         if (isCameraOn) {

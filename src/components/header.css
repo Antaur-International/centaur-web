@@ -94,6 +94,6 @@
 
 .header .userProfile p {
   grid-area: enrollment;
-  justify-self: start;
+  justify-self: flex-start;
   font-size: 1.3rem;
 }

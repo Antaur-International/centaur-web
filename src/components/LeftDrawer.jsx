@@ -1,6 +1,14 @@
 import React from 'react';
 import "./leftDrawer.css"
-import { DashboardIcon, DepartmentIcon, ScheduleIcon, FacultyIcon, ChatIcon, LiveIcon, SettingsIcon, MyWork } from '../icons/Icons';
+import {
+  DashboardIcon,
+  DepartmentIcon,
+  ScheduleIcon,
+  FacultyIcon,
+  LiveIcon,
+  SettingsIcon,
+  MyWork,
+} from "../icons/Icons";
 import { useNavigation } from '../data/Context/NavigationContext';
 
 

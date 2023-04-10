@@ -12,25 +12,26 @@ export const UserList = ({ key }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        search()
-    }, [])
+      search();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     function search() {
-        const searchKeyword = extra.searchKeyword.split(" ").slice(1).join(" ");
+      const searchKeyword = extra.searchKeyword.split(" ").slice(1).join(" ");
 
-        userInstance.batch.students.map((user, index) => {
+      // eslint-disable-next-line array-callback-return
+      userInstance.batch.students.map((user, index) => {
+        // console.log(user.name);
+        // console.log(searchKeyword);
 
-            // console.log(user.name);
-            // console.log(searchKeyword);
+        if (user.name.includes(searchKeyword)) {
+          setUsers((prev) => [...prev, user]);
+        }
+      });
 
-            if (user.name.includes(searchKeyword)) {
-                setUsers((prev) => [...prev, user]);
-            }
-        })
+      setLoading(false);
 
-        setLoading(false);
-
-        // console.log("Searched users: ", users);
+      // console.log("Searched users: ", users);
     }
 
     if (loading) {

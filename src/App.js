@@ -1,17 +1,16 @@
 
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect } from "react";
 
-import { API_HOST } from './API/constant';
+import { API_HOST } from "./API/constant";
 
 // Importing the components
-import RightDrawer from './components/LeftDrawer';
-import Dashboard from './components/Dashboard';
-import Department from './components/departments/Department';
-import MyWork from './layout/lyt-myWork';
-import axios from 'axios';
-import SubjectLayout from './layout/_lyt_deartment_subject';
-import SettingsLayout from './layout/_lyt_settings';
-import { UserContext } from './data/Context/UserContext';
+import RightDrawer from "./components/LeftDrawer";
+import Dashboard from "./components/Dashboard";
+import Department from "./components/departments/Department";
+import MyWork from "./layout/lyt-myWork";
+import axios from "axios";
+import SubjectLayout from "./layout/_lyt_deartment_subject";
+import SettingsLayout from "./layout/_lyt_settings";
 import Calender from "./components/calendar/Calendar";
 // CSS files
 import "./css/global.css";

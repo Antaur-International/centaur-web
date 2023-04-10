@@ -25,32 +25,34 @@ const NotificationCard = (props) => {
 }
 
 export default function Notification() {
+  // eslint-disable-next-line no-unused-vars
+  const [notificationsList, setNotificationsList] = React.useState([]);
 
-    const [notificationsList, setNotificationsList] = React.useState([])
+  return (
+    <section className="lyt_notification_wrapper">
+      <div className="notification_wrapper_title">
+        <h1>Notification</h1>
+        <hr />
+      </div>
+      <div className="notification_wrapper_quickAction">
+        <button className="btn">
+          <img src="/centaur-web/images/icons/bell-green.svg" alt="" />
+        </button>
 
-    return (
-        <section className='lyt_notification_wrapper'>
-            <div className='notification_wrapper_title'>
-                <h1>Notification</h1>
-                <hr />
-            </div>
-            <div className='notification_wrapper_quickAction'>
-                <button className='btn'>
-                    <img src="/centaur-web/images/icons/bell-green.svg" alt="" />
-                </button>
-
-                <button className='btn'>
-                    <img src="/centaur-web/images/icons/tick-green.svg" alt="" />
-                    <p>Mark all as read</p>
-                </button>
-            </div>
-            <ul className='notification_wrapper_list'>
-                {
-                    notificationsList.length > 0 ? notificationsList.map((item, key) => {
-                        return <NotificationCard key={key} />
-                    }) : <EmptyNotifications />
-                }
-            </ul>
-        </section>
-    )
+        <button className="btn">
+          <img src="/centaur-web/images/icons/tick-green.svg" alt="" />
+          <p>Mark all as read</p>
+        </button>
+      </div>
+      <ul className="notification_wrapper_list">
+        {notificationsList.length > 0 ? (
+          notificationsList.map((item, key) => {
+            return <NotificationCard key={key} />;
+          })
+        ) : (
+          <EmptyNotifications />
+        )}
+      </ul>
+    </section>
+  );
 }

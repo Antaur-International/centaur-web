@@ -1,14 +1,6 @@
-import React, { useRef } from 'react'
-
+import React from "react";
 
 // just need to setup children
 export default function ModalLayout({ children }) {
-
-
-
-    return (
-        <div className='bg_modal_wrapper'>
-            {children}
-        </div>
-    )
+  return <div className="bg_modal_wrapper">{children}</div>;
 }

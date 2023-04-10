@@ -12,22 +12,25 @@ export const Resource = () => {
     const { extra } = useNavigation();
 
     useEffect(() => {
+      const searchKeyword = extra.searchKeyword.split(" ").slice(1).join(" ");
 
-        const searchKeyword = extra.searchKeyword.split(" ").slice(1).join(" ");
+      axios
+        .get(`${API_HOST}/resource`)
+        .then((res) => {
+          const filteredResources = res.data.resources.filter((resource) => {
+            return resource.resource_name
+              .toLowerCase()
+              .includes(searchKeyword.toLowerCase());
+          });
 
-        axios.get(`${API_HOST}/resource`)
-            .then(res => {
-                const filteredResources = res.data.resources.filter(resource => {
-                    return resource.resource_name.toLowerCase().includes(searchKeyword.toLowerCase());
-                })
+          setResources(filteredResources);
 
-                setResources(filteredResources);
-
-                setLoading(false);
-            })
-            .catch(err => {
-                console.log(err);
-            })
+          setLoading(false);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     if (loading) {

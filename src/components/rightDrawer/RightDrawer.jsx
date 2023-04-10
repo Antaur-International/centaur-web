@@ -4,8 +4,6 @@ import { AddIcon } from '../../icons/Icons'
 
 export default function Modal({ show, handleClose, children }) {
 
-    const showClassName = show ? ' display' : 'modalContainer';
-
     return (
         <section className={`modalContainer ${show && 'displayLeft'} `} onClick={(e) => {
             handleClose();
