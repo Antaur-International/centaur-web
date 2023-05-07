@@ -272,7 +272,7 @@ export default function RegForm() {
             />
             <button onClick={changePasswordType} type="button">
               <img
-                src="/centaur-web/images/icons/eye_close.svg"
+                src="/images/icons/eye_close.svg"
                 alt=""
                 ref={hideShowImage}
               />
@@ -313,7 +313,7 @@ export default function RegForm() {
             />
             <button type="button" onClick={changeConfirmPasswordType}>
               <img
-                src="/centaur-web/images/icons/eye_close.svg"
+                src="/images/icons/eye_close.svg"
                 alt=""
                 ref={hideShowImage2}
               />

@@ -246,7 +246,7 @@ export default function SettingsLayout() {
             <div className="idVerify__heading">
               <p className="heading_title">
                 <img
-                  src="/centaur-web/images/icons/tick-green.svg"
+                  src="/images/icons/tick-green.svg"
                   alt="confirmation icon"
                 />
                 {userInstance.idImageFront && userInstance.idImageBack

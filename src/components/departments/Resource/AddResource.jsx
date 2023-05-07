@@ -68,7 +68,7 @@ export default function AddResource({ user, setIsOpen }) {
           className="center_modal_closeBtn btn"
           onClick={() => setIsOpen(false)}
         >
-          <img src="/centaur-web/images/icons/cross-red.svg" alt="" />
+          <img src="/images/icons/cross-red.svg" alt="" />
         </button>
         <form className="center_modal_form">
           <div className="page_form_div">

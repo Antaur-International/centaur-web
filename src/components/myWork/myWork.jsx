@@ -218,7 +218,7 @@ export default function MyWorkMain({
         <li className="main_todoCategory_item">
           <button className="todoCategory_item_label" onClick={toggleAccordion}>
             <img
-              src="/centaur-web/images/icons/arrow-right.svg"
+              src="/images/icons/arrow-right.svg"
               alt="arrow"
               style={personalTaskIsOpen ? { transform: "rotate(90deg)" } : {}}
             />
@@ -239,7 +239,7 @@ export default function MyWorkMain({
             onClick={toggleCollegeAccordion}
           >
             <img
-              src="/centaur-web/images/icons/arrow-right.svg"
+              src="/images/icons/arrow-right.svg"
               alt="arrow"
               style={collegeTaskIsOpen ? { transform: "rotate(90deg)" } : {}}
             />

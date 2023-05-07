@@ -64,7 +64,7 @@ export default function AddTaskModal({
           className="center_modal_closeBtn btn"
           onClick={() => setIsOpen(false)}
         >
-          <img src="/centaur-web/images/icons/cross-red.svg" alt="" />
+          <img src="/images/icons/cross-red.svg" alt="" />
         </button>
         <div className="center_modal_content">
           <form className="modal_content_form">

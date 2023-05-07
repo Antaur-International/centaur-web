@@ -62,7 +62,7 @@ export default function EditTaskModal({ setIsOpen, task, handleDeleteUpdate }) {
           <h2>Edit Task</h2>
         </div>
         <button className="center_modal_closeBtn btn" onClick={setIsOpen}>
-          <img src="/centaur-web/images/icons/cross-red.svg" alt="" />
+          <img src="/images/icons/cross-red.svg" alt="" />
         </button>
         <div className="center_modal_content">
           <form className="modal_content_form">

@@ -74,11 +74,7 @@ export default function Form() {
         <div className="form_div_password_input">
           <input type="password" placeholder="********" ref={password} />
           <button onClick={changePasswordType} type="button">
-            <img
-              src="/centaur-web/images/icons/eye_close.svg"
-              alt=""
-              ref={hideShowImage}
-            />
+            <img src="/images/icons/eye_close.svg" alt="" ref={hideShowImage} />
           </button>
         </div>
       </div>

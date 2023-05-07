@@ -22,7 +22,7 @@ export const Subjects = ({ subject, selectedSubject }) => {
 
       <div style={{ display: "none" }} className="subject_faculty_card">
         <div className="faculty_card_head">
-          <img src="/centaur-web/images/icons/icon.png" alt="" />
+          <img src="/images/icons/icon.png" alt="" />
           <div className="card_head_info">
             <p className="head_info_facultyName">Faculty name</p>
             <p className="head_info_department">Department</p>

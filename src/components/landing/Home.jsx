@@ -18,7 +18,7 @@ export default function Home() {
           backgroundImage: `url(${process.env.PUBLIC_URL}/images/bgHome.png)`,
         }}
       >
-        <img src="/centaur-web/images/mockup01.png" alt="" />
+        <img src="/images/mockup01.png" alt="" />
       </div>
     </div>
   );
